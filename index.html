@@ -2,31 +2,31 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="delivery-version" content="V3.7-20261108">
+<meta name="delivery-version" content="V3.8-20261108">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>刘妤钢琴工作室 · V3.7 简洁绿灰版</title>
+<title>刘妤钢琴工作室 · V3.8 奶油暖金版</title>
 <style>
   :root {
-    --mint: #347568;
-    --mint-dark: #347568;
-    --mint-soft: #F2F5F3;
-    --mint-border: #DFE7E3;
-    --amber: #59655F;
-    --amber-soft: #F5F6F5;
+    --mint: #9F6C36;
+    --mint-dark: #9F6C36;
+    --mint-soft: #F4E8D8;
+    --mint-border: #E9DCCB;
+    --amber: #7C6C59;
+    --amber-soft: #F8F1E7;
     --coral: #B85D58;
     --coral-soft: #FAF4F3;
-    --bg-page: #F6F7F6;
+    --bg-page: #F8F0E5;
     --bg-card: #FFFFFF;
-    --text-main: #1F2937;
-    --text-sub: #6B7280;
-    --text-muted: #9CA3AF;
-    --border-line: #EDF0F5;
+    --text-main: #332F2A;
+    --text-sub: #7A7064;
+    --text-muted: #8E8375;
+    --border-line: #EBE2D6;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   html, body {
     width: 100%; height: 100%;
     font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-    background: #F0F2F0;
+    background: #F1E7D9;
     color: var(--text-main);
     -webkit-font-smoothing: antialiased;
     overflow: hidden;
@@ -40,7 +40,7 @@
     width: 356px; color: var(--text-main); flex-shrink: 0;
     background: #FFFFFF; border: 1px solid var(--mint-border);
     border-radius: 24px; padding: 24px;
-    box-shadow: 0 12px 32px rgba(24, 183, 121, 0.08);
+    box-shadow: 0 12px 32px rgba(159, 108, 54, 0.08);
   }
   .dg-badge {
     display: inline-flex; align-items: center; gap: 6px;
@@ -53,7 +53,7 @@
   .dg-sub { font-size: 12.5px; color: var(--text-sub); line-height: 1.6; margin-bottom: 16px; }
   .dg-role-btn {
     width: 100%; border: 1.5px solid var(--border-line);
-    background: #F9FAFB; border-radius: 14px;
+    background: #FCF8F2; border-radius: 14px;
     padding: 11px 14px; color: var(--text-main); cursor: pointer; text-align: left;
     margin-bottom: 10px; transition: all 0.18s; display: flex; justify-content: space-between; align-items: center;
   }
@@ -62,7 +62,7 @@
     color: var(--mint-dark);
   }
   .dg-features {
-    background: #F6F7F6; border: 1px solid var(--border-line);
+    background: #F8F0E5; border: 1px solid var(--border-line);
     border-radius: 14px; padding: 12px 14px;
     font-size: 12px; color: var(--text-sub); line-height: 1.7;
   }
@@ -86,18 +86,18 @@
   }
   .perspective-bar {
     display: flex; gap: 8px; padding: 8px 12px 6px;
-    background: #F6F7F6; border-bottom: 1px solid var(--border-line);
+    background: #F8F0E5; border-bottom: 1px solid var(--border-line);
   }
   .p-pill {
     flex: 1; text-align: center; font-size: 11.5px; font-weight: 700;
     padding: 6px 8px; border-radius: 999px; color: var(--text-sub);
-    background: #FFFFFF; border: 1px solid #E5E7EB;
+    background: #FFFFFF; border: 1px solid #E9E0D3;
     cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     transition: all 0.16s;
   }
   .p-pill.active {
     background: var(--mint); color: #FFFFFF; border-color: var(--mint);
-    box-shadow: 0 2px 8px rgba(40, 199, 135, 0.25);
+    box-shadow: 0 2px 8px rgba(159, 108, 54, 0.25);
   }
   .wx-navbar {
     height: 42px; display: flex; align-items: center; justify-content: space-between;
@@ -106,8 +106,8 @@
   .wx-nav-left { font-size: 12px; font-weight: 700; color: var(--mint-dark); cursor: pointer; display: flex; align-items: center; gap: 3px; }
   .wx-nav-title { font-size: 15.5px; font-weight: 800; color: var(--text-main); }
   .wx-capsule {
-    display: flex; align-items: center; background: #F6F7F6;
-    border: 1px solid #E5E7EB; border-radius: 999px;
+    display: flex; align-items: center; background: #F8F0E5;
+    border: 1px solid #E9E0D3; border-radius: 999px;
     padding: 3px 9px; gap: 7px; font-size: 12px; color: var(--text-main);
   }
 
@@ -145,9 +145,9 @@
     font-size: 10.5px; font-weight: 700; line-height: 1.35;
   }
   .b-mint { background: var(--mint-soft); color: var(--mint-dark); border: 1px solid var(--mint-border); }
-  .b-amber { background: var(--amber-soft); color: #59655F; border: 1px solid #E3E7E4; }
+  .b-amber { background: var(--amber-soft); color: #7C6C59; border: 1px solid #E3E7E4; }
   .b-coral { background: var(--coral-soft); color: var(--coral); border: 1px solid #EBDAD8; }
-  .b-gray { background: #F3F4F6; color: var(--text-sub); }
+  .b-gray { background: #F4ECE1; color: var(--text-sub); }
 
   /* 通知横幅（清爽薄荷绿浅底） */
   .notify-banner {
@@ -224,7 +224,7 @@
   }
   .cal-watermark {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -46%);
-    font-size: 130px; font-weight: 900; color: rgba(40, 199, 135, 0.08);
+    font-size: 130px; font-weight: 900; color: rgba(159, 108, 54, 0.08);
     pointer-events: none; user-select: none; line-height: 1; z-index: 0;
   }
   .cal-week-header, .cal-days-grid {
@@ -273,7 +273,7 @@
     font-size: 9.5px; background: #FFF; border-radius: 10px; overflow: hidden;
   }
   .week-table th, .week-table td { border: 1px solid var(--border-line); padding: 4px 2px; text-align: center; vertical-align: middle; }
-  .week-table th { background: #F6F7F6; font-weight: 700; color: var(--text-sub); font-size: 10px; }
+  .week-table th { background: #F8F0E5; font-weight: 700; color: var(--text-sub); font-size: 10px; }
   .wt-slot { border-radius: 6px; padding: 3px 2px; font-size: 9px; line-height: 1.2; cursor: pointer; font-weight: 600; }
   .wt-slot.checked { background: var(--mint-soft); color: var(--mint-dark); border: 1px solid var(--mint-border); }
   .wt-slot.uncheck { background: var(--coral-soft); color: var(--coral); border: 1px solid #EBDAD8; }
@@ -322,42 +322,80 @@
   }
 
   .mono-icon { width: 23px; height: 23px; display: inline-block; object-fit: contain; vertical-align: middle; }
-  .m-icon { background: #F5F7F5 !important; border-color: #E8ECE9; box-shadow: none; border-radius: 10px; }
-  .m-icon[style] { background: #F5F7F5 !important; }
+  .m-icon { background: #F7EFE4 !important; border-color: #ECE1D3; box-shadow: none; border-radius: 10px; }
+  .m-icon[style] { background: #F7EFE4 !important; }
   .tab-btn .mono-icon { width: 22px; height: 22px; filter: grayscale(1); opacity: .6; }
   .tab-btn.active .mono-icon { filter: none; opacity: 1; }
-  .stat-val, .stat-val.amber, .stat-val.coral { color: #27352F; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .stat-val, .stat-val.amber, .stat-val.coral { color: #38322C; font-weight: 650; font-variant-numeric: tabular-nums; }
   .card { border-radius: 12px; box-shadow: none; }
   .m-label, .sec-title, .wx-nav-title { font-weight: 600; }
-  .badge.b-mint { color: #59655F; background: #F3F5F3; border-color: #E5EAE6; }
-  .notify-banner { background: #FFF; border-color: #E6EBE7; }
+  .badge.b-mint { color: #7C6C59; background: #F5EBDF; border-color: #ECE0D2; }
+  .notify-banner { background: #FFF; border-color: #EEE3D6; }
   .p-pill { border: 0; background: transparent; border-radius: 7px; }
-  .p-pill.active { background: #FFF; color: #2B6258; box-shadow: 0 1px 4px #23352b12; border-color: transparent; }
+  .p-pill.active { background: #FFF; color: #895C2E; box-shadow: 0 1px 4px #23352b12; border-color: transparent; }
   .perspective-bar { padding: 7px 12px; }
   .wx-nav-left { display: none; }
   .wx-navbar { justify-content: center; position: relative; height: 47px; }
   .wx-capsule { position: absolute; right: 12px; }
   .wx-nav-title { font-size: 14px; }
-  .edit-pill { background: #FFF; border-color: #E0E5E1; color: #69776F; }
+  .edit-pill { background: #FFF; border-color: #E8DECF; color: #827464; }
   #stu-tab-0 .sec-title { flex-wrap: wrap; }
   #stu-tab-0 .card > div[style*="justify-content:space-between"] { flex-wrap: wrap; gap: 10px; }
-  .stamp-uncheck { border: 1px solid #DDE3DE; color: #6B756E; background: #F7F8F7; transform: none; border-radius: 6px; width: 43px; height: 22px; }
-  .wt-slot.uncheck { background: #F4F6F4; color: #59655F; border-color: #E1E7E2; }
-  .cal-watermark { color: #34756808; }
-  .cal-day .ke-tag { color: #347568; }
-  .cal-day.has-lesson .ke-dot { background: #347568; }
+  .stamp-uncheck { border: 1px solid #E5DCCF; color: #82776A; background: #FBF6EF; transform: none; border-radius: 6px; width: 43px; height: 22px; }
+  .wt-slot.uncheck { background: #F7F0E6; color: #7C6C59; border-color: #E8DECE; }
+  .cal-watermark { color: #9F6C3608; }
+  .cal-day .ke-tag { color: #9F6C36; }
+  .cal-day.has-lesson .ke-dot { background: #9F6C36; }
   .bottom-tabbar { height: 60px; padding-bottom: env(safe-area-inset-bottom); }
   .tab-btn .t-ico { margin-bottom: 4px; }
   .b-coral, .stamp-uncheck { font-weight: 500; }
+
+  :root { --bg-page: #F8F0E5; --bg-card: #FFFEFC; }
+  .top-header-stack, .wx-navbar, .bottom-tabbar { background: #FFFCF7; }
+  .perspective-bar { background: #F2E8DA; }
+  .p-pill.active { background: #FFFEFC; color: #895C2E; }
+  .card { border-color: #EDE1D2; }
+  .btn-mint, .nb-btn { background: #9F6C36; }
+  .cal-day.selected { background: #38322C; }
+  #stu-tab-1.active { display: flex; flex-direction: column; height: 100%; }
+  #stu-tab-1 > .card { flex: 0 0 86%; min-height: 510px; display: flex; flex-direction: column; padding: 16px 12px; margin: 0; }
+  #stu-tab-1 .sec-head { flex-shrink: 0; flex-wrap: wrap; row-gap: 8px; }
+  #stu-tab-1 .sec-head > div > span { font-size: 20px !important; }
+  #stu-tab-1 .sec-head .btn-outline { min-width: 38px; min-height: 38px; font-size: 20px; }
+  #stu-tab-1 .sec-head .badge { color: #895C2E; background: #F5E8D6; border-color: #E8D8C0; }
+  #stu-tab-1 .cal-box { flex: 1; min-height: 300px; display: flex; flex-direction: column; padding: 10px 4px; background: #FBF5EB; border-color: #EEE1D0; }
+  #stu-tab-1 .cal-week-header div { font-size: 14px; padding-bottom: 12px; }
+  #stu-tab-1 .cal-days-grid { flex: 1; grid-template-rows: repeat(5, minmax(48px, 1fr)); gap: 4px 2px; }
+  #stu-tab-1 .cal-day { height: auto; min-height: 48px; font-size: 19px; font-weight: 600; border-radius: 12px; }
+  #stu-tab-1 .ke-tag { font-size: 11px; margin-top: 4px; }
+  #stu-tab-1 .ke-dot { width: 4px; height: 4px; top: 6px; right: 8px; }
+  #stu-tab-1 .cal-watermark { color: #9F6C3606; }
+  #stu-tab-1 .schedule-lesson { flex-shrink: 0; min-height: 112px; padding: 15px 12px; margin-top: 14px !important; border-left-color: #BF8E51; }
+  #stu-tab-1 .schedule-lesson > div:nth-of-type(2) { padding-right: 46px; align-items: flex-start !important; }
+  #cal-sel-title { font-size: 16px !important; line-height: 1.45; font-weight: 650 !important; }
+  #stu-tab-1 .schedule-lesson > div:last-child { font-size: 14px !important; gap: 8px 12px !important; flex-wrap: wrap; line-height: 1.6; }
+  #stu-tab-1 .stamp-seal { top: 14px; right: 10px; font-size: 11px; }
+  .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .detail-label { font-size: 12px; color: var(--text-sub); margin-bottom: 5px; }
+  .detail-value { font-size: 15px; line-height: 1.5; overflow-wrap: anywhere; }
+  .form-field { display: block; margin-bottom: 13px; font-size: 13px; }
+  .form-field input, .form-field select, .form-field textarea { width: 100%; margin-top: 6px; min-height: 42px; padding: 10px; border: 1px solid #E4D7C5; background: #FFFDF9; border-radius: 8px; color: #332F2A; font: inherit; }
+  .form-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .form-actions button { min-height: 40px; }
+  .data-row { display: block; width: 100%; padding: 13px 4px; border: 0; border-bottom: 1px solid var(--border-line); background: transparent; color: inherit; text-align: left; font-size: 14px; line-height: 1.8; cursor: pointer; }
+  @media (max-width: 350px) { #stu-tab-1 .sec-head > div > span { font-size: 18px !important; } #stu-tab-1 .sec-head .badge { font-size: 10px; } }
+
+#stu-tab-1 .schedule-lesson .badge {flex-shrink:0;white-space:nowrap;font-size:11px;}
+#stu-tab-1 .cal-day.selected .ke-dot {background:#FFFFFF;}
 </style>
 </head>
 <body>
 <div class="app-stage">
   <!-- 电脑端左侧引导栏 -->
   <aside class="desktop-guide">
-    <div class="dg-badge">界面预览 · 简洁绿灰版</div>
+    <div class="dg-badge">界面预览 · 奶油暖金版</div>
     <h1 class="dg-title">刘妤钢琴工作室<br>微信小程序交互预览</h1>
-    <p class="dg-sub">按两端截图批注精简界面。白灰底色、统一线条图标，绿色仅用于主要操作与选中状态。本页使用演示数据，供确认界面与操作流程。</p>
+    <p class="dg-sub">按两端截图批注精简界面。奶油米色底、白色卡片和暖金色操作，放大课表与详情。本页使用演示数据，供确认界面与操作流程。</p>
     <button class="dg-role-btn active" id="dg-btn-stu" onclick="switchRole('student')">
       <div>
         <div style="font-size:14px;font-weight:800;"> 家长/学生视角 (清爽8宫格)</div>
@@ -374,7 +412,7 @@
     </button>
     <div class="dg-features">
        <strong>本次定制升级重点：</strong><br>
-      • 全局统一为清爽薄荷绿 <code>#347568</code> + 纯白卡片<br>
+      • 全局统一为清爽薄荷绿 <code>#9F6C36</code> + 纯白卡片<br>
       • 首页琴房、老师名片、4门课程均支持点击 <strong>[ 编辑文字]</strong> 自由修改<br>
       • 提醒页升级为：<strong>课前1天提醒 + 剩3节课自动续费提醒</strong><br>
       • 老师端完整复刻：学员统计、合同管理(套餐/合同)、经营数据(含其他统计8项)
@@ -435,35 +473,35 @@
         <div class="card" style="padding:12px 8px;">
           <div class="mint-grid-4">
             <div class="m-item" onclick="switchStuTab(1)">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABsElEQVR4nO3dwVHDMBRFUcGkJIqiAaqgAYqiJ1h5gcFJJL/vG6x7lswI8fUiS7JgaE2SJEmSJEmzeKI6fnl7/frr65/vH4f8THT/i+cjO9NvBgAzAJgBwAwAZgAwA4CV7Xm39tn/WcUZIf4Nzzjwa8kgoo+gGQa/tWydsQBmGfxFqt5IALMN/iJRt7sg2O7F5Nqn4NpiRb+N7O1/tM5bymbA0a91q1XV4yMIdqE6pmcI3f/CGQAzAJgBwAwAZgAwA4AZAMwAYGUHsVnfkPZyBsAMAGYAMAOAGQCsbBf0KK97kyp2ds4AmAHADABmADADgBkAzABgBgDDfi+otZ8Hm5GDG90+AZsB61Nl7ymTbp+CBLBV7L2DQLdPcg2AGQAMCWBrwbt3IaTbJ2EzYF1sb/F0+xR0G7q3aLp9gmsAzABgBgAzAJgBwAwAZgAwA4B5H7CjfYL3AYPtU7wPGGif5BoAMwCY9wED7ZO8Dxhsn+J9AMw1AFYWwNn+TriqnsgUPNtg99j7GPMRBIsE8AiLGSFRd2wGzBZCqt7oI2iWEJJ1+v8DOszyAZMkSZIkSaf1DYbi1ivIDj0pAAAAAElFTkSuQmCC"/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABr0lEQVR4nO3dQVLEIBRFUbR6Te7Huctx7n7clI4yMJruhryf24Z7hlYhfl4TIGjZmiRJkiRJkmbxRHX88fby9dfXX98/D/mZ6P4Xz0d2pt8MAGYAMAOAGQDMAGAGACvb827ts/+zijNC/BueceDXkkFEH0EzDH5r2TpjAcwy+ItUvZEAZhv8RaJud0Gw3YvJtU/BtcWKfhvZ2/9onbeUzYCjX+tWq6rHRxDsQnVMzxC6/4UzAGYAMAOAGQDMAGAGADMAmAHAyg5is74h7eUMgBkAzABgBgAzAFjZLuhRXvcmVezsnAEwA4AZAMwAYAYAMwCYAcAMAIb9XlBrPw82Iwc3un0CNgPWp8reUybdPgUJYKvYeweBbp/kGgAzABgSwNaCd+9CSLdPwmbAutje4un2Keg2dG/RdPsE1wCYAcAMAGYAMAOAGQDMAGAGAPM+YEf7BO8DBtuneB8w0D7JNQBmADDvAwbaJ3kfMNg+xfsAmGsArCyAs/2dcFU9kSl4tsHusfcx5iMIFgngERYzQqLu2AyYLYRUvdFH0CwhJOv0/wd0mOUDJkmSJEmSTusbjkjU20wRvDkAAAAASUVORK5CYII="/></div>
               <span class="m-label">我的课表</span>
             </div>
             <div class="m-item" onclick="openRuleModal()">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABXklEQVR4nO3d0U2EQBRAUTSWZFE2YBU2YFH2pD/648eaTXhzAc8pYGHm7rADxLhtAAAAAPwXD6sO9Pz68rnqWHv5eHsfn5/xA5xx4n+bDPE49cHbdo3J37bZcYwFuMrk/5gaz0iAq03+j4lxjV6C+NvuPy63viUrdhV7WTWOZSvgTJO/bevO1yUoJkBMgJgAMQFiAsQEiAkQEyAmQOypPoEjPDktH5NYATEBYgLEBIgJEMt3QWd7UbM3KyAmQEyAmAAxAWICxASICRATIJbfCXsfQEqAmAAxAWICxPJdkPcBpASICRATICZATICYADEBYgLE8jvhFe8Djny3bQXEBIgJEBMgJkAs3wUdeYeyghUQEyAmQEyAmAAxAWICxASICRBbFuAIfwdwj1XnO/IY4GyTfY+9H524BMVGAlz1AdvEuMZWwNUiTI1n9BJ0lQiT4/B/xG64yhcIAAAA4NsXfX1KalcOKkAAAAAASUVORK5CYII="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABXUlEQVR4nO3dwU2EQBiAUTTWZD/eLce7/diUXvTiYc0m/PMBvlfAwsy3ww4Q47YBAAAA8F88rDrQ++vz56pj7eXl7WN8fsYPcMaJ/20yxOPUB2/bNSZ/22bHMRbgKpP/Y2o8IwGuNvk/JsY1egnib7v/uNz6lqzYVexl1TiWrYAzTf62rTtfl6CYADEBYgLEBIgJEBMgJkBMgJgAsaf6BI7w5LR8TGIFxASICRATICZALN8Fne1Fzd6sgJgAMQFiAsQEiAkQEyAmQEyAWH4n7H0AKQFiAsQEiAkQy3dB3geQEiAmQEyAmAAxAWICxASICRDL74RXvA848t22FRATICZATICYALF8F3TkHcoKVkBMgJgAMQFiAsQEiAkQEyAmQGxZgCP8HcA9Vp3vyGOAs032PfZ+dOISFBsJcNUHbBPjGlsBV4swNZ7RS9BVIkyOw/8Ru+EqXyAAAACAb1+EGkna9KW9jQAAAABJRU5ErkJggg=="/></div>
               <span class="m-label">排课说明</span>
             </div>
             <div class="m-item" onclick="openFeedbackModal()">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACuklEQVR4nO2c21HEMAxFDUNJFEUDVLENbFHbE3xlJpOJN5Gjx73OPZ/AJLKOJMf7oDUhhBBCCCGEEEII8Y7v358/y8+R+aoOYJQl2a/H84Mx8Qsf1QFYOZPs1+NJs67P6gDuDpWAs6OGaSRRCZgRGgHWqmbpAhoBPZg23D0oBIxWM0MXUAjosVQ/cxfAC7haxehdAC+gx7bqWbsAWoBX9SJ3AbSAHr1qZ+wCWAHeVYvaBbACehxVOVsXQAqIqlbELoAU0ONsdTN1AZyA6CpF6wI4AT2sVc3SBVACsqoTqQugBPQYrWaGLoARkF2VKF0AI6DH1SpG74Kyj6UgVOA2hgpZ4Te8kmjPhKDEscWtAxAqOore2jzEmC6QmeSIqkOM//QmjBg8ynX3OJuv0s+GVmx6vXtWjdAUAeiPgq3ViXHdAxgS7YVXLkwHsTsl+AqWPLmehGd+FF3juU6zgCO7s0vwHsNDHaBRtM9IXoZH0LubzdoF79Y1WpSX9oA7SYhIfmvBL0fPIiFyHZcFzL4pR599XDrgrpuyx7rdRtCM+0HU3F/jugfMJCEj+a0lvyfMIiEzTncB7Jty9guOIR0w66Ycsa6wEcS4H2TN/TWhewCThIrkt0bwwazZCRfAvh9Ex68OKEYCiikTgDaaquIJF4D2tGMlOn6NoGIkoBgJKEYCiikR4PXEsWyQXhvldN+QifpiQ+TrNpFfxtiD6l8Xn6n09b80jo/oOhQCRkYMiwhoAR6zHV0EpICI0yeqiPSnoKM3aazJtyb06B7ZgsJuZnmaGKn4iutEyCkdQV4J2/7Oct3q0VQiwDvxvb9lEJE+gqx4JAQpli2QT0Gt+S52pCOygBMQOQIQRYQsNnrGe4EQZ3kHVB6MEDqiTADSibRSBMRBDI3M2NPeD2BI/Bb2+IUQQgghhBBC7PAPFv2a6uPqEa8AAAAASUVORK5CYII="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACuUlEQVR4nO2cS1LEMAxEPRRn4j7sOc7suc9cClapSqXiSeTo0+30WwKVyHqSHM+H1oQQQgghhBBCCCHEO35/vv4sP0fmszqAUZZkfz9fD8bELzyqA7ByJtnfzxfNuj6qA7g7VALOjhqmkUQlYEZoBFirmqULaAT0YNpw96AQMFrNDF1AIaDHUv3MXQAv4GoVo3cBvIAe26pn7QJoAV7Vi9wF0AJ69KqdsQtgBXhXLWoXwArocVTlbF0AKSCqWhG7AFJAj7PVzdQFcAKiqxStC+AE9LBWNUsXQAnIqk6kLoAS0GO0mhm6AEZAdlWidAGMgB5Xqxi9C8o+loJQgdsYKmSF3/BKoj0TghLHFrcOQKjoKHpr8xBjukBmkiOqDjH+05swYvAo193jbL5KPxtasen17lk1QlMEoD8KtlYnxnUPYEi0F165MB3E7pTgK1jy5HoSnvlRdI3nOs0CjuzOLsF7DA91gEbRPiN5GR5B7242axe8W9doUV7aA+4kISL5rQW/HD2LhMh1XBYw+6YcffZx6YC7bsoe63YbQTPuB1Fzf43rHjCThIzkt5b8njCLhMw43QWwb8rZLziGdMCsm3LEusJGEON+kDX314TuAUwSKpLfGsEHs2YnXAD7fhAdvzqgGAkopkwA2miqiidcANrTjpXo+DWCipGAYiSgGAkopkSA1xPHskF6bZTTfUMm6osNka/bRH4ZYw+qf118ptLX/9I4PqLrUAgYGTEsIqAFeMx2dBGQAiJOn6gi0p+Cjt6ksSbfmtCje2QLCruZ5WlipOIrrhMhp3QEeSVs+zvLdatHU4kA78T3/pZBRPoIsuKREKRYtkA+BbXmu9iRjsgCTkDkCEAUEbLY6BnvBUKc5R1QeTBC6IgyAUgn0koREAcxNDJjT3s/gCHxW9jjF0IIIYQQQgixwz+fAJt6HFDZYAAAAABJRU5ErkJggg=="/></div>
               <span class="m-label">课堂反馈</span>
             </div>
             <div class="m-item" onclick="switchStuTab(2)">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAB8UlEQVR4nO2d7XHCMBAFXzIpiaJogCrSQIpKT+QPnsnAGBJZd0867RaApbc+IZ/4kAAAAAAAAAAAYBXesi50upyvWdfqxffnV3g+4ReYMfh7IkW8R72wVCN8KXYeYQKqhL8RNZ8QAdXC34iYV+gSBK/p/uby7C7J2FX0ImseaRUwU/hS3nhZgswgwAwCzCDADALMIMAMAswgwAwCzCDAzId7ACN0Tp1tEirADALMIMAMAswgwIx9FzTbQU1vqAAzCDCDADMIMIMAMwgwg4BOtDYVEdCBLfwWCQg4yH3o/5VgfxKe+Txgb+yny/n619ekAhrp9eFdBDTQ85PTCOhIy1KGgE60vo8goANHWur2XdDs5wFHx08FHKDHzYOARnpVLgJ2KPclvZnIfDpHwB3ZrREE/MLRl0LADVdTEAHydmSXF+Buh9ufhDMC2Ns2vtpqZoxt2QoY5UdFlhQwSvjSggJGCl9aTMBo4UsLCRgxfGmAXVDG5EcNX1qgAkYOXyouYPTwpcICZghfKipglvClggJmCl8qJmC28KVCAmYMXyokYC/kkcOXCgmQHsMePXwpUUDWwccW+tHws8Ybcoe4T5ki6V1VpZagGQkRMMPa20LEvMIqoJqEqPmELkFVJETOg/8Re0KVGwgAAAAAAAAA4MYPDivEeg755N4AAAAASUVORK5CYII="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAB8UlEQVR4nO2dS3LCMBAFX1I5E/fJnuNkz31yKbLBVSkoQyLP6Emj7gNg6bVHyCM+EgAAAAAAAAAArMJbrwtdzqdrr2tF8fn1nZ5P+gVmDP6eTBHvWS8s1Qhfyp1HmoAq4W9kzSdFQLXwNzLmlboEwWvC31ye3SU9dhVR9JpHtwqYKXyp33hZgswgwAwCzCDADALMIMAMAswgwAwCzCDAzId7ACN0Tp1tEirADALMIMAMAswgwIx9FzTbQU00VIAZBJhBgBkEmEGAGQSYQUAQrU1FBASwhd8iAQEHuQ/9vxLsT8Iznwfsjf1yPl3/+ppUQCNRH95FQAORn5xGQCAtSxkCgmh9H0FAAEda6vZd0OznAUfHTwUcIOLmQUAjUZWLgB3KfUlvJno+nSPgjt6tEQT8wtGXQsANV1MQAfJ2ZJcX4G6H25+EewSwt218tdXsMbZlK2CUHxVZUsAo4UsLChgpfGkxAaOFLy0kYMTwpQF2QT0mP2r40gIVMHL4UnEBo4cvFRYwQ/hSUQGzhC8VFDBT+FIxAbOFLxUSMGP4UiEBeyGPHL5USID0GPbo4UsdBfQ6+NhCPxp+r/Gm3CHuU6ZMoquq1BI0IykCZlh7W8iYV1oFVJOQNZ/UJaiKhMx58D9iT6hyAwEAAAAAAAAA3PgBtqHEGs9ImjsAAAAASUVORK5CYII="/></div>
               <span class="m-label">我的作业</span>
             </div>
             <div class="m-item" onclick="openAttendanceModal()">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACHElEQVR4nO2d0Y3CMBAFHydKoigaoAoaoCh64n4uOgQkIck6b23PfCKE2TexvbGCkAAAAAAAAAAAoBcOroFPl/Pj0+v3622X7+Qef+Bnz8HgHQSYQYAZBJhBgBkEmEGAmWI971ifXTMl7hHCP7DF4F+JFBG6BPUQvhRbZ5iAXsIfiKo3REBv4Q9E1E0XZGbzZjJ1FUxtVu7TyKXjr61zjmIzYO9j3dKUqoclyMzRNbB7hrjHH2AGmEGAGQSYQYAZBJhBgBkEmEGAmWI3Yr2ekC6FGWAGAWYQYAYBZhBgplgXlOW4N5ISnR0zwAwCzCDADALMIMAMAv5wnV0hQP/hOyR0L8B9atutgNPl/PgU/t5CuhQwF/KeEroT8E24ex6jdCUgW/iS8dnQvZkL33V42LyAjFf9M2mWoBIbX/bwpSQCStwI1RC+lEDAa1AREmoJXzILGAtqi4RvNtss4UtmAWt+xDf1/qydzhT2JShCQk1Lzit2AdI2CTWHLyURIK2TUHv4UiIB0jIJtW22Y6S7E75fb4et3VENwQ+kmgEDWwKsKXwpqQBpXZC1hS8lFiAtC7TG8KXkAqT5YGvZbMdIL0Aal1Bz8ANVCJDew24hfClhGzpFK6E/U80MaBUEmCkmwP3EWTSl6glZU1sLewlb9yWWIDMhAlrsTr4hou6wGdCbhKh6Q5egXiRE1sn/ByyglwsMAAAAAAAAAJrlF0Z35JsXBUd/AAAAAElFTkSuQmCC"/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACG0lEQVR4nO2dQY7CMBAEmxVv4j/ceQ53/sOn2MtGi4AkJBmnx3bVESHMdMX2xApCAgAAAAAAAACAXji4Br5dTo9Pr5+v912+k3v8gZ89B4N3EGAGAWYQYAYBZhBgBgFmivW8Y312zZS4Rwj/wBaDfyVSROgS1EP4UmydYQJ6CX8gqt4QAb2FPxBRN12Qmc2bydRVMLVZuU8jl46/ts45is2AvY91S1OqHpYgM0fXwO4Z4h5/gBlgBgFmEGAGAWYQYAYBZhBgBgFmit2I9XpCuhRmgBkEmEGAGQSYQYCZYl1QluPeSEp0dswAMwgwgwAzCDCDADMI+MN1doUA/YfvkNC9APepbbcCbpfT41P4ewvpUsBcyHtK6E7AN+HueYzSlYBs4UvGZ0P3Zi581+Fh8wIyXvXPpFmCSmx82cOXkggocSNUQ/hSAgGvQUVIqCV8ySxgLKgtEr7ZbLOEL5kFrPkR39T7s3Y6U9iXoAgJNS05r9gFSNsk1By+lESAtE5C7eFLiQRIyyTUttmOke5O+Hy9H7Z2RzUEP5BqBgxsCbCm8KWkAqR1QdYWvpRYgLQs0BrDl5ILkOaDrWWzHSO9AGlcQs3BD1QhQHoPu4XwpYRt6BSthP5MNTOgVRBgppgA9xNn0ZSqJ2RNbS3sJWzdl1iCzIQIaLE7+YaIusNmQG8SouoNXYJ6kRBZJ/8fsIBeLjAAAAAAAAAAaJZfCTjkm37SRe0AAAAASUVORK5CYII="/></div>
               <span class="m-label">考勤记录</span>
             </div>
             <div class="m-item" onclick="switchStuTab(2)">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABXklEQVR4nO3d0U2EQBRAUTSWZFE2YBU2YFH2pD/648eaTXhzAc8pYGHm7rADxLhtAAAAAPwXD6sO9Pz68rnqWHv5eHsfn5/xA5xx4n+bDPE49cHbdo3J37bZcYwFuMrk/5gaz0iAq03+j4lxjV6C+NvuPy63viUrdhV7WTWOZSvgTJO/bevO1yUoJkBMgJgAMQFiAsQEiAkQEyAmQOypPoEjPDktH5NYATEBYgLEBIgJEMt3QWd7UbM3KyAmQEyAmAAxAWICxASICRATIJbfCXsfQEqAmAAxAWICxPJdkPcBpASICRATICZATICYADEBYgLE8jvhFe8Djny3bQXEBIgJEBMgJkAs3wUdeYeyghUQEyAmQEyAmAAxAWICxASICRBbFuAIfwdwj1XnO/IY4GyTfY+9H524BMVGAlz1AdvEuMZWwNUiTI1n9BJ0lQiT4/B/xG64yhcIAAAA4NsXfX1KalcOKkAAAAAASUVORK5CYII="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABXUlEQVR4nO3dwU2EQBiAUTTWZD/eLce7/diUXvTiYc0m/PMBvlfAwsy3ww4Q47YBAAAA8F88rDrQ++vz56pj7eXl7WN8fsYPcMaJ/20yxOPUB2/bNSZ/22bHMRbgKpP/Y2o8IwGuNvk/JsY1egnib7v/uNz6lqzYVexl1TiWrYAzTf62rTtfl6CYADEBYgLEBIgJEBMgJkBMgJgAsaf6BI7w5LR8TGIFxASICRATICZALN8Fne1Fzd6sgJgAMQFiAsQEiAkQEyAmQEyAWH4n7H0AKQFiAsQEiAkQy3dB3geQEiAmQEyAmAAxAWICxASICRDL74RXvA848t22FRATICZATICYALF8F3TkHcoKVkBMgJgAMQFiAsQEiAkQEyAmQGxZgCP8HcA9Vp3vyGOAs032PfZ+dOISFBsJcNUHbBPjGlsBV4swNZ7RS9BVIkyOw/8Ru+EqXyAAAACAb1+EGkna9KW9jQAAAABJRU5ErkJggg=="/></div>
               <span class="m-label">我的合同</span>
             </div>
             <div class="m-item" onclick="openSwitchStudentModal()">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACdklEQVR4nO2c3XGEMAyESSYlXVHXwFWRBlJUero8eYZhAv5bSSuz3+txIHYl29iGbRNCCCGEEEIIIYQQd+EjOoARHq/n++y33++fVPeUJtgr0c/IYAZ9gCPCH2E24jM6gCsQ4iPPYwFlZlgKxlYNdBVgna1s1fAVHcAIV1nMJnANqnKsidfTfCDPZQlNE4QWrHY8S6XQGHDFaLayZPkVFAZYPtmy9xcUBpyBymCLSkCZR20AK0V8hAnhBpzdBDprz87XK+Lx+FkTwg3IxJnYMybIgA4sOnQZ0AnaBBkwANIEGTAIygQZMAHChHADUMPDGlbD3dn/hxuwMi1JRG3AHZYkKQywnDCL3MLScn4KA2qMmuCR+ctMRaAXULKsiFEEsadF6NkmCyn+7Ogq5aI8S6e6xHT0EYaO0ROqYI4gM91zVaznWnQVsOcOS5L0fUART7ujiWB7P2AfTwbTl4VldCZEHlK1Vz0lnqUtpg6S/TkAAV1QHh0Zkxk0gUSMIBiMCA+AYegWaUToVASD+NsWG0eI86M3jHxFCXENBKGP7S0gBIm4ZiuuBrQKYSmAZwyP1/NdO4+bAd5LhTXQ8YyuDbh0wmzit17Po3M2v+kMuxNQMY5UgWkFZBB/22LfKTYzIIv4hSgTQh7E2MQvRMRlYgDbkmEPM5u+Rrbaww3ILH7B8+166m0pdwBqwArZX/CqApcKyCZ+YSTu3n4AZgDL1LIXaT7WkTX7C9bxqxMOBmLA3ZqfQu/cz3/Hm1ZA9uanYHkf9LujM7PMW5IZaa2aaQO8vngVjdUnFVQBwciAYGRAMDIgGBkghBBCCCGEEEIIIYQQQqzPH2fsbOrSyaoAAAAAAElFTkSuQmCC"/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACdklEQVR4nO2cS3KEMAxESSpnmvtkP8fJfu6TS01WrqKogH8tqWX6bYcB0S3ZxjZsmxBCCCGEEEIIIYS4Cx/RAYzwej7eZ799//ymuqc0wV6JfkYGM+gDHBH+CLMRn9EBXIEQH3keCygzw1IwtmqgqwDrbGWrhq/oAEa4ymI2gWtQlWNNvJ7mA3kuS2iaILRgteNZKoXGgCtGs5Uly6+gMMDyyZa9v6Aw4AxUBltUAso8agNYKeIjTAg34Owm0Fl7dr5eEY/Hz5oQbkAmzsSeMUEGdGDRocuATtAmyIABkCbIgEFQJsiACRAmhBuAGh7WsBruzv4/3ICVaUkiagPusCRJYYDlhFnkFpaW81MYUGPUBI/MX2YqAr2AkmVFjCKIPS1CzzZZSPFnR1cpF+VZOtUlpqOPMHSMnlAFcwSZ6Z6rYj3XoquAPXdYkqTvA4p42h1NBNv7Aft4Mpi+LCyjMyHykKq96inxLG0xdZDszwEI6ILy6MiYzKAJJGIEwWBEeAAMQ7dII0KnIhjE37bYOEKcH71h5CtKiGsgCH1sbwEhSMQ1W3E1oFUISwE8Y3g9H+/aedwM8F4qrIGOZ3RtwKUTZhO/9XoenbP5TWfYnYCKcaQKTCsgg/jbFvtOsZkBWcQvRJkQ8iDGJn4hIi4TA9iWDHuY2fQ1stUebkBm8Queb9dTb0u5A1ADVsj+glcVuFRANvELI3H39gMwA1imlr1I87GOrNlfsI5fnXAwEAPu1vwUeud+/jvetAKyNz8Fy/ug3x2dmWXeksxIa9VMG+D1xatorD6poAoIRgYEIwOCkQHByAAhhBBCCCGEEEIIIYQQYn3+AIVZbgrosTwyAAAAAElFTkSuQmCC"/></div>
               <span class="m-label">学员切换</span>
             </div>
             <div class="m-item" onclick="switchStuTab(3)">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACKklEQVR4nO3c21HDMBCFYcFQEkXRAFXQAEXREzxpxsOMb8quztno/15hkvUeSY4tJ60BAAAAAABgFS/qAka8f3787v3t5+u71DGVKfao6XsqhGFf4Ejj/3MO4lVdwJGI5ke+TgbLkZHZMLfZYDcDsker22x4Uxcw4mgUuzX4jNV0PGveneUj8rUy2SxB0Q07+3+XmWITwJHR0eoyyo9YBJB5Zet+vrAIYE/UCHaeCdYBrEAewN4yED1q915PvQzJA1gdAYgRgBgBiBGAGAGIyQOY9fFw1sfdu+QBrM46gBW2JC0CyLxh5v4Ii0UAZ0ZDcB75nU0A0RsoVXbELIrYutLoR5csl+a3VnRTvsLScpXNEtRlj06n0d+a4RK0FTnS3Rrf2c2ArRW2JG0L+4+no424X1wBQBGl1ss7J+Iq5wLrIle4DrArasZtBqcwbApR3N9xCEJegMONNWUQ0lsRDs1vTVuHJPnRA478ilLEe0SYHsDdxkQ0RPGeV00N4GojMhvgUMPWtADctgpd6plyEnY52LvvN+PknH7QFZ5OUNaYOgMqNL817XeK0wKo0vxOFYLkQsyt+Z2irpQAKm8Zzv5id3gAlZvfzQzB+rGUFYQG8Ayjv5s1C6bMgGrN70pdCbvcWp4l6njTZ0DV0d9l189JWCwkgNWWny7iuFNnQPXlpyt7Mw7nCEDs4QBcfwIgWtZPKjADxAhAjADECECMAAAAAAAAAAAAeH5/OJoSdT6MxUUAAAAASUVORK5CYII="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACKklEQVR4nO3cTU7DMBDFcYM4E/dhz3HYcx8uBStLEVK+3Bm/N/X/twW1k3m208RpWwMAAAAAAMAqXtQFjPj+fP/d+9vH10+pYypT7FHT91QIw77Akcb/5xzEq7qAIxHNj3ydDJYjI7NhbrPBbgZkj1a32fCmLmDE0Sh2a/AZq+l41rw7y0fka2WyWYKiG3b2/y4zxSaAI6Oj1WWUH7EIIPPK1v18YRHAnqgR7DwTrANYgTyAvWUgetTuvZ56GZIHsDoCECMAMQIQIwAxAhCTBzDr4+Gsj7t3yQNYnXUAK2xJWgSQecPM/REWiwDOjIbgPPI7mwCiN1Cq7IhZFLF1pdGPLlkuzW+t6KZ8haXlKpslqMsenU6jvzXDJWgrcqS7Nb6zmwFbK2xJ2hb2H09HG3G/uAKAIkqtl3dOxFXOBdZFrnAdYFfUjNsMTmHYFKK4v+MQhLwAhxtryiCktyIcmt+atg5J8qMHHPkVpYj3iDA9gLuNiWiI4j2vmhrA1UZkNsChhq1pAbhtFbrUM+Uk7HKwd99vxsk5/aArPJ2grDF1BlRofmva7xSnBVCl+Z0qBMmFmFvzO0VdKQFU3jKc/cXu8AAqN7+bGYL1YykrCA3gGUZ/N2sWTJkB1ZrflboSdrm1PEvU8abPgKqjv8uun5OwWEgAqy0/XcRxp86A6stPV/ZmHM4RgNjDAbj+BEC0rJ9UYAaIEYAYAYgRgBgBAAAAAAAAAADw/P4A2nkSRUHVwuMAAAAASUVORK5CYII="/></div>
               <span class="m-label">个人信息</span>
             </div>
           </div>
@@ -556,7 +594,7 @@
               <span style="font-size:15px;font-weight:800;">2026年11月</span>
               <button class="btn-outline" style="padding:3px 9px;" onclick="showToast('已切换至 2026年12月')">&gt;</button>
             </div>
-            <span class="badge b-coral">● 红字“课”代表有排课</span>
+            <span class="badge b-coral">● 有课日期</span>
           </div>
 
           <div class="cal-box">
@@ -604,7 +642,7 @@
           </div>
 
           <!-- 选中日排课卡片（已按批注删除请假按钮与隐私保护字样，保持干净清爽） -->
-          <div class="lesson-card" style="margin-top:10px;">
+          <div class="lesson-card schedule-lesson" style="margin-top:10px;">
             <div class="stamp-seal stamp-uncheck" id="cal-lesson-stamp">未点名</div>
             <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">
               <span class="badge b-mint">常规课</span>
@@ -679,7 +717,7 @@
             <div style="background:var(--mint-soft);border:1px solid var(--mint-border);border-radius:8px;padding:4px 0;font-size:10px;font-weight:700;">周三<br></div>
             <div style="background:var(--mint-soft);border:1px solid var(--mint-border);border-radius:8px;padding:4px 0;font-size:10px;font-weight:700;">周四<br></div>
             <div style="background:var(--mint-soft);border:1px solid var(--mint-border);border-radius:8px;padding:4px 0;font-size:10px;font-weight:700;">周五<br></div>
-            <div style="background:#F9FAFB;border:1px dashed #D1D5DB;border-radius:8px;padding:4px 0;font-size:10px;color:#9CA3AF;">周六<br>待练</div>
+            <div style="background:#FCF8F2;border:1px dashed #D1D5DB;border-radius:8px;padding:4px 0;font-size:10px;color:#8E8375;">周六<br>待练</div>
             <div style="background:#FFFFFF;border:1.5px solid var(--mint);border-radius:8px;padding:4px 0;font-size:10px;font-weight:800;color:var(--mint-dark);" id="today-flower-slot">周日<br>今日</div>
           </div>
           <button class="btn-mint" style="width:100%;padding:8px;" onclick="punchPracticeFlower()">
@@ -696,7 +734,7 @@
           <div style="font-size:11.5px;font-weight:700;color:var(--text-main);margin-bottom:5px;">
              本周作业：《车尔尼599 第19条》《巴赫小步舞曲 G大调》
           </div>
-          <div style="font-size:11px;color:var(--text-sub);line-height:1.55;background:#F6F7F6;padding:8px 10px;border-radius:10px;border-left:3px solid var(--mint);">
+          <div style="font-size:11px;color:var(--text-sub);line-height:1.55;background:#F8F0E5;padding:8px 10px;border-radius:10px;border-left:3px solid var(--mint);">
             <strong> 刘妤老师叮嘱：</strong>翊菱这节课识谱非常快！在家练琴重点注意右手十六分音符跑动时手腕放松、指尖站稳，第9-16小节先分手慢练3遍再合手。
           </div>
         </div>
@@ -711,7 +749,7 @@
             <span class="badge b-gray">通知内容示例</span>
           </div>
           <!-- 提醒 1：课前1天 -->
-          <div style="background:#F9FAFB;border:1px solid var(--border-line);border-left:4px solid var(--mint);border-radius:10px;padding:9px 11px;margin-bottom:8px;">
+          <div style="background:#FCF8F2;border:1px solid var(--border-line);border-left:4px solid var(--mint);border-radius:10px;padding:9px 11px;margin-bottom:8px;">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
               <span style="font-size:11.5px;font-weight:800;color:var(--mint-dark);"> 微信服务通知 · 课前1天上课提醒</span>
               <span class="badge b-mint">提前24小时自动发</span>
@@ -744,7 +782,7 @@
             <div class="sec-title"><span class="sec-bar"></span>个人信息设置</div>
             <span class="badge b-mint">档案绑定</span>
           </div>
-          <div style="background:#F6F7F6;border:1px solid var(--border-line);border-radius:8px;padding:6px 9px;font-size:11px;color:var(--text-sub);margin-bottom:9px;">
+          <div style="background:#F8F0E5;border:1px solid var(--border-line);border-radius:8px;padding:6px 9px;font-size:11px;color:var(--text-sub);margin-bottom:9px;">
              非必填，主要方便老师与家长取得联系
           </div>
           <div style="margin-bottom:8px;">
@@ -787,51 +825,51 @@
           </div>
           <div class="mint-grid-4">
             <div class="m-item" onclick="openAddScheduleModal()">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAA30lEQVR4nO3bsQ2DQBAAQeyaKMoNuAo3QFH0hFMHJgGkFTATfvSv1Wd3wwAAAAAAAFzdo77AVuP7tfw7nz/Tqd70rC9wdwLEBIgJEBMgJkBMgJgAMQFiAsQEiAkQEyAmQEyAmAAxAWICxASICRATICZATICYADEBYgLEBIgJEBMgtnuSeG1K+U72TGT7ATEBYgLEBIgJEDvVPtUvO2IcQoCYADEBYgLEBIgJEBMgJkBMgJgAMQFiAsQEiAkQEyAmQEyAmAAxAWICxASICRATICZATICYADEBAAAAAADg+r73MQyAgBfuBAAAAABJRU5ErkJggg=="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAA3klEQVR4nO3bsQ2DQBAAQeyi6Me5y3FOPzSFUwcmAaQVMBN+9K/VZ3fDAAAAAAAAXN2jvsBW03tc/p2/PvOp3vSsL3B3AsQEiAkQEyAmQEyAmAAxAWICxASICRATICZATICYADEBYgLEBIgJEBMgJkBMgJgAMQFiAsQEiAkQEyC2e5J4bUr5TvZMZPsBMQFiAsQEiAkQO9U+1S87YhxCgJgAMQFiAsQEiAkQEyAmQEyAmAAxAWICxASICRATICZATICYADEBYgLEBIgJEBMgJkBMgJgAMQEAAAAAAOD6vjEADICkKkOLAAAAAElFTkSuQmCC"/></div>
               <span class="m-label">新增排课</span>
             </div>
             <div class="m-item" onclick="switchTchTab(1,'cal')">
-              <div class="m-icon"><span class="red-dot-badge" id="badge-checkin-cnt">4</span><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACHElEQVR4nO2d0Y3CMBAFHydKoigaoAoaoCh64n4uOgQkIck6b23PfCKE2TexvbGCkAAAAAAAAAAAoBcOroFPl/Pj0+v3622X7+Qef+Bnz8HgHQSYQYAZBJhBgBkEmEGAmWI971ifXTMl7hHCP7DF4F+JFBG6BPUQvhRbZ5iAXsIfiKo3REBv4Q9E1E0XZGbzZjJ1FUxtVu7TyKXjr61zjmIzYO9j3dKUqoclyMzRNbB7hrjHH2AGmEGAGQSYQYAZBJhBgBkEmEGAmWI3Yr2ekC6FGWAGAWYQYAYBZhBgplgXlOW4N5ISnR0zwAwCzCDADALMIMAMAv5wnV0hQP/hOyR0L8B9atutgNPl/PgU/t5CuhQwF/KeEroT8E24ex6jdCUgW/iS8dnQvZkL33V42LyAjFf9M2mWoBIbX/bwpSQCStwI1RC+lEDAa1AREmoJXzILGAtqi4RvNtss4UtmAWt+xDf1/qydzhT2JShCQk1Lzit2AdI2CTWHLyURIK2TUHv4UiIB0jIJtW22Y6S7E75fb4et3VENwQ+kmgEDWwKsKXwpqQBpXZC1hS8lFiAtC7TG8KXkAqT5YGvZbMdIL0Aal1Bz8ANVCJDew24hfClhGzpFK6E/U80MaBUEmCkmwP3EWTSl6glZU1sLewlb9yWWIDMhAlrsTr4hou6wGdCbhKh6Q5egXiRE1sn/ByyglwsMAAAAAAAAAJrlF0Z35JsXBUd/AAAAAElFTkSuQmCC"/></div>
+              <div class="m-icon"><span class="red-dot-badge" id="badge-checkin-cnt">4</span><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACG0lEQVR4nO2dQY7CMBAEmxVv4j/ceQ53/sOn2MtGi4AkJBmnx3bVESHMdMX2xApCAgAAAAAAAACAXji4Br5dTo9Pr5+v912+k3v8gZ89B4N3EGAGAWYQYAYBZhBgBgFmivW8Y312zZS4Rwj/wBaDfyVSROgS1EP4UmydYQJ6CX8gqt4QAb2FPxBRN12Qmc2bydRVMLVZuU8jl46/ts45is2AvY91S1OqHpYgM0fXwO4Z4h5/gBlgBgFmEGAGAWYQYAYBZhBgBgFmit2I9XpCuhRmgBkEmEGAGQSYQYCZYl1QluPeSEp0dswAMwgwgwAzCDCDADMI+MN1doUA/YfvkNC9APepbbcCbpfT41P4ewvpUsBcyHtK6E7AN+HueYzSlYBs4UvGZ0P3Zi581+Fh8wIyXvXPpFmCSmx82cOXkggocSNUQ/hSAgGvQUVIqCV8ySxgLKgtEr7ZbLOEL5kFrPkR39T7s3Y6U9iXoAgJNS05r9gFSNsk1By+lESAtE5C7eFLiQRIyyTUttmOke5O+Hy9H7Z2RzUEP5BqBgxsCbCm8KWkAqR1QdYWvpRYgLQs0BrDl5ILkOaDrWWzHSO9AGlcQs3BD1QhQHoPu4XwpYRt6BSthP5MNTOgVRBgppgA9xNn0ZSqJ2RNbS3sJWzdl1iCzIQIaLE7+YaIusNmQG8SouoNXYJ6kRBZJ/8fsIBeLjAAAAAAAAAAaJZfCTjkm37SRe0AAAAASUVORK5CYII="/></div>
               <span class="m-label">签到</span>
             </div>
             <div class="m-item" onclick="switchTchTab(1,'grid')">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABsElEQVR4nO3dwVHDMBRFUcGkJIqiAaqgAYqiJ1h5gcFJJL/vG6x7lswI8fUiS7JgaE2SJEmSJEmzeKI6fnl7/frr65/vH4f8THT/i+cjO9NvBgAzAJgBwAwAZgAwA4CV7Xm39tn/WcUZIf4Nzzjwa8kgoo+gGQa/tWydsQBmGfxFqt5IALMN/iJRt7sg2O7F5Nqn4NpiRb+N7O1/tM5bymbA0a91q1XV4yMIdqE6pmcI3f/CGQAzAJgBwAwAZgAwA4AZAMwAYGUHsVnfkPZyBsAMAGYAMAOAGQCsbBf0KK97kyp2ds4AmAHADABmADADgBkAzABgBgDDfi+otZ8Hm5GDG90+AZsB61Nl7ymTbp+CBLBV7L2DQLdPcg2AGQAMCWBrwbt3IaTbJ2EzYF1sb/F0+xR0G7q3aLp9gmsAzABgBgAzAJgBwAwAZgAwA4B5H7CjfYL3AYPtU7wPGGif5BoAMwCY9wED7ZO8Dxhsn+J9AMw1AFYWwNn+TriqnsgUPNtg99j7GPMRBIsE8AiLGSFRd2wGzBZCqt7oI2iWEJJ1+v8DOszyAZMkSZIkSaf1DYbi1ivIDj0pAAAAAElFTkSuQmCC"/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABr0lEQVR4nO3dQVLEIBRFUbR6Te7Huctx7n7clI4yMJruhryf24Z7hlYhfl4TIGjZmiRJkiRJkmbxRHX88fby9dfXX98/D/mZ6P4Xz0d2pt8MAGYAMAOAGQDMAGAGACvb827ts/+zijNC/BueceDXkkFEH0EzDH5r2TpjAcwy+ItUvZEAZhv8RaJud0Gw3YvJtU/BtcWKfhvZ2/9onbeUzYCjX+tWq6rHRxDsQnVMzxC6/4UzAGYAMAOAGQDMAGAGADMAmAHAyg5is74h7eUMgBkAzABgBgAzAFjZLuhRXvcmVezsnAEwA4AZAMwAYAYAMwCYAcAMAIb9XlBrPw82Iwc3un0CNgPWp8reUybdPgUJYKvYeweBbp/kGgAzABgSwNaCd+9CSLdPwmbAutje4un2Keg2dG/RdPsE1wCYAcAMAGYAMAOAGQDMAGAGAPM+YEf7BO8DBtuneB8w0D7JNQBmADDvAwbaJ3kfMNg+xfsAmGsArCyAs/2dcFU9kSl4tsHusfcx5iMIFgngERYzQqLu2AyYLYRUvdFH0CwhJOv0/wd0mOUDJkmSJEmSTusbjkjU20wRvDkAAAAASUVORK5CYII="/></div>
               <span class="m-label">课程表</span>
             </div>
             <div class="m-item" onclick="openSearchScheduleModal()">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACRUlEQVR4nO2c0W3DMAwF1c6UobJApugCHao7pR+tgUCIEjkm+Z7ju78CRUXxREpurLQGAAAAAAAAAABH4UMdwD1Ol/N19nd/vr4t5zCLTfBrkj5ijzKkAUckfcReZEiCzEx8j7uIz+oBK5OvGG8tpQJUyXCWUFKeryRgpnVk/d1K0oOpOlLu9eiaGshsUiITohhzC2lBzCQiMwnq8WcpPwUtZE/eIbkzpAT5aPUpEuMWzy3hFeA42Ufjqo+ooQLUk3kVZdxle4C61NXjjwgT4Nh6ehxbkewUBH+kC3BZ/Qtu8YQI2Ovm26OYR2oFuK22Bae42APEbBbwLu1noXo+aRXgVOb3cImPFiQGAWIQIAYBYhAgBgFiECAGAWLSBLg/IbvEt1mAyxNlFNXzoQWJSRXgUuY9TnGFCHiXNqSYR3oLclptrfnFwx4gJkyA4ysfPY6vzpRVgFqCevwRoQL2uhkr4w6vAMdW5Nh6FmQXJCom7hDDM2SnoOxqcO35PdwREyNvA7dwSzIJ7gmPKQ1G2Zf7xJ8u56uDjNJN2OWO2LIQHDbq8lNQtYRR8kc/V3Oo7wtyfCCT98CFqm/McpNgI+CW7COlkwRLARW4SDjsBzIu/zQ8rIDWPCQcWkBregmHF9CaVgIC/lFJQMANCgkI6KiWgIA7VEpAwIAqCQh4QIUEBDwhWwICJsiUgIBJsiQgYAUZEhCwkmgJCHiBSAkIeJEoCQjYQIQEBGxkJGH2Y00EBNAn2+GNu0OifskLAAAAAAAAJvgF5qNGonoWKQcAAAAASUVORK5CYII="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACRElEQVR4nO2cQW7DMAwE1T4q/+k9z+k9/+mn0kNrIBCiRI5J7jqeuRUoKoojUnJjpTUAAAAAAAAAADgKH+oA7nE5n66zv/v1/WM5h1lsgl+T9BF7lCENOCLpI/YiQxJkZuJ73EV8Vg9YmXzFeGspFaBKhrOEkvJ8JQEzrSPr71aSHkzVkXKvR9fUQGaTEpkQxZhbSAtiJhGZSVCPP0v5KWghe/IOyZ0hJchHq0+RGLd4bgmvAMfJPhpXfUQNFaCezKso4y7bA9Slrh5/RJgAx9bT49iKZKcg+CNdgMvqX3CLJ0TAXjffHsU8UivAbbUtOMXFHiBms4B3aT8L1fNJqwCnMr+HS3y0IDEIEIMAMQgQgwAxCBCDADEIEJMmwP0J2SW+zQJcniijqJ4PLUhMqgCXMu9xiitEwLu0IcU80luQ02przS8e9gAxYQIcX/nocXx1pqwC1BLU448IFbDXzVgZd3gFOLYix9azILsgUTFxhxieITsFZVeDa8/v4Y6YGHkbuIVbkklwT3hMaTDKvtwn/nI+XR1klG7CLnfEloXgsFGXn4KqJYySP/q5mkN9X5DjA5m8By5UfWOWmwQbAbdkHymdJFgKqMBFwmE/kHH5p+FhBbTmIeHQAlrTSzi8gNa0EhDwj0oCAm5QSEBAR7UEBNyhUgICBlRJQMADKiQg4AnZEhAwQaYEBEySJQEBK8iQgICVREtAwAtESkDAi0RJQMAGIiQgYCMjCbMfayIggD7ZDm/cHRL1S14AAAAAAAAwwS83uUbSzOcuSQAAAABJRU5ErkJggg=="/></div>
               <span class="m-label">排课搜索</span>
             </div>
             <div class="m-item" onclick="switchTchTab(2)">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACdklEQVR4nO2c3XGEMAyESSYlXVHXwFWRBlJUero8eYZhAv5bSSuz3+txIHYl29iGbRNCCCGEEEIIIYQQd+EjOoARHq/n++y33++fVPeUJtgr0c/IYAZ9gCPCH2E24jM6gCsQ4iPPYwFlZlgKxlYNdBVgna1s1fAVHcAIV1nMJnANqnKsidfTfCDPZQlNE4QWrHY8S6XQGHDFaLayZPkVFAZYPtmy9xcUBpyBymCLSkCZR20AK0V8hAnhBpzdBDprz87XK+Lx+FkTwg3IxJnYMybIgA4sOnQZ0AnaBBkwANIEGTAIygQZMAHChHADUMPDGlbD3dn/hxuwMi1JRG3AHZYkKQywnDCL3MLScn4KA2qMmuCR+ctMRaAXULKsiFEEsadF6NkmCyn+7Ogq5aI8S6e6xHT0EYaO0ROqYI4gM91zVaznWnQVsOcOS5L0fUART7ujiWB7P2AfTwbTl4VldCZEHlK1Vz0lnqUtpg6S/TkAAV1QHh0Zkxk0gUSMIBiMCA+AYegWaUToVASD+NsWG0eI86M3jHxFCXENBKGP7S0gBIm4ZiuuBrQKYSmAZwyP1/NdO4+bAd5LhTXQ8YyuDbh0wmzit17Po3M2v+kMuxNQMY5UgWkFZBB/22LfKTYzIIv4hSgTQh7E2MQvRMRlYgDbkmEPM5u+Rrbaww3ILH7B8+166m0pdwBqwArZX/CqApcKyCZ+YSTu3n4AZgDL1LIXaT7WkTX7C9bxqxMOBmLA3ZqfQu/cz3/Hm1ZA9uanYHkf9LujM7PMW5IZaa2aaQO8vngVjdUnFVQBwciAYGRAMDIgGBkghBBCCCGEEEIIIYQQQqzPH2fsbOrSyaoAAAAAAElFTkSuQmCC"/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACdklEQVR4nO2cS3KEMAxESSpnmvtkP8fJfu6TS01WrqKogH8tqWX6bYcB0S3ZxjZsmxBCCCGEEEIIIYS4Cx/RAYzwej7eZ799//ymuqc0wV6JfkYGM+gDHBH+CLMRn9EBXIEQH3keCygzw1IwtmqgqwDrbGWrhq/oAEa4ymI2gWtQlWNNvJ7mA3kuS2iaILRgteNZKoXGgCtGs5Uly6+gMMDyyZa9v6Aw4AxUBltUAso8agNYKeIjTAg34Owm0Fl7dr5eEY/Hz5oQbkAmzsSeMUEGdGDRocuATtAmyIABkCbIgEFQJsiACRAmhBuAGh7WsBruzv4/3ICVaUkiagPusCRJYYDlhFnkFpaW81MYUGPUBI/MX2YqAr2AkmVFjCKIPS1CzzZZSPFnR1cpF+VZOtUlpqOPMHSMnlAFcwSZ6Z6rYj3XoquAPXdYkqTvA4p42h1NBNv7Aft4Mpi+LCyjMyHykKq96inxLG0xdZDszwEI6ILy6MiYzKAJJGIEwWBEeAAMQ7dII0KnIhjE37bYOEKcH71h5CtKiGsgCH1sbwEhSMQ1W3E1oFUISwE8Y3g9H+/aedwM8F4qrIGOZ3RtwKUTZhO/9XoenbP5TWfYnYCKcaQKTCsgg/jbFvtOsZkBWcQvRJkQ8iDGJn4hIi4TA9iWDHuY2fQ1stUebkBm8Queb9dTb0u5A1ADVsj+glcVuFRANvELI3H39gMwA1imlr1I87GOrNlfsI5fnXAwEAPu1vwUeud+/jvetAKyNz8Fy/ug3x2dmWXeksxIa9VMG+D1xatorD6poAoIRgYEIwOCkQHByAAhhBBCCCGEEEIIIYQQYn3+AIVZbgrosTwyAAAAAElFTkSuQmCC"/></div>
               <span class="m-label">学员管理</span>
             </div>
             <div class="m-item" onclick="openRoomModal()">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABQUlEQVR4nO3cwU3DMBiA0YIYiaFYgClYgKHYCQ49tWoQsa18Kn3vHlf5v9bpwcrpBAAAAAAAAMB/9bRqodf3t+9Va92Lr4/P6flNL/CIg782E+J55oMN/2xmDsMBDP/S6DyGAhj+bSNzmdqCmLf74fFb5T0Po611Rh9os+vtvX7VHJb9Alb8Jbsnq+7XFhQTICZATICYADEBYgLEBIgJEBMgJkBMgJgAMQFiAsQEiAkQEyAmQEyA2MtRHzR7lujoUw9b160+fHBYgC2rbmh2nevrjzp8ZguKCRATICZATICYADEBYgLEBIgJEBMgJkBMgJgAMQFiAsQEiAkQEyAmQEyAmAAxAWICxJYFeLS3aK2636UvR2L/CT1bUGwowKO9HeuvRuYy/AsQ4dLoPKa2IBHOZubg3dETfAEBAAAAALgTP4DjWmq9N/HIAAAAAElFTkSuQmCC"/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABQUlEQVR4nO3cMU7DMBiA0YI4E/dh5zjs3IdLwdCpVYOIbeVT6Xt7XOX/WqeDldMJAAAAAAAAgP/qadVCn++v36vWuhdvH1/T85te4BEHf20mxPPMBxv+2cwchgMY/qXReQwFMPzbRuYytQUxb/fD47fKex5GW+uMPtBm19t7/ao5LPsFrPhLdk9W3a8tKCZATICYADEBYgLEBIgJEBMgJkBMgJgAMQFiAsQEiAkQEyAmQEyAmACxl6M+aPYs0dGnHrauW3344LAAW1bd0Ow619cfdfjMFhQTICZATICYADEBYgLEBIgJEBMgJkBMgJgAMQFiAsQEiAkQEyAmQEyAmAAxAWICxASILQvwaG/RWnW/S1+OxP4Terag2FCAR3s71l+NzGX4FyDCpdF5TG1BIpzNzMG7oyf4AgIAAAAAcCd+ACP/WjoPs/87AAAAAElFTkSuQmCC"/></div>
               <span class="m-label">班级/琴房</span>
             </div>
             <div class="m-item" onclick="openFeedbackModal()">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACuklEQVR4nO2c21HEMAxFDUNJFEUDVLENbFHbE3xlJpOJN5Gjx73OPZ/AJLKOJMf7oDUhhBBCCCGEEEII8Y7v358/y8+R+aoOYJQl2a/H84Mx8Qsf1QFYOZPs1+NJs67P6gDuDpWAs6OGaSRRCZgRGgHWqmbpAhoBPZg23D0oBIxWM0MXUAjosVQ/cxfAC7haxehdAC+gx7bqWbsAWoBX9SJ3AbSAHr1qZ+wCWAHeVYvaBbACehxVOVsXQAqIqlbELoAU0ONsdTN1AZyA6CpF6wI4AT2sVc3SBVACsqoTqQugBPQYrWaGLoARkF2VKF0AI6DH1SpG74Kyj6UgVOA2hgpZ4Te8kmjPhKDEscWtAxAqOore2jzEmC6QmeSIqkOM//QmjBg8ynX3OJuv0s+GVmx6vXtWjdAUAeiPgq3ViXHdAxgS7YVXLkwHsTsl+AqWPLmehGd+FF3juU6zgCO7s0vwHsNDHaBRtM9IXoZH0LubzdoF79Y1WpSX9oA7SYhIfmvBL0fPIiFyHZcFzL4pR599XDrgrpuyx7rdRtCM+0HU3F/jugfMJCEj+a0lvyfMIiEzTncB7Jty9guOIR0w66Ycsa6wEcS4H2TN/TWhewCThIrkt0bwwazZCRfAvh9Ex68OKEYCiikTgDaaquIJF4D2tGMlOn6NoGIkoBgJKEYCiikR4PXEsWyQXhvldN+QifpiQ+TrNpFfxtiD6l8Xn6n09b80jo/oOhQCRkYMiwhoAR6zHV0EpICI0yeqiPSnoKM3aazJtyb06B7ZgsJuZnmaGKn4iutEyCkdQV4J2/7Oct3q0VQiwDvxvb9lEJE+gqx4JAQpli2QT0Gt+S52pCOygBMQOQIQRYQsNnrGe4EQZ3kHVB6MEDqiTADSibRSBMRBDI3M2NPeD2BI/Bb2+IUQQgghhBBC7PAPFv2a6uPqEa8AAAAASUVORK5CYII="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACuUlEQVR4nO2cS1LEMAxEPRRn4j7sOc7suc9cClapSqXiSeTo0+30WwKVyHqSHM+H1oQQQgghhBBCCCHEO35/vv4sP0fmszqAUZZkfz9fD8bELzyqA7ByJtnfzxfNuj6qA7g7VALOjhqmkUQlYEZoBFirmqULaAT0YNpw96AQMFrNDF1AIaDHUv3MXQAv4GoVo3cBvIAe26pn7QJoAV7Vi9wF0AJ69KqdsQtgBXhXLWoXwArocVTlbF0AKSCqWhG7AFJAj7PVzdQFcAKiqxStC+AE9LBWNUsXQAnIqk6kLoAS0GO0mhm6AEZAdlWidAGMgB5Xqxi9C8o+loJQgdsYKmSF3/BKoj0TghLHFrcOQKjoKHpr8xBjukBmkiOqDjH+05swYvAo193jbL5KPxtasen17lk1QlMEoD8KtlYnxnUPYEi0F165MB3E7pTgK1jy5HoSnvlRdI3nOs0CjuzOLsF7DA91gEbRPiN5GR5B7242axe8W9doUV7aA+4kISL5rQW/HD2LhMh1XBYw+6YcffZx6YC7bsoe63YbQTPuB1Fzf43rHjCThIzkt5b8njCLhMw43QWwb8rZLziGdMCsm3LEusJGEON+kDX314TuAUwSKpLfGsEHs2YnXAD7fhAdvzqgGAkopkwA2miqiidcANrTjpXo+DWCipGAYiSgGAkopkSA1xPHskF6bZTTfUMm6osNka/bRH4ZYw+qf118ptLX/9I4PqLrUAgYGTEsIqAFeMx2dBGQAiJOn6gi0p+Cjt6ksSbfmtCje2QLCruZ5WlipOIrrhMhp3QEeSVs+zvLdatHU4kA78T3/pZBRPoIsuKREKRYtkA+BbXmu9iRjsgCTkDkCEAUEbLY6BnvBUKc5R1QeTBC6IgyAUgn0koREAcxNDJjT3s/gCHxW9jjF0IIIYQQQgixwz+fAJt6HFDZYAAAAABJRU5ErkJggg=="/></div>
               <span class="m-label">反馈&小评</span>
             </div>
             <div class="m-item" onclick="switchTchTab(2)">
-              <div class="m-icon"><span class="red-dot-badge">2</span><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABXklEQVR4nO3d0U2EQBRAUTSWZFE2YBU2YFH2pD/648eaTXhzAc8pYGHm7rADxLhtAAAAAPwXD6sO9Pz68rnqWHv5eHsfn5/xA5xx4n+bDPE49cHbdo3J37bZcYwFuMrk/5gaz0iAq03+j4lxjV6C+NvuPy63viUrdhV7WTWOZSvgTJO/bevO1yUoJkBMgJgAMQFiAsQEiAkQEyAmQOypPoEjPDktH5NYATEBYgLEBIgJEMt3QWd7UbM3KyAmQEyAmAAxAWICxASICRATIJbfCXsfQEqAmAAxAWICxPJdkPcBpASICRATICZATICYADEBYgLE8jvhFe8Djny3bQXEBIgJEBMgJkAs3wUdeYeyghUQEyAmQEyAmAAxAWICxASICRBbFuAIfwdwj1XnO/IY4GyTfY+9H524BMVGAlz1AdvEuMZWwNUiTI1n9BJ0lQiT4/B/xG64yhcIAAAA4NsXfX1KalcOKkAAAAAASUVORK5CYII="/></div>
+              <div class="m-icon"><span class="red-dot-badge">2</span><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABXUlEQVR4nO3dwU2EQBiAUTTWZD/eLce7/diUXvTiYc0m/PMBvlfAwsy3ww4Q47YBAAAA8F88rDrQ++vz56pj7eXl7WN8fsYPcMaJ/20yxOPUB2/bNSZ/22bHMRbgKpP/Y2o8IwGuNvk/JsY1egnib7v/uNz6lqzYVexl1TiWrYAzTf62rTtfl6CYADEBYgLEBIgJEBMgJkBMgJgAsaf6BI7w5LR8TGIFxASICRATICZALN8Fne1Fzd6sgJgAMQFiAsQEiAkQEyAmQEyAWH4n7H0AKQFiAsQEiAkQy3dB3geQEiAmQEyAmAAxAWICxASICRDL74RXvA848t22FRATICZATICYALF8F3TkHcoKVkBMgJgAMQFiAsQEiAkQEyAmQGxZgCP8HcA9Vp3vyGOAs032PfZ+dOISFBsJcNUHbBPjGlsBV4swNZ7RS9BVIkyOw/8Ru+EqXyAAAACAb1+EGkna9KW9jQAAAABJRU5ErkJggg=="/></div>
               <span class="m-label">合同管理</span>
             </div>
             <div class="m-item" onclick="openTeacherInfoModal()">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACKklEQVR4nO3c21HDMBCFYcFQEkXRAFXQAEXREzxpxsOMb8quztno/15hkvUeSY4tJ60BAAAAAABgFS/qAka8f3787v3t5+u71DGVKfao6XsqhGFf4Ejj/3MO4lVdwJGI5ke+TgbLkZHZMLfZYDcDsker22x4Uxcw4mgUuzX4jNV0PGveneUj8rUy2SxB0Q07+3+XmWITwJHR0eoyyo9YBJB5Zet+vrAIYE/UCHaeCdYBrEAewN4yED1q915PvQzJA1gdAYgRgBgBiBGAGAGIyQOY9fFw1sfdu+QBrM46gBW2JC0CyLxh5v4Ii0UAZ0ZDcB75nU0A0RsoVXbELIrYutLoR5csl+a3VnRTvsLScpXNEtRlj06n0d+a4RK0FTnS3Rrf2c2ArRW2JG0L+4+no424X1wBQBGl1ss7J+Iq5wLrIle4DrArasZtBqcwbApR3N9xCEJegMONNWUQ0lsRDs1vTVuHJPnRA478ilLEe0SYHsDdxkQ0RPGeV00N4GojMhvgUMPWtADctgpd6plyEnY52LvvN+PknH7QFZ5OUNaYOgMqNL817XeK0wKo0vxOFYLkQsyt+Z2irpQAKm8Zzv5id3gAlZvfzQzB+rGUFYQG8Ayjv5s1C6bMgGrN70pdCbvcWp4l6njTZ0DV0d9l189JWCwkgNWWny7iuFNnQPXlpyt7Mw7nCEDs4QBcfwIgWtZPKjADxAhAjADECECMAAAAAAAAAAAAeH5/OJoSdT6MxUUAAAAASUVORK5CYII="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACKklEQVR4nO3cTU7DMBDFcYM4E/dhz3HYcx8uBStLEVK+3Bm/N/X/twW1k3m208RpWwMAAAAAAMAqXtQFjPj+fP/d+9vH10+pYypT7FHT91QIw77Akcb/5xzEq7qAIxHNj3ydDJYjI7NhbrPBbgZkj1a32fCmLmDE0Sh2a/AZq+l41rw7y0fka2WyWYKiG3b2/y4zxSaAI6Oj1WWUH7EIIPPK1v18YRHAnqgR7DwTrANYgTyAvWUgetTuvZ56GZIHsDoCECMAMQIQIwAxAhCTBzDr4+Gsj7t3yQNYnXUAK2xJWgSQecPM/REWiwDOjIbgPPI7mwCiN1Cq7IhZFLF1pdGPLlkuzW+t6KZ8haXlKpslqMsenU6jvzXDJWgrcqS7Nb6zmwFbK2xJ2hb2H09HG3G/uAKAIkqtl3dOxFXOBdZFrnAdYFfUjNsMTmHYFKK4v+MQhLwAhxtryiCktyIcmt+atg5J8qMHHPkVpYj3iDA9gLuNiWiI4j2vmhrA1UZkNsChhq1pAbhtFbrUM+Uk7HKwd99vxsk5/aArPJ2grDF1BlRofmva7xSnBVCl+Z0qBMmFmFvzO0VdKQFU3jKc/cXu8AAqN7+bGYL1YykrCA3gGUZ/N2sWTJkB1ZrflboSdrm1PEvU8abPgKqjv8uun5OwWEgAqy0/XcRxp86A6stPV/ZmHM4RgNjDAbj+BEC0rJ9UYAaIEYAYAYgRgBgBAAAAAAAAAADw/P4A2nkSRUHVwuMAAAAASUVORK5CYII="/></div>
               <span class="m-label">教师管理</span>
             </div>
             <div class="m-item" onclick="openCoursePkgModal()">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAB/0lEQVR4nO3c4WnDQAyG4aR0pA7VBTpFFshQ2an9ZQjFPu5knT/p9D6/CoXE0dvYasC53QAAAAAAqOSuPoDMvn6+f7efX4+naZYE6PQ+7COWCAT4p2fQLaMRPs88WXZnh+2hRIAIgz6yXIDIw96TNoBi0O/nd6/nTxFAPeyZQgVYedBHwgS4YvjqYe8JEcB7+BEHfSREgDMyDXtPmgDZB30kdIBVh/7uQ30A1RFAjABiBBAjgBgBxAggRgAxAogRQIwAYgQQI4AYAcQIIEYAMQKIEUCMAGIEECOAGAHECCBGADECiBFAjABiBBAjgBgBxAggRgCx0DdoXKV1j9rsm0TKBui9MdDjK2laSp6CrHdlzriVttQ7wGOA3hHKvAOifolHmQBRlTgFWb9u7Ip3TYkALa3NZvvdzBBTAij36hnH8no877MiuAWIslf3Gn3uVoQzr8PlIhxpr87m1Dsg4l6djfkdkH1wo8c/6/Uu/39A6/xsuW6NPH4P0yko8l49ajsm1fGa6p39i+h9YZ5b0oxhehzf8CnIa68efd5VuV0DLHt163fekaI+XqmPIjw+WvAOufwWtMc6xBmnzuEH9FrJVvu8yCrcFlTtAu1+DVDv1dmY/9qi7tXZlLwIR2IOEHWvzsblRUfaq7NxOQVF2quzmTIA1kwAAAAAAICQ/gBUheDawi1rNwAAAABJRU5ErkJggg=="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAB/klEQVR4nO3cQWrDQAxG4aT0TL1P9j1O9r1PLtWuDKHYw4ys8S+N3rcqFBJHr7HVgHO7AQAAAABQyV19AJn9fH/9bj8/ni/TLAnQ6X3YRywRCPBPz6BbRiN8nnmy7M4O20OJABEGfWS5AJGHvSdtAMWg38/vXs+fIoB62DOFCrDyoI+ECXDF8NXD3hMigPfwIw76SIgAZ2Qa9p40AbIP+kjoAKsO/d2H+gCqI4AYAcQIIEYAMQKIEUCMAGIEECOAGAHECCBGADECiBFAjABiBBAjgBgBxAggRgAxAogRQIwAYgQQI4AYAcQIIEYAMQKIEUCMAGKhb9C4Susetdk3iZQN0HtjoMdX0rSUPAVZ78qccSttqXeAxwC9I5R5B0T9Eo8yAaIqcQqyft3YFe+aEgFaWpvN9ruZIaYEUO7VM47l8XzdZ0VwCxBlr+41+tytCGdeh8tFONJenc2pd0DEvTob8zsg++BGj3/W613+/4DW+dly3Rp5/B6mU1DkvXrUdkyq4zXVO/sX0fvCPLekGcP0OL7hU5DXXj36vKtyuwZY9urW77wjRX28Uh9FeHy04B1y+S1oj3WIM06dww/otZKt9nmRVbgtqNoF2v0aoN6rszH/tUXdq7MpeRGOxBwg6l6djcuLjrRXZ+NyCoq0V2czZQCsmQAAAAAAACH9AU594TqIwDEBAAAAAElFTkSuQmCC"/></div>
               <span class="m-label">课程管理</span>
             </div>
             <div class="m-item" onclick="openWxRemindModal()">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABhklEQVR4nO3bwY3CMBQA0YAoiaJogCpogKLoCU6WECLBQfafb3necQ848dgmithlkSRJkiRJ0iwO9AX863y9PL/9/XG7D3VPR/oCZmcAmAFgBoAZAJbqiWHtyaaHLE9LaXZA5OQT461JEYCajAwRUgSYGR6AXoX0+GgA+uYL8jpO1MC/9HhKyRL8HbYDtiaj1yPi1udScZAAxOTXfD4RAf8Snl14AHL114wTvQtCA2SY/JrxIiN4BMHCAmRa/TXjRu2CkAAZJ79m/IgIHkEwNAC9+gvyOtwBMAPADAAzAMwAMAPADAAzAMwAMAPADAAzAMwAMAPADAAzAMwAMAPADAAzAMwAMAPADADrHiDjf6Xs0fv6uwbI/JPET9RPFD2CYN0CjLT6C2IXdAkw4uQX0RE8gmDNA4y8+ovIXdB0QkZ/5Nyj1WLyCII1CzDT6l+WdvfbLMAo53s2TY8gI+znd8CfXGySJEmSJGlA6d9ntHjtm/m9jS/jYAaAGQBmAJgBJEmSJCnYC6UWhvH4iHtbAAAAAElFTkSuQmCC"/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABhUlEQVR4nO3bQa7CIBRA0Wpck/tx7nKcux83pSMSY2ylBt59hHuGfyAtF7Bp/MsiSZIkSZKkWRzoC/jX/Xp+fvv75fYY6p6O9AXMzgAwA8AMADMALNUTw9qTTQ9ZnpbS7IDIySfGW5MiADUZGSKkCDAzPAC9Cunx0QD0zRfkdZyogX/p8ZSSJfg7bAdsTUavR8Stz6XiIAGIya/5fCIC/iU8u/AA5OqvGSd6F4QGyDD5NeNFRvAIgoUFyLT6a8aN2gUhATJOfs34ERE8gmBoAHr1F+R1uANgBoAZAGYAmAFgBoAZAGYAmAFgBoAZAGYAmAFgBoAZAGYAmAFgBoAZAGYAmAFgBoAZANY9QMb/Stmj9/V3DZD5J4mfqJ8oegTBugUYafUXxC7oEmDEyS+iI3gEwZoHGHn1F5G7oOmEjP7IuUerxeQRBGsWYKbVvyzt7rdZgFHO92yaHkFG2M/vgD+52CRJkiRJ0oDSv89o8do383sbX8bBDAAzAMwAMANIkiRJUrAXCuyIQaXU/RIAAAAASUVORK5CYII="/></div>
               <span class="m-label">消息提醒</span>
             </div>
             <div class="m-item" onclick="switchTchTab(3)">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABCElEQVR4nO3c0QmCUBiAUYtGaqgWaIoWaKh2qgGKNLQ+zHMeReTCx//gveIwAAAAALAVu6k3Hs+n+6vrt8t18jN4tq8XsHUCxASICRATICZATIDYoV7AEtb8jmICYgLEBIgJEBMgJkBMgJgAMQFiAsQEiAkQEyAmQEyA2F+cByztl+cLJiAmQEyAmAAxAWICxASICRATICZATIBYshe05m85l2YCYgLEBIgJEBMgJkBMgJgAMQFiAsQEiAkQEyAmQEyAmAAxAWICxASICRDz49aYCYgJEBMgJkBMgJgAMQFiAsQEiAkQEyAmQGz2Zhzj3m1YmoCYADEBYpMDOHj5jo8mQAQAAID5HuMtHHy918BZAAAAAElFTkSuQmCC"/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABCElEQVR4nO3cwQ2CQBRAQTTWZD/eLce7/diUFqARDOgLMnMkhGzy8g/sEoYBAAAAgK3YTb3xej7eX10/XW6Tn8Gzfb2ArRMgJkBMgJgAMQFiAsQO9QKWsOZ3FBMQEyAmQEyAmAAxAWICxASICRATICZATICYADEBYgLE/uI8YGm/PF8wATEBYgLEBIgJEBMgJkBMgJgAMQFiAsSSvaA1f8u5NBMQEyAmQEyAmAAxAWICxASICRATICZATICYADEBYgLEBIgJEBMgJkBMgJgft8ZMQEyAmAAxAWICxASICRATICZATICYADEBYrM34xj3bsPSBMQEiAkQmxzAwct3fDQBIgAAAMz3AOhYHBwrNyX/AAAAAElFTkSuQmCC"/></div>
               <span class="m-label">经营数据</span>
             </div>
           </div>
@@ -844,7 +882,7 @@
             <button class="btn-mint" style="padding:4px 10px;font-size:11px;" onclick="openAddScheduleModal()">弹窗排课 ›</button>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1.35fr 1.15fr;gap:6px;margin-bottom:8px;">
-            <div style="background:#F6F7F6;border:1px solid var(--border-line);border-radius:8px;padding:6px 7px;cursor:pointer;" onclick="openAddScheduleModal()">
+            <div style="background:#F8F0E5;border:1px solid var(--border-line);border-radius:8px;padding:6px 7px;cursor:pointer;" onclick="openAddScheduleModal()">
               <div style="font-size:10px;color:var(--text-muted);">① 选学生</div>
               <div style="font-size:11.5px;font-weight:700;color:var(--text-main);margin-top:2px;"> 马翊菱 ▾</div>
             </div>
@@ -852,7 +890,7 @@
               <div style="font-size:10px;color:var(--mint-dark);">② 选该生具体合同</div>
               <div style="font-size:11px;font-weight:700;color:var(--mint-dark);margin-top:2px;">钢琴半年(剩18节) ▾</div>
             </div>
-            <div style="background:#F6F7F6;border:1px solid var(--border-line);border-radius:8px;padding:6px 7px;cursor:pointer;" onclick="openAddScheduleModal()">
+            <div style="background:#F8F0E5;border:1px solid var(--border-line);border-radius:8px;padding:6px 7px;cursor:pointer;" onclick="openAddScheduleModal()">
               <div style="font-size:10px;color:var(--text-muted);">③ 排课方式</div>
               <div style="font-size:11px;font-weight:700;color:var(--text-main);margin-top:2px;">按周循环固定 ▾</div>
             </div>
@@ -973,19 +1011,19 @@
           </div>
           <div class="mint-grid-4">
             <div class="m-item" onclick="openStudentListModal()">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACKklEQVR4nO3c21HDMBCFYcFQEkXRAFXQAEXREzxpxsOMb8quztno/15hkvUeSY4tJ60BAAAAAABgFS/qAka8f3787v3t5+u71DGVKfao6XsqhGFf4Ejj/3MO4lVdwJGI5ke+TgbLkZHZMLfZYDcDsker22x4Uxcw4mgUuzX4jNV0PGveneUj8rUy2SxB0Q07+3+XmWITwJHR0eoyyo9YBJB5Zet+vrAIYE/UCHaeCdYBrEAewN4yED1q915PvQzJA1gdAYgRgBgBiBGAGAGIyQOY9fFw1sfdu+QBrM46gBW2JC0CyLxh5v4Ii0UAZ0ZDcB75nU0A0RsoVXbELIrYutLoR5csl+a3VnRTvsLScpXNEtRlj06n0d+a4RK0FTnS3Rrf2c2ArRW2JG0L+4+no424X1wBQBGl1ss7J+Iq5wLrIle4DrArasZtBqcwbApR3N9xCEJegMONNWUQ0lsRDs1vTVuHJPnRA478ilLEe0SYHsDdxkQ0RPGeV00N4GojMhvgUMPWtADctgpd6plyEnY52LvvN+PknH7QFZ5OUNaYOgMqNL817XeK0wKo0vxOFYLkQsyt+Z2irpQAKm8Zzv5id3gAlZvfzQzB+rGUFYQG8Ayjv5s1C6bMgGrN70pdCbvcWp4l6njTZ0DV0d9l189JWCwkgNWWny7iuFNnQPXlpyt7Mw7nCEDs4QBcfwIgWtZPKjADxAhAjADECECMAAAAAAAAAAAAeH5/OJoSdT6MxUUAAAAASUVORK5CYII="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACKklEQVR4nO3cTU7DMBDFcYM4E/dhz3HYcx8uBStLEVK+3Bm/N/X/twW1k3m208RpWwMAAAAAAMAqXtQFjPj+fP/d+9vH10+pYypT7FHT91QIw77Akcb/5xzEq7qAIxHNj3ydDJYjI7NhbrPBbgZkj1a32fCmLmDE0Sh2a/AZq+l41rw7y0fka2WyWYKiG3b2/y4zxSaAI6Oj1WWUH7EIIPPK1v18YRHAnqgR7DwTrANYgTyAvWUgetTuvZ56GZIHsDoCECMAMQIQIwAxAhCTBzDr4+Gsj7t3yQNYnXUAK2xJWgSQecPM/REWiwDOjIbgPPI7mwCiN1Cq7IhZFLF1pdGPLlkuzW+t6KZ8haXlKpslqMsenU6jvzXDJWgrcqS7Nb6zmwFbK2xJ2hb2H09HG3G/uAKAIkqtl3dOxFXOBdZFrnAdYFfUjNsMTmHYFKK4v+MQhLwAhxtryiCktyIcmt+atg5J8qMHHPkVpYj3iDA9gLuNiWiI4j2vmhrA1UZkNsChhq1pAbhtFbrUM+Uk7HKwd99vxsk5/aArPJ2grDF1BlRofmva7xSnBVCl+Z0qBMmFmFvzO0VdKQFU3jKc/cXu8AAqN7+bGYL1YykrCA3gGUZ/N2sWTJkB1ZrflboSdrm1PEvU8abPgKqjv8uun5OwWEgAqy0/XcRxp86A6stPV/ZmHM4RgNjDAbj+BEC0rJ9UYAaIEYAYAYgRgBgBAAAAAAAAAADw/P4A2nkSRUHVwuMAAAAASUVORK5CYII="/></div>
               <span class="m-label">学员列表</span>
             </div>
             <div class="m-item" onclick="openAddStudentModal()">
-              <div class="m-icon" style="background:var(--mint);color:#FFF;"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAA30lEQVR4nO3bsQ2DQBAAQeyaKMoNuAo3QFH0hFMHJgGkFTATfvSv1Wd3wwAAAAAAAFzdo77AVuP7tfw7nz/Tqd70rC9wdwLEBIgJEBMgJkBMgJgAMQFiAsQEiAkQEyAmQEyAmAAxAWICxASICRATICZATICYADEBYgLEBIgJEBMgtnuSeG1K+U72TGT7ATEBYgLEBIgJEDvVPtUvO2IcQoCYADEBYgLEBIgJEBMgJkBMgJgAMQFiAsQEiAkQEyAmQEyAmAAxAWICxASICRATICZATICYADEBAAAAAADg+r73MQyAgBfuBAAAAABJRU5ErkJggg=="/></div>
+              <div class="m-icon" style="background:var(--mint);color:#FFF;"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAA3klEQVR4nO3bsQ2DQBAAQeyi6Me5y3FOPzSFUwcmAaQVMBN+9K/VZ3fDAAAAAAAAXN2jvsBW03tc/p2/PvOp3vSsL3B3AsQEiAkQEyAmQEyAmAAxAWICxASICRATICZATICYADEBYgLEBIgJEBMgJkBMgJgAMQFiAsQEiAkQEyC2e5J4bUr5TvZMZPsBMQFiAsQEiAkQO9U+1S87YhxCgJgAMQFiAsQEiAkQEyAmQEyAmAAxAWICxASICRATICZATICYADEBYgLEBIgJEBMgJkBMgJgAMQEAAAAAAOD6vjEADICkKkOLAAAAAElFTkSuQmCC"/></div>
               <span class="m-label" style="color:var(--mint-dark);font-weight:800;">添加学员</span>
             </div>
             <div class="m-item" onclick="showToast('🔗 已生成家长微信绑定邀请卡')">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABNklEQVR4nO3bwXGDMBAFUDmTklJUGkgVbsBFuafk4PEhTCYEaeFDeO9udlcfhAfj1gAAAAAAAAAAAAAAgKO7rHHQt4/3zzWO21pr9+tttud0/SVKD7bm4FM/LUS6fo+Sg2w5+NT9eruk6498fjiA5PB7MRLCy0hhi/8wsg7dAVj873rX47W6kafqbwutLRsyXf+vupr8rZE1Bv/P9YfuAaPFj6pyzsUBpPf+ufp772+q7Ao4y9n/VDVv6RbEcgIIE0CYAMIEECaAMAGECSBMAGECCBNAmADCygJIP4XcWtW8iwNIP/Wcq7/3/qZKt6CzXAWVc3afLXNNpH+TTdTvqblaAGfUE0D3FpTea/emdz2G7gFCeIi9GTdavMLR63s7urB+D/8PWKE+AAAAAAAAAAAAAABs7Atw/YYM6QSA0QAAAABJRU5ErkJggg=="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABNUlEQVR4nO3bQVKDQBAF0InlmbxP9h4ne++TS+kilYWUJTLT8EHe24fung9DipDWAAAAAAAAAAAAAACAo7uscdCP97fPNY7bWmvX232253T9JUoPtubgUz8tRLp+j5KDbDn41PV2v6Trj3x+OIDk8HsxEsLLSGGL/zCyDt0BWPzvetfjtbqRp+pvC60tGzJd/6+6mvytkTUG/8/1h+4Bo8WPqnLOxQGk9/65+nvvb6rsCjjL2f9UNW/pFsRyAggTQJgAwgQQJoAwAYQJIEwAYQIIE0CYAMLKAkg/hdxa1byLA0g/9Zyrv/f+pkq3oLNcBZVzdp8tc02kf5NN1O+puVoAZ9QTQPcWlN5r96Z3PYbuAUJ4iL0ZN1q8wtHrezu6sH4P/w9YoT4AAAAAAAAAAAAAAGzsC1imhXxOHDX7AAAAAElFTkSuQmCC"/></div>
               <span class="m-label">批量绑定</span>
             </div>
             <div class="m-item" onclick="showToast('📤 已导出全部24名学员花名册')">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABw0lEQVR4nO3c0U3DQBAA0YAoiaJogCpogKLSU/hAJ6EIJ5vzZWc3mfkCKbbP+2QgdsThYGZmZmZmZvZMvdAL2NP758dpfH38+m55Lq/0Amb7O/z/vu9SS4CtYXdEaAdwbcjdEFoBRIfbCaENwK1D7YLQAmB2mB0QygPsHWJ1hNIAq4ZXGaEswMzQLr0Zq4pQEuDSsK694+2GUA5gz/Ajr6uGUApgxfAjr6+EUAZg5fAj21VBKAFwj+FHtq+AgAPcc/iR/dAIKEDG8CP7IxEwgMzhR/ZLISAAxPAj+ycQ0gHI4UeOk42QClBh+JHjZSKkAVQafuS4WQhpAFsnS3+agV5X6o+g85Oihz8i15X+S3icXJXhj6h1IX+GVhv+iFgXfivi2RMATgA4AeAEgBMATgA4AeAEgBMATgA4AeAEgBMATgA4AeDeZjfcemhd9WHLylaeu1cAnABwAsAJACcAnABwAsAJACcAnABwAsAJADd9M47skW74eQXACQAnAJwAcALACQAnAJwAcALACQAnAJwAcALACQAnAJwAcMsfyND/CLVbXgFwAsAJADcN8EgPxlc0O49dV4AIvzkHMzMzMzO7pR88dbqSp9oldAAAAABJRU5ErkJggg=="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABw0lEQVR4nO3cQU7DQAxA0YI4E/dhz3HYc59eqizQSKgirTuZ+tvt/yuQmmTipwBNKg4HMzMzMzMzs2fqhV7Anr4/30/j64+vY8tzeaUXMNvf4f/3fZdaAmwNuyNCO4BrQ+6G0AogOtxOCG0Abh1qF4QWALPD7IBQHmDvEKsjlAZYNbzKCGUBZoZ26c1YVYSSAJeGde0dbzeEcgB7hh95XTWEUgArhh95fSWEMgArhx/ZrgpCCYB7DD+yfQUEHOCew4/sh0ZAATKGH9kfiYABZA4/sl8KAQEghh/ZP4GQDkAOP3KcbIRUgArDjxwvEyENoNLwI8fNQkgD2DpZ+tMM9LpSfwSdnxQ9/BG5rvRfwuPkqgx/RK0L+TO02vBHxLrwWxHPngBwAsAJACcAnABwAsAJACcAnABwAsAJACcAnABwAsAJAPc2u+HWQ+uqD1tWtvLcvQLgBIATAE4AOAHgBIATAE4AOAHgBIATAE4AuOmbcWSPdMPPKwBOADgB4ASAEwBOADgB4ASAEwBOADgB4ASAEwBOADgB4ASAW/5Ahv5HqN3yCoATAE4AuGmAR3owvqLZeey6AkT4zTmYmZmZmdkt/QDb2rpi87pN3wAAAABJRU5ErkJggg=="/></div>
               <span class="m-label">批量导出</span>
             </div>
           </div>
@@ -1012,11 +1050,11 @@
           </div>
           <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px 6px;text-align:center;margin-bottom:14px;">
             <div class="m-item" onclick="openCoursePkgModal()">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABXklEQVR4nO3d0U2EQBRAUTSWZFE2YBU2YFH2pD/648eaTXhzAc8pYGHm7rADxLhtAAAAAPwXD6sO9Pz68rnqWHv5eHsfn5/xA5xx4n+bDPE49cHbdo3J37bZcYwFuMrk/5gaz0iAq03+j4lxjV6C+NvuPy63viUrdhV7WTWOZSvgTJO/bevO1yUoJkBMgJgAMQFiAsQEiAkQEyAmQOypPoEjPDktH5NYATEBYgLEBIgJEMt3QWd7UbM3KyAmQEyAmAAxAWICxASICRATIJbfCXsfQEqAmAAxAWICxPJdkPcBpASICRATICZATICYADEBYgLE8jvhFe8Djny3bQXEBIgJEBMgJkAs3wUdeYeyghUQEyAmQEyAmAAxAWICxASICRBbFuAIfwdwj1XnO/IY4GyTfY+9H524BMVGAlz1AdvEuMZWwNUiTI1n9BJ0lQiT4/B/xG64yhcIAAAA4NsXfX1KalcOKkAAAAAASUVORK5CYII="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABXUlEQVR4nO3dwU2EQBiAUTTWZD/eLce7/diUXvTiYc0m/PMBvlfAwsy3ww4Q47YBAAAA8F88rDrQ++vz56pj7eXl7WN8fsYPcMaJ/20yxOPUB2/bNSZ/22bHMRbgKpP/Y2o8IwGuNvk/JsY1egnib7v/uNz6lqzYVexl1TiWrYAzTf62rTtfl6CYADEBYgLEBIgJEBMgJkBMgJgAsaf6BI7w5LR8TGIFxASICRATICZALN8Fne1Fzd6sgJgAMQFiAsQEiAkQEyAmQEyAWH4n7H0AKQFiAsQEiAkQy3dB3geQEiAmQEyAmAAxAWICxASICRDL74RXvA848t22FRATICZATICYALF8F3TkHcoKVkBMgJgAMQFiAsQEiAkQEyAmQGxZgCP8HcA9Vp3vyGOAs032PfZ+dOISFBsJcNUHbBPjGlsBV4swNZ7RS9BVIkyOw/8Ru+EqXyAAAACAb1+EGkna9KW9jQAAAABJRU5ErkJggg=="/></div>
               <span class="m-label">套餐列表</span>
             </div>
             <div class="m-item" onclick="openAddPkgModal()">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAA30lEQVR4nO3bsQ2DQBAAQeyaKMoNuAo3QFH0hFMHJgGkFTATfvSv1Wd3wwAAAAAAAFzdo77AVuP7tfw7nz/Tqd70rC9wdwLEBIgJEBMgJkBMgJgAMQFiAsQEiAkQEyAmQEyAmAAxAWICxASICRATICZATICYADEBYgLEBIgJEBMgtnuSeG1K+U72TGT7ATEBYgLEBIgJEDvVPtUvO2IcQoCYADEBYgLEBIgJEBMgJkBMgJgAMQFiAsQEiAkQEyAmQEyAmAAxAWICxASICRATICZATICYADEBAAAAAADg+r73MQyAgBfuBAAAAABJRU5ErkJggg=="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAA3klEQVR4nO3bsQ2DQBAAQeyi6Me5y3FOPzSFUwcmAaQVMBN+9K/VZ3fDAAAAAAAAXN2jvsBW03tc/p2/PvOp3vSsL3B3AsQEiAkQEyAmQEyAmAAxAWICxASICRATICZATICYADEBYgLEBIgJEBMgJkBMgJgAMQFiAsQEiAkQEyC2e5J4bUr5TvZMZPsBMQFiAsQEiAkQO9U+1S87YhxCgJgAMQFiAsQEiAkQEyAmQEyAmAAxAWICxASICRATICZATICYADEBYgLEBIgJEBMgJkBMgJgAMQEAAAAAAOD6vjEADICkKkOLAAAAAElFTkSuQmCC"/></div>
               <span class="m-label">新增套餐</span>
             </div>
           </div>
@@ -1026,23 +1064,23 @@
           </div>
           <div class="mint-grid-5">
             <div class="m-item" onclick="openContractListModal('全部')">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABXklEQVR4nO3d0U2EQBRAUTSWZFE2YBU2YFH2pD/648eaTXhzAc8pYGHm7rADxLhtAAAAAPwXD6sO9Pz68rnqWHv5eHsfn5/xA5xx4n+bDPE49cHbdo3J37bZcYwFuMrk/5gaz0iAq03+j4lxjV6C+NvuPy63viUrdhV7WTWOZSvgTJO/bevO1yUoJkBMgJgAMQFiAsQEiAkQEyAmQOypPoEjPDktH5NYATEBYgLEBIgJEMt3QWd7UbM3KyAmQEyAmAAxAWICxASICRATIJbfCXsfQEqAmAAxAWICxPJdkPcBpASICRATICZATICYADEBYgLE8jvhFe8Djny3bQXEBIgJEBMgJkAs3wUdeYeyghUQEyAmQEyAmAAxAWICxASICRBbFuAIfwdwj1XnO/IY4GyTfY+9H524BMVGAlz1AdvEuMZWwNUiTI1n9BJ0lQiT4/B/xG64yhcIAAAA4NsXfX1KalcOKkAAAAAASUVORK5CYII="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABXUlEQVR4nO3dwU2EQBiAUTTWZD/eLce7/diUXvTiYc0m/PMBvlfAwsy3ww4Q47YBAAAA8F88rDrQ++vz56pj7eXl7WN8fsYPcMaJ/20yxOPUB2/bNSZ/22bHMRbgKpP/Y2o8IwGuNvk/JsY1egnib7v/uNz6lqzYVexl1TiWrYAzTf62rTtfl6CYADEBYgLEBIgJEBMgJkBMgJgAsaf6BI7w5LR8TGIFxASICRATICZALN8Fne1Fzd6sgJgAMQFiAsQEiAkQEyAmQEyAWH4n7H0AKQFiAsQEiAkQy3dB3geQEiAmQEyAmAAxAWICxASICRDL74RXvA848t22FRATICZATICYALF8F3TkHcoKVkBMgJgAMQFiAsQEiAkQEyAmQGxZgCP8HcA9Vp3vyGOAs032PfZ+dOISFBsJcNUHbBPjGlsBV4swNZ7RS9BVIkyOw/8Ru+EqXyAAAACAb1+EGkna9KW9jQAAAABJRU5ErkJggg=="/></div>
               <span class="m-label">合同列表</span>
             </div>
             <div class="m-item" onclick="openNewContractModal()">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAA30lEQVR4nO3bsQ2DQBAAQeyaKMoNuAo3QFH0hFMHJgGkFTATfvSv1Wd3wwAAAAAAAFzdo77AVuP7tfw7nz/Tqd70rC9wdwLEBIgJEBMgJkBMgJgAMQFiAsQEiAkQEyAmQEyAmAAxAWICxASICRATICZATICYADEBYgLEBIgJEBMgtnuSeG1K+U72TGT7ATEBYgLEBIgJEDvVPtUvO2IcQoCYADEBYgLEBIgJEBMgJkBMgJgAMQFiAsQEiAkQEyAmQEyAmAAxAWICxASICRATICZATICYADEBAAAAAADg+r73MQyAgBfuBAAAAABJRU5ErkJggg=="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAA3klEQVR4nO3bsQ2DQBAAQeyi6Me5y3FOPzSFUwcmAaQVMBN+9K/VZ3fDAAAAAAAAXN2jvsBW03tc/p2/PvOp3vSsL3B3AsQEiAkQEyAmQEyAmAAxAWICxASICRATICZATICYADEBYgLEBIgJEBMgJkBMgJgAMQFiAsQEiAkQEyC2e5J4bUr5TvZMZPsBMQFiAsQEiAkQO9U+1S87YhxCgJgAMQFiAsQEiAkQEyAmQEyAmAAxAWICxASICRATICZATICYADEBYgLEBIgJEBMgJkBMgJgAMQEAAAAAAOD6vjEADICkKkOLAAAAAElFTkSuQmCC"/></div>
               <span class="m-label">新增合同</span>
             </div>
             <div class="m-item" onclick="showToast('📖 已打开合同批量顺延/延期窗口')">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACf0lEQVR4nO2d63HDIBCEz6nJRbkBV+EGXJR7cn5kmEmwpPC4xx7a77dH3O1ygBiDRAghhBBCCCGEEELIWbhEB9DD9X57t/729XimyA02yB6xW0E0BSogC9H3QDEDIghP4WuijQhtPFL4migjQhpFEr7G2wh3A2bE7xHHq51ZXA3oFUVTiMi2j3BpBG39jhQPTLIRkyBCbKZJtyQYvQwUiY3zy+KhInnEF2mLw2rlZmJAJvELUSaoi/BfkGjCb+GZg9kQtEUG8UV841Q14KjnZBG/cBSv5lDk8qJjIf5ee9ptWeelUgHIezuWaORtPgdkG3pqrOOfNmClcX8Py/nArAJWEb8A+SZ81rG/ZkYHkwpYrfcXLPIaNoC9/y+jeqhXwKq9v6Cdn+tWBPlkyAAOP9uM6KJaAasPP4W0u6HkExoQDA0IptsAr21gdPby7Z2IWQHB0IBgaEAwNCCY5Qy43m/vTG/qyxlQyGJEWgNal73oRqQ1oBdUI1Ib8Ho8L70vgGhGpDagkNmIoe0D9O2IEWFHDNR4zhIVUDNSEVEsaUCh1YhIs5Y2oIBcEW5/T0dgy4gRYzTzHDIAtTe1YlURI888xRC0B0JHUjcAfRiaRTu/YQMQeg8So3qEHVPNiEVeUwawCn6Y0SH0pHwmYE/Kex3njMTyGJb5MjS7Cdbxqxhw1rkA5pywyJpDkccJULe/p2czwev4retWRBYTPOM0Gbsz3hckEhN32DFVtGqI6jShJ+VRTIisWN6a2EDaWxMLSPd0imDFw5tzHdo+Arbst+Dd0UqgTL5bLH97+m+QjDjV9wNq+AUNEPgNGSD4FSVAkNbvhBBCCCGEEEIIIQn5BodAfCls/9WeAAAAAElFTkSuQmCC"/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACfklEQVR4nO2dS3LDIBBExzmU7+O9j+O97+NLOYsUVQmWFD7z6UH91i4x080AogwSIYQQQgghhBBCCCFn4RIdQA/P+/Xd+tvb45UiN9gge8RuBdEUqIAsRN8DxQyIIDyFr4k2IrTxSOFroowIaRRJ+BpvI9wNmBG/RxyvdmZxNaBXFE0hIts+wqURtPU7UjwwyUZMggixmSbdkmD0MlAkNs4vi4eK5BFfpC0Oq5WbiQGZxC9EmaAuwn9Bogm/hWcOZkPQFhnEF/GNU9WAo56TRfzCUbyaQ5HLi46F+HvtabdlnZdKBSDv7Viikbf5HJBt6Kmxjn/agJXG/T0s5wOzClhF/ALkm/BZx/6aGR1MKmC13l+wyGvYAPb+v4zqoV4Bq/b+gnZ+rlsR5JMhAzj8bDOii2oFrD78FNLuhpJPaEAwNCCYbgO8toHR2cu3dyJmBQRDA4KhAcHQgGCWM+B5v74zvakvZ0AhixFpDWhd9qIbkdaAXlCNSG3A7fG69L4AohmR2oBCZiOGtg/QtyNGhB0xUOM5S1RAzUhFRLGkAYVWIyLNWtqAAnJFuP09HYEtI0aM0cxzyADU3tSKVUWMPPMUQ9AeCB1J3QD0YWgW7fyGDUDoPUiM6hF2TDUjFnlNGcAq+GFGh9CT8pmAPSnvdZwzEstjWObL0OwmWMevYsBZ5wKYc8Iiaw5FHidA3f6ens0Er+O3rlsRWUzwjNNk7M54X5BITNxhx1TRqiGq04SelEcxIbJieWtiA2lvTSwg3dMpghUPb851aPsI2LLfgndHK4Ey+W6x/O3pv0Ey4lTfD6jhFzRA4DdkgOBXlABBWr8TQgghhBBCCCGEJOQbkZl7CZxpZzUAAAAASUVORK5CYII="/></div>
               <span class="m-label">批量延期</span>
             </div>
             <div class="m-item" onclick="showToast('📤 已导出全部合同明细报表')">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABw0lEQVR4nO3c0U3DQBAA0YAoiaJogCpogKLSU/hAJ6EIJ5vzZWc3mfkCKbbP+2QgdsThYGZmZmZmZvZMvdAL2NP758dpfH38+m55Lq/0Amb7O/z/vu9SS4CtYXdEaAdwbcjdEFoBRIfbCaENwK1D7YLQAmB2mB0QygPsHWJ1hNIAq4ZXGaEswMzQLr0Zq4pQEuDSsK694+2GUA5gz/Ajr6uGUApgxfAjr6+EUAZg5fAj21VBKAFwj+FHtq+AgAPcc/iR/dAIKEDG8CP7IxEwgMzhR/ZLISAAxPAj+ycQ0gHI4UeOk42QClBh+JHjZSKkAVQafuS4WQhpAFsnS3+agV5X6o+g85Oihz8i15X+S3icXJXhj6h1IX+GVhv+iFgXfivi2RMATgA4AeAEgBMATgA4AeAEgBMATgA4AeAEgBMATgA4AeDeZjfcemhd9WHLylaeu1cAnABwAsAJACcAnABwAsAJACcAnABwAsAJADd9M47skW74eQXACQAnAJwAcALACQAnAJwAcALACQAnAJwAcALACQAnAJwAcMsfyND/CLVbXgFwAsAJADcN8EgPxlc0O49dV4AIvzkHMzMzMzO7pR88dbqSp9oldAAAAABJRU5ErkJggg=="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABw0lEQVR4nO3cQU7DQAxA0YI4E/dhz3HYc59eqizQSKgirTuZ+tvt/yuQmmTipwBNKg4HMzMzMzMzs2fqhV7Anr4/30/j64+vY8tzeaUXMNvf4f/3fZdaAmwNuyNCO4BrQ+6G0AogOtxOCG0Abh1qF4QWALPD7IBQHmDvEKsjlAZYNbzKCGUBZoZ26c1YVYSSAJeGde0dbzeEcgB7hh95XTWEUgArhh95fSWEMgArhx/ZrgpCCYB7DD+yfQUEHOCew4/sh0ZAATKGH9kfiYABZA4/sl8KAQEghh/ZP4GQDkAOP3KcbIRUgArDjxwvEyENoNLwI8fNQkgD2DpZ+tMM9LpSfwSdnxQ9/BG5rvRfwuPkqgx/RK0L+TO02vBHxLrwWxHPngBwAsAJACcAnABwAsAJACcAnABwAsAJACcAnABwAsAJAPc2u+HWQ+uqD1tWtvLcvQLgBIATAE4AOAHgBIATAE4AOAHgBIATAE4AuOmbcWSPdMPPKwBOADgB4ASAEwBOADgB4ASAEwBOADgB4ASAEwBOADgB4ASAW/5Ahv5HqN3yCoATAE4AuGmAR3owvqLZeey6AkT4zTmYmZmZmdkt/QDb2rpi87pN3wAAAABJRU5ErkJggg=="/></div>
               <span class="m-label">批量导出</span>
             </div>
             <div class="m-item" onclick="openContractListModal('已归档')">
-              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABUElEQVR4nO3cwVEDMRQE0YEiJIIiAaJwAgRFTnDiaFsLXlrzq9/ZVdaq97t0sRJJkiRJkiRJkiRpsqcjH359f/s6ayH3fF4+Dq21xfPqB8nN3+H7z7IUYJeH32Udj7Q8AbuYFqEuQDIrQmWAZE6EpZPFtYf9r5PJrc1uPx1VTMCtTW6fhIoAydwINQGSmRGqAiTzItQFSGZFqDgFXbPzZq/uTeUE/KBfgFtWX47qAEl/hPoAyd4R7hkRIOmNMCZA0hnhhV7Ao1ERfnsiGzUBjQwAMwDMADADwAwAMwDMADADwAwAMwDMADADwAwAMwDMADADwAwAMwDMADADwAwAMwDMADADwAwAMwDMADADwAwAMwDMADADwAwAMwDMADADwAwAMwDMALA//VF75+tiWjgBMAPADAA7fLGFv/vrVi4OcQJO0nh1jiRJkiRJkjTaNzHPUMOKsR1NAAAAAElFTkSuQmCC"/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABT0lEQVR4nO3cMVIDMRQE0YHiTNyHnOM45z5cCiJC21rw0ppf/WJXWave71JiJZIkSZIkSZIkSdJkT0c+/PH++nXWQu55u3weWmuL59UPkpu/w/efZSnALg+/yzoeaXkCdjEtQl2AZFaEygDJnAhLJ4trD/tfJ5Nbm91+OqqYgFub3D4JFQGSuRFqAiQzI1QFSOZFqAuQzIpQcQq6ZufNXt2bygn4Qb8At6y+HNUBkv4I9QGSvSPcMyJA0hthTICkM8ILvYBHoyL89kQ2agIaGQBmAJgBYAaAGQBmAJgBYAaAGQBmAJgBYAaAGQBmAJgBYAaAGQBmAJgBYAaAGQBmAJgBYAaAGQBmAJgBYAaAGQBmAJgBYAaAGQBmAJgBYAaAGQBmAJgBYH/6o/bO18W0cAJgBoAZAHb4Ygt/99etXBziBJyk8eocSZIkSZIkabRvE9FRg+ibWzQAAAAASUVORK5CYII="/></div>
               <span class="m-label">归档列表</span>
             </div>
           </div>
@@ -1131,31 +1169,31 @@
     <!-- 底部 Sub-Tab 导航栏 -->
     <nav class="bottom-tabbar" id="tabbar-stu">
       <div class="tab-btn active" id="stutab-btn-0" onclick="switchStuTab(0)">
-        <span class="t-ico"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACOUlEQVR4nO2d220CMRQFTZSSKIoGUgUNUBQ9kS9LCMGu169zLp75SqSA7TN7be8ahZQAAAAAAAAAVuKk7kAL57/LI/98v95CjuVH3YFansN/93sUQgr4FHZECeEE7IUcTUIoAaXhRpIQRsDRUKNIsN857AV5v95OJX/Tt1f9sK6A0mD3AnauBtsrYyu0rcBrX6fCsgJaQqyVo8JOQI8rOJIEKwE9p48oEmwEjJi7I0iwEDBy4XSXIN0VzNy/u94ryCpgdiCu9woS6+q9urr9Z6ZXgMPgndaFqQIcwi9pb6aEaQKcwi9pd5aEKQIcwy9pf4aE4QKcw88oJQwLwHXfvYWiz0MqIGL4KWnuFboHEWHKKWHWOLpWwLeEn9K8dWHas5ZMBBEzx9KlAhyeKiroMe5mAauGn2kdf5OA1cPPtORQJeD8d3l804Jbyt7CXCPisICoe/xe9L5XOCRg76r/9vAze2M9IqFYwIpTzh49JBQL+NTYquFnWnM5NAW9vunq4Wdacjm8CJd+IHY1anOp2oYS/ntqcrH4YNbKIEAMAsQgQAwCxCBADALEIEAMAsQgQMyvugNb9DzydH18YlsBvc+bXc+vLQWMCstRgqWAlUCAGASIsd4FvXJkJ+M437+DChCDADEIEIMAMQgQgwAxCBCDADEIEIMAMQgQgwAxCBCDADEIEIMAMQgQM/1ETH1SpW7/FSpADALEIEDMMAGz//m2W/ulDK2AXp0e8QUOivcBAAAAAABIKaV/M180qqV5P38AAAAASUVORK5CYII="/></span><span class="t-txt">学生首页</span>
+        <span class="t-ico"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACOUlEQVR4nO2dS24CMRQETZQzcR/2OQ577sOlyMoSQjDj8a/74apVIgVsd82zPWMUUgIAAAAAAABYiZO6Ay3c/s6P/PPleg85lh91B2p5Dv/d71EIKeBT2BElhBOwF3I0CaEElIYbSUIYAUdDjSLBfuewF+Tlej+V/E3fXvXDugJKg90L2LkabK+MrdC2Aq99nQrLCmgJsVaOCjsBPa7gSBKsBPScPqJIsBEwYu6OIMFCwMiF012CdFcwc//ueq8gq4DZgbjeK0isq/fq6vafmV4BDoN3WhemCnAIv6S9mRKmCXAKv6TdWRKmCHAMv6T9GRKGC3AOP6OUMCwA1333Foo+D6mAiOGnpLlX6B5EhCmnhFnj6FoB3xJ+SvPWhWnPWjIRRMwcS5cKcHiqqKDHuJsFrBp+pnX8TQJWDz/TkkOVgNvf+fFNC24pewtzjYjDAqLu8XvR+17hkIC9q/7bw8/sjfWIhGIBK045e/SQUCzgU2Orhp9pzeXQFPT6pquHn2nJ5fAiXPqB2NWozaVqG0r476nJxeKDWSuDADEIEIMAMQgQgwAxCBCDADEIEIMAMb/qDmzR88jT9fGJbQX0Pm92Pb+2FDAqLEcJlgJWAgFiECDGehf0ypGdjON8/w4qQAwCxCBADALEIEAMAsQgQAwCxCBADALEIEAMAsQgQAwCxCBADALEIEDM9BMx9UmVuv1XqAAxCBCDADHDBMz+59tu7ZcytAJ6dXrEFzgo3gcAAAAAACCllP4BWG40qqM8FuAAAAAASUVORK5CYII="/></span><span class="t-txt">学生首页</span>
       </div>
       <div class="tab-btn" id="stutab-btn-1" onclick="switchStuTab(1)">
-        <span class="t-ico"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABsElEQVR4nO3dwVHDMBRFUcGkJIqiAaqgAYqiJ1h5gcFJJL/vG6x7lswI8fUiS7JgaE2SJEmSJEmzeKI6fnl7/frr65/vH4f8THT/i+cjO9NvBgAzAJgBwAwAZgAwA4CV7Xm39tn/WcUZIf4Nzzjwa8kgoo+gGQa/tWydsQBmGfxFqt5IALMN/iJRt7sg2O7F5Nqn4NpiRb+N7O1/tM5bymbA0a91q1XV4yMIdqE6pmcI3f/CGQAzAJgBwAwAZgAwA4AZAMwAYGUHsVnfkPZyBsAMAGYAMAOAGQCsbBf0KK97kyp2ds4AmAHADABmADADgBkAzABgBgDDfi+otZ8Hm5GDG90+AZsB61Nl7ymTbp+CBLBV7L2DQLdPcg2AGQAMCWBrwbt3IaTbJ2EzYF1sb/F0+xR0G7q3aLp9gmsAzABgBgAzAJgBwAwAZgAwA4B5H7CjfYL3AYPtU7wPGGif5BoAMwCY9wED7ZO8Dxhsn+J9AMw1AFYWwNn+TriqnsgUPNtg99j7GPMRBIsE8AiLGSFRd2wGzBZCqt7oI2iWEJJ1+v8DOszyAZMkSZIkSaf1DYbi1ivIDj0pAAAAAElFTkSuQmCC"/></span><span class="t-txt">我的课表</span>
+        <span class="t-ico"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABr0lEQVR4nO3dQVLEIBRFUbR6Te7Huctx7n7clI4yMJruhryf24Z7hlYhfl4TIGjZmiRJkiRJkmbxRHX88fby9dfXX98/D/mZ6P4Xz0d2pt8MAGYAMAOAGQDMAGAGACvb827ts/+zijNC/BueceDXkkFEH0EzDH5r2TpjAcwy+ItUvZEAZhv8RaJud0Gw3YvJtU/BtcWKfhvZ2/9onbeUzYCjX+tWq6rHRxDsQnVMzxC6/4UzAGYAMAOAGQDMAGAGADMAmAHAyg5is74h7eUMgBkAzABgBgAzAFjZLuhRXvcmVezsnAEwA4AZAMwAYAYAMwCYAcAMAIb9XlBrPw82Iwc3un0CNgPWp8reUybdPgUJYKvYeweBbp/kGgAzABgSwNaCd+9CSLdPwmbAutje4un2Keg2dG/RdPsE1wCYAcAMAGYAMAOAGQDMAGAGAPM+YEf7BO8DBtuneB8w0D7JNQBmADDvAwbaJ3kfMNg+xfsAmGsArCyAs/2dcFU9kSl4tsHusfcx5iMIFgngERYzQqLu2AyYLYRUvdFH0CwhJOv0/wd0mOUDJkmSJEmSTusbjkjU20wRvDkAAAAASUVORK5CYII="/></span><span class="t-txt">我的课表</span>
       </div>
       <div class="tab-btn" id="stutab-btn-2" onclick="switchStuTab(2)">
-        <span class="t-ico"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABXklEQVR4nO3d0U2EQBRAUTSWZFE2YBU2YFH2pD/648eaTXhzAc8pYGHm7rADxLhtAAAAAPwXD6sO9Pz68rnqWHv5eHsfn5/xA5xx4n+bDPE49cHbdo3J37bZcYwFuMrk/5gaz0iAq03+j4lxjV6C+NvuPy63viUrdhV7WTWOZSvgTJO/bevO1yUoJkBMgJgAMQFiAsQEiAkQEyAmQOypPoEjPDktH5NYATEBYgLEBIgJEMt3QWd7UbM3KyAmQEyAmAAxAWICxASICRATIJbfCXsfQEqAmAAxAWICxPJdkPcBpASICRATICZATICYADEBYgLE8jvhFe8Djny3bQXEBIgJEBMgJkAs3wUdeYeyghUQEyAmQEyAmAAxAWICxASICRBbFuAIfwdwj1XnO/IY4GyTfY+9H524BMVGAlz1AdvEuMZWwNUiTI1n9BJ0lQiT4/B/xG64yhcIAAAA4NsXfX1KalcOKkAAAAAASUVORK5CYII="/></span><span class="t-txt">合同&小红花</span>
+        <span class="t-ico"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABXUlEQVR4nO3dwU2EQBiAUTTWZD/eLce7/diUXvTiYc0m/PMBvlfAwsy3ww4Q47YBAAAA8F88rDrQ++vz56pj7eXl7WN8fsYPcMaJ/20yxOPUB2/bNSZ/22bHMRbgKpP/Y2o8IwGuNvk/JsY1egnib7v/uNz6lqzYVexl1TiWrYAzTf62rTtfl6CYADEBYgLEBIgJEBMgJkBMgJgAsaf6BI7w5LR8TGIFxASICRATICZALN8Fne1Fzd6sgJgAMQFiAsQEiAkQEyAmQEyAWH4n7H0AKQFiAsQEiAkQy3dB3geQEiAmQEyAmAAxAWICxASICRDL74RXvA848t22FRATICZATICYALF8F3TkHcoKVkBMgJgAMQFiAsQEiAkQEyAmQGxZgCP8HcA9Vp3vyGOAs032PfZ+dOISFBsJcNUHbBPjGlsBV4swNZ7RS9BVIkyOw/8Ru+EqXyAAAACAb1+EGkna9KW9jQAAAABJRU5ErkJggg=="/></span><span class="t-txt">合同&小红花</span>
       </div>
       <div class="tab-btn" id="stutab-btn-3" onclick="switchStuTab(3)">
-        <span class="t-ico"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABhklEQVR4nO3bwY3CMBQA0YAoiaJogCpogKLoCU6WECLBQfafb3necQ848dgmithlkSRJkiRJ0iwO9AX863y9PL/9/XG7D3VPR/oCZmcAmAFgBoAZAJbqiWHtyaaHLE9LaXZA5OQT461JEYCajAwRUgSYGR6AXoX0+GgA+uYL8jpO1MC/9HhKyRL8HbYDtiaj1yPi1udScZAAxOTXfD4RAf8Snl14AHL114wTvQtCA2SY/JrxIiN4BMHCAmRa/TXjRu2CkAAZJ79m/IgIHkEwNAC9+gvyOtwBMAPADAAzAMwAMAPADAAzAMwAMAPADAAzAMwAMAPADAAzAMwAMAPADAAzAMwAMAPADADrHiDjf6Xs0fv6uwbI/JPET9RPFD2CYN0CjLT6C2IXdAkw4uQX0RE8gmDNA4y8+ovIXdB0QkZ/5Nyj1WLyCII1CzDT6l+WdvfbLMAo53s2TY8gI+znd8CfXGySJEmSJGlA6d9ntHjtm/m9jS/jYAaAGQBmAJgBJEmSJCnYC6UWhvH4iHtbAAAAAElFTkSuQmCC"/></span><span class="t-txt">提醒&信息</span>
+        <span class="t-ico"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABhUlEQVR4nO3bQa7CIBRA0Wpck/tx7nKcux83pSMSY2ylBt59hHuGfyAtF7Bp/MsiSZIkSZKkWRzoC/jX/Xp+fvv75fYY6p6O9AXMzgAwA8AMADMALNUTw9qTTQ9ZnpbS7IDIySfGW5MiADUZGSKkCDAzPAC9Cunx0QD0zRfkdZyogX/p8ZSSJfg7bAdsTUavR8Stz6XiIAGIya/5fCIC/iU8u/AA5OqvGSd6F4QGyDD5NeNFRvAIgoUFyLT6a8aN2gUhATJOfs34ERE8gmBoAHr1F+R1uANgBoAZAGYAmAFgBoAZAGYAmAFgBoAZAGYAmAFgBoAZAGYAmAFgBoAZAGYAmAFgBoAZANY9QMb/Stmj9/V3DZD5J4mfqJ8oegTBugUYafUXxC7oEmDEyS+iI3gEwZoHGHn1F5G7oOmEjP7IuUerxeQRBGsWYKbVvyzt7rdZgFHO92yaHkFG2M/vgD+52CRJkiRJ0oDSv89o8do383sbX8bBDAAzAMwAMANIkiRJUrAXCuyIQaXU/RIAAAAASUVORK5CYII="/></span><span class="t-txt">提醒&信息</span>
       </div>
     </nav>
 
     <nav class="bottom-tabbar" id="tabbar-tch" style="display:none;">
       <div class="tab-btn active" id="tchtab-btn-0" onclick="switchTchTab(0)">
-        <span class="t-ico"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABCElEQVR4nO3c0QmCUBiAUYtGaqgWaIoWaKh2qgGKNLQ+zHMeReTCx//gveIwAAAAALAVu6k3Hs+n+6vrt8t18jN4tq8XsHUCxASICRATICZATIDYoV7AEtb8jmICYgLEBIgJEBMgJkBMgJgAMQFiAsQEiAkQEyAmQEyA2F+cByztl+cLJiAmQEyAmAAxAWICxASICRATICZATIBYshe05m85l2YCYgLEBIgJEBMgJkBMgJgAMQFiAsQEiAkQEyAmQEyAmAAxAWICxASICRDz49aYCYgJEBMgJkBMgJgAMQFiAsQEiAkQEyAmQGz2Zhzj3m1YmoCYADEBYpMDOHj5jo8mQAQAAID5HuMtHHy918BZAAAAAElFTkSuQmCC"/></span><span class="t-txt">工作台主页</span>
+        <span class="t-ico"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABCElEQVR4nO3cwQ2CQBRAQTTWZD/eLce7/diUFqARDOgLMnMkhGzy8g/sEoYBAAAAgK3YTb3xej7eX10/XW6Tn8Gzfb2ArRMgJkBMgJgAMQFiAsQO9QKWsOZ3FBMQEyAmQEyAmAAxAWICxASICRATICZATICYADEBYgLE/uI8YGm/PF8wATEBYgLEBIgJEBMgJkBMgJgAMQFiAsSSvaA1f8u5NBMQEyAmQEyAmAAxAWICxASICRATICZATICYADEBYgLEBIgJEBMgJkBMgJgft8ZMQEyAmAAxAWICxASICRATICZATICYADEBYrM34xj3bsPSBMQEiAkQmxzAwct3fDQBIgAAAMz3AOhYHBwrNyX/AAAAAElFTkSuQmCC"/></span><span class="t-txt">工作台主页</span>
       </div>
       <div class="tab-btn" id="tchtab-btn-1" onclick="switchTchTab(1)">
-        <span class="t-ico"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABsElEQVR4nO3dwVHDMBRFUcGkJIqiAaqgAYqiJ1h5gcFJJL/vG6x7lswI8fUiS7JgaE2SJEmSJEmzeKI6fnl7/frr65/vH4f8THT/i+cjO9NvBgAzAJgBwAwAZgAwA4CV7Xm39tn/WcUZIf4Nzzjwa8kgoo+gGQa/tWydsQBmGfxFqt5IALMN/iJRt7sg2O7F5Nqn4NpiRb+N7O1/tM5bymbA0a91q1XV4yMIdqE6pmcI3f/CGQAzAJgBwAwAZgAwA4AZAMwAYGUHsVnfkPZyBsAMAGYAMAOAGQCsbBf0KK97kyp2ds4AmAHADABmADADgBkAzABgBgDDfi+otZ8Hm5GDG90+AZsB61Nl7ymTbp+CBLBV7L2DQLdPcg2AGQAMCWBrwbt3IaTbJ2EzYF1sb/F0+xR0G7q3aLp9gmsAzABgBgAzAJgBwAwAZgAwA4B5H7CjfYL3AYPtU7wPGGif5BoAMwCY9wED7ZO8Dxhsn+J9AMw1AFYWwNn+TriqnsgUPNtg99j7GPMRBIsE8AiLGSFRd2wGzBZCqt7oI2iWEJJ1+v8DOszyAZMkSZIkSaf1DYbi1ivIDj0pAAAAAElFTkSuQmCC"/></span><span class="t-txt">周课表&签到</span>
+        <span class="t-ico"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABr0lEQVR4nO3dQVLEIBRFUbR6Te7Huctx7n7clI4yMJruhryf24Z7hlYhfl4TIGjZmiRJkiRJkmbxRHX88fby9dfXX98/D/mZ6P4Xz0d2pt8MAGYAMAOAGQDMAGAGACvb827ts/+zijNC/BueceDXkkFEH0EzDH5r2TpjAcwy+ItUvZEAZhv8RaJud0Gw3YvJtU/BtcWKfhvZ2/9onbeUzYCjX+tWq6rHRxDsQnVMzxC6/4UzAGYAMAOAGQDMAGAGADMAmAHAyg5is74h7eUMgBkAzABgBgAzAFjZLuhRXvcmVezsnAEwA4AZAMwAYAYAMwCYAcAMAIb9XlBrPw82Iwc3un0CNgPWp8reUybdPgUJYKvYeweBbp/kGgAzABgSwNaCd+9CSLdPwmbAutje4un2Keg2dG/RdPsE1wCYAcAMAGYAMAOAGQDMAGAGAPM+YEf7BO8DBtuneB8w0D7JNQBmADDvAwbaJ3kfMNg+xfsAmGsArCyAs/2dcFU9kSl4tsHusfcx5iMIFgngERYzQqLu2AyYLYRUvdFH0CwhJOv0/wd0mOUDJkmSJEmSTusbjkjU20wRvDkAAAAASUVORK5CYII="/></span><span class="t-txt">周课表&签到</span>
       </div>
       <div class="tab-btn" id="tchtab-btn-2" onclick="switchTchTab(2)">
-        <span class="t-ico"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABXklEQVR4nO3d0U2EQBRAUTSWZFE2YBU2YFH2pD/648eaTXhzAc8pYGHm7rADxLhtAAAAAPwXD6sO9Pz68rnqWHv5eHsfn5/xA5xx4n+bDPE49cHbdo3J37bZcYwFuMrk/5gaz0iAq03+j4lxjV6C+NvuPy63viUrdhV7WTWOZSvgTJO/bevO1yUoJkBMgJgAMQFiAsQEiAkQEyAmQOypPoEjPDktH5NYATEBYgLEBIgJEMt3QWd7UbM3KyAmQEyAmAAxAWICxASICRATIJbfCXsfQEqAmAAxAWICxPJdkPcBpASICRATICZATICYADEBYgLE8jvhFe8Djny3bQXEBIgJEBMgJkAs3wUdeYeyghUQEyAmQEyAmAAxAWICxASICRBbFuAIfwdwj1XnO/IY4GyTfY+9H524BMVGAlz1AdvEuMZWwNUiTI1n9BJ0lQiT4/B/xG64yhcIAAAA4NsXfX1KalcOKkAAAAAASUVORK5CYII="/></span><span class="t-txt">合同&学员</span>
+        <span class="t-ico"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABXUlEQVR4nO3dwU2EQBiAUTTWZD/eLce7/diUXvTiYc0m/PMBvlfAwsy3ww4Q47YBAAAA8F88rDrQ++vz56pj7eXl7WN8fsYPcMaJ/20yxOPUB2/bNSZ/22bHMRbgKpP/Y2o8IwGuNvk/JsY1egnib7v/uNz6lqzYVexl1TiWrYAzTf62rTtfl6CYADEBYgLEBIgJEBMgJkBMgJgAsaf6BI7w5LR8TGIFxASICRATICZALN8Fne1Fzd6sgJgAMQFiAsQEiAkQEyAmQEyAWH4n7H0AKQFiAsQEiAkQy3dB3geQEiAmQEyAmAAxAWICxASICRDL74RXvA848t22FRATICZATICYALF8F3TkHcoKVkBMgJgAMQFiAsQEiAkQEyAmQGxZgCP8HcA9Vp3vyGOAs032PfZ+dOISFBsJcNUHbBPjGlsBV4swNZ7RS9BVIkyOw/8Ru+EqXyAAAACAb1+EGkna9KW9jQAAAABJRU5ErkJggg=="/></span><span class="t-txt">合同&学员</span>
       </div>
       <div class="tab-btn" id="tchtab-btn-3" onclick="switchTchTab(3)">
-        <span class="t-ico"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABCElEQVR4nO3c0QmCUBiAUYtGaqgWaIoWaKh2qgGKNLQ+zHMeReTCx//gveIwAAAAALAVu6k3Hs+n+6vrt8t18jN4tq8XsHUCxASICRATICZATIDYoV7AEtb8jmICYgLEBIgJEBMgJkBMgJgAMQFiAsQEiAkQEyAmQEyA2F+cByztl+cLJiAmQEyAmAAxAWICxASICRATICZATIBYshe05m85l2YCYgLEBIgJEBMgJkBMgJgAMQFiAsQEiAkQEyAmQEyAmAAxAWICxASICRDz49aYCYgJEBMgJkBMgJgAMQFiAsQEiAkQEyAmQGz2Zhzj3m1YmoCYADEBYpMDOHj5jo8mQAQAAID5HuMtHHy918BZAAAAAElFTkSuQmCC"/></span><span class="t-txt">经营数据</span>
+        <span class="t-ico"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABCElEQVR4nO3cwQ2CQBRAQTTWZD/eLce7/diUFqARDOgLMnMkhGzy8g/sEoYBAAAAgK3YTb3xej7eX10/XW6Tn8Gzfb2ArRMgJkBMgJgAMQFiAsQO9QKWsOZ3FBMQEyAmQEyAmAAxAWICxASICRATICZATICYADEBYgLE/uI8YGm/PF8wATEBYgLEBIgJEBMgJkBMgJgAMQFiAsSSvaA1f8u5NBMQEyAmQEyAmAAxAWICxASICRATICZATICYADEBYgLEBIgJEBMgJkBMgJgft8ZMQEyAmAAxAWICxASICRATICZATICYADEBYrM34xj3bsPSBMQEiAkQmxzAwct3fDQBIgAAAMz3AOhYHBwrNyX/AAAAAElFTkSuQmCC"/></span><span class="t-txt">经营数据</span>
       </div>
     </nav>
 
@@ -1384,7 +1422,7 @@
         <div style="font-size:15px;font-weight:800;"> 微信自动提醒服务预览</div>
         <span style="cursor:pointer;font-size:18px;color:#999;" onclick="closeModal()">✕</span>
       </div>
-      <div style="background:#F9FAFB;border:1px solid var(--border-line);border-left:4px solid var(--mint);border-radius:10px;padding:10px;margin-bottom:8px;font-size:11px;line-height:1.5;">
+      <div style="background:#FCF8F2;border:1px solid var(--border-line);border-left:4px solid var(--mint);border-radius:10px;padding:10px;margin-bottom:8px;font-size:11px;line-height:1.5;">
         <div style="font-weight:800;color:var(--mint-dark);margin-bottom:3px;"> 1. 课前1天自动提醒</div>
         <strong>上课时间：</strong>2026年11月08日 星期日 16:10-16:55 (明天)<br>
         <strong>上课地点：</strong>刘妤钢琴工作室
@@ -1454,7 +1492,7 @@
         <div><strong>授课老师：</strong>刘妤 · <strong>扣减课时：</strong>1 课时</div>
         <div style="margin-top:3px;"><strong>指定扣课合同：</strong><span style="color:var(--mint-dark);font-weight:700;">${contractName}</span></div>
       </div>
-      <details style="background:#F6F7F6;border:1px solid var(--border-line);border-radius:8px;padding:7px 10px;margin-bottom:12px;font-size:11.5px;">
+      <details style="background:#F8F0E5;border:1px solid var(--border-line);border-radius:8px;padding:7px 10px;margin-bottom:12px;font-size:11.5px;">
         <summary style="font-weight:700;color:var(--mint-dark);cursor:pointer;">▸ 填写课后简评（选填，不填直接秒签）</summary>
         <input type="text" placeholder="例如：车尔尼599第19条手型很棒，继续保持！" style="width:100%;margin-top:6px;padding:6px 8px;border:1px solid #D1D5DB;border-radius:6px;font-size:11.5px;">
       </details>
@@ -1617,7 +1655,7 @@
   function openFeedbackModal() {
     openModal(`
       <div style="font-size:15px;font-weight:800;margin-bottom:8px;">⭐ 课堂反馈与陪练单</div>
-      <div style="font-size:12px;line-height:1.6;background:#F6F7F6;padding:10px;border-radius:10px;margin-bottom:10px;">
+      <div style="font-size:12px;line-height:1.6;background:#F8F0E5;padding:10px;border-radius:10px;margin-bottom:10px;">
         <strong>学员：</strong>马翊菱 · <strong>表现：</strong>⭐⭐⭐⭐⭐<br>
         <strong>本周曲目：</strong>《车尔尼599 第19条》《小步舞曲》
       </div>
@@ -1702,6 +1740,271 @@
   function copyWechat() {
     showToast('✓ 已复制刘妤老师微信号：liuyu_piano');
   }
+</script>
+<script>
+function readContractRecord(contract) {
+  const totalLessons = Number(contract.totalLessons ?? 0);
+  const giftLessons = Number(contract.giftLessons ?? 0);
+  const totalAmount = Number(contract.totalAmount ?? contract.totalPrice ?? 0);
+  return {
+    ...contract,
+    totalAmount,
+    totalPrice: totalAmount,
+    actualAmount: Number(contract.actualAmount ?? ((contract.paidStatus || contract.payStatus) === 'unpaid' ? 0 : totalAmount)),
+    purchasedLessons: Number(contract.purchasedLessons ?? (totalLessons - giftLessons)),
+    giftLessons,
+    usedLessons: Number(contract.usedLessons ?? (totalLessons - Number(contract.remainLessons ?? totalLessons))),
+    courseName: contract.courseName || '少儿钢琴一对一',
+    paymentMethod: contract.paymentMethod || '未记录',
+    operations: contract.operations || []
+  };
+}
+
+function changeContractRecord(contract, fields, at, operator) {
+  const before = readContractRecord(contract);
+  const next = { ...before };
+  const labels = {
+    packageName: '套餐名', courseName: '关联课程', totalAmount: '合同应收', actualAmount: '合同实收',
+    purchasedLessons: '购买课时', giftLessons: '赠送课时', usedLessons: '已上课时',
+    paymentMethod: '支付方式', startDate: '开始时间', expireDate: '到期时间', remark: '备注'
+  };
+  for (const key of Object.keys(labels)) {
+    if (fields[key] !== undefined) next[key] = fields[key];
+  }
+  for (const key of ['totalAmount', 'actualAmount', 'purchasedLessons', 'giftLessons', 'usedLessons']) {
+    next[key] = Number(next[key]);
+    if (!Number.isFinite(next[key]) || next[key] < 0) throw new Error(`${labels[key]}须为非负数字`);
+  }
+  for (const key of ['packageName', 'courseName', 'paymentMethod', 'startDate', 'expireDate', 'remark']) {
+    next[key] = String(next[key] || '').trim();
+  }
+  if (!next.packageName || !next.courseName) throw new Error('请填写套餐名与关联课程');
+  for (const key of ['startDate', 'expireDate']) {
+    if (next[key] && (next[key].length !== 10 || !Number.isFinite(Date.parse(next[key])) || new Date(next[key]).toISOString().slice(0, 10) !== next[key])) throw new Error('日期请使用年-月-日格式');
+  }
+  if (next.startDate && next.expireDate && next.expireDate < next.startDate) throw new Error('到期时间不能早于开始时间');
+  next.totalLessons = next.purchasedLessons + next.giftLessons;
+  if (next.totalLessons <= 0 || next.usedLessons > next.totalLessons) throw new Error('总课时须大于零，且不能少于已上课时');
+  next.remainLessons = next.totalLessons - next.usedLessons;
+  next.totalPrice = next.totalAmount;
+  next.unitPrice = Number((next.totalAmount / next.totalLessons).toFixed(2));
+  next.paidStatus = next.actualAmount >= next.totalAmount ? 'paid' : 'unpaid';
+  next.payStatus = next.paidStatus;
+  const changes = Object.keys(labels).filter(key => String(before[key] ?? '') !== String(next[key] ?? '')).map(key => ({
+    field: key, label: labels[key], before: before[key] ?? '', after: next[key]
+  }));
+  next.operations = changes.length ? [...before.operations, { at, operator, changes }] : before.operations;
+  return next;
+}
+
+function renewContractRecord(contract, renewal, at, operator) {
+  const before = readContractRecord(contract);
+  const lessons = Number(renewal.lessons);
+  const amount = Number(renewal.amount);
+  const gift = Number(renewal.gift || 0);
+  if (!Number.isFinite(lessons) || lessons <= 0 || !Number.isFinite(amount) || amount < 0 || !Number.isFinite(gift) || gift < 0) throw new Error('请填写有效的新增课时与实收金额');
+  return changeContractRecord(before, {
+    purchasedLessons: before.purchasedLessons + lessons,
+    giftLessons: before.giftLessons + gift,
+    totalAmount: Number((before.totalAmount + amount).toFixed(2)),
+    actualAmount: Number((before.actualAmount + amount).toFixed(2)),
+    expireDate: renewal.expireDate || before.expireDate,
+    paymentMethod: renewal.paymentMethod || before.paymentMethod
+  }, at, operator);
+}
+
+if (typeof module !== 'undefined') module.exports = { readContractRecord, changeContractRecord, renewContractRecord };
+
+const previewRecordKey = 'liuyu_records_v38';
+const previewSeedStudents = [
+  { id: 's_ma', childName: '马翊菱', gender: 'female', parentPhone: '13800138000', teacherName: '刘妤', defaultContractId: 'c_ma', bindCode: 'LY0001' },
+  { id: 's_xu', childName: '徐时曦', gender: 'female', parentPhone: '13800138000', teacherName: '刘妤', defaultContractId: 'c_xu', bindCode: 'LY0002' },
+  { id: 's_ding', childName: '丁瑞玹', gender: 'female', parentPhone: '13800138000', teacherName: '刘妤', defaultContractId: 'c_ding', bindCode: 'LY0003' },
+  { id: 's_jiang', childName: '姜璟棠', gender: 'male', parentPhone: '13800138000', teacherName: '刘妤', defaultContractId: 'c_jiang', bindCode: 'LY0004' }
+];
+const previewSeedContracts = [
+  ['c_ma', 's_ma', '钢琴半年', 24, 6, 7200], ['c_ma_q', 's_ma', '考级集训季度', 12, 6, 3600],
+  ['c_xu', 's_xu', '钢琴全年', 48, 16, 12800], ['c_ding', 's_ding', '钢琴半年', 24, 10, 7200],
+  ['c_jiang', 's_jiang', '钢琴半年', 24, 21, 7200]
+].map(([id, studentId, packageName, totalLessons, usedLessons, totalAmount]) => ({
+  id, studentId, childName: previewSeedStudents.find(s => s.id === studentId).childName,
+  packageName, totalLessons, usedLessons, remainLessons: totalLessons - usedLessons,
+  totalAmount, actualAmount: totalAmount, purchasedLessons: totalLessons, giftLessons: 0,
+  paidStatus: 'paid', courseName: '少儿钢琴一对一', paymentMethod: '微信',
+  startDate: '2026-10-12', expireDate: '2027-04-12', operations: []
+}));
+let previewRecords = JSON.parse(localStorage.getItem(previewRecordKey) || 'null') || {
+  students: previewSeedStudents,
+  contracts: previewSeedContracts,
+  bookings: [8, 15, 22, 29].map((day, index) => ({
+    id: 'b_ma_' + day, studentId: 's_ma', contractId: 'c_ma', date: '2026-11-' + day,
+    startTime: '11:00', endTime: '11:45', courseName: '少儿钢琴一对一', lessonCost: 1, status: index ? 'booked' : 'completed'
+  })).concat([6, 13, 20, 27].map((day, index) => ({
+    id: 'b_xu_' + day, studentId: 's_xu', contractId: 'c_xu', date: '2026-11-' + String(day).padStart(2, '0'),
+    startTime: '16:00', endTime: '16:45', courseName: '少儿钢琴一对一', lessonCost: 1, status: index ? 'booked' : 'completed'
+  })))
+};
+
+function htmlValue(value) {
+  return String(value ?? '').replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
+}
+function recordStudent(id) { return previewRecords.students.find(s => s.id === id); }
+function recordContracts(id) { return previewRecords.contracts.filter(c => c.studentId === id).map(readContractRecord); }
+function recordStatus(c) { return c.remainLessons <= 0 ? '完结' : c.remainLessons <= 3 ? '即将到期' : c.paidStatus === 'unpaid' ? '未交费' : '有效'; }
+function persistPreviewRecords() {
+  try { localStorage.setItem(previewRecordKey, JSON.stringify(previewRecords)); }
+  catch (error) { showToast('浏览器无法保存，请检查存储权限'); throw error; }
+  refreshPreviewRecordSummary();
+}
+function recordHeader(title, back) {
+  return `<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:18px"><strong style="font-size:18px">${htmlValue(title)}</strong><button class="btn-outline" onclick="${back || 'closeModal()'}">${back ? '返回' : '关闭'}</button></div>`;
+}
+function recordField(key, label, value, type = 'text', required = false) {
+  return `<label class="form-field">${htmlValue(label)}${required ? ' *' : ''}<input id="record-${key}" name="${key}" type="${type}" value="${htmlValue(value)}" ${required ? 'required' : ''} ${type === 'number' ? 'min="0" step="0.01"' : ''}></label>`;
+}
+function refreshPreviewRecordSummary() {
+  const values = [previewRecords.students.length,
+    previewRecords.students.filter(s => recordContracts(s.id).length).length,
+    previewRecords.students.filter(s => !recordContracts(s.id).length).length,
+    previewRecords.students.filter(s => s.miniProgramBound).length,
+    previewRecords.students.filter(s => !s.miniProgramBound).length,
+    previewRecords.students.filter(s => s.birthday && s.birthday.slice(5, 7) === '11').length];
+  document.querySelectorAll('#tch-tab-2 .stat-grid-6 .stat-val').forEach((e, i) => { e.textContent = values[i]; });
+  const badge = document.querySelector('#tch-tab-2 .sec-head .badge');
+  if (badge) badge.textContent = `共 ${previewRecords.students.length} 位演示学员`;
+  const contractCounts = ['有效', '即将到期', '完结', '未交费'].map(label => previewRecords.contracts.filter(c => recordStatus(c) === label).length);
+  document.querySelectorAll('#tch-tab-2 .stat-grid-4 .stat-val').forEach((e, i) => { e.textContent = contractCounts[i]; });
+  const main = previewRecords.contracts.find(c => c.id === 'c_ma');
+  if (main && document.getElementById('stu-c1-rem')) document.getElementById('stu-c1-rem').textContent = main.remainLessons;
+}
+
+function openAddStudentModal() { openStudentEditor(''); }
+function openStudentEditor(id) {
+  const s = recordStudent(id) || { gender: '', teacherName: '刘妤' };
+  openModal(recordHeader(id ? '编辑学员资料' : '新增学员') + `<form onsubmit="saveStudentRecord(event,'${id}')">
+    ${recordField('childName', '学员姓名', s.childName, 'text', true)}
+    <label class="form-field">学员性别 *<select name="gender" required><option value="">请选择</option><option value="female" ${s.gender === 'female' ? 'selected' : ''}>女</option><option value="male" ${s.gender === 'male' ? 'selected' : ''}>男</option></select></label>
+    ${recordField('birthday', '出生日期', s.birthday, 'date')}
+    ${recordField('parentName', '家长姓名（选填）', s.parentName)}
+    ${recordField('parentPhone', '家长电话', s.parentPhone, 'tel', true)}
+    <label class="form-field">与学员关系（选填）<select name="relationship">${['', '妈妈', '爸爸', '爷爷', '奶奶', '其他监护人'].map(r => `<option value="${r}" ${s.relationship === r ? 'selected' : ''}>${r || '请选择'}</option>`).join('')}</select></label>
+    ${recordField('teacherName', '所属老师', s.teacherName, 'text', true)}
+    ${recordField('note', '备注（选填）', s.note)}
+    <button class="btn-mint" style="width:100%;min-height:44px">保存学员资料</button>
+  </form>`);
+}
+function saveStudentRecord(event, id) {
+  event.preventDefault();
+  const values = Object.fromEntries(new FormData(event.target));
+  for (const key of Object.keys(values)) values[key] = values[key].trim();
+  if (!/^1\d{10}$/.test(values.parentPhone)) { showToast('请输入11位家长电话'); return; }
+  if (values.birthday && values.birthday > new Date().toISOString().slice(0, 10)) { showToast('出生日期不能晚于今天'); return; }
+  const student = { ...(recordStudent(id) || {}), ...values, id: id || 's_' + Date.now() };
+  if (!student.bindCode) student.bindCode = 'LY' + String(Date.now()).slice(-4);
+  if (id) previewRecords.students = previewRecords.students.map(s => s.id === id ? student : s);
+  else previewRecords.students.push(student);
+  previewRecords.contracts.forEach(c => { if (c.studentId === student.id) c.childName = student.childName; });
+  persistPreviewRecords(); openStudentDetail(student.id); showToast('学员资料已保存在当前浏览器');
+}
+function openStudentListModal() {
+  openModal(recordHeader('学员列表') + previewRecords.students.map(s => `<button class="data-row" onclick="openStudentDetail('${s.id}')"><strong>${htmlValue(s.childName)}</strong><span style="float:right;color:var(--mint-dark)">查看详情 ›</span><br><span style="font-size:12px;color:var(--text-sub)">${htmlValue(s.teacherName || '刘妤')} · ${recordContracts(s.id).length} 份合同</span></button>`).join('') + '<div class="form-actions"><button class="btn-mint" onclick="openAddStudentModal()">添加学员</button></div>');
+}
+function openStudentDetail(id, tab = 'schedule', month = '2026-11') {
+  const s = recordStudent(id); if (!s) return;
+  const contracts = recordContracts(id);
+  const defaultContract = contracts.find(c => c.id === s.defaultContractId) || contracts[0];
+  const bookings = previewRecords.bookings.filter(b => b.studentId === id && b.date.startsWith(month));
+  let body = '';
+  if (tab === 'contracts') body = `<button class="btn-mint" onclick="openAddContractModal('${id}')">添加合同</button>` + (contracts.length ? contracts.map(c => {
+    const next = previewRecords.bookings.filter(b => b.contractId === c.id && b.status !== 'completed').sort((a, b) => a.date.localeCompare(b.date))[0];
+    return `<div class="card" style="margin-top:14px"><button class="data-row" onclick="openContractDetail('${c.id}')"><strong>${htmlValue(c.packageName)}</strong> · ${recordStatus(c)}<br>关联课程：${htmlValue(c.courseName)}<br>剩余 ${c.remainLessons} 节 · 开始 ${htmlValue(c.startDate || '未填写')}<br><span style="font-size:12px">${next ? '下次上课：' + htmlValue(next.date + ' ' + next.startTime + '-' + next.endTime) : '暂未排课'}</span></button><div class="form-actions"><button class="btn-outline" onclick="chooseDefaultContract('${id}','${c.id}')">${defaultContract && defaultContract.id === c.id ? '默认合同' : '设为默认合同'}</button><button class="btn-mint" onclick="openContractRecordEditor('${c.id}','renew')">续费登记</button></div></div>`;
+  }).join('') : '<p style="margin:20px 0">暂无合同，可点击上方添加。</p>');
+  else if (tab === 'binding') body = `<p style="font-size:12px;color:var(--text-sub);line-height:1.8">此处为演示状态。正式小程序按真实绑定记录显示，公众号关注状态需微信端核验。</p><div class="detail-grid" style="margin-top:18px"><div><div class="detail-label">小程序绑定</div><div class="detail-value">${s.miniProgramBound ? '已绑定（演示）' : '未绑定（演示）'}</div></div><div><div class="detail-label">公众号关注</div><div class="detail-value">未验证</div></div><div><div class="detail-label">绑定码</div><div class="detail-value">${htmlValue(s.bindCode)}</div></div><div><div class="detail-label">家长电话</div><div class="detail-value">${htmlValue(s.parentPhone || '未填写')}</div></div></div><div class="form-actions"><button class="btn-mint" onclick="openBindingInvite('${id}')">邀请家长绑定</button>${s.miniProgramBound ? `<button class="btn-outline" onclick="unbindRecordStudent('${id}')">取消绑定</button>` : ''}</div>`;
+  else body = `<label class="form-field">排课月份<input type="month" value="${month}" onchange="openStudentDetail('${id}','schedule',this.value)"></label>` + (bookings.length ? bookings.map(b => `<div class="card"><strong>${htmlValue(b.courseName)}</strong><span class="badge b-mint" style="float:right">${b.status === 'completed' ? '已点名' : '未点名'}</span><p style="font-size:14px;line-height:1.9;margin-top:10px">${htmlValue(b.date)} ${htmlValue(b.startTime)}–${htmlValue(b.endTime)}<br>${b.lessonCost} 课时 · ${htmlValue(s.teacherName || '刘妤')}<br>扣课合同：${htmlValue((contracts.find(c => c.id === b.contractId) || {}).packageName || '未关联')}</p></div>`).join('') : '<p style="margin:20px 0;color:var(--text-sub)">该月暂无排课。</p>');
+  openModal(recordHeader(s.childName + ' · 学员详情', 'openStudentListModal()') + `<div style="font-size:13px;line-height:1.9;color:var(--text-sub)">默认合同：${htmlValue(defaultContract ? defaultContract.packageName : '未设置')}<br>出生日期：${htmlValue(s.birthday || '未填写')}</div><div class="form-actions"><button class="btn-outline" onclick="openStudentEditor('${id}')">编辑</button><button class="btn-outline" onclick="openStudentDetail('${id}','contracts')">切换合同</button><button class="btn-mint" onclick="openStudentDetail('${id}','contracts')">续费</button></div><div class="form-actions" style="padding-bottom:14px;border-bottom:1px solid var(--border-line);margin-bottom:18px">${[['schedule', '排课'], ['contracts', '合同'], ['binding', '绑定用户']].map(([key, label]) => `<button class="${key === tab ? 'btn-mint' : 'btn-outline'}" onclick="openStudentDetail('${id}','${key}')">${label}</button>`).join('')}</div>${body}`);
+}
+function chooseDefaultContract(studentId, contractId) {
+  const s = recordStudent(studentId);
+  if (!recordContracts(studentId).some(c => c.id === contractId)) return;
+  s.defaultContractId = contractId; persistPreviewRecords(); openStudentDetail(studentId, 'contracts');
+}
+function openBindingInvite(id) {
+  const s = recordStudent(id);
+  openModal(recordHeader('邀请家长绑定', `openStudentDetail('${id}','binding')`) + `<p style="font-size:15px;line-height:1.9">请在正式小程序输入学员专属绑定码：<strong>${htmlValue(s.bindCode)}</strong>，认领「${htmlValue(s.childName)}」档案。</p><p style="font-size:12px;color:var(--text-sub);margin-top:14px">当前网页用于界面确认，不能完成真实微信绑定或公众号关注核验。</p>`);
+}
+function unbindRecordStudent(id) {
+  if (!confirm('确认取消此演示学员的家长绑定？')) return;
+  recordStudent(id).miniProgramBound = false; persistPreviewRecords(); openStudentDetail(id, 'binding');
+}
+function openContractListModal(filter = '全部') {
+  openModal(recordHeader('合同列表 · ' + filter) + previewRecords.contracts.filter(c => filter === '全部' || recordStatus(c) === filter).map(c => `<button class="data-row" onclick="openContractDetail('${c.id}')"><strong>${htmlValue(c.childName)} · ${htmlValue(c.packageName)}</strong><br><span style="font-size:12px;color:var(--text-sub)">${htmlValue(c.courseName)} · 剩余 ${c.remainLessons} 节 · ${recordStatus(c)}</span><span style="float:right">›</span></button>`).join(''));
+}
+function openContractDetail(id) {
+  const raw = previewRecords.contracts.find(c => c.id === id); if (!raw) return;
+  const c = readContractRecord(raw);
+  const fields = [['套餐名', c.packageName], ['关联课程', c.courseName], ['合同应收（元）', c.totalAmount], ['合同实收（元）', c.actualAmount], ['总课时', c.totalLessons], ['购买课时', c.purchasedLessons], ['赠送课时', c.giftLessons], ['已上课时', c.usedLessons], ['剩余课时', c.remainLessons], ['支付方式', c.paymentMethod], ['合同状态', recordStatus(c)], ['开始时间', c.startDate], ['到期时间', c.expireDate], ['备注', c.remark || '未填写']];
+  openModal(recordHeader(c.childName + ' · 合同详情', 'openContractListModal()') + `<div class="detail-grid">${fields.map(([label, value]) => `<div><div class="detail-label">${label}</div><div class="detail-value">${htmlValue(value || (value === 0 ? 0 : '未填写'))}</div></div>`).join('')}</div><div class="form-actions"><button class="btn-mint" onclick="openContractRecordEditor('${id}','metadata')">改合同</button><button class="btn-outline" onclick="openContractRecordEditor('${id}','lessons')">改课时</button><button class="btn-mint" onclick="openContractRecordEditor('${id}','renew')">续费登记</button><button class="btn-outline" onclick="openContractOperations('${id}')">操作记录</button></div>`);
+}
+function openContractRecordEditor(id, mode) {
+  const c = readContractRecord(previewRecords.contracts.find(c => c.id === id));
+  const definitions = mode === 'lessons' ? [['purchasedLessons', '购买课时', 'number'], ['giftLessons', '赠送课时', 'number'], ['usedLessons', '已上课时', 'number']]
+    : mode === 'renew' ? [['lessons', '本次新增购买课时', 'number'], ['gift', '本次赠送课时', 'number'], ['amount', '本次实收金额（元）', 'number'], ['expireDate', '新的到期时间', 'date'], ['paymentMethod', '支付方式', 'text']]
+    : [['packageName', '套餐名', 'text'], ['courseName', '关联课程', 'text'], ['totalAmount', '合同应收（元）', 'number'], ['actualAmount', '合同实收（元）', 'number'], ['paymentMethod', '支付方式', 'text'], ['startDate', '开始时间', 'date'], ['expireDate', '到期时间', 'date'], ['remark', '备注', 'text']];
+  openModal(recordHeader(mode === 'renew' ? '原合同续费登记' : mode === 'lessons' ? '修改课时' : '修改合同', `openContractDetail('${id}')`) + (mode === 'renew' ? '<p style="font-size:12px;color:var(--text-sub);line-height:1.8;margin-bottom:16px">登记本次已收费用和增加的课时，已上课时保持原记录。</p>' : '') + `<form onsubmit="saveContractRecord(event,'${id}','${mode}')">${definitions.map(([key, label, type]) => recordField(key, label, mode === 'renew' && ['lessons', 'amount', 'gift'].includes(key) ? key === 'gift' ? 0 : '' : c[key], type, !['remark', 'expireDate', 'startDate', 'gift'].includes(key))).join('')}<button class="btn-mint" style="width:100%;min-height:44px">确认保存</button></form>`);
+}
+function saveContractRecord(event, id, mode) {
+  event.preventDefault(); const values = Object.fromEntries(new FormData(event.target));
+  const index = previewRecords.contracts.findIndex(c => c.id === id);
+  try {
+    const fn = mode === 'renew' ? renewContractRecord : changeContractRecord;
+    previewRecords.contracts[index] = fn(previewRecords.contracts[index], values, new Date().toLocaleString('zh-CN'), '老师');
+    persistPreviewRecords(); openContractDetail(id); showToast('已保存，操作记录可查看');
+  } catch (error) { showToast(error.message); }
+}
+function openContractOperations(id) {
+  const c = readContractRecord(previewRecords.contracts.find(c => c.id === id));
+  openModal(recordHeader('合同操作记录', `openContractDetail('${id}')`) + (c.operations.length ? [...c.operations].reverse().map(op => `<div class="card"><strong style="font-size:13px">${htmlValue(op.at)} · ${htmlValue(op.operator)}</strong><p style="font-size:13px;line-height:1.9;margin-top:8px">${op.changes.map(v => htmlValue(v.label) + '：' + htmlValue(v.before) + ' → ' + htmlValue(v.after)).join('<br>')}</p></div>`).join('') : '<p>暂无变更记录</p>'));
+}
+function openNewContractModal() { openAddContractModal(); }
+function openAddContractModal(studentId) {
+  const students = previewRecords.students;
+  openModal(recordHeader('添加合同') + `<form onsubmit="createContractRecord(event)"><label class="form-field">签约学员<select name="studentId">${students.map(s => `<option value="${s.id}" ${studentId === s.id ? 'selected' : ''}>${htmlValue(s.childName)}</option>`).join('')}</select></label>${recordField('packageName', '套餐名', '钢琴半年', 'text', true)}${recordField('courseName', '关联课程', '少儿钢琴一对一', 'text', true)}${recordField('purchasedLessons', '购买课时', 24, 'number', true)}${recordField('giftLessons', '赠送课时', 0, 'number')}${recordField('totalAmount', '合同应收（元）', '', 'number', true)}${recordField('actualAmount', '合同实收（元）', '', 'number', true)}${recordField('paymentMethod', '支付方式', '微信')}${recordField('startDate', '开始时间', new Date().toISOString().slice(0, 10), 'date')}${recordField('expireDate', '到期时间', '', 'date')}<button class="btn-mint" style="width:100%;min-height:44px">保存合同</button></form>`);
+}
+function createContractRecord(event) {
+  event.preventDefault(); const values = Object.fromEntries(new FormData(event.target));
+  const student = recordStudent(values.studentId); if (!student) return;
+  try {
+    const c = changeContractRecord({ id: 'c_' + Date.now(), studentId: student.id, childName: student.childName, totalLessons: 0, usedLessons: 0 }, values, new Date().toLocaleString('zh-CN'), '老师建档');
+    previewRecords.contracts.push(c); if (!student.defaultContractId) student.defaultContractId = c.id;
+    persistPreviewRecords(); openContractDetail(c.id);
+  } catch (error) { showToast(error.message); }
+}
+function openAddScheduleModal(defaultStudent) {
+  const first = previewRecords.students.find(s => s.id === defaultStudent || s.childName === defaultStudent) || previewRecords.students[0];
+  openModal(recordHeader('给学员排课') + `<form onsubmit="saveRecordSchedule(event)"><label class="form-field">学员<select id="schedule-record-student" name="studentId" onchange="updateRecordScheduleContracts()">${previewRecords.students.map(s => `<option value="${s.id}" ${first && first.id === s.id ? 'selected' : ''}>${htmlValue(s.childName)}</option>`).join('')}</select></label><label class="form-field">扣课合同<select id="schedule-record-contract" name="contractId" required></select></label>${recordField('date', '上课日期', new Date().toISOString().slice(0, 10), 'date', true)}${recordField('startTime', '开始时间', '10:00', 'time', true)}${recordField('endTime', '结束时间', '10:45', 'time', true)}<label class="form-field">排课方式<select name="repeat"><option value="1">单次排课</option><option value="4">每周同一时间，共4次</option></select></label><button class="btn-mint" style="width:100%;min-height:44px">确认排课</button></form>`);
+  updateRecordScheduleContracts();
+}
+function updateRecordScheduleContracts() {
+  const s = recordStudent(document.getElementById('schedule-record-student').value);
+  const contracts = recordContracts(s.id).filter(c => c.remainLessons > 0);
+  document.getElementById('schedule-record-contract').innerHTML = contracts.map(c => `<option value="${c.id}" ${s.defaultContractId === c.id ? 'selected' : ''}>${htmlValue(c.packageName)} · 剩余${c.remainLessons}节</option>`).join('');
+}
+function saveRecordSchedule(event) {
+  event.preventDefault(); const values = Object.fromEntries(new FormData(event.target));
+  const c = recordContracts(values.studentId).find(c => c.id === values.contractId);
+  if (!c) { showToast('请先为学员添加有效合同'); return; }
+  if (values.startTime >= values.endTime) { showToast('结束时间须晚于开始时间'); return; }
+  const count = Number(values.repeat);
+  const newBookings = Array.from({ length: count }, (_, index) => ({
+    id: 'b_' + Date.now() + '_' + index, studentId: values.studentId, contractId: c.id,
+    date: new Date(Date.parse(values.date + 'T00:00:00Z') + index * 7 * 86400000).toISOString().slice(0, 10),
+    startTime: values.startTime, endTime: values.endTime, courseName: c.courseName, lessonCost: 1, status: 'booked'
+  }));
+  previewRecords.bookings.push(...newBookings); persistPreviewRecords();
+  openStudentDetail(values.studentId, 'schedule', values.date.slice(0, 7)); showToast('排课已保存至当前浏览器');
+}
+refreshPreviewRecordSummary();
+
 </script>
 </body>
 </html>
