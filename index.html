@@ -3,2477 +3,1682 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>刘妤钢琴工作室 · 微信小程序交互体验版</title>
+<title>刘妤钢琴工作室 · V3.5 多巴胺全功能交互体验版</title>
 <style>
   :root {
-    --bg-primary: #FAF7F2;
+    --mint: #00C896;
+    --mint-dark: #00A87D;
+    --mint-light: #E6FBF5;
+    --purple: #7C4DFF;
+    --purple-light: #F2EEFF;
+    --orange: #FF6B35;
+    --orange-light: #FFF0EA;
+    --pink: #FF4D8D;
+    --pink-light: #FFECF3;
+    --blue: #2979FF;
+    --blue-light: #EAF2FF;
+    --yellow: #FFB800;
+    --yellow-light: #FFF8E1;
+    --coral: #FF5252;
+    --coral-light: #FFEEEE;
+    --bg-cream: #F7F9FC;
     --bg-card: #FFFFFF;
-    --bg-ebony: #231F20;
-    --bg-ebony-soft: #2E2826;
-    --gold-primary: #C89D66;
-    --gold-deep: #A67B44;
-    --gold-light: #FDF6EC;
-    --gold-border: #E8D5B7;
-    --text-main: #2C2623;
-    --text-regular: #5C534C;
-    --text-muted: #9E948A;
-    --border-warm: #EFE8DC;
-    --green-text: #287D56;
-    --green-bg: #EBF7F1;
-    --amber-text: #B86E14;
-    --amber-bg: #FFF7E6;
-    --red-text: #C94A4A;
-    --red-bg: #FDEEEE;
+    --text-main: #1E222B;
+    --text-sub: #5A6275;
+    --text-muted: #949CB0;
+    --border-soft: #E8EDF5;
   }
-
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    -webkit-tap-highlight-color: transparent;
-  }
-
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   html, body {
-    width: 100%;
-    height: 100%;
+    width: 100%; height: 100%;
     font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-    background: #1B1817;
+    background: linear-gradient(135deg, #1E1B4B 0%, #311042 50%, #0F292E 100%);
     color: var(--text-main);
     -webkit-font-smoothing: antialiased;
     overflow: hidden;
   }
-
-  /* ================= 桌面端双栏布局 (>= 540px) vs 手机端全屏 (< 540px) ================= */
   .app-stage {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 48px;
-    padding: 24px;
-    background: radial-gradient(circle at 20% 20%, #2E2723 0%, #171413 70%);
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    gap: 42px; padding: 18px;
   }
-
   .desktop-guide {
-    width: 380px;
-    color: #F5EDE2;
-    flex-shrink: 0;
+    width: 360px; color: #FFFFFF; flex-shrink: 0;
+    background: rgba(255,255,255,0.08); backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.18); border-radius: 28px;
+    padding: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.35);
   }
-
   .dg-badge {
-    display: inline-block;
-    background: rgba(200, 157, 102, 0.2);
-    border: 1px solid rgba(232, 201, 155, 0.45);
-    color: #E8C99B;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 4px 12px;
-    border-radius: 999px;
-    margin-bottom: 14px;
-    letter-spacing: 1px;
+    display: inline-flex; align-items: center; gap: 6px;
+    background: linear-gradient(90deg, var(--mint), var(--blue));
+    color: #FFF; font-size: 11.5px; font-weight: 700;
+    padding: 5px 12px; border-radius: 999px; margin-bottom: 12px;
   }
-
-  .dg-title {
-    font-size: 28px;
-    font-weight: 700;
-    color: #FFFFFF;
-    line-height: 1.3;
-    margin-bottom: 10px;
-  }
-
-  .dg-sub {
-    font-size: 14px;
-    color: #C7BBAE;
-    line-height: 1.65;
-    margin-bottom: 22px;
-  }
-
-  .dg-role-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 22px;
-  }
-
+  .dg-title { font-size: 24px; font-weight: 800; line-height: 1.25; margin-bottom: 8px; }
+  .dg-sub { font-size: 13px; color: rgba(255,255,255,0.82); line-height: 1.6; margin-bottom: 16px; }
   .dg-role-btn {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(232, 201, 155, 0.22);
-    border-radius: 14px;
-    padding: 12px 16px;
-    color: #EAE0D5;
-    cursor: pointer;
-    text-align: left;
-    transition: all 0.18s ease;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    width: 100%; border: 1.5px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.07); border-radius: 16px;
+    padding: 11px 14px; color: #FFF; cursor: pointer; text-align: left;
+    margin-bottom: 10px; transition: all 0.2s; display: flex; justify-content: space-between; align-items: center;
   }
-
-  .dg-role-btn:hover,
   .dg-role-btn.active {
-    background: linear-gradient(135deg, rgba(200, 157, 102, 0.28) 0%, rgba(166, 123, 68, 0.18) 100%);
-    border-color: #C89D66;
+    background: linear-gradient(135deg, rgba(0,200,150,0.35), rgba(41,121,255,0.35));
+    border-color: var(--mint); box-shadow: 0 6px 20px rgba(0,200,150,0.28);
   }
-
-  .dg-role-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: #FFFFFF;
-    margin-bottom: 3px;
-  }
-
-  .dg-role-desc {
-    font-size: 12px;
-    color: #BCAE9E;
-  }
-
   .dg-features {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    padding: 16px 18px;
-    font-size: 12.5px;
-    color: #D2C6B8;
-    line-height: 1.75;
+    background: rgba(0,0,0,0.22); border-radius: 14px; padding: 12px 14px;
+    font-size: 12px; color: rgba(255,255,255,0.88); line-height: 1.65;
   }
-
-  .dg-features strong {
-    color: #E8C99B;
-  }
-
-  /* 真机容器 */
   .phone-shell {
-    width: 390px;
-    height: 844px;
-    max-height: 95vh;
-    background: var(--bg-primary);
-    border-radius: 46px;
-    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.65), 0 0 0 10px #2C2725, 0 0 0 12px rgba(200, 157, 102, 0.45);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    position: relative;
-    flex-shrink: 0;
+    width: 390px; height: 844px; max-height: 96vh;
+    background: var(--bg-cream); border-radius: 44px;
+    box-shadow: 0 26px 80px rgba(0,0,0,0.6), 0 0 0 10px #1F2430, 0 0 0 12px rgba(0,200,150,0.5);
+    display: flex; flex-direction: column; overflow: hidden; position: relative; flex-shrink: 0;
   }
-
-  @media (max-width: 880px) {
-    .desktop-guide {
-      display: none;
-    }
-  }
-
+  @media (max-width: 860px) { .desktop-guide { display: none; } }
   @media (max-width: 539px) {
-    .app-stage {
-      padding: 0;
-      background: var(--bg-primary);
-    }
-    .phone-shell {
-      width: 100vw;
-      height: 100vh;
-      height: 100dvh;
-      max-height: none;
-      border-radius: 0;
-      box-shadow: none;
-    }
+    .app-stage { padding: 0; background: var(--bg-cream); }
+    .phone-shell { width: 100vw; height: 100vh; height: 100dvh; max-height: none; border-radius: 0; box-shadow: none; }
   }
 
-  /* ================= 顶部沉浸式角色切换条 + 微信小程序原生导航栏 ================= */
+  /* 顶部双视角切换胶带 + 微信导航栏 */
   .top-header-stack {
-    background: #231F20;
-    color: #FFFFFF;
-    padding-top: env(safe-area-inset-top, 0px);
-    flex-shrink: 0;
-    z-index: 20;
+    background: linear-gradient(135deg, #1E222B 0%, #2B3040 100%);
+    color: #FFF; flex-shrink: 0; z-index: 30;
   }
-
   .perspective-bar {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 12px 6px;
-    background: #191615;
-    border-bottom: 1px solid rgba(200, 157, 102, 0.22);
+    display: flex; gap: 6px; padding: 7px 8px 6px;
+    background: rgba(0,0,0,0.28); border-bottom: 1px solid rgba(255,255,255,0.1);
   }
-
   .p-pill {
-    flex: 1;
-    text-align: center;
-    font-size: 11.5px;
-    font-weight: 600;
-    padding: 6px 4px;
-    border-radius: 999px;
-    color: #BFB3A6;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid transparent;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: all 0.16s ease;
+    flex: 1; text-align: center; font-size: 11px; font-weight: 700;
+    padding: 6px 4px; border-radius: 999px; color: rgba(255,255,255,0.72);
+    background: rgba(255,255,255,0.08); cursor: pointer; white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis; transition: all 0.18s;
   }
-
-  .p-pill.active {
-    background: linear-gradient(135deg, #D4AF7A 0%, #B48448 100%);
-    color: #FFFFFF;
-    box-shadow: 0 2px 8px rgba(200, 157, 102, 0.35);
+  .p-pill.active-stu {
+    background: linear-gradient(90deg, var(--mint) 0%, #00B4D8 100%);
+    color: #FFF; box-shadow: 0 3px 10px rgba(0,200,150,0.45);
   }
-
+  .p-pill.active-tch {
+    background: linear-gradient(90deg, var(--purple) 0%, var(--pink) 100%);
+    color: #FFF; box-shadow: 0 3px 10px rgba(124,77,255,0.45);
+  }
   .wx-navbar {
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 14px;
-    position: relative;
+    height: 40px; display: flex; align-items: center; justify-content: space-between;
+    padding: 0 12px;
   }
-
-  .wx-nav-left {
-    width: 72px;
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    color: #E8C99B;
-    font-weight: 600;
-    cursor: pointer;
-  }
-
-  .wx-nav-title {
-    flex: 1;
-    text-align: center;
-    font-size: 16px;
-    font-weight: 600;
-    color: #FFFFFF;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
+  .wx-nav-left { font-size: 12px; font-weight: 700; color: var(--mint); cursor: pointer; display: flex; align-items: center; gap: 3px; }
+  .wx-nav-title { font-size: 15px; font-weight: 800; color: #FFF; letter-spacing: 0.3px; }
   .wx-capsule {
-    width: 74px;
-    height: 28px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.12);
-    border: 0.5px solid rgba(255, 255, 255, 0.24);
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-shrink: 0;
+    display: flex; align-items: center; background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25); border-radius: 999px;
+    padding: 3px 9px; gap: 7px; font-size: 12px; color: #FFF;
   }
 
-  .wx-cap-dots {
-    font-size: 12px;
-    letter-spacing: 1px;
-    color: #FFFFFF;
-  }
-
-  .wx-cap-line {
-    width: 0.5px;
-    height: 14px;
-    background: rgba(255, 255, 255, 0.28);
-  }
-
-  .wx-cap-circle {
-    width: 13px;
-    height: 13px;
-    border-radius: 50%;
-    border: 1.8px solid #FFFFFF;
-    position: relative;
-  }
-
-  .wx-cap-circle::after {
-    content: "";
-    position: absolute;
-    inset: 3px;
-    border-radius: 50%;
-    background: #FFFFFF;
-  }
-
-  /* ================= 页面滚动主视口 ================= */
-  .screen-scroll {
-    flex: 1;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 13px 14px 24px;
-    background: var(--bg-primary);
+  /* 主滚动视口 */
+  .view-body {
+    flex: 1; overflow-y: auto; overflow-x: hidden; padding: 10px 10px 14px;
     scroll-behavior: smooth;
   }
+  .view-body::-webkit-scrollbar { width: 0; height: 0; }
+  .sub-view { display: none; }
+  .sub-view.active { display: block; animation: fadeIn 0.18s ease; }
+  @keyframes fadeIn { from { opacity: 0.6; transform: translateY(3px); } to { opacity: 1; transform: translateY(0); } }
 
-  .screen-scroll::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-  }
-
-  /* ================= 底部小程序 TabBar ================= */
-  .wx-tabbar {
-    height: calc(56px + env(safe-area-inset-bottom, 0px));
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-    background: #FFFFFF;
-    border-top: 1px solid #ECE4D8;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-shrink: 0;
-    z-index: 20;
-  }
-
-  .tab-btn {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2px;
-    padding: 6px 0;
-    cursor: pointer;
-    color: #9E968C;
-    position: relative;
-  }
-
-  .tab-btn.active {
-    color: #B68548;
-    font-weight: 600;
-  }
-
-  .tab-icon {
-    font-size: 19px;
-    line-height: 1.1;
-  }
-
-  .tab-txt {
-    font-size: 11px;
-  }
-
-  .tab-dot-badge {
-    position: absolute;
-    top: 3px;
-    right: 24%;
-    background: #D97706;
-    color: #FFFFFF;
-    font-size: 10px;
-    font-weight: 700;
-    min-width: 16px;
-    height: 16px;
-    border-radius: 999px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 4px;
-  }
-
-  /* ================= 施坦威黑金 + 香槟暖金 通用组件体系 ================= */
+  /* 通用卡片与徽章 */
   .card {
-    background: #FFFFFF;
-    border-radius: 14px;
-    padding: 15px;
-    margin-bottom: 12px;
-    border: 1px solid #EFE8DC;
-    box-shadow: 0 4px 14px rgba(138, 110, 75, 0.05);
+    background: var(--bg-card); border-radius: 16px; padding: 11px 12px;
+    margin-bottom: 9px; box-shadow: 0 3px 12px rgba(30,34,43,0.05);
+    border: 1px solid var(--border-soft); position: relative;
   }
-
-  .card-ebony {
-    background: linear-gradient(135deg, #2B2625 0%, #1B1716 100%);
-    color: #F7EFE4;
-    border-radius: 16px;
-    padding: 16px 15px;
-    margin-bottom: 12px;
-    border: 1px solid rgba(200, 157, 102, 0.38);
-    box-shadow: 0 8px 20px rgba(28, 24, 23, 0.16);
-    position: relative;
-    overflow: hidden;
+  .sec-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 8px;
   }
-
-  /* 钢琴黑白键装饰分割条 */
-  .piano-keys-bar {
-    display: flex;
-    height: 13px;
-    background: #FFFFFF;
-    border-radius: 6px;
-    overflow: hidden;
-    border: 1px solid #E5DDD0;
-    margin: 8px 0 13px;
-  }
-
-  .pk-w {
-    flex: 1;
-    border-right: 1px solid #EAE3D5;
-    position: relative;
-    background: linear-gradient(180deg, #FFFFFF 0%, #F7F3EB 100%);
-  }
-
-  .pk-w:last-child {
-    border-right: none;
-  }
-
-  .pk-b {
-    position: absolute;
-    right: -3px;
-    top: 0;
-    width: 6px;
-    height: 8px;
-    background: #231F20;
-    border-radius: 0 0 2px 2px;
-    z-index: 2;
-  }
-
-  .section-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 14px 2px 10px;
-  }
-
-  .section-title {
-    font-size: 15.5px;
-    font-weight: 700;
-    color: #2C2623;
-    display: flex;
-    align-items: center;
-  }
-
-  .section-title::before {
-    content: "";
-    display: inline-block;
-    width: 4px;
-    height: 15px;
-    border-radius: 2px;
-    background: linear-gradient(180deg, #D4AF7A 0%, #A87B46 100%);
-    margin-right: 7px;
-  }
-
-  .section-more {
-    font-size: 12px;
-    color: #A67B44;
-    font-weight: 600;
-    cursor: pointer;
-  }
-
-  /* 按钮 */
-  .btn {
-    border: none;
-    outline: none;
-    cursor: pointer;
-    font-family: inherit;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    border-radius: 999px;
-    font-weight: 600;
-    font-size: 13px;
-    padding: 9px 18px;
-    transition: transform 0.12s ease, opacity 0.12s ease;
-  }
-
-  .btn:active {
-    transform: scale(0.97);
-  }
-
-  .btn-gold {
-    background: linear-gradient(135deg, #D4AF7A 0%, #B8894E 100%);
-    color: #FFFFFF;
-    box-shadow: 0 4px 10px rgba(184, 137, 78, 0.28);
-  }
-
-  .btn-ebony {
-    background: linear-gradient(135deg, #2D2726 0%, #1D1918 100%);
-    color: #E8C99B;
-    border: 1px solid rgba(200, 157, 102, 0.42);
-  }
-
-  .btn-outline-gold {
-    background: #FDF8F0;
-    color: #A67B44;
-    border: 1px solid #DFC39D;
-  }
-
-  .btn-outline {
-    background: #FAF7F2;
-    color: #5C534C;
-    border: 1px solid #DED4C5;
-  }
-
-  .btn-danger-outline {
-    background: #FFF6F6;
-    color: #C94A4A;
-    border: 1px solid #F0C2C2;
-  }
-
-  .btn-sm {
-    padding: 6px 13px;
-    font-size: 12px;
-  }
-
-  .btn-block {
-    width: 100%;
-    padding: 11px 18px;
-    font-size: 14px;
-  }
-
-  /* 徽章 */
+  .sec-title { font-size: 13.5px; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 5px; }
+  .sec-more { font-size: 11.5px; font-weight: 700; color: var(--blue); cursor: pointer; }
   .badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 2px 9px;
-    border-radius: 999px;
-    font-size: 11px;
-    font-weight: 600;
-    white-space: nowrap;
+    display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 999px;
+    font-size: 10.5px; font-weight: 700; line-height: 1.3;
+  }
+  .b-mint { background: var(--mint-light); color: var(--mint-dark); }
+  .b-blue { background: var(--blue-light); color: var(--blue); }
+  .b-pink { background: var(--pink-light); color: var(--pink); }
+  .b-orange { background: var(--orange-light); color: var(--orange); }
+  .b-purple { background: var(--purple-light); color: var(--purple); }
+  .b-yellow { background: var(--yellow-light); color: #B27D00; }
+  .b-coral { background: var(--coral-light); color: var(--coral); }
+
+  /* 通知横幅 */
+  .notify-banner {
+    background: linear-gradient(90deg, #FFF8E6 0%, #FFEAF2 100%);
+    border: 1px solid #FFD591; border-radius: 13px; padding: 8px 10px;
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    margin-bottom: 9px;
+  }
+  .nb-text { font-size: 11px; font-weight: 600; color: #874D00; line-height: 1.35; flex: 1; }
+  .nb-btn {
+    background: linear-gradient(135deg, var(--orange), var(--pink));
+    color: #FFF; border: none; border-radius: 999px; padding: 5px 10px;
+    font-size: 11px; font-weight: 800; cursor: pointer; flex-shrink: 0;
+    box-shadow: 0 3px 8px rgba(255,77,141,0.3);
   }
 
-  .badge-gold { background: #FDF6EC; color: #A67B44; border: 1px solid #E8D5B7; }
-  .badge-green { background: #EBF7F1; color: #287D56; border: 1px solid #CBEBD9; }
-  .badge-gray { background: #F2EFE9; color: #8C8278; border: 1px solid #E5DFD6; }
-  .badge-warning { background: #FFF7E6; color: #B86E14; border: 1px solid #F3D69B; }
-  .badge-danger { background: #FDEEEE; color: #C94A4A; border: 1px solid #F3C6C6; }
-  .badge-trial { background: #ECFDF5; color: #1F7A54; border: 1px solid #A7E3C5; }
+  /* 学员切换卡 */
+  .stu-hero-card {
+    background: linear-gradient(135deg, #FFFFFF 0%, #F2FBF9 100%);
+    border: 1.5px solid #BCEEE0; border-radius: 16px; padding: 10px 12px;
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 9px; box-shadow: 0 4px 14px rgba(0,200,150,0.08);
+  }
+  .avatar-circle {
+    width: 42px; height: 42px; border-radius: 50%; display: flex;
+    align-items: center; justify-content: center; font-size: 13.5px;
+    font-weight: 800; color: #FFF; flex-shrink: 0;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+  }
+  .av-pink { background: linear-gradient(135deg, #FF4D8D, #FF758F); }
+  .av-blue { background: linear-gradient(135deg, #2979FF, #00B4D8); }
+  .av-mint { background: linear-gradient(135deg, #00C896, #10B981); }
+  .av-purple { background: linear-gradient(135deg, #7C4DFF, #B388FF); }
 
-  .flower-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 3px;
-    background: linear-gradient(135deg, #FFF5F5 0%, #FDF4E7 100%);
-    color: #B85450;
-    border: 1px solid #F2C9C4;
-    border-radius: 999px;
-    padding: 3px 10px;
-    font-size: 11.5px;
-    font-weight: 700;
-    cursor: pointer;
+  /* 多巴胺彩色十宫格 (2x5) & 教务12宫格 (3x4) */
+  .dopamine-grid-10 {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 7px 4px; text-align: center; padding: 4px 0;
+  }
+  .dopamine-grid-12 {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 8px 6px; text-align: center; padding: 2px 0;
+  }
+  .d-item {
+    cursor: pointer; display: flex; flex-direction: column;
+    align-items: center; position: relative; transition: transform 0.14s;
+  }
+  .d-item:active { transform: scale(0.92); }
+  .d-icon {
+    width: 40px; height: 40px; border-radius: 13px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 19px; color: #FFF; margin-bottom: 4px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12); position: relative;
+  }
+  .d-label { font-size: 10.5px; font-weight: 700; color: var(--text-main); line-height: 1.2; white-space: nowrap; }
+  .red-dot-badge {
+    position: absolute; top: -5px; right: -6px;
+    background: var(--coral); color: #FFF; font-size: 9.5px; font-weight: 800;
+    min-width: 16px; height: 16px; border-radius: 999px; padding: 0 4px;
+    display: flex; align-items: center; justify-content: center;
+    border: 1.5px solid #FFF; box-shadow: 0 2px 5px rgba(255,82,82,0.45);
   }
 
-  /* ================= 首页与琴童黑金卡 ================= */
-  .hero-top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 8px;
+  /* 排课卡片与红/绿圆形斜印章 */
+  .lesson-card {
+    background: #FFFFFF; border-radius: 13px; padding: 10px 11px;
+    border: 1px solid #E2ECE9; border-left: 5px solid var(--mint);
+    position: relative; overflow: hidden; margin-top: 6px;
+  }
+  .stamp-seal {
+    position: absolute; top: 8px; right: 10px;
+    width: 48px; height: 48px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10.5px; font-weight: 900; transform: rotate(-16deg);
+    letter-spacing: 0.5px; pointer-events: none;
+  }
+  .stamp-uncheck {
+    border: 2px dashed var(--coral); color: var(--coral);
+    background: rgba(255,82,82,0.06);
+    box-shadow: inset 0 0 0 2px rgba(255,82,82,0.15);
+  }
+  .stamp-checked {
+    border: 2px solid var(--mint); color: var(--mint-dark);
+    background: rgba(0,200,150,0.08);
+    box-shadow: inset 0 0 0 2px rgba(0,200,150,0.18);
   }
 
-  .child-id-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    min-width: 0;
+  /* 带“11”大水印与红字“课”角标的月历 */
+  .cal-box {
+    position: relative; background: #FFFFFF; border-radius: 14px;
+    padding: 8px; border: 1px solid var(--border-soft); overflow: hidden;
   }
-
-  .avatar-gold {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #D8B480 0%, #9E723B 100%);
-    border: 2px solid rgba(255, 255, 255, 0.28);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 21px;
-    flex-shrink: 0;
+  .cal-watermark {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -46%);
+    font-size: 135px; font-weight: 900; color: rgba(0, 200, 150, 0.10);
+    pointer-events: none; user-select: none; line-height: 1; z-index: 0;
   }
-
-  .child-name-main {
-    font-size: 17px;
-    font-weight: 700;
-    color: #FFFFFF;
+  .cal-week-header, .cal-days-grid {
+    display: grid; grid-template-columns: repeat(7, 1fr);
+    text-align: center; position: relative; z-index: 1;
   }
-
-  .switch-baby-chip {
-    display: inline-block;
-    font-size: 10.5px;
-    color: #E8C99B;
-    background: rgba(200, 157, 102, 0.22);
-    border: 1px solid rgba(232, 201, 155, 0.45);
-    padding: 1px 8px;
-    border-radius: 999px;
-    margin-left: 6px;
-    cursor: pointer;
+  .cal-week-header div { font-size: 11px; font-weight: 700; color: var(--text-muted); padding: 4px 0 6px; }
+  .cal-day {
+    height: 40px; border-radius: 10px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; cursor: pointer;
+    position: relative; font-size: 12.5px; font-weight: 700; color: var(--text-main);
+    transition: all 0.15s;
   }
-
-  .child-stage {
-    font-size: 11.5px;
-    color: #D5C9BC;
-    margin-top: 3px;
+  .cal-day.muted { color: #CBD2E0; font-weight: 500; }
+  .cal-day.has-lesson .ke-dot {
+    position: absolute; top: 3px; right: 6px; width: 5px; height: 5px;
+    border-radius: 50%; background: var(--coral);
   }
-
-  .metrics-dual {
-    display: flex;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(232, 201, 155, 0.2);
-    border-radius: 12px;
-    padding: 11px 8px;
-    margin: 13px 0;
+  .cal-day .ke-tag {
+    font-size: 9px; font-weight: 800; color: var(--coral); line-height: 1; margin-top: 1px;
   }
-
-  .metric-box {
-    flex: 1;
-    text-align: center;
-    cursor: pointer;
+  .cal-day.selected {
+    background: var(--mint); color: #FFFFFF !important;
+    box-shadow: 0 3px 10px rgba(0,200,150,0.38);
   }
+  .cal-day.selected .ke-tag { color: #FFFFFF; }
+  .cal-day.selected .ke-dot { background: #FFFFFF; }
 
-  .metric-num {
-    font-size: 23px;
-    font-weight: 700;
-    color: #F2D3A2;
-    line-height: 1.1;
+  /* 统计宫格 (4/6/9宫格) */
+  .stat-grid-6 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .stat-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .stat-grid-9 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .stat-cell {
+    background: #F8FAFE; border: 1px solid #E6ECF5; border-radius: 11px;
+    padding: 7px 6px; text-align: center; cursor: pointer; transition: all 0.15s;
   }
+  .stat-cell:active { transform: scale(0.96); }
+  .stat-val { font-size: 15px; font-weight: 900; color: var(--text-main); line-height: 1.2; }
+  .stat-lbl { font-size: 10px; font-weight: 600; color: var(--text-sub); margin-top: 2px; }
 
-  .metric-unit {
-    font-size: 11.5px;
-    color: #D5C9BC;
-    margin-left: 2px;
+  /* 二维周课表网格 */
+  .week-table {
+    width: 100%; border-collapse: collapse; table-layout: fixed;
+    font-size: 9.5px; background: #FFF; border-radius: 10px; overflow: hidden;
   }
-
-  .metric-lbl {
-    font-size: 11px;
-    color: #C7B9AA;
-    margin-top: 3px;
+  .week-table th, .week-table td {
+    border: 1px solid #E8EDF5; padding: 3px 2px; text-align: center; vertical-align: middle;
   }
-
-  .metric-sep {
-    width: 1px;
-    height: 30px;
-    background: rgba(255, 255, 255, 0.14);
+  .week-table th { background: #F2F6FC; font-weight: 800; color: var(--text-main); font-size: 10px; }
+  .wt-slot {
+    border-radius: 6px; padding: 3px 2px; font-size: 9px; line-height: 1.15;
+    cursor: pointer; position: relative; font-weight: 700;
   }
+  .wt-slot.checked { background: var(--mint-light); color: #007A5A; border: 1px solid #99EBD4; }
+  .wt-slot.uncheck { background: #FFF0F3; color: #C92A42; border: 1px solid #FFC2CE; }
 
-  .quick-grid-4 {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 7px;
+  /* 底部 Tab 导航栏 */
+  .bottom-tabbar {
+    height: 54px; background: #FFFFFF; border-top: 1px solid var(--border-soft);
+    display: flex; align-items: center; justify-content: space-around;
+    flex-shrink: 0; z-index: 25; padding-bottom: env(safe-area-inset-bottom, 0px);
   }
-
-  .qg-item {
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 11px;
-    padding: 9px 4px;
-    text-align: center;
-    cursor: pointer;
+  .tab-btn {
+    flex: 1; display: flex; flex-direction: column; align-items: center;
+    justify-content: center; cursor: pointer; color: var(--text-muted);
+    transition: all 0.15s; padding: 4px 0;
   }
+  .tab-btn .t-ico { font-size: 18px; line-height: 1.1; margin-bottom: 2px; }
+  .tab-btn .t-txt { font-size: 10px; font-weight: 700; }
+  .tab-btn.active-stu { color: var(--mint-dark); }
+  .tab-btn.active-tch { color: var(--purple); }
 
-  .qg-icon {
-    width: 32px;
-    height: 32px;
-    margin: 0 auto 5px;
-    border-radius: 10px;
-    background: rgba(200, 157, 102, 0.22);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-  }
-
-  .qg-title {
-    font-size: 12px;
-    font-weight: 600;
-    color: #FFFFFF;
-  }
-
-  .qg-sub {
-    font-size: 10px;
-    color: #C4B7A8;
-    margin-top: 1px;
-  }
-
-  /* 近期提醒 */
-  .next-card {
-    border-left: 4px solid #C89D66;
-    background: #FFFDF9;
-    cursor: pointer;
-  }
-
-  .next-time-big {
-    font-size: 15px;
-    font-weight: 700;
-    color: #231F20;
-    margin: 6px 0 4px;
-  }
-
-  .next-clock-gold {
-    color: #C89D66;
-    margin-left: 8px;
-  }
-
-  /* 老师名片 */
-  .teacher-top {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 11px;
-  }
-
-  .teacher-avatar-lg {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #D4AF7A 0%, #9E723B 100%);
-    border: 2px solid rgba(255, 255, 255, 0.28);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 25px;
-    flex-shrink: 0;
-  }
-
-  .teacher-name {
-    font-size: 18px;
-    font-weight: 700;
-    color: #FFFFFF;
-    margin-right: 7px;
-  }
-
-  .teacher-role-tag {
-    font-size: 10.5px;
-    color: #231F20;
-    background: linear-gradient(90deg, #E8C99B 0%, #D4AF7A 100%);
-    padding: 2px 8px;
-    border-radius: 999px;
-    font-weight: 700;
-  }
-
-  .gold-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 10px;
-  }
-
-  .gold-tag {
-    font-size: 11px;
-    color: #E8C99B;
-    background: rgba(200, 157, 102, 0.16);
-    border: 1px solid rgba(232, 201, 155, 0.35);
-    padding: 2px 8px;
-    border-radius: 6px;
-  }
-
-  .studio-contact-box {
-    background: rgba(255, 255, 255, 0.07);
-    border-radius: 10px;
-    padding: 10px;
-    margin-top: 11px;
-  }
-
-  /* ================= 二胎切换通用胶囊栏 ================= */
-  .child-switcher {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    background: #FFFFFF;
-    border: 1px solid #EAE1D3;
-    border-radius: 12px;
-    padding: 8px 11px;
-    margin-bottom: 11px;
-    overflow-x: auto;
-  }
-
-  .cs-chip {
-    padding: 4px 11px;
-    border-radius: 999px;
-    font-size: 12px;
-    background: #FAF7F2;
-    color: #5C534C;
-    border: 1px solid #E6DEC8;
-    cursor: pointer;
-    white-space: nowrap;
-  }
-
-  .cs-chip.active {
-    background: #231F20;
-    color: #E8C99B;
-    border-color: #C89D66;
-    font-weight: 600;
-  }
-
-  /* ================= 21天约课横向日历与时段卡 ================= */
-  .date-strip {
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    padding-bottom: 4px;
-  }
-
-  .date-strip::-webkit-scrollbar {
-    height: 0;
-  }
-
-  .date-box {
-    width: 66px;
-    flex-shrink: 0;
-    padding: 9px 5px;
-    border-radius: 11px;
-    background: #FAF7F2;
-    border: 1.5px solid #EFECE6;
-    text-align: center;
-    cursor: pointer;
-    position: relative;
-  }
-
-  .date-box.active {
-    background: linear-gradient(135deg, #241F1C 0%, #3A312C 100%);
-    border-color: #C89D66;
-    color: #FFFFFF;
-  }
-
-  .db-week { font-size: 11.5px; color: #6B6158; font-weight: 600; }
-  .date-box.active .db-week { color: #E5C185; }
-  .db-md { font-size: 14px; font-weight: 700; margin: 3px 0 5px; color: #231F20; }
-  .date-box.active .db-md { color: #FFFFFF; }
-  .db-cnt { font-size: 10px; padding: 1px 6px; border-radius: 999px; background: #E8F5EE; color: #287D56; display: inline-block; }
-  .date-box.active .db-cnt { background: rgba(200, 157, 102, 0.28); color: #E5C185; }
-  .db-mine { position: absolute; top: 3px; right: 3px; background: #C89D66; color: #FFF; font-size: 9px; padding: 1px 4px; border-radius: 4px; }
-
-  .slot-card {
-    background: #FFFFFF;
-    border-radius: 13px;
-    padding: 14px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 1px solid #EFE8DC;
-    border-left: 4px solid #287D56;
-  }
-
-  .slot-card.mine { border-left-color: #C89D66; background: #FFFDF9; }
-  .slot-card.booked { border-left-color: #D5CFC7; background: #FDFBF8; }
-  .slot-card.closed { border-left-color: #DDD6CC; background: #F8F5F0; opacity: 0.68; }
-
-  .slot-time { font-size: 18px; font-weight: 700; color: #231F20; }
-  .slot-meta { font-size: 12px; color: #8C827A; margin-top: 4px; display: flex; gap: 10px; }
-
-  /* ================= 课表与 5 星课后陪练作业卡 ================= */
-  .tabs-bar {
-    display: flex;
-    background: #FFFFFF;
-    border-radius: 12px;
-    padding: 4px;
-    margin-bottom: 11px;
-    border: 1px solid #EFE8DC;
-  }
-
-  .tab-pill {
-    flex: 1;
-    text-align: center;
-    padding: 8px 2px;
-    font-size: 12.5px;
-    color: #8C827A;
-    font-weight: 500;
-    cursor: pointer;
-    position: relative;
-    border-radius: 9px;
-  }
-
-  .tab-pill.active {
-    color: #231F20;
-    font-weight: 700;
-    background: #FAF5EC;
-  }
-
-  .homework-box {
-    margin-top: 11px;
-    background: linear-gradient(180deg, #FFFDF9 0%, #FAF3E6 100%);
-    border: 1px solid #E8D7BE;
-    border-left: 4px solid #C89D66;
-    border-radius: 12px;
-    padding: 13px;
-  }
-
-  .star-gold { color: #E3A03B; font-size: 13.5px; letter-spacing: 1px; }
-
-  /* ================= 练琴打卡与老师后台组件 ================= */
-  .pill-row { display: flex; flex-wrap: wrap; gap: 7px; margin: 7px 0; }
-  .choice-chip {
-    padding: 6px 12px;
-    border-radius: 999px;
-    background: #FAF7F2;
-    border: 1.5px solid #EAE2D3;
-    font-size: 12px;
-    color: #5C534C;
-    cursor: pointer;
-    font-weight: 500;
-  }
-  .choice-chip.active {
-    background: #231F20;
-    color: #E8C99B;
-    border-color: #C89D66;
-    font-weight: 600;
-  }
-
-  .form-input, .form-textarea {
-    width: 100%;
-    background: #FAF7F2;
-    border: 1px solid #E6DEC8;
-    border-radius: 10px;
-    padding: 9px 12px;
-    font-size: 13.5px;
-    color: #2C2623;
-    font-family: inherit;
-    outline: none;
-  }
-
-  .form-textarea { height: 70px; resize: none; line-height: 1.45; }
-
-  .admin-grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-top: 12px;
-  }
-
-  .ag-cell {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(232, 201, 155, 0.2);
-    border-radius: 11px;
-    padding: 10px 6px;
-    text-align: center;
-    cursor: pointer;
-  }
-
-  .ag-num { font-size: 20px; font-weight: 700; color: #F2D3A2; }
-  .ag-lbl { font-size: 10.5px; color: #CFC3B6; margin-top: 2px; }
-
-  /* ================= 底部抽屉与居中弹窗系统 ================= */
+  /* 弹窗 Modal & Toast */
   .modal-mask {
-    position: absolute;
-    inset: 0;
-    background: rgba(24, 20, 18, 0.6);
-    z-index: 60;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    animation: fadeIn 0.16s ease;
+    position: absolute; inset: 0; background: rgba(18,22,32,0.58);
+    backdrop-filter: blur(3px); z-index: 90; display: none;
+    align-items: center; justify-content: center; padding: 16px;
   }
-
-  .modal-mask.center {
-    align-items: center;
-    padding: 20px;
+  .modal-mask.show { display: flex; animation: fadeIn 0.18s ease; }
+  .modal-box {
+    width: 100%; max-height: 82%; background: #FFFFFF; border-radius: 22px;
+    padding: 16px; overflow-y: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    position: relative;
   }
-
-  .modal-sheet {
-    width: 100%;
-    max-height: 82%;
-    overflow-y: auto;
-    background: #FFFFFF;
-    border-radius: 22px 22px 0 0;
-    padding: 18px 17px calc(22px + env(safe-area-inset-bottom, 0px));
-    animation: slideUp 0.2s ease-out;
+  .toast-pop {
+    position: absolute; top: 96px; left: 50%; transform: translateX(-50%);
+    background: rgba(20,24,34,0.92); color: #FFF; padding: 9px 16px;
+    border-radius: 999px; font-size: 12px; font-weight: 700; z-index: 120;
+    display: none; white-space: nowrap; box-shadow: 0 8px 24px rgba(0,0,0,0.28);
   }
-
-  .modal-dialog {
-    width: 100%;
-    background: #FFFFFF;
-    border-radius: 20px;
-    padding: 22px 18px 18px;
-    text-align: center;
-    border: 1px solid #EDE2D0;
-    box-shadow: 0 14px 38px rgba(0, 0, 0, 0.28);
-    animation: popIn 0.18s ease-out;
+  .btn-dopamine {
+    border: none; border-radius: 10px; padding: 7px 12px; font-size: 11.5px;
+    font-weight: 800; cursor: pointer; transition: all 0.15s;
+    display: inline-flex; align-items: center; justify-content: center; gap: 4px;
   }
-
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-  @keyframes popIn { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
-
-  /* Toast 轻提示 */
-  .wx-toast {
-    position: absolute;
-    top: 46%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(35, 31, 32, 0.92);
-    color: #F7EFE4;
-    border: 1px solid rgba(200, 157, 102, 0.45);
-    padding: 11px 20px;
-    border-radius: 12px;
-    font-size: 13px;
-    font-weight: 600;
-    z-index: 95;
-    pointer-events: none;
-    white-space: nowrap;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-  }
-
-  /* 演示点击金光涟漪 */
-  .touch-ripple {
-    position: absolute;
-    width: 44px;
-    height: 44px;
-    margin-left: -22px;
-    margin-top: -22px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(212, 175, 122, 0.72) 0%, rgba(200, 157, 102, 0.15) 65%, transparent 100%);
-    border: 2px solid #C89D66;
-    z-index: 99;
-    pointer-events: none;
-    animation: rippleOut 0.52s ease-out forwards;
-  }
-
-  @keyframes rippleOut {
-    0% { transform: scale(0.45); opacity: 1; }
-    100% { transform: scale(1.45); opacity: 0; }
-  }
+  .btn-mint { background: linear-gradient(135deg, var(--mint), #00B4D8); color: #FFF; }
+  .btn-purple { background: linear-gradient(135deg, var(--purple), var(--pink)); color: #FFF; }
+  .btn-outline { background: #F4F7FC; color: var(--text-main); border: 1px solid #DCE3F0; }
 </style>
 </head>
 <body>
-
 <div class="app-stage">
-  <!-- 电脑端左侧专属亮点导览（手机打开时自动隐藏，进入全屏小程序模式） -->
+  <!-- 电脑端左侧多巴胺交互引导栏 -->
   <aside class="desktop-guide">
-    <div class="dg-badge">STEINWAY EBONY &amp; CHAMPAGNE GOLD</div>
-    <h1 class="dg-title">刘妤钢琴工作室<br>专属小程序交互体验包</h1>
-    <p class="dg-sub">
-      右侧为 1:1 真实可点按的小程序界面。您可直接点击顶部胶囊在「家长端 / 新生体验 / 刘妤老师教务后台」三大视角间自由切换试玩。
-    </p>
-
-    <div class="dg-role-cards">
-      <button class="dg-role-btn active" id="desk-role-parent" onclick="App.switchRole('parent')">
-        <div>
-          <div class="dg-role-title">👨‍👩‍👧 琴童家长端视角（已绑二胎）</div>
-          <div class="dg-role-desc">体验 21天选课扣课时、看5星陪练单、每日打卡领小红花</div>
-        </div>
-        <span>›</span>
-      </button>
-      <button class="dg-role-btn" id="desk-role-visitor" onclick="App.switchRole('visitor')">
-        <div>
-          <div class="dg-role-title">🌱 新生访客视角（0课时试听）</div>
-          <div class="dg-role-desc">体验 0课时预约体验课，或输入绑定码 RUI666 认领档案</div>
-        </div>
-        <span>›</span>
-      </button>
-      <button class="dg-role-btn" id="desk-role-teacher" onclick="App.switchRole('teacher')">
-        <div>
-          <div class="dg-role-title">👩‍🏫 刘妤老师手机后台视角</div>
-          <div class="dg-role-desc">体验按周批量排课、老生固定连排、发陪练单与课时账本</div>
-        </div>
-        <span>›</span>
-      </button>
-    </div>
-
+    <div class="dg-badge">🎹 V3.5 多巴胺高饱和全功能版</div>
+    <h1 class="dg-title">刘妤钢琴工作室<br>微信小程序交互预览</h1>
+    <p class="dg-sub">100% 真实可点击！涵盖学生/家长十宫格、带“课”字月历、合同管理、课前1天&1小时双微信提醒、老师二维周课表与经营数据。</p>
+    <button class="dg-role-btn active" id="dg-btn-stu" onclick="switchRole('student')">
+      <div>
+        <div style="font-size:14px;font-weight:800;">👦 学生/家长视角 (多巴胺十宫格)</div>
+        <div style="font-size:11.5px;opacity:0.8;">查课表 · 我的合同 · 微信提醒 · 练琴小红花</div>
+      </div>
+      <span>👉</span>
+    </button>
+    <button class="dg-role-btn" id="dg-btn-tch" onclick="switchRole('teacher')">
+      <div>
+        <div style="font-size:14px;font-weight:800;">👩‍🏫 刘妤老师工作台 (12宫格教务)</div>
+        <div style="font-size:11.5px;opacity:0.8;">选学生选合同排课 · 二维周课表 · 签到 · 经营统计</div>
+      </div>
+      <span>👉</span>
+    </button>
     <div class="dg-features">
-      <div>✨ <strong>隐私安全脱敏</strong>：家长看他人排课仅显示「*子睿同学」</div>
-      <div>✨ <strong>分级请假保护</strong>：课前12h内自动转为提交请假由刘妤老师审批</div>
-      <div>✨ <strong>零抽成私域资产</strong>：独立部署在刘妤老师个人/琴房名下</div>
+      ✨ <strong>试玩亮点：</strong><br>
+      • 点击顶部横幅 <strong>[开启提醒]</strong> 体验 1:1 微信上课通知<br>
+      • 点击学生端 <strong>彩色十宫格</strong> 或老师端 <strong>教务12宫格</strong> 任意图标<br>
+      • 在老师端点击 <strong>[+新增排课]</strong> 体验“选学生➡️选合同➡️排课”
     </div>
   </aside>
 
-  <!-- 手机真机交互主屏幕 -->
-  <main class="phone-shell" id="phone-shell">
+  <!-- 手机真机容器 -->
+  <main class="phone-shell">
+    <!-- 顶部双视角一键切换胶带 + 微信导航栏 -->
     <header class="top-header-stack">
-      <!-- 顶部三视角切换胶囊栏 -->
       <div class="perspective-bar">
-        <div class="p-pill active" id="pill-parent" onclick="App.switchRole('parent')">👨‍👩‍👧 家长视角</div>
-        <div class="p-pill" id="pill-visitor" onclick="App.switchRole('visitor')">🌱 新生体验</div>
-        <div class="p-pill" id="pill-teacher" onclick="App.switchRole('teacher')">👩‍🏫 刘妤老师后台</div>
-      </div>
-
-      <!-- 微信小程序原生风格标题栏 -->
-      <div class="wx-navbar">
-        <div class="wx-nav-left" id="nav-back-btn" onclick="App.goBack()"></div>
-        <div class="wx-nav-title" id="nav-title">刘妤钢琴工作室</div>
-        <div class="wx-capsule">
-          <span class="wx-cap-dots">•••</span>
-          <span class="wx-cap-line"></span>
-          <span class="wx-cap-circle"></span>
+        <div class="p-pill active-stu" id="pill-stu" onclick="switchRole('student')">
+          👦 学生/家长视角 (多巴胺十宫格·查课表/合同/提醒)
         </div>
+        <div class="p-pill" id="pill-tch" onclick="switchRole('teacher')">
+          👩‍🏫 刘妤老师工作台 (排课/周课表/签到/合同/经营)
+        </div>
+      </div>
+      <div class="wx-navbar">
+        <div class="wx-nav-left" onclick="handleQuickSwitch()" id="wx-left-switch">⇄ 切老师端</div>
+        <div class="wx-nav-title" id="wx-nav-title">刘妤钢琴工作室</div>
+        <div class="wx-capsule"><span>•••</span><span style="opacity:0.35">|</span><span>⊙</span></div>
       </div>
     </header>
 
-    <!-- 动态渲染内容区 -->
-    <section class="screen-scroll" id="screen-body"></section>
+    <!-- 滚动内容区 -->
+    <div class="view-body" id="view-body">
 
-    <!-- 底部小程序 TabBar -->
-    <nav class="wx-tabbar" id="wx-tabbar"></nav>
+      <!-- ==================== 👦 学生/家长视角 Sub-Tab 1: 🏠 学生首页 ==================== -->
+      <section class="sub-view active" id="stu-tab-0">
+        <!-- 顶部通知横幅 -->
+        <div class="notify-banner">
+          <div class="nb-text">🔔 <strong>刘妤钢琴工作室</strong> · 开启后每次上课前1天和前1小时自动接收微信提醒</div>
+          <button class="nb-btn" id="btn-enable-notify" onclick="openWxRemindModal()">开启提醒</button>
+        </div>
 
-    <!-- 动态弹窗层与 Toast 层 -->
-    <div id="modal-container"></div>
-    <div id="toast-container"></div>
+        <!-- 当前学员切换卡 -->
+        <div class="stu-hero-card">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="avatar-circle av-pink" id="stu-cur-avatar">翊菱</div>
+            <div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <span style="font-size:15px;font-weight:900;" id="stu-cur-name">马翊菱</span>
+                <span class="badge b-mint">在读学员</span>
+              </div>
+              <div style="font-size:11px;font-weight:700;color:var(--text-sub);margin-top:2px;" id="stu-cur-contracts">
+                (钢琴半年·剩<strong style="color:var(--mint-dark)">18</strong>节 | 钢琴季度·剩<strong style="color:var(--orange)">6</strong>节)
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <button class="btn-dopamine btn-outline" style="padding:5px 7px;font-size:13px;" onclick="openStuQrModal()" title="学员签到码">🏁</button>
+            <button class="btn-dopamine btn-mint" style="padding:5px 9px;font-size:11px;" onclick="openSwitchStudentModal()">切换学员 ▾</button>
+          </div>
+        </div>
+
+        <!-- 多巴胺彩色十宫格 -->
+        <div class="card" style="padding:10px 8px;">
+          <div class="dopamine-grid-10">
+            <div class="d-item" onclick="switchStuTab(1)">
+              <div class="d-icon" style="background:linear-gradient(135deg,#00C896,#00E5A3)">📅</div>
+              <span class="d-label">我的课表</span>
+            </div>
+            <div class="d-item" onclick="openRuleModal()">
+              <div class="d-icon" style="background:linear-gradient(135deg,#2979FF,#00B0FF)">📋</div>
+              <span class="d-label">排课说明</span>
+            </div>
+            <div class="d-item" onclick="openFeedbackModal()">
+              <div class="d-icon" style="background:linear-gradient(135deg,#FF6B35,#FF9E44)">⭐</div>
+              <span class="d-label">课堂反馈</span>
+            </div>
+            <div class="d-item" onclick="switchStuTab(2)">
+              <div class="d-icon" style="background:linear-gradient(135deg,#FF4D8D,#FF80AB)"><span class="red-dot-badge">🌺</span>🌺</div>
+              <span class="d-label">我的作业</span>
+            </div>
+            <div class="d-item" onclick="openLeaveModal('2026-11-08 11:00-11:45')">
+              <div class="d-icon" style="background:linear-gradient(135deg,#7C4DFF,#B388FF)">🏖️</div>
+              <span class="d-label">请假</span>
+            </div>
+            <div class="d-item" onclick="openAttendanceModal()">
+              <div class="d-icon" style="background:linear-gradient(135deg,#00BFA5,#1DE9B6)">✅</div>
+              <span class="d-label">考勤</span>
+            </div>
+            <div class="d-item" onclick="switchStuTab(2)">
+              <div class="d-icon" style="background:linear-gradient(135deg,#FFB800,#FFD54F)">📑</div>
+              <span class="d-label">我的合同</span>
+            </div>
+            <div class="d-item" onclick="openSwitchStudentModal()">
+              <div class="d-icon" style="background:linear-gradient(135deg,#536DFE,#8C9EFF)">👧</div>
+              <span class="d-label">学员</span>
+            </div>
+            <div class="d-item" onclick="switchStuTab(3)">
+              <div class="d-icon" style="background:linear-gradient(135deg,#FF5252,#FF8A80)">👤</div>
+              <span class="d-label">个人信息</span>
+            </div>
+            <div class="d-item" onclick="switchRole('teacher')">
+              <div class="d-icon" style="background:linear-gradient(135deg,#651FFF,#D500F9)">👩‍🏫</div>
+              <span class="d-label">去老师端</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 最近一周排课时间轴 -->
+        <div class="card">
+          <div class="sec-head">
+            <div class="sec-title">🗓️ 最近一周排课 <span class="badge b-blue">2026-11-08 周日</span></div>
+            <div class="sec-more" onclick="switchStuTab(1)">带“课”字月历 ›</div>
+          </div>
+          <div class="lesson-card" id="home-lesson-card">
+            <div class="stamp-seal stamp-uncheck" id="home-lesson-stamp">未点名</div>
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">
+              <span class="badge b-blue" style="background:#2979FF;color:#FFF;">常规课</span>
+              <span style="font-size:13.5px;font-weight:800;">少儿钢琴一对一</span>
+            </div>
+            <div style="font-size:11.5px;color:var(--text-sub);display:flex;flex-wrap:wrap;gap:8px;margin-bottom:7px;font-weight:600;">
+              <span>🕒 <strong>11:00-11:45</strong></span>
+              <span>📅 1课时</span>
+              <span>☺ 马翊菱</span>
+              <span>👤 刘妤</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px dashed #E5ECE9;padding-top:6px;">
+              <span style="font-size:10.5px;color:var(--mint-dark);font-weight:700;">📍 1号施坦威三角琴房 · 扣[钢琴半年]</span>
+              <button class="btn-dopamine btn-outline" style="padding:3px 9px;font-size:10.5px;color:var(--coral);border-color:#FFCDD2;" onclick="openLeaveModal('2026-11-08 11:00-11:45')">申请请假</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 保留亮点①：🎹 刘妤老师专属名片介绍卡 -->
+        <div class="card" style="background:linear-gradient(135deg,#1E222B 0%,#2E3446 100%);color:#FFF;border:none;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;">
+            <div style="display:flex;align-items:center;gap:9px;">
+              <div class="avatar-circle" style="background:linear-gradient(135deg,#FFB800,#FF6B35);width:40px;height:40px;font-size:18px;">🎹</div>
+              <div>
+                <div style="display:flex;align-items:center;gap:6px;">
+                  <span style="font-size:14.5px;font-weight:900;">刘妤 老师</span>
+                  <span class="badge" style="background:linear-gradient(90deg,#FFB800,#FF6B35);color:#FFF;">主理人 / 硕士亲授</span>
+                </div>
+                <div style="font-size:10.5px;color:rgba(255,255,255,0.78);margin-top:1px;">音乐学院钢琴表演硕士 · 10年少儿与考级一线教学</div>
+              </div>
+            </div>
+            <button class="btn-dopamine btn-mint" style="padding:5px 9px;font-size:10.5px;" onclick="copyWechat()">复制微信</button>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px;">
+            <span class="badge" style="background:rgba(0,200,150,0.22);color:#5SF5C8;color:#64FFDA;">✨ 10年亲授经验</span>
+            <span class="badge" style="background:rgba(41,121,255,0.25);color:#82B1FF;">🎼 施坦威独立琴房</span>
+            <span class="badge" style="background:rgba(255,77,141,0.25);color:#FF80AB;">🏆 英皇/音协考级指导</span>
+            <span class="badge" style="background:rgba(255,184,0,0.25);color:#FFE57F;">📍 星海音乐创意园A座302</span>
+          </div>
+        </div>
+
+        <!-- 保留亮点②：🎵 开设钢琴课程种类展示 -->
+        <div class="card" style="margin-bottom:4px;">
+          <div class="sec-head" style="margin-bottom:6px;">
+            <div class="sec-title">🎵 开设钢琴课程体系 <span class="badge b-pink">4大精品课</span></div>
+            <div class="sec-more" onclick="openTrialModal()">🌱 新生免费体验预约 ›</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+            <div style="background:#F3FBF8;border:1px solid #C5F2E2;border-radius:10px;padding:6px 8px;cursor:pointer;" onclick="openTrialModal('少儿启蒙趣味课')">
+              <div style="font-size:11.5px;font-weight:800;color:#008763;">🎹 少儿启蒙趣味课</div>
+              <div style="font-size:10px;color:var(--text-sub);margin-top:2px;">4-7岁 · 趣味识谱与手型</div>
+            </div>
+            <div style="background:#FFF4F7;border:1px solid #FFD0E0;border-radius:10px;padding:6px 8px;cursor:pointer;" onclick="openTrialModal('英皇/音协考级冲刺课')">
+              <div style="font-size:11.5px;font-weight:800;color:#D81B60;">🏆 英皇/音协考级课</div>
+              <div style="font-size:10px;color:var(--text-sub);margin-top:2px;">1-10级曲目精修+乐理</div>
+            </div>
+            <div style="background:#F0F6FF;border:1px solid #C7DFFF;border-radius:10px;padding:6px 8px;cursor:pointer;" onclick="openTrialModal('青少年古典进阶课')">
+              <div style="font-size:11.5px;font-weight:800;color:#1565C0;">🎼 青少年进阶课</div>
+              <div style="font-size:10px;color:var(--text-sub);margin-top:2px;">巴赫/肖邦触键表现力</div>
+            </div>
+            <div style="background:#FFF9EB;border:1px solid #FFE49E;border-radius:10px;padding:6px 8px;cursor:pointer;" onclick="openTrialModal('成人流行钢琴治愈课')">
+              <div style="font-size:11.5px;font-weight:800;color:#B27400;">✨ 成人流行钢琴课</div>
+              <div style="font-size:10px;color:var(--text-sub);margin-top:2px;">零基础动漫影视金曲弹唱</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 👦 学生/家长视角 Sub-Tab 2: 📅 我的课表 (带“课”字月历) ==================== -->
+      <section class="sub-view" id="stu-tab-1">
+        <div class="card">
+          <div class="sec-head" style="margin-bottom:6px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <button class="btn-dopamine btn-outline" style="padding:3px 8px;" onclick="showToast('已切换至 2026年10月')">&lt;</button>
+              <span style="font-size:14.5px;font-weight:900;">2026年11月</span>
+              <button class="btn-dopamine btn-outline" style="padding:3px 8px;" onclick="showToast('已切换至 2026年12月')">&gt;</button>
+            </div>
+            <div style="display:flex;gap:5px;align-items:center;">
+              <span class="badge b-coral">● 红字“课”代表有排课</span>
+              <span class="badge b-mint">支持提前请假</span>
+            </div>
+          </div>
+
+          <!-- 1:1 复刻带 11 月大水印与红字“课”角标的月历 -->
+          <div class="cal-box">
+            <div class="cal-watermark">11</div>
+            <div class="cal-week-header">
+              <div>日</div><div>一</div><div>二</div><div>三</div><div>四</div><div>五</div><div>六</div>
+            </div>
+            <div class="cal-days-grid" id="stu-cal-grid">
+              <!-- 第一周 1-7 -->
+              <div class="cal-day has-lesson" onclick="selectStuCalDay(1)"><span>1</span><span class="ke-dot"></span><span class="ke-tag">课</span></div>
+              <div class="cal-day" onclick="selectStuCalDay(2)"><span>2</span></div>
+              <div class="cal-day" onclick="selectStuCalDay(3)"><span>3</span></div>
+              <div class="cal-day has-lesson" onclick="selectStuCalDay(4)"><span>4</span><span class="ke-dot"></span><span class="ke-tag">课</span></div>
+              <div class="cal-day" onclick="selectStuCalDay(5)"><span>5</span></div>
+              <div class="cal-day" onclick="selectStuCalDay(6)"><span>6</span></div>
+              <div class="cal-day" onclick="selectStuCalDay(7)"><span>7</span></div>
+              <!-- 第二周 8-14 -->
+              <div class="cal-day has-lesson selected" id="stu-day-8" onclick="selectStuCalDay(8)"><span>8</span><span class="ke-dot"></span><span class="ke-tag">课</span></div>
+              <div class="cal-day" onclick="selectStuCalDay(9)"><span>9</span></div>
+              <div class="cal-day" onclick="selectStuCalDay(10)"><span>10</span></div>
+              <div class="cal-day has-lesson" onclick="selectStuCalDay(11)"><span>11</span><span class="ke-dot"></span><span class="ke-tag">课</span></div>
+              <div class="cal-day" onclick="selectStuCalDay(12)"><span>12</span></div>
+              <div class="cal-day" onclick="selectStuCalDay(13)"><span>13</span></div>
+              <div class="cal-day" onclick="selectStuCalDay(14)"><span>14</span></div>
+              <!-- 第三周 15-21 -->
+              <div class="cal-day has-lesson" onclick="selectStuCalDay(15)"><span>15</span><span class="ke-dot"></span><span class="ke-tag">课</span></div>
+              <div class="cal-day" onclick="selectStuCalDay(16)"><span>16</span></div>
+              <div class="cal-day" onclick="selectStuCalDay(17)"><span>17</span></div>
+              <div class="cal-day has-lesson" onclick="selectStuCalDay(18)"><span>18</span><span class="ke-dot"></span><span class="ke-tag">课</span></div>
+              <div class="cal-day" onclick="selectStuCalDay(19)"><span>19</span></div>
+              <div class="cal-day" onclick="selectStuCalDay(20)"><span>20</span></div>
+              <div class="cal-day" onclick="selectStuCalDay(21)"><span>21</span></div>
+              <!-- 第四周 22-28 -->
+              <div class="cal-day has-lesson" onclick="selectStuCalDay(22)"><span>22</span><span class="ke-dot"></span><span class="ke-tag">课</span></div>
+              <div class="cal-day" onclick="selectStuCalDay(23)"><span>23</span></div>
+              <div class="cal-day" onclick="selectStuCalDay(24)"><span>24</span></div>
+              <div class="cal-day" onclick="selectStuCalDay(25)"><span>25</span></div>
+              <div class="cal-day" onclick="selectStuCalDay(26)"><span>26</span></div>
+              <div class="cal-day" onclick="selectStuCalDay(27)"><span>27</span></div>
+              <div class="cal-day" onclick="selectStuCalDay(28)"><span>28</span></div>
+              <!-- 第五周 29-30 -->
+              <div class="cal-day has-lesson" onclick="selectStuCalDay(29)"><span>29</span><span class="ke-dot"></span><span class="ke-tag">课</span></div>
+              <div class="cal-day" onclick="selectStuCalDay(30)"><span>30</span></div>
+              <div class="cal-day muted"><span>1</span></div>
+              <div class="cal-day muted"><span>2</span></div>
+              <div class="cal-day muted"><span>3</span></div>
+              <div class="cal-day muted"><span>4</span></div>
+              <div class="cal-day muted"><span>5</span></div>
+            </div>
+          </div>
+
+          <!-- 选中日排课卡片 -->
+          <div class="lesson-card" style="margin-top:8px;">
+            <div class="stamp-seal stamp-uncheck" id="cal-lesson-stamp">未点名</div>
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+              <span class="badge b-blue" style="background:#2979FF;color:#FFF;">常规课</span>
+              <span style="font-size:13px;font-weight:800;" id="cal-sel-title">2026-11-08 (周日) 少儿钢琴一对一</span>
+            </div>
+            <div style="font-size:11px;color:var(--text-sub);display:flex;gap:8px;margin-bottom:6px;font-weight:600;">
+              <span>🕒 11:00-11:45</span>
+              <span>📅 1课时</span>
+              <span>☺ 马翊菱</span>
+              <span>👤 刘妤</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:10.5px;color:var(--text-muted);">🔒 隐私保护：其他家长视角显示为 *翊菱同学</span>
+              <button class="btn-dopamine btn-purple" style="padding:4px 10px;font-size:10.5px;" onclick="openLeaveModal('2026-11-08 11:00-11:45')">向刘妤老师申请请假</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 同屏展示：我的合同 [钢琴半年/季度] -->
+        <div class="card">
+          <div class="sec-head" style="margin-bottom:6px;">
+            <div class="sec-title">📑 我的合同 (课时透明对账)</div>
+            <div class="sec-more" onclick="switchStuTab(2)">查看扣课流水 ›</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;">
+            <div style="background:#F2FBF8;border:1px solid #B5EEDF;border-radius:11px;padding:8px 9px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:11.5px;font-weight:800;">马翊菱 <span style="color:var(--pink)">♀</span></span>
+                <span class="badge b-mint">有效</span>
+              </div>
+              <div style="font-size:12px;font-weight:900;color:var(--text-main);margin:3px 0;">合同：钢琴半年</div>
+              <div style="font-size:10.5px;color:var(--text-sub);">总课时：<strong>24</strong> | 剩余：<strong style="color:var(--mint-dark);font-size:13px;">18</strong>节</div>
+            </div>
+            <div style="background:#FFF8EE;border:1px solid #FFE0B2;border-radius:11px;padding:8px 9px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:11.5px;font-weight:800;">马翊菱 <span style="color:var(--pink)">♀</span></span>
+                <span class="badge b-orange">有效</span>
+              </div>
+              <div style="font-size:12px;font-weight:900;color:var(--text-main);margin:3px 0;">合同：考级集训季度</div>
+              <div style="font-size:10.5px;color:var(--text-sub);">总课时：<strong>12</strong> | 剩余：<strong style="color:var(--orange);font-size:13px;">6</strong>节</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 同屏展示：课前1天 & 课前1小时微信《上课提醒通知》双卡片 -->
+        <div class="card" style="margin-bottom:4px;">
+          <div class="sec-head" style="margin-bottom:6px;">
+            <div class="sec-title">🔔 微信《上课提醒通知》双保险</div>
+            <span class="badge b-mint">已同步推送给家长与刘妤老师</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;">
+            <div style="background:#F7F9FC;border:1px solid #DCE5F2;border-top:3px solid var(--blue);border-radius:10px;padding:7px 8px;">
+              <div style="font-size:10.5px;font-weight:800;color:var(--blue);margin-bottom:3px;">💬 课前1天微信提醒</div>
+              <div style="font-size:10px;color:var(--text-main);line-height:1.4;">
+                <strong>时间：</strong>2026年11月08日 星期日 16:10-16:55 (明天)<br>
+                <strong>地点：</strong>刘妤钢琴工作室
+              </div>
+            </div>
+            <div style="background:#F7F9FC;border:1px solid #DCE5F2;border-top:3px solid var(--orange);border-radius:10px;padding:7px 8px;">
+              <div style="font-size:10.5px;font-weight:800;color:var(--orange);margin-bottom:3px;">⏰ 课前1小时微信提醒</div>
+              <div style="font-size:10px;color:var(--text-main);line-height:1.4;">
+                <strong>时间：</strong>2026年11月08日 星期日 11:45-12:30<br>
+                <strong>地点：</strong>刘妤钢琴工作室
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 👦 学生/家长视角 Sub-Tab 3: 📑 我的合同 & 练琴小红花 ==================== -->
+      <section class="sub-view" id="stu-tab-2">
+        <!-- 1:1 复刻学生图3：我的合同 -->
+        <div class="card">
+          <div class="sec-head">
+            <div class="sec-title">📑 我的合同档案 <span class="badge b-mint">2份有效合同</span></div>
+            <div class="sec-more" onclick="openAttendanceModal()">扣课明细 ›</div>
+          </div>
+          <!-- 合同 1 -->
+          <div style="background:linear-gradient(135deg,#F2FBF8,#FFFFFF);border:1.5px solid #AEEAD8;border-radius:13px;padding:10px 12px;margin-bottom:8px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <span style="font-size:13px;font-weight:900;">马翊菱 <span style="color:var(--pink)">♀</span> | 合同：钢琴半年</span>
+              <span class="badge b-mint" style="font-size:11px;">有效</span>
+            </div>
+            <div style="font-size:12px;color:var(--text-sub);display:flex;gap:14px;margin-bottom:6px;font-weight:700;">
+              <span>总课时：<strong>24</strong> 节</span>
+              <span>剩余课时：<strong style="color:var(--mint-dark);font-size:15px;" id="stu-c1-rem">18</strong> 节</span>
+              <span>已上：6 节</span>
+            </div>
+            <div style="height:6px;background:#E2F2EC;border-radius:999px;overflow:hidden;margin-bottom:6px;">
+              <div style="width:75%;height:100%;background:linear-gradient(90deg,var(--mint),#00B4D8);"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--text-muted);">
+              <span>有效期：2026.09.01 - 2027.03.01</span>
+              <span style="color:var(--blue);font-weight:700;cursor:pointer;" onclick="openAttendanceModal()">查看6次消课记录 ›</span>
+            </div>
+          </div>
+          <!-- 合同 2 -->
+          <div style="background:linear-gradient(135deg,#FFF9F0,#FFFFFF);border:1.5px solid #FFD8A8;border-radius:13px;padding:10px 12px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <span style="font-size:13px;font-weight:900;">马翊菱 <span style="color:var(--pink)">♀</span> | 合同：考级集训季度</span>
+              <span class="badge b-orange" style="font-size:11px;">有效</span>
+            </div>
+            <div style="font-size:12px;color:var(--text-sub);display:flex;gap:14px;margin-bottom:6px;font-weight:700;">
+              <span>总课时：<strong>12</strong> 节</span>
+              <span>剩余课时：<strong style="color:var(--orange);font-size:15px;">6</strong> 节</span>
+              <span>已上：6 节</span>
+            </div>
+            <div style="height:6px;background:#FFE8CC;border-radius:999px;overflow:hidden;margin-bottom:6px;">
+              <div style="width:50%;height:100%;background:linear-gradient(90deg,var(--orange),var(--yellow));"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--text-muted);">
+              <span>有效期：2026.10.01 - 2026.12.31</span>
+              <span style="color:var(--orange);font-weight:700;cursor:pointer;" onclick="openAttendanceModal()">查看6次消课记录 ›</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 🌺 每日练琴打卡攒小红花本 -->
+        <div class="card" style="background:linear-gradient(135deg,#FFF0F6 0%,#FFFFFF 100%);border-color:#FFCCE0;">
+          <div class="sec-head">
+            <div class="sec-title">🌺 每日练琴打卡本 <span class="badge b-pink">本周已打卡 5 天</span></div>
+            <span style="font-size:13px;font-weight:900;color:var(--pink);">累计 <span id="flower-count">18</span> 朵🌺</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;margin-bottom:8px;">
+            <div style="background:#FFF;border:1px solid #FFD0E0;border-radius:8px;padding:4px 0;font-size:10px;font-weight:700;">周一<br>🌺</div>
+            <div style="background:#FFF;border:1px solid #FFD0E0;border-radius:8px;padding:4px 0;font-size:10px;font-weight:700;">周二<br>🌺</div>
+            <div style="background:#FFF;border:1px solid #FFD0E0;border-radius:8px;padding:4px 0;font-size:10px;font-weight:700;">周三<br>🌺</div>
+            <div style="background:#FFF;border:1px solid #FFD0E0;border-radius:8px;padding:4px 0;font-size:10px;font-weight:700;">周四<br>🌺</div>
+            <div style="background:#FFF;border:1px solid #FFD0E0;border-radius:8px;padding:4px 0;font-size:10px;font-weight:700;">周五<br>🌺</div>
+            <div style="background:#F8FAFC;border:1px dashed #CBD5E1;border-radius:8px;padding:4px 0;font-size:10px;color:#94A3B8;">周六<br>待练</div>
+            <div style="background:#FFF0F5;border:1.5px solid var(--pink);border-radius:8px;padding:4px 0;font-size:10px;font-weight:800;color:var(--pink);" id="today-flower-slot">周日<br>今日</div>
+          </div>
+          <button class="btn-dopamine btn-purple" style="width:100%;padding:8px;" id="btn-punch-flower" onclick="punchPracticeFlower()">
+            ✨ 今日练琴 30 分钟打卡 (领 1 朵小红花 🌺)
+          </button>
+        </div>
+
+        <!-- ⭐ 5星课后陪练作业单 -->
+        <div class="card" style="margin-bottom:4px;">
+          <div class="sec-head">
+            <div class="sec-title">⭐ 5星课后陪练作业单</div>
+            <span class="badge b-yellow">⭐⭐⭐⭐⭐ 5.0 优秀</span>
+          </div>
+          <div style="font-size:11.5px;font-weight:800;color:var(--text-main);margin-bottom:4px;">
+            🎹 本周作业：《车尔尼599 第19条》《巴赫小步舞曲 G大调》
+          </div>
+          <div style="font-size:11px;color:var(--text-sub);line-height:1.5;background:#F8FAFE;padding:8px 10px;border-radius:10px;border-left:3px solid var(--purple);">
+            <strong>👩‍🏫 刘妤老师叮嘱：</strong>翊菱这节课识谱非常快！在家练琴重点注意右手十六分音符跑动时手腕放松、指尖站稳，第9-16小节先分手慢练3遍再合手，每天坚持30分钟哦！
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 👦 学生/家长视角 Sub-Tab 4: 🔔 微信提醒 & 个人信息 ==================== -->
+      <section class="sub-view" id="stu-tab-3">
+        <!-- 1:1 复刻学生图5：两条真实微信《上课提醒通知》卡片 -->
+        <div class="card">
+          <div class="sec-head">
+            <div class="sec-title">🔔 微信《上课提醒通知》</div>
+            <span class="badge b-mint">已同步推送给家长与刘妤老师</span>
+          </div>
+          <!-- 提醒 1：课前1天 -->
+          <div style="background:#F7F9FC;border:1px solid #DCE5F2;border-left:4px solid var(--blue);border-radius:12px;padding:9px 11px;margin-bottom:8px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <span style="font-size:11.5px;font-weight:900;color:var(--blue);">💬 微信服务通知 · 课前1天提醒</span>
+              <span class="badge b-blue">提前24小时自动发</span>
+            </div>
+            <div style="font-size:11px;color:var(--text-main);line-height:1.55;">
+              <div><strong>课程名称：</strong>少儿钢琴一对一（常规课）</div>
+              <div><strong>上课时间：</strong><span style="color:var(--blue);font-weight:800;">2026年11月08日 星期日 16:10-16:55 (明天)</span></div>
+              <div><strong>上课地点：</strong>刘妤钢琴工作室（1号施坦威琴房）</div>
+              <div><strong>授课老师：</strong>刘妤老师（已同步推送给家长与刘妤老师）</div>
+            </div>
+          </div>
+          <!-- 提醒 2：课前1小时 -->
+          <div style="background:#FFF9F5;border:1px solid #FFD8BE;border-left:4px solid var(--orange);border-radius:12px;padding:9px 11px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <span style="font-size:11.5px;font-weight:900;color:var(--orange);">⏰ 微信服务通知 · 课前1小时提醒</span>
+              <span class="badge b-orange">提前60分钟自动发</span>
+            </div>
+            <div style="font-size:11px;color:var(--text-main);line-height:1.55;">
+              <div><strong>课程名称：</strong>少儿钢琴一对一（常规课）</div>
+              <div><strong>上课时间：</strong><span style="color:var(--orange);font-weight:800;">2026年11月08日 星期日 11:45-12:30</span></div>
+              <div><strong>上课地点：</strong>刘妤钢琴工作室（1号施坦威琴房）</div>
+              <div><strong>温馨提示：</strong>已同步推送给家长与刘妤老师，请准时到课🎹</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1:1 复刻学生图4：个人信息表单 -->
+        <div class="card" style="margin-bottom:4px;">
+          <div class="sec-head">
+            <div class="sec-title">📝 个人信息设置</div>
+            <span class="badge b-purple">档案绑定</span>
+          </div>
+          <div style="background:#FFF8E6;border:1px solid #FFE0A3;border-radius:9px;padding:6px 9px;font-size:11px;color:#874D00;margin-bottom:9px;font-weight:600;">
+            💡 非必填，主要方便老师与家长取得联系
+          </div>
+          <div style="margin-bottom:8px;">
+            <label style="display:block;font-size:11.5px;font-weight:800;margin-bottom:4px;">姓名</label>
+            <input type="text" id="inp-stu-name" value="马翊菱" style="width:100%;padding:8px 10px;border:1px solid #DCE3F0;border-radius:10px;font-size:12.5px;font-weight:700;">
+          </div>
+          <div style="margin-bottom:10px;">
+            <label style="display:block;font-size:11.5px;font-weight:800;margin-bottom:4px;"><span style="color:var(--coral)">*</span> 手机号</label>
+            <input type="tel" id="inp-stu-phone" value="13800138866" style="width:100%;padding:8px 10px;border:1px solid #DCE3F0;border-radius:10px;font-size:12.5px;font-weight:700;">
+          </div>
+          <button class="btn-dopamine btn-mint" style="width:100%;padding:9px;font-size:13px;" onclick="saveProfileForm()">
+            提 交
+          </button>
+        </div>
+      </section>
+
+      <!-- ==================== 👩‍🏫 刘妤老师工作台 Sub-Tab 1: 📊 工作台主页 ==================== -->
+      <section class="sub-view" id="tch-tab-0">
+        <!-- 本日统计 6 宫格 (对标老师图4) -->
+        <div class="card" style="padding:9px 10px;">
+          <div class="sec-head" style="margin-bottom:6px;">
+            <div class="sec-title">📊 本日统计 (2026-11-08)</div>
+            <span class="badge b-purple">刘妤老师教务台</span>
+          </div>
+          <div class="stat-grid-6">
+            <div class="stat-cell" onclick="switchTchTab(1)"><div class="stat-val" style="color:var(--blue)">6</div><div class="stat-lbl">本日排课</div></div>
+            <div class="stat-cell" onclick="switchTchTab(1)"><div class="stat-val" style="color:var(--mint-dark)" id="tch-today-consumed">4</div><div class="stat-lbl">本日耗课</div></div>
+            <div class="stat-cell" onclick="switchTchTab(3)"><div class="stat-val" style="color:var(--orange)">¥1166.67</div><div class="stat-lbl">本日耗课金额</div></div>
+            <div class="stat-cell" onclick="switchTchTab(3)"><div class="stat-val" style="color:var(--purple)">¥1750.00</div><div class="stat-lbl">预计耗课金额</div></div>
+            <div class="stat-cell" onclick="switchTchTab(2)"><div class="stat-val" style="color:var(--pink)">24</div><div class="stat-lbl">本日新增课时</div></div>
+            <div class="stat-cell" onclick="switchTchTab(2)"><div class="stat-val" style="color:#D97706">¥6800</div><div class="stat-lbl">本日新增收入</div></div>
+          </div>
+        </div>
+
+        <!-- 教务管理 12 宫格 (对标老师图4) -->
+        <div class="card" style="padding:9px 8px;">
+          <div class="sec-head" style="margin-bottom:6px;padding:0 4px;">
+            <div class="sec-title">🛠️ 教务管理 12 宫格</div>
+            <span style="font-size:10.5px;color:var(--text-muted);font-weight:700;">点击任意图标直达 ›</span>
+          </div>
+          <div class="dopamine-grid-12">
+            <div class="d-item" onclick="openAddScheduleModal()">
+              <div class="d-icon" style="background:linear-gradient(135deg,#00C896,#00E5A3)">➕</div>
+              <span class="d-label">新增排课</span>
+            </div>
+            <div class="d-item" onclick="switchTchTab(1,'cal')">
+              <div class="d-icon" style="background:linear-gradient(135deg,#FF6B35,#FF9E44)"><span class="red-dot-badge" id="badge-checkin-cnt">4</span>✅</div>
+              <span class="d-label">签到</span>
+            </div>
+            <div class="d-item" onclick="switchTchTab(1,'grid')">
+              <div class="d-icon" style="background:linear-gradient(135deg,#2979FF,#00B0FF)">🗓️</div>
+              <span class="d-label">课程表</span>
+            </div>
+            <div class="d-item" onclick="openSearchScheduleModal()">
+              <div class="d-icon" style="background:linear-gradient(135deg,#7C4DFF,#B388FF)">🔍</div>
+              <span class="d-label">排课搜索</span>
+            </div>
+            <div class="d-item" onclick="switchTchTab(2)">
+              <div class="d-icon" style="background:linear-gradient(135deg,#FF4D8D,#FF80AB)">👥</div>
+              <span class="d-label">学员管理</span>
+            </div>
+            <div class="d-item" onclick="openRoomModal()">
+              <div class="d-icon" style="background:linear-gradient(135deg,#00BFA5,#1DE9B6)">🎹</div>
+              <span class="d-label">班级/琴房</span>
+            </div>
+            <div class="d-item" onclick="openFeedbackModal()">
+              <div class="d-icon" style="background:linear-gradient(135deg,#FFB800,#FFD54F)">⭐</div>
+              <span class="d-label">反馈&小评</span>
+            </div>
+            <div class="d-item" onclick="switchTchTab(2)">
+              <div class="d-icon" style="background:linear-gradient(135deg,#536DFE,#8C9EFF)"><span class="red-dot-badge">2</span>📄</div>
+              <span class="d-label">合同管理</span>
+            </div>
+            <div class="d-item" onclick="openTeacherInfoModal()">
+              <div class="d-icon" style="background:linear-gradient(135deg,#EC407A,#F48FB1)">👩‍🏫</div>
+              <span class="d-label">教师管理</span>
+            </div>
+            <div class="d-item" onclick="openCoursePkgModal()">
+              <div class="d-icon" style="background:linear-gradient(135deg,#FF7043,#FFAB91)">🎵</div>
+              <span class="d-label">课程管理</span>
+            </div>
+            <div class="d-item" onclick="openWxRemindModal()">
+              <div class="d-icon" style="background:linear-gradient(135deg,#26A69A,#80CBC4)">🔔</div>
+              <span class="d-label">消息提醒</span>
+            </div>
+            <div class="d-item" onclick="switchTchTab(3)">
+              <div class="d-icon" style="background:linear-gradient(135deg,#8E24AA,#CE93D8)">🍩</div>
+              <span class="d-label">经营数据</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ➕ 老师选学生 ➡️ 选该学生的具体合同 ➡️ 循环/单次排课 -->
+        <div class="card" style="background:linear-gradient(135deg,#F3F0FF 0%,#FFFFFF 100%);border:1.5px solid #D0C2FF;padding:9px 10px;">
+          <div class="sec-head" style="margin-bottom:5px;">
+            <div class="sec-title">➕ 老师选学生 ➡️ 选具体合同排课</div>
+            <button class="btn-dopamine btn-purple" style="padding:3px 8px;font-size:10px;" onclick="openAddScheduleModal()">弹窗排课 ›</button>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1.35fr 1.15fr;gap:5px;margin-bottom:6px;">
+            <div style="background:#FFF;border:1px solid #DCE3F0;border-radius:8px;padding:4px 6px;">
+              <div style="font-size:9.5px;color:var(--text-muted);font-weight:700;">① 选学生</div>
+              <div style="font-size:11px;font-weight:800;color:var(--purple);">☺ 马翊菱 ▾</div>
+            </div>
+            <div style="background:#FFF;border:1px solid #DCE3F0;border-radius:8px;padding:4px 6px;">
+              <div style="font-size:9.5px;color:var(--text-muted);font-weight:700;">② 选该生具体合同</div>
+              <div style="font-size:10.5px;font-weight:800;color:var(--mint-dark);">钢琴半年(剩18节) ▾</div>
+            </div>
+            <div style="background:#FFF;border:1px solid #DCE3F0;border-radius:8px;padding:4px 6px;">
+              <div style="font-size:9.5px;color:var(--text-muted);font-weight:700;">③ 排课方式</div>
+              <div style="font-size:10.5px;font-weight:800;color:var(--blue);">按周循环固定 ▾</div>
+            </div>
+          </div>
+          <div style="font-size:10px;color:var(--text-sub);display:flex;justify-content:space-between;align-items:center;">
+            <span>可选合同：钢琴半年(剩18节) / 钢琴季度(剩6节)</span>
+            <span style="color:var(--purple);font-weight:800;cursor:pointer;" onclick="openAddScheduleModal()">+ 立即生成周循环课表</span>
+          </div>
+        </div>
+
+        <!-- 🗓️ 周一至周日二维课程表同屏预览 -->
+        <div class="card" style="padding:8px 8px;margin-bottom:4px;">
+          <div class="sec-head" style="margin-bottom:5px;">
+            <div class="sec-title">🗓️ 周一至周日二维课程表 <span class="badge b-mint">11.02-11.08</span></div>
+            <div class="sec-more" onclick="switchTchTab(1,'grid')">全屏课表 / 复制上周 ›</div>
+          </div>
+          <table class="week-table">
+            <thead>
+              <tr>
+                <th style="width:36px;">时段</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th><th>日</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-weight:800;">09:00</td>
+                <td></td><td></td><td></td><td></td><td></td>
+                <td><div class="wt-slot checked" onclick="openCheckinModal('姜璟棠','钢琴半年(剩3节)')">姜璟棠<br>已签到</div></td>
+                <td><div class="wt-slot checked" onclick="openCheckinModal('丁瑞玹','钢琴半年(剩14节)')">丁瑞玹<br>已签到</div></td>
+              </tr>
+              <tr>
+                <td style="font-weight:800;">10:00</td>
+                <td></td><td></td>
+                <td><div class="wt-slot checked" onclick="openCheckinModal('马翊菱','钢琴季度(剩6节)')">马翊菱<br>已签到</div></td>
+                <td></td><td></td>
+                <td><div class="wt-slot checked" onclick="openCheckinModal('徐时曦','钢琴全年(剩32节)')">徐时曦<br>已签到</div></td>
+                <td><div class="wt-slot checked" onclick="openCheckinModal('徐时曦','钢琴全年(剩32节)')">徐时曦<br>已签到</div></td>
+              </tr>
+              <tr>
+                <td style="font-weight:800;">11:00</td>
+                <td></td><td></td><td></td><td></td>
+                <td><div class="wt-slot checked" onclick="openCheckinModal('丁瑞玹','钢琴半年(剩14节)')">丁瑞玹<br>已签到</div></td>
+                <td><div class="wt-slot uncheck" onclick="openCheckinModal('王曦右','钢琴季度(剩2节)')">王曦右<br>未点名</div></td>
+                <td><div class="wt-slot uncheck" onclick="openCheckinModal('马翊菱','钢琴半年(剩18节)')">马翊菱<br>未点名</div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ==================== 👩‍🏫 刘妤老师工作台 Sub-Tab 2: 🗓️ 二维周课表 & 签到月历 ==================== -->
+      <section class="sub-view" id="tch-tab-1">
+        <!-- 顶部子模式切换胶囊 -->
+        <div style="display:flex;gap:6px;margin-bottom:8px;">
+          <button class="btn-dopamine btn-mint" style="flex:1;padding:7px;" id="subbtn-grid" onclick="toggleScheduleMode('grid')">🗓️ 每周二维网格课程表</button>
+          <button class="btn-dopamine btn-outline" style="flex:1;padding:7px;" id="subbtn-cal" onclick="toggleScheduleMode('cal')">✅ 签到点名月历</button>
+        </div>
+
+        <!-- 子模式 A：每周二维网格课程表 -->
+        <div id="tch-sched-grid-panel">
+          <div class="card" style="padding:9px 9px;">
+            <div class="sec-head" style="margin-bottom:6px;">
+              <div style="font-size:12.5px;font-weight:900;">2026年11月 第1周 (周一至周日)</div>
+              <div style="display:flex;gap:4px;">
+                <button class="btn-dopamine btn-outline" style="padding:3px 7px;font-size:10px;" id="btn-toggle-2d" onclick="toggleGridCols()">双日大字 ⇄ 7列全景</button>
+                <button class="btn-dopamine btn-purple" style="padding:3px 7px;font-size:10px;" onclick="showToast('✅ 已一键复制上周全部固定排课！')">复制上周排课</button>
+              </div>
+            </div>
+            <div id="grid-7col-wrap">
+              <table class="week-table">
+                <thead>
+                  <tr>
+                    <th style="width:38px;">时间</th><th>周一</th><th>周二</th><th>周三</th><th>周四</th><th>周五</th><th>周六</th><th>周日</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>09:00</td><td></td><td></td><td></td><td></td><td></td>
+                    <td><div class="wt-slot checked" onclick="openCheckinModal('姜璟棠','钢琴半年(剩3节)')">已签到<br>姜璟棠<br>1课时·刘妤</div></td>
+                    <td><div class="wt-slot checked" onclick="openCheckinModal('丁瑞玹','钢琴半年(剩14节)')">已签到<br>丁瑞玹<br>1课时·刘妤</div></td>
+                  </tr>
+                  <tr>
+                    <td>10:00</td><td></td><td></td>
+                    <td><div class="wt-slot checked" onclick="openCheckinModal('马翊菱','考级季度(剩6节)')">已签到<br>马翊菱<br>1课时·刘妤</div></td>
+                    <td></td><td></td>
+                    <td><div class="wt-slot checked" onclick="openCheckinModal('徐时曦','钢琴全年(剩32节)')">已签到<br>徐时曦<br>1课时·刘妤</div></td>
+                    <td><div class="wt-slot checked" onclick="openCheckinModal('徐时曦','钢琴全年(剩32节)')">已签到<br>徐时曦<br>1课时·刘妤</div></td>
+                  </tr>
+                  <tr>
+                    <td>11:00</td><td></td><td></td><td></td><td></td>
+                    <td><div class="wt-slot checked" onclick="openCheckinModal('丁瑞玹','钢琴半年(剩14节)')">已签到<br>丁瑞玹<br>1课时·刘妤</div></td>
+                    <td><div class="wt-slot checked" onclick="openCheckinModal('陈宥嘉','钢琴半年(剩11节)')">已签到<br>陈宥嘉<br>1课时·刘妤</div></td>
+                    <td><div class="wt-slot uncheck" onclick="openCheckinModal('马翊菱','钢琴半年(剩18节)')">未点名<br>马翊菱<br>1课时·刘妤</div></td>
+                  </tr>
+                  <tr>
+                    <td>14:30</td><td></td><td></td><td></td><td></td><td></td>
+                    <td><div class="wt-slot uncheck" onclick="openCheckinModal('林星晚','钢琴半年(剩9节)')">未点名<br>林星晚<br>1课时·刘妤</div></td>
+                    <td><div class="wt-slot uncheck" onclick="openCheckinModal('王曦右','钢琴季度(剩2节)')">未点名<br>王曦右<br>1课时·刘妤</div></td>
+                  </tr>
+                  <tr>
+                    <td>16:10</td><td></td><td></td><td></td>
+                    <td><div class="wt-slot checked" onclick="openCheckinModal('姜璟棠','钢琴半年(剩3节)')">已签到<br>姜璟棠<br>1课时·刘妤</div></td>
+                    <td></td>
+                    <td><div class="wt-slot uncheck" onclick="openCheckinModal('周予安','钢琴半年(剩16节)')">未点名<br>周予安<br>1课时·刘妤</div></td>
+                    <td><div class="wt-slot uncheck" onclick="openCheckinModal('马翊菱','考级季度(剩6节)')">未点名<br>马翊菱<br>1课时·刘妤</div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 子模式 B：✅ 签到点名月历 (对标老师图2 & 视频第5-22帧) -->
+        <div id="tch-sched-cal-panel" style="margin-top:6px;">
+          <div class="card">
+            <div class="sec-head" style="margin-bottom:6px;">
+              <span style="font-size:13.5px;font-weight:900;">&lt; 2026年11月 &gt; 签到点名月历</span>
+              <span class="badge b-coral">11月大水印 · 红字“课”</span>
+            </div>
+            <!-- 4大教务快捷按钮 -->
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:8px;">
+              <button class="btn-dopamine btn-mint" style="padding:6px 4px;font-size:10.5px;" onclick="openAddScheduleModal()">[+排课]</button>
+              <button class="btn-dopamine btn-purple" style="padding:6px 4px;font-size:10.5px;" onclick="batchCheckinAll()">[☑全天点名]</button>
+              <button class="btn-dopamine btn-outline" style="padding:6px 4px;font-size:10.5px;" onclick="openSearchScheduleModal()">[▽筛选]</button>
+              <button class="btn-dopamine btn-outline" style="padding:6px 4px;font-size:10.5px;color:var(--coral);" onclick="showToast('已开启全天停课保护确认窗')">[⊘全天停课]</button>
+            </div>
+            <!-- 当日签到课表项 -->
+            <div class="lesson-card" style="margin-top:4px;">
+              <div class="stamp-seal stamp-uncheck" id="tch-cal-stamp-1">未点名</div>
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+                <span class="badge b-blue">11:00-11:45</span>
+                <span style="font-size:13px;font-weight:900;">马翊菱 · 少儿钢琴一对一</span>
+              </div>
+              <div style="font-size:11px;color:var(--text-sub);margin-bottom:6px;font-weight:600;">
+                扣减合同：<strong>钢琴半年 (剩18节)</strong> · 1课时 · 授课：刘妤
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:10.5px;color:var(--text-muted);">支持折叠一行可选简评</span>
+                <button class="btn-dopamine btn-mint" style="padding:4px 12px;font-size:11px;" onclick="openCheckinModal('马翊菱','钢琴半年(剩18节)')">[☑点名]</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 👩‍🏫 刘妤老师工作台 Sub-Tab 3: 📄 合同管理 & 👤 学员列表 ==================== -->
+      <section class="sub-view" id="tch-tab-2">
+        <!-- 合同统计 4 宫格 (对标老师图1) -->
+        <div class="card" style="padding:9px 10px;">
+          <div class="sec-head" style="margin-bottom:5px;">
+            <div class="sec-title">📄 合同管理 (季度/半年/全年套餐)</div>
+            <div style="display:flex;gap:4px;">
+              <button class="btn-dopamine btn-mint" style="padding:3px 7px;font-size:10px;" onclick="openNewContractModal()">+新增合同</button>
+              <button class="btn-dopamine btn-outline" style="padding:3px 7px;font-size:10px;" onclick="showToast('✅ 已批量延期选中合同')">批量延期</button>
+              <button class="btn-dopamine btn-outline" style="padding:3px 7px;font-size:10px;" onclick="showToast('📤 已导出 Excel 合同台账')">批量导出</button>
+            </div>
+          </div>
+          <div class="stat-grid-4" style="margin-bottom:6px;">
+            <div class="stat-cell"><div class="stat-val" style="color:var(--mint-dark)">22</div><div class="stat-lbl">有效</div></div>
+            <div class="stat-cell" style="background:#FFF0F0;border-color:#FFCDD2;"><div class="stat-val" style="color:var(--coral)">2</div><div class="stat-lbl" style="color:var(--coral);font-weight:800;">即将到期</div></div>
+            <div class="stat-cell"><div class="stat-val" style="color:var(--blue)">90</div><div class="stat-lbl">完结</div></div>
+            <div class="stat-cell"><div class="stat-val" style="color:var(--yellow)">0</div><div class="stat-lbl">未交费</div></div>
+          </div>
+          <!-- 珊瑚红预警提示 -->
+          <div style="background:#FFEEEE;border:1px solid #FFCDD2;border-radius:8px;padding:5px 8px;font-size:10.5px;font-weight:800;color:var(--coral);">
+            ⚠️ 合同剩余3节或者到期前7天时状态将改为即将到期（支持季度12节 / 半年24节 / 全年48节套餐）
+          </div>
+        </div>
+
+        <!-- 学员统计 6 宫格 + 粉/蓝双字头像学员列表 (对标老师图5) -->
+        <div class="card" style="padding:9px 10px;">
+          <div class="sec-head" style="margin-bottom:5px;">
+            <div class="sec-title">👤 学员列表与统计 (24人)</div>
+            <span class="badge b-pink">粉/蓝圆形双字头像</span>
+          </div>
+          <div class="stat-grid-6" style="margin-bottom:7px;">
+            <div class="stat-cell"><div class="stat-val">24</div><div class="stat-lbl">学员总数</div></div>
+            <div class="stat-cell"><div class="stat-val" style="color:var(--mint-dark)">24</div><div class="stat-lbl">有合同</div></div>
+            <div class="stat-cell"><div class="stat-val">0</div><div class="stat-lbl">无合同</div></div>
+            <div class="stat-cell"><div class="stat-val" style="color:var(--blue)">21</div><div class="stat-lbl">已绑定</div></div>
+            <div class="stat-cell"><div class="stat-val" style="color:var(--orange)">3</div><div class="stat-lbl">未绑定</div></div>
+            <div class="stat-cell"><div class="stat-val" style="color:var(--pink)">0</div><div class="stat-lbl">本月生日</div></div>
+          </div>
+          <!-- 粉/蓝双字圆头像学员列表 -->
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;background:#F8FAFE;padding:6px 8px;border-radius:10px;border:1px solid #E6ECF5;">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <div class="avatar-circle av-pink" style="width:32px;height:32px;font-size:11px;">瑞玹</div>
+                <div>
+                  <div style="font-size:12px;font-weight:800;">丁瑞玹 <span class="badge b-mint">有效 · 钢琴半年剩14节</span></div>
+                </div>
+              </div>
+              <button class="btn-dopamine btn-outline" style="padding:3px 8px;font-size:10px;" onclick="openAddScheduleModal('丁瑞玹')">+排课</button>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;background:#F8FAFE;padding:6px 8px;border-radius:10px;border:1px solid #E6ECF5;">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <div class="avatar-circle av-blue" style="width:32px;height:32px;font-size:11px;">时曦</div>
+                <div>
+                  <div style="font-size:12px;font-weight:800;">徐时曦 <span class="badge b-blue">有效 · 钢琴全年剩32节</span></div>
+                </div>
+              </div>
+              <button class="btn-dopamine btn-outline" style="padding:3px 8px;font-size:10px;" onclick="openAddScheduleModal('徐时曦')">+排课</button>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;background:#FFF5F5;padding:6px 8px;border-radius:10px;border:1px solid #FFCDD2;">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <div class="avatar-circle av-pink" style="width:32px;height:32px;font-size:11px;">璟棠</div>
+                <div>
+                  <div style="font-size:12px;font-weight:800;">姜璟棠 <span class="badge b-coral">剩3节·即将到期 (半年)</span></div>
+                </div>
+              </div>
+              <button class="btn-dopamine btn-purple" style="padding:3px 8px;font-size:10px;" onclick="showToast('🔔 已向姜璟棠家长发送续费微信提醒')">催续费</button>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;background:#FFF5F5;padding:6px 8px;border-radius:10px;border:1px solid #FFCDD2;">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <div class="avatar-circle av-blue" style="width:32px;height:32px;font-size:11px;">曦右</div>
+                <div>
+                  <div style="font-size:12px;font-weight:800;">王曦右 <span class="badge b-coral">剩2节·即将到期 (季度)</span></div>
+                </div>
+              </div>
+              <button class="btn-dopamine btn-purple" style="padding:3px 8px;font-size:10px;" onclick="showToast('🔔 已向王曦右家长发送续费微信提醒')">催续费</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 同屏展示：月度经营数据 9 宫格速览 (对标老师图3，让预览04一屏呈现) -->
+        <div class="card" style="padding:9px 10px;margin-bottom:4px;">
+          <div class="sec-head" style="margin-bottom:5px;">
+            <div class="sec-title">🍩 月度经营数据 (统计日期：2026-11 &gt;)</div>
+            <div class="sec-more" onclick="switchTchTab(3)">完整报表 ›</div>
+          </div>
+          <div class="stat-grid-9">
+            <div class="stat-cell"><div class="stat-val" style="color:var(--blue)">70</div><div class="stat-lbl">排课数量</div></div>
+            <div class="stat-cell"><div class="stat-val" style="color:var(--mint-dark)">15</div><div class="stat-lbl">耗课数量</div></div>
+            <div class="stat-cell"><div class="stat-val">0</div><div class="stat-lbl">停课数量</div></div>
+            <div class="stat-cell"><div class="stat-val" style="color:var(--purple);font-size:13px;">21129.24</div><div class="stat-lbl">预计耗课金额</div></div>
+            <div class="stat-cell"><div class="stat-val" style="color:var(--orange);font-size:13px;">4419.81</div><div class="stat-lbl">实际耗课金额</div></div>
+            <div class="stat-cell"><div class="stat-val" style="color:var(--pink)">24</div><div class="stat-lbl">新增课时</div></div>
+            <div class="stat-cell"><div class="stat-val" style="color:#D97706">6800</div><div class="stat-lbl">新增收入</div></div>
+            <div class="stat-cell"><div class="stat-val" style="color:var(--blue)">212</div><div class="stat-lbl">总剩余课时</div></div>
+            <div class="stat-cell"><div class="stat-val" style="color:var(--mint-dark);font-size:13px;">65779.62</div><div class="stat-lbl">总剩余金额</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 👩‍🏫 刘妤老师工作台 Sub-Tab 4: 🍩 月度经营数据 ==================== -->
+      <section class="sub-view" id="tch-tab-3">
+        <div class="card">
+          <div class="sec-head">
+            <div class="sec-title" onclick="showToast('支持按月/按季/按年筛选经营报表')" style="cursor:pointer;">📅 统计日期：2026-11 &gt;</div>
+            <span class="badge b-purple">机构统计 9 宫格</span>
+          </div>
+          <div class="stat-grid-9" style="margin-bottom:8px;">
+            <div class="stat-cell"><div class="stat-val" style="color:var(--blue)">70</div><div class="stat-lbl">排课数量</div></div>
+            <div class="stat-cell"><div class="stat-val" style="color:var(--mint-dark)">15</div><div class="stat-lbl">耗课数量</div></div>
+            <div class="stat-cell"><div class="stat-val">0</div><div class="stat-lbl">停课数量</div></div>
+            <div class="stat-cell"><div class="stat-val" style="color:var(--purple);font-size:13.5px;">21129.24</div><div class="stat-lbl">预计耗课金额</div></div>
+            <div class="stat-cell"><div class="stat-val" style="color:var(--orange);font-size:13.5px;">4419.81</div><div class="stat-lbl">实际耗课金额</div></div>
+            <div class="stat-cell"><div class="stat-val" style="color:var(--pink)">24</div><div class="stat-lbl">新增课时</div></div>
+            <div class="stat-cell"><div class="stat-val" style="color:#D97706">6800</div><div class="stat-lbl">新增收入</div></div>
+            <div class="stat-cell"><div class="stat-val" style="color:var(--blue)">212</div><div class="stat-lbl">总剩余课时</div></div>
+            <div class="stat-cell"><div class="stat-val" style="color:var(--mint-dark);font-size:13.5px;">65779.62</div><div class="stat-lbl">总剩余金额</div></div>
+          </div>
+
+          <div class="sec-head" style="margin-top:8px;">
+            <div class="sec-title">👥 学生统计 6 宫格</div>
+            <span class="badge b-mint">实时出勤汇总</span>
+          </div>
+          <div class="stat-grid-6">
+            <div class="stat-cell"><div class="stat-val">24</div><div class="stat-lbl">在读学员</div></div>
+            <div class="stat-cell"><div class="stat-val" style="color:var(--mint-dark)">15</div><div class="stat-lbl">本月出勤人次</div></div>
+            <div class="stat-cell"><div class="stat-val" style="color:var(--orange)">1</div><div class="stat-lbl">请假人次</div></div>
+            <div class="stat-cell"><div class="stat-val">0</div><div class="stat-lbl">缺勤人次</div></div>
+            <div class="stat-cell"><div class="stat-val" style="color:var(--pink)">1</div><div class="stat-lbl">本月新签</div></div>
+            <div class="stat-cell"><div class="stat-val" style="color:var(--coral)">2</div><div class="stat-lbl">即将到期预警</div></div>
+          </div>
+        </div>
+
+        <!-- 可展开的营收/学员耗课/出勤率可视化排行榜 -->
+        <div class="card" style="margin-bottom:4px;">
+          <div class="sec-head">
+            <div class="sec-title">📈 套餐营收与学员耗课排行榜</div>
+            <span class="badge b-blue">100% 准时出勤率</span>
+          </div>
+          <div style="font-size:11px;margin-bottom:6px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:2px;font-weight:700;">
+              <span>🎹 半年套餐 (24节 · 主力套餐)</span><span style="color:var(--mint-dark)">占比 62% (14份)</span>
+            </div>
+            <div style="height:7px;background:#E8EDF5;border-radius:999px;overflow:hidden;margin-bottom:6px;">
+              <div style="width:62%;height:100%;background:linear-gradient(90deg,var(--mint),#00B4D8);"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:2px;font-weight:700;">
+              <span>🏆 季度集训套餐 (12节)</span><span style="color:var(--orange)">占比 25% (6份)</span>
+            </div>
+            <div style="height:7px;background:#E8EDF5;border-radius:999px;overflow:hidden;margin-bottom:6px;">
+              <div style="width:25%;height:100%;background:linear-gradient(90deg,var(--orange),var(--yellow));"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:2px;font-weight:700;">
+              <span>👑 全年VIP套餐 (48节)</span><span style="color:var(--purple)">占比 13% (2份)</span>
+            </div>
+            <div style="height:7px;background:#E8EDF5;border-radius:999px;overflow:hidden;">
+              <div style="width:13%;height:100%;background:linear-gradient(90deg,var(--purple),var(--pink));"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /.view-body -->
+
+    <!-- 底部 Sub-Tab 导航栏 (学生端4项 / 老师端4项) -->
+    <nav class="bottom-tabbar" id="tabbar-stu">
+      <div class="tab-btn active-stu" id="stutab-btn-0" onclick="switchStuTab(0)">
+        <span class="t-ico">🏠</span><span class="t-txt">学生首页</span>
+      </div>
+      <div class="tab-btn" id="stutab-btn-1" onclick="switchStuTab(1)">
+        <span class="t-ico">📅</span><span class="t-txt">我的课表</span>
+      </div>
+      <div class="tab-btn" id="stutab-btn-2" onclick="switchStuTab(2)">
+        <span class="t-ico">📑</span><span class="t-txt">合同&小红花</span>
+      </div>
+      <div class="tab-btn" id="stutab-btn-3" onclick="switchStuTab(3)">
+        <span class="t-ico">🔔</span><span class="t-txt">提醒&信息</span>
+      </div>
+    </nav>
+
+    <nav class="bottom-tabbar" id="tabbar-tch" style="display:none;">
+      <div class="tab-btn active-tch" id="tchtab-btn-0" onclick="switchTchTab(0)">
+        <span class="t-ico">📊</span><span class="t-txt">工作台主页</span>
+      </div>
+      <div class="tab-btn" id="tchtab-btn-1" onclick="switchTchTab(1)">
+        <span class="t-ico">🗓️</span><span class="t-txt">周课表&签到</span>
+      </div>
+      <div class="tab-btn" id="tchtab-btn-2" onclick="switchTchTab(2)">
+        <span class="t-ico">📄</span><span class="t-txt">合同&学员</span>
+      </div>
+      <div class="tab-btn" id="tchtab-btn-3" onclick="switchTchTab(3)">
+        <span class="t-ico">🍩</span><span class="t-txt">经营数据</span>
+      </div>
+    </nav>
+
+    <!-- 通用动态弹窗容器 -->
+    <div class="modal-mask" id="modal-mask" onclick="if(event.target===this)closeModal()">
+      <div class="modal-box" id="modal-content"></div>
+    </div>
+
+    <!-- 顶部 Toast 提示 -->
+    <div class="toast-pop" id="toast-pop"></div>
   </main>
 </div>
 
 <script>
-(function() {
-  /* ================= 初始仿真数据库（刘妤钢琴工作室） ================= */
-  var WEEK_NAMES = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+  let currentRole = 'student';
+  let currentStuTab = 0;
+  let currentTchTab = 0;
+  let flowerCount = 18;
+  let is2ColMode = false;
 
-  function pad2(n) { return n < 10 ? '0' + n : '' + n; }
-  function addDays(base, offset) {
-    var d = new Date(base.getTime() + offset * 86400000);
-    return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
-  }
-  function getWeekStr(dateStr) {
-    var p = dateStr.split('-').map(Number);
-    var d = new Date(p[0], p[1] - 1, p[2]);
-    return WEEK_NAMES[d.getDay()];
-  }
-  function maskName(name) {
-    var clean = String(name || '').replace(/\s*[\(（].*?[\)）]\s*/g, '').trim();
-    if (!clean) return '*同学';
-    return '*' + clean.slice(1) + '同学';
-  }
-
-  var baseNow = new Date();
-  var TODAY = addDays(baseNow, 0);
-  var TOMORROW = addDays(baseNow, 1);
-  var DAY_AFTER = addDays(baseNow, 2);
-  var YESTERDAY = addDays(baseNow, -1);
-
-  var DB = {
-    studio: {
-      studioName: '刘妤钢琴工作室',
-      teacherName: '刘妤',
-      teacherTitle: '音乐学院钢琴表演硕士 · 青年钢琴演奏与教学指导',
-      teacherTags: ['10年少儿私教经验', '1对1启发式教学', '三角钢琴独立琴房', '英皇/音协考级指导'],
-      teacherBio: '专注于 4-16 岁少儿钢琴启蒙、音乐素养培育与经典曲目精讲。用温柔耐心的方式引导孩子爱上音乐，拒绝枯燥机械练琴，让每一次指尖触键都充满美感。',
-      phone: '13800138866',
-      wechat: 'LiuyuPiano88',
-      address: '星海音乐创意园 A座 302 刘妤琴房（地铁2号线C口步行200米）',
-      cancelHoursLimit: 12,
-      bookingDaysAhead: 21,
-      rooms: ['1号施坦威三角琴房', '2号立式钢琴房'],
-      notice: '🎵 温馨提示：常规课与体验课开放未来 21 天档期预约；如需调整时间，请于课前 12 小时在小程序内自助取消，课时自动原路退回；突发情况可提交临时请假申请由刘妤老师协调。',
-      courses: [
-        { id: 'c1', name: '少儿钢琴 1对1 常规课', duration: 45, cost: 1, isTrial: false, suitable: '4-12岁零基础及初级琴童', desc: '采用三角钢琴 1对1 授课，涵盖手型建立、趣味视唱练耳与经典曲目精讲。' },
-        { id: 'c2', name: '钢琴演奏进阶 1对1 精讲课', duration: 45, cost: 1, isTrial: false, suitable: '中高级演奏及曲目打磨琴童', desc: '针对音阶琶音、复调作品与奏鸣曲进行触键音色、踏板及表现力深度指导。' },
-        { id: 'c3', name: '1对1 钢琴体验课', duration: 30, cost: 0, isTrial: true, suitable: '首次到访零基础或转学试听琴童', desc: '包含音乐潜能评估、三角钢琴初体验、趣味视奏互动与个性化学习规划。' }
-      ]
-    },
-    students: [
-      { id: 'stu_duoduo', childName: '林小朵 (朵朵)', parentName: '朵朵妈妈', parentPhone: '13910086688', age: 7, level: '车尔尼599 / 三级曲目精修', remainLessons: 13, usedLessons: 3, totalLessons: 16, flowerCount: 15, practiceDays: 12, bindCode: 'DUO888', boundToParent: true, fixedNote: '每周六 10:00-10:45', note: '乐感很好，右手跑动流畅，近期重点提升左手伴奏声部独立性。' },
-      { id: 'stu_momo', childName: '苏茉茉', parentName: '茉茉妈妈', parentPhone: '13655889900', age: 5, level: '菲伯尔钢琴之旅第2级', remainLessons: 18, usedLessons: 2, totalLessons: 20, flowerCount: 8, practiceDays: 7, bindCode: 'MOMO99', boundToParent: true, fixedNote: '', note: '启蒙阶段，喜欢欢快的儿歌与师生四手联弹。' },
-      { id: 'stu_zirui', childName: '陈子睿', parentName: '子睿爸爸', parentPhone: '13720093322', age: 9, level: '巴赫初级钢琴曲集 / 五级演奏', remainLessons: 2, usedLessons: 10, totalLessons: 12, flowerCount: 22, practiceDays: 19, bindCode: 'RUI666', boundToParent: false, fixedNote: '每周三 19:30-20:15', note: '重点打磨复调声部呼吸与踏板干净度（低课时待续费）。' }
+  const studentContracts = {
+    '马翊菱': [
+      { id: 'c1', name: '钢琴半年 (剩18节 / 总24节)' },
+      { id: 'c2', name: '钢琴季度·考级集训 (剩6节 / 总12节)' }
     ],
-    dates: [],
-    slots: [],
-    bookings: [
-      { id: 'bk_1', slotId: '', userId: 'stu_duoduo', childName: '林小朵 (朵朵)', parentPhone: '13910086688', isTrial: false, date: TOMORROW, startTime: '17:00', endTime: '17:45', duration: 45, courseName: '少儿钢琴 1对1 常规课', roomName: '1号施坦威三角琴房', remark: '回课《车尔尼599》第35条', status: 'booked', canFreeCancel: true },
-      { id: 'bk_leave', slotId: '', userId: 'stu_zirui', childName: '陈子睿', parentPhone: '13720093322', isTrial: false, date: TODAY, startTime: '19:30', endTime: '20:15', duration: 45, courseName: '钢琴演奏进阶 1对1 精讲课', roomName: '1号施坦威三角琴房', remark: '巴赫小前奏曲分声部打磨', status: 'leave_pending', leaveReason: '学校合唱团临时彩排冲突，盼协调改期', canFreeCancel: false },
-      { id: 'bk_done_1', slotId: '', userId: 'stu_duoduo', childName: '林小朵 (朵朵)', parentPhone: '13910086688', isTrial: false, date: YESTERDAY, startTime: '17:00', endTime: '17:45', duration: 45, courseName: '少儿钢琴 1对1 常规课', roomName: '1号施坦威三角琴房', remark: '回课《小步舞曲》与C大调音阶', status: 'completed', ratingStars: 5, flowersAwarded: 2, repertoire: '《车尔尼599》第35条、C大调双手同向音阶', practiceFocus: '1. 第35条先分手开节拍器 66 慢速唱谱练熟；2. 右手跳音指尖立住有弹性，手腕保持平稳放松。', dailyTargetMins: 25, teacherComment: '朵朵今天课堂表现超棒！C大调音阶跑动非常均匀，大指穿指比上周自然很多，回家坚持每天 25 分钟高质量慢练哦！🎹' }
+    '徐时曦': [
+      { id: 'c3', name: '钢琴全年VIP (剩32节 / 总48节)' }
     ],
-    practiceLogs: [
-      { id: 'pl_1', userId: 'stu_duoduo', date: YESTERDAY, durationMins: 30, repertoire: '《车尔尼599》第35条分手慢练 + C大调音阶4遍', mood: '🧐 认真慢练', parentNote: '今天开节拍器66速度练了5遍右手跳音，手腕稳多啦！', flowersEarned: 1, teacherReply: '朵朵超棒！坚持开节拍器慢练是最好的习惯，明天试着双手慢速合一遍第一段吧 🌸' }
+    '丁瑞玹': [
+      { id: 'c4', name: '钢琴半年 (剩14节 / 总24节)' }
     ],
-    lessonLogs: [
-      { id: 'lg_3', userId: 'stu_duoduo', typeLabel: '预约课程锁定', changeCount: -1, afterBalance: 13, remark: '预约 ' + TOMORROW + ' 17:00 少儿钢琴 1对1 常规课', operator: '家长自主预约', time: TODAY + ' 09:20' },
-      { id: 'lg_2', userId: 'stu_duoduo', typeLabel: '请假取消退回', changeCount: 1, afterBalance: 14, remark: '课前提前24小时自助请假，原路退回 1 课时', operator: '家长自助取消', time: YESTERDAY + ' 12:30' },
-      { id: 'lg_1', userId: 'stu_duoduo', typeLabel: '课时续课登记', changeCount: 16, afterBalance: 16, remark: '秋季学期 1对1 钢琴课包 16 节登记', operator: '刘妤老师录入', time: addDays(baseNow, -6) + ' 10:00' }
+    '王曦右': [
+      { id: 'c5', name: '钢琴季度 (剩2节·即将到期 / 总12节)' }
     ]
   };
 
-  // 生成未来 21 天日期与时段
-  for (var i = 0; i < 21; i++) {
-    var dStr = addDays(baseNow, i);
-    var wk = getWeekStr(dStr);
-    var label = i === 0 ? '今天' : (i === 1 ? '明天' : wk);
-    DB.dates.push({ date: dStr, shortDate: dStr.slice(5).replace('-', '/'), dayLabel: label, weekStr: wk });
-
-    var tpl = (wk === '周六' || wk === '周日')
-      ? [['09:30', '10:15'], ['10:30', '11:15'], ['14:30', '15:15'], ['16:00', '16:45'], ['19:00', '19:45']]
-      : [['16:00', '16:45'], ['17:00', '17:45'], ['18:30', '19:15'], ['19:30', '20:15']];
-
-    for (var j = 0; j < tpl.length; j++) {
-      var sId = 'slot_' + dStr + '_' + j;
-      var st = 'available';
-      var stuId = '';
-      var stuName = '';
-      var bkId = '';
-      if (dStr === TOMORROW && j === 1) {
-        st = 'booked'; stuId = 'stu_duoduo'; stuName = '林小朵 (朵朵)'; bkId = 'bk_1';
-        DB.bookings[0].slotId = sId;
-        DB.bookings[0].startTime = tpl[j][0];
-        DB.bookings[0].endTime = tpl[j][1];
-      } else if (dStr === TOMORROW && j === 2) {
-        st = 'booked'; stuId = 'stu_zirui'; stuName = '陈子睿'; bkId = 'bk_other';
-      } else if (dStr === TODAY && j === tpl.length - 1) {
-        st = 'booked'; stuId = 'stu_zirui'; stuName = '陈子睿'; bkId = 'bk_leave';
-        DB.bookings[1].slotId = sId;
-        DB.bookings[1].startTime = tpl[j][0];
-        DB.bookings[1].endTime = tpl[j][1];
-      } else if (dStr === TOMORROW && j === tpl.length - 1) {
-        st = 'closed';
-      }
-      DB.slots.push({
-        id: sId, date: dStr, startTime: tpl[j][0], endTime: tpl[j][1], duration: 45,
-        roomName: '1号施坦威三角琴房', status: st, studentId: stuId, studentName: stuName, bookingId: bkId
-      });
-    }
-  }
-
-  /* ================= 应用状态机 ================= */
-  var State = {
-    role: 'parent', // 'parent' | 'visitor' | 'teacher'
-    tab: 'home',    // parent/visitor: 'home'|'schedule'|'bookings'|'profile' | subpages: 'practice'|'logs'
-                    // teacher: 'adm_dash'|'adm_slots'|'adm_bookings'|'adm_students'
-    historyStack: [],
-    currentStudentId: 'stu_duoduo',
-    visitorBoundId: '',
-    selectedDate: TOMORROW,
-    bookingFilter: 'all',
-    adminBookingFilter: 'all',
-    checkedInToday: false,
-    practiceForm: { mins: 25, repertoire: '《车尔尼599》第35条、C大调双手同向音阶', mood: '😊 开心顺畅', note: '' },
-    modalBookCourse: '少儿钢琴 1对1 常规课',
-    modalBookRemark: '常规回课与新曲学习'
-  };
-
-  function getActiveUser() {
-    if (State.role === 'visitor') {
-      if (!State.visitorBoundId) return null;
-      return DB.students.find(function(s) { return s.id === State.visitorBoundId; }) || null;
-    }
-    return DB.students.find(function(s) { return s.id === State.currentStudentId; }) || DB.students[0];
-  }
-
-  function getBoundChildren() {
-    if (State.role === 'visitor') {
-      var u = getActiveUser();
-      return u ? [u] : [];
-    }
-    return DB.students.filter(function(s) { return s.boundToParent; });
-  }
-
-  function pianoBarHtml() {
-    return '<div class="piano-keys-bar">' +
-      '<div class="pk-w"><div class="pk-b"></div></div>' +
-      '<div class="pk-w"><div class="pk-b"></div></div>' +
-      '<div class="pk-w"></div>' +
-      '<div class="pk-w"><div class="pk-b"></div></div>' +
-      '<div class="pk-w"><div class="pk-b"></div></div>' +
-      '<div class="pk-w"><div class="pk-b"></div></div>' +
-      '<div class="pk-w"></div>' +
-      '<div class="pk-w"><div class="pk-b"></div></div>' +
-      '<div class="pk-w"><div class="pk-b"></div></div>' +
-      '<div class="pk-w"></div>' +
-    '</div>';
-  }
-
-  function childSwitcherHtml() {
-    var kids = getBoundChildren();
-    if (kids.length <= 1) return '';
-    var u = getActiveUser();
-    return '<div class="child-switcher">' +
-      '<span style="font-size:11.5px;color:#8C8278;flex-shrink:0;">当前宝贝：</span>' +
-      kids.map(function(k) {
-        var act = u && u.id === k.id ? 'active' : '';
-        return '<span class="cs-chip ' + act + '" onclick="App.selectChild(\'' + k.id + '\')">' + k.childName + ' (余' + k.remainLessons + '节)</span>';
-      }).join('') +
-    '</div>';
-  }
-
-  /* ================= 各页面渲染器 ================= */
-  function renderHome() {
-    var u = getActiveUser();
-    var st = DB.studio;
-    var upcoming = DB.bookings.filter(function(b) {
-      if (b.status !== 'booked' && b.status !== 'leave_pending') return false;
-      return u ? b.userId === u.id : b.isTrial;
-    });
-    var nextBk = upcoming[0] || null;
-    var html = '';
-
-    if (u) {
-      html += '<div class="card-ebony">' +
-        '<div class="hero-top">' +
-          '<div class="child-id-row">' +
-            '<div class="avatar-gold">🎹</div>' +
-            '<div>' +
-              '<div><span class="child-name-main">' + u.childName + '</span>' +
-                (getBoundChildren().length > 1 ? '<span class="switch-baby-chip" onclick="App.cycleChild()">切换宝贝 ▾</span>' : '') +
-              '</div>' +
-              '<div class="child-stage">' + u.level + '</div>' +
-            '</div>' +
-          '</div>' +
-          '<div class="flower-pill" onclick="App.openSubPage(\'practice\')">🌺 ' + u.flowerCount + ' 朵</div>' +
-        '</div>' +
-        '<div class="metrics-dual">' +
-          '<div class="metric-box" onclick="App.openSubPage(\'logs\')">' +
-            '<div><span class="metric-num" id="home-remain-num">' + u.remainLessons + '</span><span class="metric-unit">节</span></div>' +
-            '<div class="metric-lbl">剩余可用课时 ›</div>' +
-          '</div>' +
-          '<div class="metric-sep"></div>' +
-          '<div class="metric-box" onclick="App.openSubPage(\'practice\')">' +
-            '<div><span class="metric-num">' + u.practiceDays + '</span><span class="metric-unit">天</span></div>' +
-            '<div class="metric-lbl">累计练琴打卡 ›</div>' +
-          '</div>' +
-        '</div>' +
-        '<div class="quick-grid-4">' +
-          '<div class="qg-item" onclick="App.goTab(\'schedule\')"><div class="qg-icon">📅</div><div class="qg-title">约钢琴课</div><div class="qg-sub">21天档期</div></div>' +
-          '<div class="qg-item" onclick="App.openSubPage(\'practice\')"><div class="qg-icon">🌺</div><div class="qg-title">练琴打卡</div><div class="qg-sub">领小红花</div></div>' +
-          '<div class="qg-item" onclick="App.goTab(\'bookings\')"><div class="qg-icon">🎵</div><div class="qg-title">我的课表</div><div class="qg-sub">5星陪练单</div></div>' +
-          '<div class="qg-item" onclick="App.openSubPage(\'logs\')"><div class="qg-icon">📒</div><div class="qg-title">课时明细</div><div class="qg-sub">透明对账</div></div>' +
-        '</div>' +
-      '</div>';
-    } else {
-      html += '<div class="card" style="background:linear-gradient(180deg,#FFFFFF 0%,#FDF8F0 100%);border-color:#E8D5B7;">' +
-        '<div style="margin-bottom:8px;"><span class="badge badge-gold">✨ 欢迎来到 ' + st.studioName + '</span></div>' +
-        '<div style="font-size:17px;font-weight:700;color:#231F20;margin-bottom:6px;">开启温暖优雅的 1对1 钢琴之旅</div>' +
-        '<div style="font-size:12.5px;color:#6B6158;line-height:1.6;margin-bottom:14px;">如宝贝已在琴房建档，请点击绑定专属档案以同步剩余课时与课表；首次到访欢迎 0 课时预约体验课。</div>' +
-        '<div style="display:flex;flex-direction:column;gap:9px;">' +
-          '<button class="btn btn-ebony btn-block" onclick="App.openBindModal()">🔑 绑定已有琴童档案 (试输 RUI666)</button>' +
-          '<button class="btn btn-gold btn-block" onclick="App.goTab(\'schedule\')">🌱 预约 1对1 钢琴体验课 (0课时)</button>' +
-        '</div>' +
-      '</div>';
-    }
-
-    if (nextBk) {
-      html += '<div class="card next-card" onclick="App.goTab(\'bookings\')">' +
-        '<div style="display:flex;justify-content:space-between;align-items:center;">' +
-          '<span style="font-size:12.5px;font-weight:700;color:#A67B44;">⏰ 近期上课提醒 ' + (nextBk.isTrial ? '<span class="badge badge-trial">🌱 体验课</span>' : '') + '</span>' +
-          '<span style="font-size:11.5px;color:#8C8278;">共 ' + upcoming.length + ' 节待上 ›</span>' +
-        '</div>' +
-        '<div class="next-time-big">' + nextBk.date + ' (' + getWeekStr(nextBk.date) + ') <span class="next-clock-gold">' + nextBk.startTime + ' - ' + nextBk.endTime + '</span></div>' +
-        '<div style="font-size:12.5px;color:#5C534C;">' + nextBk.courseName + ' · ' + nextBk.roomName + '</div>' +
-      '</div>';
-    }
-
-    html += pianoBarHtml();
-
-    // 刘妤老师名片卡
-    html += '<div class="card-ebony">' +
-      '<div class="teacher-top">' +
-        '<div class="teacher-avatar-lg">🎹</div>' +
-        '<div>' +
-          '<div style="margin-bottom:4px;"><span class="teacher-name">' + st.teacherName + '</span><span class="teacher-role-tag">主理人 / 钢琴教师</span></div>' +
-          '<div style="font-size:12px;color:#D9CFC3;">' + st.teacherTitle + '</div>' +
-        '</div>' +
-      '</div>' +
-      '<div class="gold-tags">' + st.teacherTags.map(function(t) { return '<span class="gold-tag">' + t + '</span>'; }).join('') + '</div>' +
-      '<div style="font-size:12.5px;color:#CFC5B9;line-height:1.6;">' + st.teacherBio + '</div>' +
-      '<div class="studio-contact-box">' +
-        '<div style="font-size:12px;color:#EAE0D5;margin-bottom:9px;display:flex;justify-content:space-between;align-items:center;" onclick="App.toast(\'已复制刘妤琴房地址\')">' +
-          '<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">📍 ' + st.address + '</span>' +
-          '<span style="color:#E8C99B;font-size:11px;border:1px solid rgba(232,201,155,0.4);padding:1px 6px;border-radius:5px;flex-shrink:0;margin-left:6px;">复制</span>' +
-        '</div>' +
-        '<div style="display:flex;gap:8px;">' +
-          '<button class="btn btn-sm" style="flex:1;background:rgba(255,255,255,0.12);color:#FFF;" onclick="App.toast(\'正在呼叫刘妤老师：13800138866\')">📞 电话联系老师</button>' +
-          '<button class="btn btn-gold btn-sm" style="flex:1;" onclick="App.toast(\'已复制刘妤老师微信号：LiuyuPiano88\')">💬 复制老师微信</button>' +
-        '</div>' +
-      '</div>' +
-    '</div>';
-
-    // 开设课程
-    html += '<div class="section-header"><span class="section-title">开设钢琴课程</span><span class="section-more" onclick="App.goTab(\'schedule\')">查看可约档期 ›</span></div>';
-    st.courses.forEach(function(c) {
-      html += '<div class="card">' +
-        '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:6px;">' +
-          '<span style="font-size:15px;font-weight:700;color:#231F20;">' + c.name + '</span>' +
-          '<span class="badge ' + (c.isTrial ? 'badge-trial' : 'badge-gold') + '">' + c.duration + '分钟 / ' + (c.isTrial ? '0课时体验' : '1课时') + '</span>' +
-        '</div>' +
-        '<div style="font-size:12px;color:#A67B44;margin-bottom:5px;font-weight:500;">适合对象：' + c.suitable + '</div>' +
-        '<div style="font-size:12.5px;color:#6E655D;line-height:1.55;margin-bottom:11px;">' + c.desc + '</div>' +
-        '<div style="display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px dashed #EFE8DC;">' +
-          '<span style="font-size:11.5px;color:#8C8278;">📍 ' + st.rooms[0] + '</span>' +
-          '<button class="btn ' + (c.isTrial ? 'btn-gold' : 'btn-outline-gold') + ' btn-sm" onclick="App.goBookWithCourse(\'' + c.name + '\')">' + (c.isTrial ? '预约体验课' : '预约此课程') + '</button>' +
-        '</div>' +
-      '</div>';
-    });
-
-    return html;
-  }
-
-  function renderSchedule() {
-    var u = getActiveUser();
-    var html = '';
-
-    if (u) {
-      html += '<div class="card-ebony" style="padding:13px 14px;">' +
-        '<div style="display:flex;justify-content:space-between;align-items:center;">' +
-          '<div style="display:flex;align-items:center;gap:10px;">' +
-            '<div class="avatar-gold" style="width:38px;height:38px;font-size:18px;">🎹</div>' +
-            '<div>' +
-              '<div style="font-size:15px;font-weight:700;color:#FFF;">' + u.childName + ' <span class="badge badge-gold" style="font-size:10px;padding:1px 6px;">正式学员</span></div>' +
-              '<div style="font-size:11px;color:rgba(255,255,255,0.7);margin-top:2px;">常规课锁定 1 课时 · 课前 12 小时可免费改退</div>' +
-            '</div>' +
-          '</div>' +
-          '<div style="text-align:right;background:rgba(255,255,255,0.09);padding:6px 11px;border-radius:10px;" onclick="App.openSubPage(\'logs\')">' +
-            '<div style="font-size:19px;font-weight:700;color:#E5C185;line-height:1.1;" id="sched-remain-num">' + u.remainLessons + '</div>' +
-            '<div style="font-size:10px;color:rgba(255,255,255,0.78);">剩余课时 ›</div>' +
-          '</div>' +
-        '</div>' +
-      '</div>';
-      html += childSwitcherHtml();
-    } else {
-      html += '<div class="card" style="background:linear-gradient(135deg,#FFF 0%,#FDF8F0 100%);border-color:#E8D5B7;display:flex;justify-content:space-between;align-items:center;gap:10px;">' +
-        '<div>' +
-          '<span class="badge badge-trial" style="margin-bottom:4px;">🌱 新生 0 课时体验通道</span>' +
-          '<div style="font-size:12px;color:#5C534C;">点击下方可预约时段即可 0 课时预约体验课</div>' +
-        '</div>' +
-        '<button class="btn btn-ebony btn-sm" onclick="App.openBindModal()">绑定档案</button>' +
-      '</div>';
-    }
-
-    // 21天横向滑动日历
-    html += '<div class="card" style="padding:13px 12px;">' +
-      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;">' +
-        '<div><span style="font-size:14.5px;font-weight:700;color:#231F20;">选择上课日期</span> <span style="font-size:11px;color:#9E948A;">未来 21 天</span></div>' +
-        '<span class="badge badge-gold">📆 滑动选日期</span>' +
-      '</div>' +
-      '<div style="display:flex;gap:12px;font-size:11px;color:#8C827A;margin-bottom:9px;">' +
-        '<span><i style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#287D56;margin-right:4px;"></i>可约</span>' +
-        '<span><i style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#C89D66;margin-right:4px;"></i>我已约</span>' +
-        '<span><i style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#CCC;margin-right:4px;"></i>他人已约(脱敏)</span>' +
-      '</div>' +
-      '<div class="date-strip">';
-
-    DB.dates.forEach(function(d) {
-      var daySlots = DB.slots.filter(function(s) { return s.date === d.date; });
-      var availCnt = daySlots.filter(function(s) { return s.status === 'available'; }).length;
-      var myCnt = daySlots.filter(function(s) { return s.status === 'booked' && u && s.studentId === u.id; }).length;
-      var act = State.selectedDate === d.date ? 'active' : '';
-      html += '<div class="date-box ' + act + '" onclick="App.selectDate(\'' + d.date + '\')">' +
-        '<div class="db-week">' + d.dayLabel + '</div>' +
-        '<div class="db-md">' + d.shortDate + '</div>' +
-        '<div class="db-cnt">' + (availCnt > 0 ? '余' + availCnt + '节' : '已满') + '</div>' +
-        (myCnt > 0 ? '<span class="db-mine">已约</span>' : '') +
-      '</div>';
-    });
-    html += '</div></div>';
-
-    // 当日时段列表
-    var curDateObj = DB.dates.find(function(d) { return d.date === State.selectedDate; }) || DB.dates[0];
-    var daySlots = DB.slots.filter(function(s) { return s.date === State.selectedDate; });
-
-    html += '<div style="display:flex;justify-content:space-between;align-items:baseline;margin:6px 2px 10px;">' +
-      '<div><span style="font-size:16px;font-weight:700;color:#231F20;">' + curDateObj.date + '</span> <span style="font-size:13px;color:#C89D66;font-weight:600;margin-left:4px;">' + curDateObj.dayLabel + ' (' + curDateObj.weekStr + ')</span></div>' +
-      '<span style="font-size:11px;color:#8C827A;">1对1 独立琴房</span>' +
-    '</div>';
-
-    daySlots.forEach(function(s, idx) {
-      var isMine = s.status === 'booked' && ((u && s.studentId === u.id) || (!u && s.isTrial));
-      var cls = s.status === 'available' ? 'avail' : (isMine ? 'mine' : s.status);
-      html += '<div class="slot-card ' + cls + '" id="slot-item-' + idx + '">' +
-        '<div>' +
-          '<div class="slot-time">' + s.startTime + ' - ' + s.endTime + '</div>' +
-          '<div class="slot-meta"><span>📍 ' + s.roomName + '</span><span>⏱ ' + s.duration + '分钟</span></div>' +
-        '</div>' +
-        '<div style="text-align:right;">';
-
-      if (s.status === 'available') {
-        html += '<div style="font-size:11px;color:#287D56;font-weight:600;margin-bottom:4px;">可预约</div>' +
-          '<button class="btn btn-gold btn-sm" id="btn-book-' + s.id + '" onclick="App.openBookModal(\'' + s.id + '\')">' + (u ? '立即约课' : '约体验课') + '</button>';
-      } else if (isMine) {
-        html += '<span class="badge badge-gold">🎉 ' + s.studentName + ' (我已约)</span>' +
-          '<div style="font-size:11.5px;color:#A67B44;font-weight:600;margin-top:5px;cursor:pointer;" onclick="App.goTab(\'bookings\')">查看/请假 ›</div>';
-      } else if (s.status === 'booked') {
-        html += '<span class="badge badge-gray">已被预约 · ' + maskName(s.studentName) + '</span>' +
-          '<div style="font-size:11px;color:#B0A79F;margin-top:4px;">1对1 隐私脱敏保护</div>';
-      } else {
-        html += '<span class="badge badge-gray">老师休息</span>' +
-          '<div style="font-size:11px;color:#B0A79F;margin-top:4px;">暂不开放预约</div>';
-      }
-      html += '</div></div>';
-    });
-
-    return html;
-  }
-
-  function renderBookings() {
-    var u = getActiveUser();
-    var html = childSwitcherHtml();
-
-    var tabs = [
-      { k: 'all', l: '全部' },
-      { k: 'booked', l: '待上课' },
-      { k: 'completed', l: '已完课/陪练单' },
-      { k: 'cancelled', l: '已取消' }
-    ];
-    html += '<div class="tabs-bar">' +
-      tabs.map(function(t) {
-        return '<div class="tab-pill ' + (State.bookingFilter === t.k ? 'active' : '') + '" onclick="App.setBookingFilter(\'' + t.k + '\')">' + t.l + '</div>';
-      }).join('') +
-    '</div>';
-
-    html += '<div style="background:#FFF9EB;border:1px solid #F2DEC0;border-radius:10px;padding:9px 12px;font-size:11.5px;color:#7A5C2E;margin-bottom:12px;line-height:1.5;">' +
-      '💡 课前 12 小时以上可免费自助取消，课时自动退回；临近开课突发情况可提交临时请假由刘妤老师协调。' +
-    '</div>';
-
-    var list = DB.bookings.filter(function(b) {
-      var matchOwner = u ? b.userId === u.id : b.isTrial;
-      if (!matchOwner) return false;
-      if (State.bookingFilter === 'all') return true;
-      if (State.bookingFilter === 'booked') return b.status === 'booked' || b.status === 'leave_pending';
-      return b.status === State.bookingFilter;
-    });
-
-    if (!list.length) {
-      html += '<div class="card" style="text-align:center;padding:38px 16px;">' +
-        '<div style="font-size:32px;margin-bottom:8px;">📅</div>' +
-        '<div style="font-size:13px;color:#8C8278;margin-bottom:14px;">当前分类下暂无课程记录</div>' +
-        '<button class="btn btn-gold" onclick="App.goTab(\'schedule\')">去预约钢琴课</button>' +
-      '</div>';
-      return html;
-    }
-
-    list.forEach(function(b) {
-      var badgeHtml = b.status === 'booked'
-        ? '<span class="badge badge-gold">待上课</span>'
-        : (b.status === 'leave_pending'
-          ? '<span class="badge badge-warning">⏳ 请假审批中</span>'
-          : (b.status === 'completed' ? '<span class="badge badge-green">已完课 · 陪练单</span>' : '<span class="badge badge-gray">已取消</span>'));
-
-      html += '<div class="card">' +
-        '<div style="display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:11px;border-bottom:1px solid #F0ECE6;">' +
-          '<div>' +
-            '<div style="font-size:12.5px;color:#7A7067;">' + b.date + ' (' + getWeekStr(b.date) + ') ' + (b.isTrial ? '<span class="badge badge-trial">🌱 体验课</span>' : '') + '</div>' +
-            '<div style="font-size:18px;font-weight:700;color:#231F20;margin-top:2px;">' + b.startTime + ' - ' + b.endTime + '</div>' +
-          '</div>' +
-          badgeHtml +
-        '</div>' +
-        '<div style="padding-top:10px;font-size:13px;line-height:1.75;color:#3D3632;">' +
-          '<div><span style="color:#8C827A;display:inline-block;width:68px;">课程名称</span><strong>' + b.courseName + '</strong></div>' +
-          '<div><span style="color:#8C827A;display:inline-block;width:68px;">上课信息</span>' + b.childName + ' · ' + b.roomName + '</div>' +
-          (b.remark ? '<div><span style="color:#8C827A;display:inline-block;width:68px;">课前备注</span>' + b.remark + '</div>' : '') +
-        '</div>';
-
-      if (b.status === 'leave_pending') {
-        html += '<div style="margin-top:9px;background:#FFF8EB;border:1px solid #F3D69B;border-left:4px solid #D97706;border-radius:9px;padding:9px 11px;font-size:12px;color:#9A580A;">' +
-          '⏳ 临时请假审批中（原因：' + b.leaveReason + '）· 等待刘妤老师协调' +
-        '</div>';
-      }
-
-      if (b.status === 'completed') {
-        html += '<div class="homework-box">' +
-          '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">' +
-            '<span style="font-size:14px;font-weight:700;color:#5E3F18;">🎹 刘妤老师 · 课后陪练作业卡</span>' +
-            '<span class="flower-pill">🌺 +' + (b.flowersAwarded || 2) + '</span>' +
-          '</div>' +
-          '<div style="background:rgba(255,255,255,0.78);border-radius:8px;padding:6px 10px;margin-bottom:9px;display:flex;align-items:center;justify-content:space-between;font-size:12px;">' +
-            '<span style="color:#6E5D4B;">课堂表现</span>' +
-            '<span class="star-gold">★★★★★ 5.0分</span>' +
-          '</div>' +
-          '<div style="font-size:12.5px;line-height:1.6;color:#3A322C;display:flex;flex-direction:column;gap:5px;">' +
-            '<div><strong style="color:#7A5422;">🎼 本周曲目：</strong>' + b.repertoire + '</div>' +
-            '<div><strong style="color:#7A5422;">🎯 陪练重点：</strong>' + b.practiceFocus + '</div>' +
-            '<div><strong style="color:#7A5422;">⏱ 建议每日练琴：</strong><strong style="color:#A67B44;">' + (b.dailyTargetMins || 25) + ' 分钟</strong></div>' +
-            '<div style="padding-top:7px;margin-top:3px;border-top:1px dashed #E5D4BA;"><strong style="color:#7A5422;">💬 刘妤老师评语：</strong>' + b.teacherComment + '</div>' +
-          '</div>' +
-          '<div style="display:flex;gap:8px;margin-top:11px;">' +
-            '<button class="btn btn-outline-gold btn-sm" style="flex:1;" onclick="App.toast(\'已复制陪练要点，可粘贴至家庭群\')">📋 复制陪练要点</button>' +
-            '<button class="btn btn-gold btn-sm" style="flex:1;" onclick="App.openSubPage(\'practice\')">🌺 去练琴打卡</button>' +
-          '</div>' +
-        '</div>';
-      }
-
-      if (b.status === 'booked') {
-        html += '<div style="margin-top:10px;padding-top:10px;border-top:1px dashed #EFECE6;display:flex;justify-content:space-between;align-items:center;">' +
-          '<span style="font-size:11px;color:#9E948C;">满足课前12h免费退改规则</span>' +
-          '<div style="display:flex;gap:6px;">' +
-            '<button class="btn btn-outline-gold btn-sm" onclick="App.openLeaveModal(\'' + b.id + '\')">申请临时请假</button>' +
-            '<button class="btn btn-danger-outline btn-sm" onclick="App.cancelBooking(\'' + b.id + '\')">' + (b.isTrial ? '取消体验' : '取消(退1课时)') + '</button>' +
-          '</div>' +
-        '</div>';
-      }
-
-      html += '</div>';
-    });
-
-    return html;
-  }
-
-  function renderPractice() {
-    var u = getActiveUser() || DB.students[0];
-    var logs = DB.practiceLogs.filter(function(l) { return l.userId === u.id; });
-    var totalMins = logs.reduce(function(a, b) { return a + b.durationMins; }, 0) + 290;
-
-    var html = '<div class="card-ebony">' +
-      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:13px;">' +
-        '<div style="display:flex;align-items:center;gap:10px;">' +
-          '<div class="avatar-gold" style="width:42px;height:42px;">🎹</div>' +
-          '<div>' +
-            '<div style="font-size:16px;font-weight:700;color:#FFF;">' + u.childName + ' <span class="badge ' + (State.checkedInToday ? 'badge-green' : 'badge-gold') + '" style="margin-left:4px;">' + (State.checkedInToday ? '✅ 今日已打卡' : '✨ 今日待打卡') + '</span></div>' +
-            '<div style="font-size:11px;color:#CFC3B6;margin-top:2px;">每日首次打卡点亮 +1 朵小红花</div>' +
-          '</div>' +
-        '</div>' +
-        '<button class="btn btn-sm" style="background:rgba(255,255,255,0.12);color:#F2D3A2;border:1px solid rgba(242,211,162,0.38);" onclick="App.toast(\'已生成宝贝练琴成就海报卡片\')">晒成就 ↗</button>' +
-      '</div>' +
-      '<div class="admin-grid-3" style="margin-top:0;">' +
-        '<div class="ag-cell"><div class="ag-num" id="prac-flower-num">🌺 ' + u.flowerCount + '</div><div class="ag-lbl">小红花(朵)</div></div>' +
-        '<div class="ag-cell"><div class="ag-num">🔥 ' + u.practiceDays + '</div><div class="ag-lbl">累计打卡(天)</div></div>' +
-        '<div class="ag-cell"><div class="ag-num">⏱ ' + totalMins + '</div><div class="ag-lbl">累计练琴(分)</div></div>' +
-      '</div>' +
-    '</div>';
-
-    // 本周课后5星陪练作业单参考
-    html += '<div class="card" style="background:linear-gradient(180deg,#FFFDF9 0%,#FAF3E7 100%);border-color:#E8D5B7;border-left:4px solid #C89D66;padding:12px 13px;">' +
-      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;">' +
-        '<span style="background:#231F20;color:#E8C99B;font-size:11px;font-weight:600;padding:2px 8px;border-radius:6px;">🎹 刘妤老师 · 课后5星陪练单</span>' +
-        '<span class="star-gold" style="font-size:12.5px;font-weight:700;">★★★★★ 5.0分</span>' +
-      '</div>' +
-      '<div style="font-size:12px;color:#3A322C;line-height:1.55;">' +
-        '<div><strong style="color:#7A5422;">🎼 本周曲目：</strong>《车尔尼599》第35条、C大调双手同向音阶</div>' +
-        '<div style="margin-top:3px;"><strong style="color:#7A5422;">🎯 陪练重点：</strong>开节拍器 66 慢速唱谱练熟，右手跳音手腕保持放松（25分钟/天）</div>' +
-      '</div>' +
-    '</div>';
-
-    // 今日打卡表单
-    html += '<div class="card">' +
-      '<div style="font-size:15px;font-weight:700;color:#231F20;margin-bottom:10px;">今日练琴打卡</div>' +
-      '<div style="font-size:12px;color:#5C534C;margin-bottom:4px;">今日练琴时长（分钟）</div>' +
-      '<div class="pill-row">' +
-        [15, 25, 30, 45, 60].map(function(m) {
-          return '<span class="choice-chip ' + (State.practiceForm.mins === m ? 'active' : '') + '" onclick="App.setPracMins(' + m + ')">' + m + ' 分钟</span>';
-        }).join('') +
-      '</div>' +
-      '<div style="font-size:12px;color:#5C534C;margin:8px 0 5px;">今日练习曲目</div>' +
-      '<input class="form-input" value="' + State.practiceForm.repertoire + '" onchange="App.setPracRep(this.value)" />' +
-      '<div style="font-size:12px;color:#5C534C;margin:9px 0 4px;">宝贝练琴状态</div>' +
-      '<div class="pill-row">' +
-        ['😊 开心顺畅', '🧐 认真慢练', '💪 攻克难点'].map(function(md) {
-          return '<span class="choice-chip ' + (State.practiceForm.mood === md ? 'active' : '') + '" onclick="App.setPracMood(\'' + md + '\')">' + md + '</span>';
-        }).join('') +
-      '</div>' +
-      '<button class="btn btn-gold btn-block" id="btn-submit-checkin" style="margin-top:10px;" onclick="App.submitPractice()">🌺 提交打卡 · 领取今日小红花</button>' +
-    '</div>';
-
-    html += '<div class="section-header"><span class="section-title">历史练琴足迹</span><span class="section-more">共 ' + logs.length + ' 条</span></div>';
-    logs.forEach(function(l) {
-      html += '<div class="card">' +
-        '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;">' +
-          '<div><strong style="font-size:13.5px;">' + l.date + '</strong> <span class="badge badge-gold">⏱ ' + l.durationMins + '分钟</span> <span class="badge badge-gray">' + l.mood + '</span></div>' +
-          '<span class="flower-pill">🌺 +' + l.flowersEarned + '</span>' +
-        '</div>' +
-        '<div style="font-size:13px;font-weight:600;color:#2C2623;margin-bottom:6px;">🎼 ' + l.repertoire + '</div>' +
-        (l.parentNote ? '<div style="font-size:12px;color:#6B6158;background:#FAF7F2;padding:7px 10px;border-radius:8px;margin-bottom:7px;">📝 陪练记录：' + l.parentNote + '</div>' : '') +
-        (l.teacherReply ? '<div style="background:linear-gradient(135deg,#FFF8EB 0%,#FAF0DC 100%);border:1px solid #E8D5B7;border-left:4px solid #C89D66;border-radius:8px;padding:8px 10px;font-size:12px;color:#5E3F18;font-weight:600;">👩‍🏫 刘妤老师鼓励：' + l.teacherReply + '</div>' : '') +
-      '</div>';
-    });
-
-    return html;
-  }
-
-  function renderLessonLogs() {
-    var u = getActiveUser() || DB.students[0];
-    var logs = DB.lessonLogs.filter(function(l) { return l.userId === u.id; });
-    var html = childSwitcherHtml() +
-      '<div class="card-ebony">' +
-        '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">' +
-          '<span style="font-size:14px;font-weight:700;color:#E5C185;">🎹 ' + u.childName + ' · 课时登记账单</span>' +
-          '<span class="badge badge-gold">透明对账</span>' +
-        '</div>' +
-        '<div class="admin-grid-3" style="margin-top:0;">' +
-          '<div class="ag-cell"><div class="ag-num">' + u.remainLessons + '</div><div class="ag-lbl">当前剩余(节)</div></div>' +
-          '<div class="ag-cell"><div class="ag-num" style="color:#FFF;">' + u.usedLessons + '</div><div class="ag-lbl">已约/已上(节)</div></div>' +
-          '<div class="ag-cell"><div class="ag-num" style="color:#FFF;">' + u.totalLessons + '</div><div class="ag-lbl">累计登记(节)</div></div>' +
-        '</div>' +
-      '</div>' +
-      '<div class="section-header"><span class="section-title">课时变动流水</span></div>';
-
-    logs.forEach(function(l) {
-      var plus = l.changeCount > 0;
-      html += '<div class="card">' +
-        '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;">' +
-          '<div><span class="badge ' + (plus ? 'badge-green' : 'badge-gold') + '">' + l.typeLabel + '</span> <span style="font-size:11px;color:#8C827A;margin-left:4px;">' + l.operator + '</span></div>' +
-          '<span style="font-size:15.5px;font-weight:700;color:' + (plus ? '#287D56' : '#231F20') + ';">' + (plus ? '+' + l.changeCount : l.changeCount) + ' 课时</span>' +
-        '</div>' +
-        '<div style="font-size:13px;color:#3A332E;margin-bottom:8px;">' + l.remark + '</div>' +
-        '<div style="display:flex;justify-content:space-between;font-size:11px;color:#9E948C;padding-top:7px;border-top:1px dashed #EFECE6;">' +
-          '<span>' + l.time + '</span><strong style="color:#7A6E65;">变动后余 ' + l.afterBalance + ' 节</strong>' +
-        '</div>' +
-      '</div>';
-    });
-    return html;
-  }
-
-  function renderProfile() {
-    var u = getActiveUser();
-    var html = '';
-    if (u) {
-      html += '<div class="card-ebony">' +
-        '<div style="display:flex;align-items:center;gap:12px;">' +
-          '<div class="avatar-gold" style="width:48px;height:48px;font-size:23px;">🎹</div>' +
-          '<div style="flex:1;">' +
-            '<div style="font-size:17px;font-weight:700;color:#FFF;">' + u.childName + ' <span class="badge badge-gold">' + u.age + '岁</span></div>' +
-            '<div style="font-size:12px;color:#E5C185;margin-top:3px;">当前进度：' + u.level + '</div>' +
-            '<div style="font-size:11px;color:rgba(255,255,255,0.68);margin-top:2px;">' + u.parentName + ' · ' + u.parentPhone + '</div>' +
-          '</div>' +
-        '</div>' +
-        (u.fixedNote ? '<div style="margin-top:11px;background:rgba(255,255,255,0.08);border-radius:8px;padding:8px 10px;font-size:11.5px;color:#EAE0D5;"><strong style="color:#E5C185;">📅 固定排课：</strong>' + u.fixedNote + '</div>' : '') +
-      '</div>';
-
-      html += '<div class="card">' +
-        '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">' +
-          '<strong style="font-size:14.5px;">✨ 钢琴课时登记账本</strong>' +
-          '<span style="font-size:12px;color:#A67B44;font-weight:600;cursor:pointer;" onclick="App.openSubPage(\'logs\')">变动明细 ›</span>' +
-        '</div>' +
-        '<div style="display:flex;justify-content:space-around;background:#FAF7F2;border-radius:11px;padding:13px 6px;text-align:center;">' +
-          '<div><div style="font-size:21px;font-weight:700;color:#C89D66;">' + u.remainLessons + '</div><div style="font-size:11px;color:#8C827A;">剩余可约(节)</div></div>' +
-          '<div><div style="font-size:21px;font-weight:700;">' + u.usedLessons + '</div><div style="font-size:11px;color:#8C827A;">已约/已上(节)</div></div>' +
-          '<div><div style="font-size:21px;font-weight:700;">' + u.totalLessons + '</div><div style="font-size:11px;color:#8C827A;">累计登记(节)</div></div>' +
-        '</div>' +
-      '</div>';
-    } else {
-      html += '<div class="card-ebony">' +
-        '<div style="font-size:16px;font-weight:700;color:#FFF;margin-bottom:6px;">尚未绑定琴童档案</div>' +
-        '<div style="font-size:12px;color:#D5C9BC;margin-bottom:12px;">绑定后可查看剩余课时、在线约课与每日练琴打卡</div>' +
-        '<button class="btn btn-gold btn-block" onclick="App.openBindModal()">➕ 绑定琴童档案 (试输 RUI666)</button>' +
-      '</div>';
-    }
-
-    var menus = [
-      { icon: '🌺', title: '每日练琴打卡本', desc: '记录练琴时长点亮小红花，收刘妤老师鼓励', act: "App.openSubPage('practice')" },
-      { icon: '📒', title: '课时变动明细', desc: '每笔续课登记、约课扣减与请假退回清晰可查', act: "App.openSubPage('logs')" },
-      { icon: '🔑', title: '绑定另一位琴童档案', desc: '支持二胎家庭切换管理两个宝贝的课表', act: "App.openBindModal()" },
-      { icon: '📞', title: '联系刘妤老师', desc: '微信：LiuyuPiano88 · 电话：13800138866', act: "App.toast('已复制刘妤老师微信：LiuyuPiano88')" }
-    ];
-    html += '<div class="card" style="padding:4px 14px;">' +
-      menus.map(function(m, i) {
-        return '<div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;' + (i < menus.length - 1 ? 'border-bottom:1px solid #F2EFE9;' : '') + 'cursor:pointer;" onclick="' + m.act + '">' +
-          '<div style="display:flex;align-items:center;gap:11px;"><span style="font-size:19px;">' + m.icon + '</span><div><div style="font-size:14px;font-weight:600;">' + m.title + '</div><div style="font-size:11px;color:#8C827A;margin-top:2px;">' + m.desc + '</div></div></div>' +
-          '<span style="color:#C0B7AE;font-size:16px;">›</span>' +
-        '</div>';
-      }).join('') +
-    '</div>';
-
-    // 老师工作台入口卡片
-    html += '<div style="background:linear-gradient(135deg,#FFF8EB 0%,#F7E8CE 100%);border:1.5px solid #DEC094;border-radius:14px;padding:14px 15px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;" onclick="App.switchRole(\'teacher\')">' +
-      '<div>' +
-        '<div style="font-size:9.5px;letter-spacing:1px;color:#9C6F32;font-weight:700;">TEACHER WORKBENCH</div>' +
-        '<div style="font-size:15px;font-weight:700;color:#382914;margin-top:2px;">👩‍🏫 刘妤老师教务工作台</div>' +
-        '<div style="font-size:11px;color:#7D5E33;margin-top:2px;">批量排课 · 完课发陪练单 · 课时登记</div>' +
-      '</div>' +
-      '<span class="btn btn-ebony btn-sm">进入后台 ›</span>' +
-    '</div>';
-
-    return html;
-  }
-
-  /* ================= 👩‍🏫 刘妤老师手机后台 4 大模块 ================= */
-  function renderAdminDashboard() {
-    var leaveList = DB.bookings.filter(function(b) { return b.status === 'leave_pending'; });
-    var upcomingCnt = DB.bookings.filter(function(b) { return b.status === 'booked' || b.status === 'leave_pending'; }).length;
-    var availSlotsCnt = DB.slots.filter(function(s) { return s.status === 'available'; }).length;
-    var lowStudents = DB.students.filter(function(s) { return s.remainLessons <= 3; });
-
-    var html = '<div class="card-ebony">' +
-      '<div style="display:flex;justify-content:space-between;align-items:flex-start;">' +
-        '<div>' +
-          '<div style="font-size:10px;letter-spacing:1.2px;color:#E8C99B;font-weight:700;">LIUYU PIANO STUDIO · ADMIN</div>' +
-          '<div style="font-size:18px;font-weight:700;color:#FFF;margin-top:3px;">刘妤老师教务工作台</div>' +
-          '<div style="font-size:11.5px;color:#CFC3B6;margin-top:2px;">手机随时排课、审批请假、发陪练作业与课时记账</div>' +
-        '</div>' +
-        '<span class="badge badge-gold" style="cursor:pointer;" onclick="App.toast(\'工作室规则：课前12h可退 · 开放21天\')">⚙️ 琴房设置</span>' +
-      '</div>' +
-      '<div class="admin-grid-3">' +
-        '<div class="ag-cell" onclick="App.goTab(\'adm_bookings\')"><div class="ag-num">' + upcomingCnt + '</div><div class="ag-lbl">待上预约</div></div>' +
-        '<div class="ag-cell" onclick="App.goTab(\'adm_bookings\')"><div class="ag-num" style="color:#FBBF24;">' + leaveList.length + '</div><div class="ag-lbl">请假待批</div></div>' +
-        '<div class="ag-cell" onclick="App.goTab(\'adm_slots\')"><div class="ag-num">' + availSlotsCnt + '</div><div class="ag-lbl">开放可约时段</div></div>' +
-        '<div class="ag-cell" onclick="App.goTab(\'adm_students\')"><div class="ag-num">' + DB.students.length + '</div><div class="ag-lbl">在读琴童</div></div>' +
-        '<div class="ag-cell" onclick="App.goTab(\'adm_students\')"><div class="ag-num" style="color:#FCA5A5;">' + lowStudents.length + '</div><div class="ag-lbl">低课时预警</div></div>' +
-        '<div class="ag-cell" onclick="App.goTab(\'adm_students\')"><div class="ag-num">33</div><div class="ag-lbl">总剩余课时</div></div>' +
-      '</div>' +
-    '</div>';
-
-    // 待审批临时请假预警卡
-    if (leaveList.length > 0) {
-      html += '<div class="section-header"><span class="section-title">⏳ 待审批临时请假 (' + leaveList.length + ')</span></div>';
-      leaveList.forEach(function(b) {
-        html += '<div class="card" style="border-left:4px solid #D97706;background:#FFFDF9;">' +
-          '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">' +
-            '<strong style="font-size:14.5px;color:#231F20;">' + b.childName + ' · ' + b.date + ' ' + b.startTime + '</strong>' +
-            '<span class="badge badge-warning">课前12h内急假</span>' +
-          '</div>' +
-          '<div style="font-size:12.5px;color:#7A5422;background:#FFF7E6;padding:7px 10px;border-radius:8px;margin-bottom:10px;">申请原因：' + b.leaveReason + '</div>' +
-          '<div style="display:flex;gap:7px;">' +
-            '<button class="btn btn-gold btn-sm" style="flex:1.3;" onclick="App.handleLeave(\'' + b.id + '\', \'refund\')">批准并退1课时</button>' +
-            '<button class="btn btn-outline-gold btn-sm" style="flex:1;" onclick="App.handleLeave(\'' + b.id + '\', \'norefund\')">释放不退课时</button>' +
-          '</div>' +
-        '</div>';
-      });
-    }
-
-    // 快捷功能宫格
-    html += '<div class="section-header"><span class="section-title">核心教务快捷操作</span></div>' +
-      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:12px;">' +
-        '<div class="card" style="margin:0;cursor:pointer;" onclick="App.goTab(\'adm_slots\')">' +
-          '<div style="font-size:20px;margin-bottom:5px;">📅</div>' +
-          '<div style="font-size:14px;font-weight:700;">按周批量排课</div>' +
-          '<div style="font-size:11.5px;color:#8C827A;margin-top:2px;">一键生成未来4周档期</div>' +
-        '</div>' +
-        '<div class="card" style="margin:0;cursor:pointer;" onclick="App.openFixedScheduleModal()">' +
-          '<div style="font-size:20px;margin-bottom:5px;">📌</div>' +
-          '<div style="font-size:14px;font-weight:700;">老生固定课位连排</div>' +
-          '<div style="font-size:11.5px;color:#8C827A;margin-top:2px;">锁定每周固定时间</div>' +
-        '</div>' +
-      '</div>';
-
-    // 低课时续费提醒
-    if (lowStudents.length > 0) {
-      html += '<div class="section-header"><span class="section-title">🔔 续课提醒名单（余 ≤ 3节）</span><span class="section-more" onclick="App.goTab(\'adm_students\')">全部学员 ›</span></div>';
-      lowStudents.forEach(function(s) {
-        html += '<div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:10px;">' +
-          '<div style="min-width:0;flex:1;">' +
-            '<div style="font-size:14.5px;font-weight:700;">' + s.childName + ' <span class="badge badge-danger">仅余 ' + s.remainLessons + ' 节</span></div>' +
-            '<div style="font-size:11.5px;color:#8C827A;margin-top:3px;">' + s.parentName + ' (' + s.parentPhone + ') · ' + s.level + '</div>' +
-          '</div>' +
-          '<button class="btn btn-gold btn-sm" style="white-space:nowrap;flex-shrink:0;" onclick="App.openRechargeModal(\'' + s.id + '\')">+ 续课登记</button>' +
-        '</div>';
-      });
-    }
-
-    return html;
-  }
-
-  function renderAdminSlots() {
-    var html = '<div class="card-ebony" style="padding:14px;">' +
-      '<div style="font-size:15px;font-weight:700;color:#FFF;margin-bottom:4px;">📅 智能排课档期中心</div>' +
-      '<div style="font-size:11.5px;color:#CFC3B6;margin-bottom:11px;">支持按周批量发布开放时段，或为老学员一键锁定每周固定课位</div>' +
-      '<div style="display:flex;gap:8px;">' +
-        '<button class="btn btn-gold btn-sm" style="flex:1;" onclick="App.batchGenerateWeekSlots()">⚡ 按周批量发布4周档期</button>' +
-        '<button class="btn btn-outline-gold btn-sm" style="flex:1;background:rgba(255,255,255,0.1);color:#E8C99B;" onclick="App.openFixedScheduleModal()">📌 老生固定课位连排</button>' +
-      '</div>' +
-    '</div>';
-
-    html += '<div class="card" style="padding:12px;">' +
-      '<div class="date-strip">' +
-        DB.dates.slice(0, 14).map(function(d) {
-          var act = State.selectedDate === d.date ? 'active' : '';
-          var cnt = DB.slots.filter(function(s) { return s.date === d.date && s.status !== 'closed'; }).length;
-          return '<div class="date-box ' + act + '" onclick="App.selectDate(\'' + d.date + '\')">' +
-            '<div class="db-week">' + d.dayLabel + '</div><div class="db-md">' + d.shortDate + '</div><div class="db-cnt">' + cnt + '节</div>' +
-          '</div>';
-        }).join('') +
-      '</div>' +
-    '</div>';
-
-    var daySlots = DB.slots.filter(function(s) { return s.date === State.selectedDate; });
-    html += '<div class="section-header"><span class="section-title">' + State.selectedDate + ' 时段管理</span><span class="section-more" onclick="App.addSingleSlot()">+ 新增时段</span></div>';
-
-    daySlots.forEach(function(s) {
-      html += '<div class="slot-card ' + (s.status === 'booked' ? 'mine' : s.status) + '">' +
-        '<div>' +
-          '<div class="slot-time">' + s.startTime + ' - ' + s.endTime + '</div>' +
-          '<div class="slot-meta"><span>📍 ' + s.roomName + '</span></div>' +
-        '</div>' +
-        '<div style="text-align:right;">' +
-          (s.status === 'booked'
-            ? '<span class="badge badge-gold">已约 · ' + s.studentName + '</span><div style="font-size:11px;color:#8C827A;margin-top:4px;">老师视角显示真名</div>'
-            : (s.status === 'available'
-              ? '<button class="btn btn-outline btn-sm" onclick="App.toggleSlot(\'' + s.id + '\')">设为休息</button>'
-              : '<button class="btn btn-gold btn-sm" onclick="App.toggleSlot(\'' + s.id + '\')">开放预约</button>')) +
-        '</div>' +
-      '</div>';
-    });
-
-    return html;
-  }
-
-  function renderAdminBookings() {
-    var html = '<div class="section-header" style="margin-top:2px;"><span class="section-title">约课核销与 5 星课后陪练点评</span></div>';
-    DB.bookings.forEach(function(b) {
-      html += '<div class="card">' +
-        '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">' +
-          '<div><strong style="font-size:15px;">' + b.childName + '</strong> <span style="font-size:12px;color:#8C827A;">' + b.parentPhone + '</span></div>' +
-          (b.status === 'booked' ? '<span class="badge badge-gold">待上课</span>'
-            : (b.status === 'leave_pending' ? '<span class="badge badge-warning">请假待批</span>'
-            : (b.status === 'completed' ? '<span class="badge badge-green">已完课发单</span>' : '<span class="badge badge-gray">已取消</span>'))) +
-        '</div>' +
-        '<div style="font-size:13px;color:#4A413B;margin-bottom:6px;">📅 ' + b.date + ' ' + b.startTime + '-' + b.endTime + ' · ' + b.courseName + '</div>' +
-        (b.remark ? '<div style="font-size:12px;color:#8C827A;margin-bottom:9px;">备注：' + b.remark + '</div>' : '') +
-        (b.status === 'booked'
-          ? '<div style="display:flex;gap:8px;padding-top:8px;border-top:1px dashed #EFE8DC;">' +
-              '<button class="btn btn-gold btn-sm" style="flex:1.4;" onclick="App.openCompleteModal(\'' + b.id + '\')">✅ 确认完课 · 发5星陪练单</button>' +
-              '<button class="btn btn-outline btn-sm" style="flex:1;" onclick="App.toast(\'可一键将课程调期至任意空闲时段\')">🔄 调课改期</button>' +
-            '</div>'
-          : '') +
-      '</div>';
-    });
-    return html;
-  }
-
-  function renderAdminStudents() {
-    var html = '<div class="section-header" style="margin-top:2px;"><span class="section-title">琴童档案与课时账本 (' + DB.students.length + '人)</span><span class="section-more" onclick="App.toast(\'支持随时建档新琴童并生成6位绑定码\')">+ 新生建档</span></div>';
-    DB.students.forEach(function(s) {
-      html += '<div class="card">' +
-        '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:9px;">' +
-          '<div>' +
-            '<div style="font-size:15.5px;font-weight:700;color:#231F20;">' + s.childName + ' <span class="badge badge-gold">' + s.age + '岁</span> <span class="flower-pill">🌺 ' + s.flowerCount + '</span></div>' +
-            '<div style="font-size:12px;color:#6E655D;margin-top:3px;">' + s.parentName + ' · ' + s.parentPhone + '</div>' +
-            '<div style="font-size:11.5px;color:#A67B44;margin-top:2px;">进度：' + s.level + '</div>' +
-          '</div>' +
-          '<div style="text-align:right;background:#FAF7F2;padding:6px 11px;border-radius:10px;border:1px solid #EAE0D0;">' +
-            '<div style="font-size:19px;font-weight:700;color:' + (s.remainLessons <= 3 ? '#C94A4A' : '#C89D66') + ';">' + s.remainLessons + '节</div>' +
-            '<div style="font-size:10px;color:#8C827A;">剩余课时</div>' +
-          '</div>' +
-        '</div>' +
-        '<div style="display:flex;justify-content:space-between;align-items:center;background:#FAF7F2;border-radius:8px;padding:6px 10px;margin-bottom:10px;font-size:11.5px;">' +
-          '<span style="color:#6E655D;">家长专属绑定码：<strong style="color:#231F20;letter-spacing:1px;">' + s.bindCode + '</strong></span>' +
-          '<span style="color:' + (s.boundToParent ? '#287D56' : '#B86E14') + ';font-weight:600;">' + (s.boundToParent ? '✅ 已绑家长微信' : '待家长认领') + '</span>' +
-        '</div>' +
-        '<div style="display:flex;gap:8px;">' +
-          '<button class="btn btn-gold btn-sm" style="flex:1;" onclick="App.openRechargeModal(\'' + s.id + '\')">➕ 课时续课登记</button>' +
-          '<button class="btn btn-outline-gold btn-sm" style="flex:1;" onclick="App.openShareInviteCard(\'' + s.id + '\')">📤 转发微信绑定卡</button>' +
-        '</div>' +
-      '</div>';
-    });
-    return html;
-  }
-
-  /* ================= 主渲染引擎 ================= */
-  function render() {
-    // 顶部胶囊状态
-    ['parent', 'visitor', 'teacher'].forEach(function(r) {
-      var p = document.getElementById('pill-' + r);
-      var d = document.getElementById('desk-role-' + r);
-      if (p) p.className = 'p-pill' + (State.role === r ? ' active' : '');
-      if (d) d.className = 'dg-role-btn' + (State.role === r ? ' active' : '');
-    });
-
-    var navBack = document.getElementById('nav-back-btn');
-    var navTitle = document.getElementById('nav-title');
-    var isSub = State.tab === 'practice' || State.tab === 'logs';
-    navBack.innerHTML = isSub ? '‹ 返回' : '';
-
-    var titleMap = {
-      home: '刘妤钢琴工作室',
-      schedule: '预约排课 · 刘妤钢琴工作室',
-      bookings: '我的课表与陪练单',
-      profile: '我的琴童与课时',
-      practice: '琴童每日练琴打卡本',
-      logs: '课时变动对账明细',
-      adm_dash: '刘妤老师 · 教务工作台',
-      adm_slots: '排课档期管理',
-      adm_bookings: '约课核销与陪练点评',
-      adm_students: '琴童档案与课时账本'
-    };
-    navTitle.textContent = titleMap[State.tab] || '刘妤钢琴工作室';
-
-    var body = document.getElementById('screen-body');
-    if (State.tab === 'home') body.innerHTML = renderHome();
-    else if (State.tab === 'schedule') body.innerHTML = renderSchedule();
-    else if (State.tab === 'bookings') body.innerHTML = renderBookings();
-    else if (State.tab === 'profile') body.innerHTML = renderProfile();
-    else if (State.tab === 'practice') body.innerHTML = renderPractice();
-    else if (State.tab === 'logs') body.innerHTML = renderLessonLogs();
-    else if (State.tab === 'adm_dash') body.innerHTML = renderAdminDashboard();
-    else if (State.tab === 'adm_slots') body.innerHTML = renderAdminSlots();
-    else if (State.tab === 'adm_bookings') body.innerHTML = renderAdminBookings();
-    else if (State.tab === 'adm_students') body.innerHTML = renderAdminStudents();
-
-    // 底部 TabBar
-    var tabbar = document.getElementById('wx-tabbar');
-    if (isSub) {
-      tabbar.style.display = 'none';
-    } else {
-      tabbar.style.display = 'flex';
-      var items = State.role === 'teacher'
-        ? [
-            { k: 'adm_dash', icon: '📊', txt: '工作台', badge: DB.bookings.filter(function(b){return b.status==='leave_pending';}).length },
-            { k: 'adm_slots', icon: '📅', txt: '排课档期' },
-            { k: 'adm_bookings', icon: '✅', txt: '约课点评' },
-            { k: 'adm_students', icon: '👧', txt: '学员课时' }
-          ]
-        : [
-            { k: 'home', icon: '🎹', txt: '工作室' },
-            { k: 'schedule', icon: '📅', txt: '约钢琴课' },
-            { k: 'bookings', icon: '🎵', txt: '我的课表' },
-            { k: 'profile', icon: '👤', txt: '我的' }
-          ];
-      tabbar.innerHTML = items.map(function(it) {
-        return '<div class="tab-btn ' + (State.tab === it.k ? 'active' : '') + '" id="tab-' + it.k + '" onclick="App.goTab(\'' + it.k + '\')">' +
-          '<span class="tab-icon">' + it.icon + '</span>' +
-          '<span class="tab-txt">' + it.txt + '</span>' +
-          (it.badge ? '<span class="tab-dot-badge">' + it.badge + '</span>' : '') +
-        '</div>';
-      }).join('');
-    }
-  }
-
-  /* ================= 交互与弹窗方法集 ================= */
-  var toastTimer = null;
   function showToast(msg) {
-    var box = document.getElementById('toast-container');
-    box.innerHTML = '<div class="wx-toast">' + msg + '</div>';
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(function() { box.innerHTML = ''; }, 2000);
+    const t = document.getElementById('toast-pop');
+    t.textContent = msg;
+    t.style.display = 'block';
+    clearTimeout(window._toastTimer);
+    window._toastTimer = setTimeout(() => { t.style.display = 'none'; }, 2400);
+  }
+
+  function openModal(html) {
+    document.getElementById('modal-content').innerHTML = html;
+    document.getElementById('modal-mask').classList.add('show');
   }
 
   function closeModal() {
-    document.getElementById('modal-container').innerHTML = '';
+    document.getElementById('modal-mask').classList.remove('show');
   }
 
-  var App = {
-    toast: showToast,
-    closeModal: closeModal,
+  function switchRole(role) {
+    currentRole = role;
+    const pillStu = document.getElementById('pill-stu');
+    const pillTch = document.getElementById('pill-tch');
+    const dgStu = document.getElementById('dg-btn-stu');
+    const dgTch = document.getElementById('dg-btn-tch');
+    const tabStu = document.getElementById('tabbar-stu');
+    const tabTch = document.getElementById('tabbar-tch');
+    const navTitle = document.getElementById('wx-nav-title');
+    const leftSwitch = document.getElementById('wx-left-switch');
 
-    switchRole: function(role) {
-      closeModal();
-      State.role = role;
-      State.historyStack = [];
-      State.tab = role === 'teacher' ? 'adm_dash' : 'home';
-      document.getElementById('screen-body').scrollTop = 0;
-      render();
-    },
-
-    goTab: function(tab) {
-      closeModal();
-      State.historyStack = [];
-      State.tab = tab;
-      document.getElementById('screen-body').scrollTop = 0;
-      render();
-    },
-
-    openSubPage: function(sub) {
-      closeModal();
-      State.historyStack.push(State.tab);
-      State.tab = sub;
-      document.getElementById('screen-body').scrollTop = 0;
-      render();
-    },
-
-    goBack: function() {
-      var prev = State.historyStack.pop() || (State.role === 'teacher' ? 'adm_dash' : 'home');
-      State.tab = prev;
-      render();
-    },
-
-    cycleChild: function() {
-      var kids = getBoundChildren();
-      if (kids.length < 2) return;
-      var idx = kids.findIndex(function(k) { return k.id === State.currentStudentId; });
-      var next = kids[(idx + 1) % kids.length];
-      State.currentStudentId = next.id;
-      render();
-      showToast('已切换宝贝：' + next.childName);
-    },
-
-    selectChild: function(id) {
-      State.currentStudentId = id;
-      render();
-      showToast('已切换琴童档案');
-    },
-
-    selectDate: function(d) {
-      State.selectedDate = d;
-      render();
-    },
-
-    goBookWithCourse: function(courseName) {
-      State.modalBookCourse = courseName;
-      App.goTab('schedule');
-    },
-
-    setBookingFilter: function(k) {
-      State.bookingFilter = k;
-      render();
-    },
-
-    /* 预约确认弹窗（支持正式学员扣1课时 & 新生0课时体验课） */
-    openBookModal: function(slotId) {
-      var slot = DB.slots.find(function(s) { return s.id === slotId; });
-      if (!slot || slot.status !== 'available') return;
-      var u = getActiveUser();
-      var mc = document.getElementById('modal-container');
-
-      if (u) {
-        mc.innerHTML = '<div class="modal-mask" onclick="App.closeModal()">' +
-          '<div class="modal-sheet" onclick="event.stopPropagation()">' +
-            '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:13px;padding-bottom:10px;border-bottom:1px solid #F2ECE1;">' +
-              '<strong style="font-size:16px;">🎹 确认预约钢琴课</strong>' +
-              '<span style="color:#9E948A;cursor:pointer;padding:4px;" onclick="App.closeModal()">✕</span>' +
-            '</div>' +
-            '<div style="background:#FAF7F2;border:1px solid #EFE8DD;border-radius:11px;padding:11px 13px;margin-bottom:13px;font-size:12.5px;line-height:1.8;">' +
-              '<div style="display:flex;justify-content:space-between;"><span style="color:#8C827A;">上课时间</span><strong style="color:#A67B44;">' + slot.date + ' ' + slot.startTime + '-' + slot.endTime + '</strong></div>' +
-              '<div style="display:flex;justify-content:space-between;"><span style="color:#8C827A;">上课琴房</span><strong>' + slot.roomName + '</strong></div>' +
-              '<div style="display:flex;justify-content:space-between;"><span style="color:#8C827A;">预约琴童</span><strong>' + u.childName + '（余 ' + u.remainLessons + ' 节）</strong></div>' +
-            '</div>' +
-            '<div style="font-size:12px;color:#5C534C;margin-bottom:6px;font-weight:600;">选择课程类型</div>' +
-            '<div style="display:flex;flex-direction:column;gap:7px;margin-bottom:12px;">' +
-              ['少儿钢琴 1对1 常规课', '钢琴演奏进阶 1对1 精讲课'].map(function(cn) {
-                var act = State.modalBookCourse === cn;
-                return '<div style="padding:10px 12px;border-radius:10px;border:1.5px solid ' + (act ? '#C89D66' : '#EFECE6') + ';background:' + (act ? '#FDF6EC' : '#FAF7F2') + ';font-size:13px;font-weight:600;cursor:pointer;" onclick="App.pickModalCourse(\'' + slotId + '\',\'' + cn + '\')">' + cn + '</div>';
-              }).join('') +
-            '</div>' +
-            '<div style="font-size:12px;color:#5C534C;margin-bottom:6px;font-weight:600;">给刘妤老师留言（选填）</div>' +
-            '<input class="form-input" id="book-remark-inp" value="' + State.modalBookRemark + '" />' +
-            '<div style="display:flex;gap:10px;margin-top:16px;">' +
-              '<button class="btn btn-outline" style="flex:1;" onclick="App.closeModal()">再看看</button>' +
-              '<button class="btn btn-gold" id="btn-confirm-book" style="flex:2;" onclick="App.confirmRegularBook(\'' + slotId + '\')">确认预约 (扣1课时)</button>' +
-            '</div>' +
-          '</div>' +
-        '</div>';
-      } else {
-        mc.innerHTML = '<div class="modal-mask" onclick="App.closeModal()">' +
-          '<div class="modal-sheet" onclick="event.stopPropagation()">' +
-            '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid #F2ECE1;">' +
-              '<strong style="font-size:15.5px;">🌱 1对1 钢琴体验课预约（0课时）</strong>' +
-              '<span style="color:#9E948A;cursor:pointer;" onclick="App.closeModal()">✕</span>' +
-            '</div>' +
-            '<div style="background:#ECFDF5;border:1px solid #A7E3C5;border-radius:10px;padding:9px 12px;margin-bottom:12px;font-size:12px;color:#1F7A54;">' +
-              '已选时段：<strong>' + slot.date + ' ' + slot.startTime + '-' + slot.endTime + '</strong>（' + slot.roomName + '）' +
-            '</div>' +
-            '<div style="display:flex;gap:8px;margin-bottom:10px;">' +
-              '<div style="flex:1;"><div style="font-size:12px;margin-bottom:4px;">琴童姓名/小名 *</div><input class="form-input" id="trial-name" value="小满" /></div>' +
-              '<div style="width:90px;"><div style="font-size:12px;margin-bottom:4px;">年龄(岁)</div><input class="form-input" id="trial-age" value="6" /></div>' +
-            '</div>' +
-            '<div style="margin-bottom:12px;"><div style="font-size:12px;margin-bottom:4px;">家长 11 位联系电话 *</div><input class="form-input" id="trial-phone" value="13588996688" /></div>' +
-            '<button class="btn btn-gold btn-block" onclick="App.confirmTrialBook(\'' + slotId + '\')">确认预约体验课 (0课时)</button>' +
-          '</div>' +
-        '</div>';
-      }
-    },
-
-    pickModalCourse: function(slotId, cn) {
-      State.modalBookCourse = cn;
-      App.openBookModal(slotId);
-    },
-
-    confirmRegularBook: function(slotId) {
-      var slot = DB.slots.find(function(s) { return s.id === slotId; });
-      var u = getActiveUser();
-      if (!slot || !u) return;
-      if (u.remainLessons < 1) {
-        showToast('剩余课时不足，请联系刘妤老师续课');
-        return;
-      }
-      var remInp = document.getElementById('book-remark-inp');
-      var remark = remInp ? remInp.value : '常规回课与新曲学习';
-
-      u.remainLessons -= 1;
-      u.usedLessons += 1;
-      var bkId = 'bk_' + Date.now();
-      slot.status = 'booked';
-      slot.studentId = u.id;
-      slot.studentName = u.childName;
-      slot.bookingId = bkId;
-
-      DB.bookings.unshift({
-        id: bkId, slotId: slot.id, userId: u.id, childName: u.childName, parentPhone: u.parentPhone,
-        isTrial: false, date: slot.date, startTime: slot.startTime, endTime: slot.endTime, duration: slot.duration,
-        courseName: State.modalBookCourse, roomName: slot.roomName, remark: remark, status: 'booked', canFreeCancel: true
-      });
-      DB.lessonLogs.unshift({
-        id: 'lg_' + Date.now(), userId: u.id, typeLabel: '预约课程锁定', changeCount: -1, afterBalance: u.remainLessons,
-        remark: '预约 ' + slot.date + ' ' + slot.startTime + ' ' + State.modalBookCourse, operator: '家长自主预约', time: '刚刚'
-      });
-
-      closeModal();
-      render();
-      showToast('🎉 预约成功！已扣 1 课时（余 ' + u.remainLessons + ' 节）');
-    },
-
-    confirmTrialBook: function(slotId) {
-      var slot = DB.slots.find(function(s) { return s.id === slotId; });
-      if (!slot) return;
-      var tName = (document.getElementById('trial-name').value || '小满').trim();
-      var tPhone = (document.getElementById('trial-phone').value || '13588996688').trim();
-
-      var bkId = 'bk_trial_' + Date.now();
-      slot.status = 'booked';
-      slot.studentName = tName + ' (体验)';
-      slot.isTrial = true;
-      slot.bookingId = bkId;
-
-      DB.bookings.unshift({
-        id: bkId, slotId: slot.id, userId: '', childName: tName, parentPhone: tPhone,
-        isTrial: true, date: slot.date, startTime: slot.startTime, endTime: slot.endTime, duration: 30,
-        courseName: '1对1 钢琴体验课', roomName: slot.roomName, remark: '零基础首次试听', status: 'booked', canFreeCancel: true
-      });
-      closeModal();
-      State.tab = 'bookings';
-      render();
-      showToast('🌱 体验课预约成功！期待宝贝到来');
-    },
-
-    cancelBooking: function(bkId) {
-      var b = DB.bookings.find(function(x) { return x.id === bkId; });
-      if (!b) return;
-      b.status = 'cancelled';
-      var slot = DB.slots.find(function(s) { return s.id === b.slotId; });
-      if (slot) { slot.status = 'available'; slot.studentId = ''; slot.studentName = ''; slot.isTrial = false; }
-      if (!b.isTrial && b.userId) {
-        var stu = DB.students.find(function(s) { return s.id === b.userId; });
-        if (stu) {
-          stu.remainLessons += 1;
-          stu.usedLessons = Math.max(0, stu.usedLessons - 1);
-          DB.lessonLogs.unshift({
-            id: 'lg_' + Date.now(), userId: stu.id, typeLabel: '请假取消退回', changeCount: 1, afterBalance: stu.remainLessons,
-            remark: '取消 ' + b.date + ' ' + b.startTime + ' 课程，原路退回 1 课时', operator: '家长自助取消', time: '刚刚'
-          });
-        }
-      }
-      render();
-      showToast(b.isTrial ? '已取消体验课预约' : '已取消预约，1 课时已原路退回');
-    },
-
-    openLeaveModal: function(bkId) {
-      var mc = document.getElementById('modal-container');
-      mc.innerHTML = '<div class="modal-mask" onclick="App.closeModal()">' +
-        '<div class="modal-sheet" onclick="event.stopPropagation()">' +
-          '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">' +
-            '<strong style="font-size:15.5px;">📝 申请临时病事假</strong>' +
-            '<span style="color:#9E948A;cursor:pointer;" onclick="App.closeModal()">✕</span>' +
-          '</div>' +
-          '<div style="font-size:12px;color:#7A5C2E;background:#FFF9EB;padding:9px 11px;border-radius:9px;margin-bottom:11px;">距离上课不足 12 小时，填写突发原因后将提交刘妤老师协调审批。</div>' +
-          '<div class="pill-row" style="margin-bottom:10px;">' +
-            ['孩子发烧身体不适', '学校临时活动冲突', '家中临时急事'].map(function(r) {
-              return '<span class="choice-chip" onclick="document.getElementById(\'leave-inp\').value=\'' + r + '\'">' + r + '</span>';
-            }).join('') +
-          '</div>' +
-          '<textarea class="form-textarea" id="leave-inp">孩子有点低烧需休息，盼刘妤老师协调改期</textarea>' +
-          '<button class="btn btn-gold btn-block" style="margin-top:12px;" onclick="App.submitLeave(\'' + bkId + '\')">提交请假申请</button>' +
-        '</div>' +
-      '</div>';
-    },
-
-    submitLeave: function(bkId) {
-      var b = DB.bookings.find(function(x) { return x.id === bkId; });
-      if (b) {
-        b.status = 'leave_pending';
-        b.leaveReason = document.getElementById('leave-inp').value || '临时身体不适';
-      }
-      closeModal();
-      render();
-      showToast('⏳ 请假申请已提交刘妤老师审批');
-    },
-
-    /* 绑定琴童弹窗 */
-    openBindModal: function() {
-      var mc = document.getElementById('modal-container');
-      mc.innerHTML = '<div class="modal-mask" onclick="App.closeModal()">' +
-        '<div class="modal-sheet" onclick="event.stopPropagation()">' +
-          '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">' +
-            '<strong style="font-size:16px;">🔑 绑定琴童学琴档案</strong>' +
-            '<span style="color:#9E948A;cursor:pointer;" onclick="App.closeModal()">✕</span>' +
-          '</div>' +
-          '<div style="font-size:12px;color:#5C534C;margin-bottom:6px;">请输入刘妤老师提供的 6 位专属绑定码：</div>' +
-          '<input class="form-input" id="bind-code-inp" value="RUI666" style="font-size:18px;font-weight:700;letter-spacing:3px;text-transform:uppercase;text-align:center;" />' +
-          '<div style="font-size:11.5px;color:#A67B44;margin:8px 0 14px;">💡 演示已为您预填「陈子睿」绑定码 RUI666，直接点击确认即可体验认领！</div>' +
-          '<button class="btn btn-gold btn-block" onclick="App.confirmBindCode()">一键认领绑定档案</button>' +
-        '</div>' +
-      '</div>';
-    },
-
-    confirmBindCode: function() {
-      var code = (document.getElementById('bind-code-inp').value || '').trim().toUpperCase();
-      var found = DB.students.find(function(s) { return s.bindCode === code; });
-      if (!found) {
-        showToast('未找到该绑定码，请试输 RUI666');
-        return;
-      }
-      found.boundToParent = true;
-      if (State.role === 'visitor') State.visitorBoundId = found.id;
-      State.currentStudentId = found.id;
-      closeModal();
-      render();
-      showToast('🎉 成功认领「' + found.childName + '」学琴档案！');
-    },
-
-    /* 练琴打卡交互 */
-    setPracMins: function(m) { State.practiceForm.mins = m; render(); },
-    setPracRep: function(v) { State.practiceForm.repertoire = v; },
-    setPracMood: function(m) { State.practiceForm.mood = m; render(); },
-
-    submitPractice: function() {
-      var u = getActiveUser() || DB.students[0];
-      var first = !State.checkedInToday;
-      if (first) {
-        u.flowerCount += 1;
-        u.practiceDays += 1;
-        State.checkedInToday = true;
-      }
-      DB.practiceLogs.unshift({
-        id: 'pl_' + Date.now(), userId: u.id, date: TODAY, durationMins: State.practiceForm.mins,
-        repertoire: State.practiceForm.repertoire, mood: State.practiceForm.mood,
-        parentNote: '宝贝今天按刘妤老师要求认真慢练完成打卡！', flowersEarned: first ? 1 : 0, teacherReply: ''
-      });
-      render();
-      var mc = document.getElementById('modal-container');
-      mc.innerHTML = '<div class="modal-mask center" onclick="App.closeModal()">' +
-        '<div class="modal-dialog" onclick="event.stopPropagation()">' +
-          '<div style="font-size:48px;margin-bottom:6px;">🌺</div>' +
-          '<div style="font-size:18px;font-weight:700;color:#231F20;margin-bottom:6px;">太棒啦！今日练琴打卡成功</div>' +
-          '<div style="font-size:13px;color:#6B6158;margin-bottom:12px;">奖励 +1 朵小红花，刘妤老师后台已同步收到提醒</div>' +
-          '<div style="background:#FDF6EC;border:1px solid #E8D5B7;border-radius:999px;padding:7px 14px;font-size:12.5px;color:#7A5422;margin-bottom:15px;">' +
-            '已累计点亮 <strong style="color:#B85450;font-size:15px;">' + u.flowerCount + '</strong> 朵小红花 · 坚持 <strong>' + u.practiceDays + '</strong> 天' +
-          '</div>' +
-          '<button class="btn btn-gold btn-block" onclick="App.closeModal()">继续加油 🎹</button>' +
-        '</div>' +
-      '</div>';
-    },
-
-    /* 老师后台核心交互 */
-    handleLeave: function(bkId, mode) {
-      var b = DB.bookings.find(function(x) { return x.id === bkId; });
-      if (!b) return;
-      b.status = 'cancelled';
-      var slot = DB.slots.find(function(s) { return s.id === b.slotId; });
-      if (slot) { slot.status = 'available'; slot.studentId = ''; slot.studentName = ''; }
-      if (mode === 'refund' && b.userId) {
-        var stu = DB.students.find(function(s) { return s.id === b.userId; });
-        if (stu) stu.remainLessons += 1;
-      }
-      render();
-      showToast(mode === 'refund' ? '✅ 已批准请假并退回 1 课时' : '已释放时段（按规则不退课时）');
-    },
-
-    batchGenerateWeekSlots: function() {
-      DB.slots.push({
-        id: 'slot_new_' + Date.now(), date: State.selectedDate, startTime: '20:30', endTime: '21:15',
-        duration: 45, roomName: '1号施坦威三角琴房', status: 'available', studentId: '', studentName: '', bookingId: ''
-      });
-      render();
-      showToast('⚡ 已按周批量生成未来 4 周开放档期！');
-    },
-
-    addSingleSlot: function() {
-      DB.slots.push({
-        id: 'slot_add_' + Date.now(), date: State.selectedDate, startTime: '15:00', endTime: '15:45',
-        duration: 45, roomName: '2号立式钢琴房', status: 'available', studentId: '', studentName: '', bookingId: ''
-      });
-      render();
-      showToast('已新增 15:00-15:45 可约时段');
-    },
-
-    toggleSlot: function(slotId) {
-      var s = DB.slots.find(function(x) { return x.id === slotId; });
-      if (!s) return;
-      s.status = s.status === 'available' ? 'closed' : 'available';
-      render();
-      showToast(s.status === 'available' ? '已开放该时段' : '已设为休息关闭');
-    },
-
-    openFixedScheduleModal: function() {
-      var mc = document.getElementById('modal-container');
-      mc.innerHTML = '<div class="modal-mask" onclick="App.closeModal()">' +
-        '<div class="modal-sheet" onclick="event.stopPropagation()">' +
-          '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">' +
-            '<strong style="font-size:15.5px;">📌 老生固定课位周期连排</strong>' +
-            '<span style="color:#9E948A;cursor:pointer;" onclick="App.closeModal()">✕</span>' +
-          '</div>' +
-          '<div style="font-size:12.5px;color:#5C534C;line-height:1.7;background:#FAF7F2;padding:11px;border-radius:10px;margin-bottom:13px;">' +
-            '<div>排课学员：<strong>苏茉茉（当前余 18 节）</strong></div>' +
-            '<div>固定时间：<strong>每周六 10:30 - 11:15（连排 4 周）</strong></div>' +
-            '<div>上课琴房：<strong>1号施坦威三角琴房</strong></div>' +
-          '</div>' +
-          '<button class="btn btn-gold btn-block" onclick="App.confirmFixedSchedule()">确认连排 4 周（自动扣减 4 课时）</button>' +
-        '</div>' +
-      '</div>';
-    },
-
-    confirmFixedSchedule: function() {
-      var stu = DB.students.find(function(s) { return s.id === 'stu_momo'; });
-      if (stu && stu.remainLessons >= 4) {
-        stu.remainLessons -= 4;
-        stu.usedLessons += 4;
-        stu.fixedNote = '每周六 10:30-11:15 (1号施坦威三角琴房)';
-      }
-      closeModal();
-      render();
-      showToast('📌 已为苏茉茉连排未来 4 周固定课位！');
-    },
-
-    openCompleteModal: function(bkId) {
-      var b = DB.bookings.find(function(x) { return x.id === bkId; });
-      if (!b) return;
-      var mc = document.getElementById('modal-container');
-      mc.innerHTML = '<div class="modal-mask" onclick="App.closeModal()">' +
-        '<div class="modal-sheet" onclick="event.stopPropagation()">' +
-          '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:11px;">' +
-            '<strong style="font-size:15.5px;">✅ 完课核销 · 发送课后陪练单</strong>' +
-            '<span style="color:#9E948A;cursor:pointer;" onclick="App.closeModal()">✕</span>' +
-          '</div>' +
-          '<div style="font-size:12px;color:#5C534C;margin-bottom:6px;">课堂表现评分：<span class="star-gold">★★★★★ 5星（自动奖励 +2 朵🌺）</span></div>' +
-          '<div style="font-size:12px;color:#5C534C;margin-bottom:4px;">本周布置曲目</div>' +
-          '<input class="form-input" id="cmp-rep" value="《车尔尼599》第36条 + G大调音阶" style="margin-bottom:8px;" />' +
-          '<div style="font-size:12px;color:#5C534C;margin-bottom:4px;">陪练重点与刘妤老师评语</div>' +
-          '<textarea class="form-textarea" id="cmp-cmt">今天课堂专注度非常棒！回家注意右手连线呼吸，每天坚持慢练 25 分钟哦~</textarea>' +
-          '<button class="btn btn-gold btn-block" style="margin-top:12px;" onclick="App.confirmComplete(\'' + bkId + '\')">发送陪练作业卡并奖励小红花</button>' +
-        '</div>' +
-      '</div>';
-    },
-
-    confirmComplete: function(bkId) {
-      var b = DB.bookings.find(function(x) { return x.id === bkId; });
-      if (b) {
-        b.status = 'completed';
-        b.ratingStars = 5;
-        b.flowersAwarded = 2;
-        b.repertoire = document.getElementById('cmp-rep').value;
-        b.practiceFocus = '开节拍器 66 速度分手慢练，注意手腕放松';
-        b.dailyTargetMins = 25;
-        b.teacherComment = document.getElementById('cmp-cmt').value;
-        var stu = DB.students.find(function(s) { return s.id === b.userId; });
-        if (stu) stu.flowerCount += 2;
-      }
-      closeModal();
-      render();
-      showToast('🌸 已发送陪练作业单，奖励琴童 +2 朵小红花！');
-    },
-
-    openRechargeModal: function(stuId) {
-      var s = DB.students.find(function(x) { return x.id === stuId; });
-      if (!s) return;
-      var mc = document.getElementById('modal-container');
-      mc.innerHTML = '<div class="modal-mask" onclick="App.closeModal()">' +
-        '<div class="modal-sheet" onclick="event.stopPropagation()">' +
-          '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">' +
-            '<strong style="font-size:15.5px;">➕ 课时续课登记 · ' + s.childName + '</strong>' +
-            '<span style="color:#9E948A;cursor:pointer;" onclick="App.closeModal()">✕</span>' +
-          '</div>' +
-          '<div style="font-size:12px;color:#5C534C;margin-bottom:8px;">选择续课课包节数（当前剩余 ' + s.remainLessons + ' 节）：</div>' +
-          '<div class="pill-row" style="margin-bottom:14px;">' +
-            [12, 16, 20, 24].map(function(n) {
-              return '<span class="choice-chip ' + (n === 16 ? 'active' : '') + '" onclick="document.getElementById(\'rcg-cnt\').value=' + n + '">+' + n + ' 节课时包</span>';
-            }).join('') +
-          '</div>' +
-          '<input class="form-input" id="rcg-cnt" type="number" value="16" style="margin-bottom:12px;" />' +
-          '<button class="btn btn-gold btn-block" onclick="App.confirmRecharge(\'' + stuId + '\')">确认入账并生成对账流水</button>' +
-        '</div>' +
-      '</div>';
-    },
-
-    confirmRecharge: function(stuId) {
-      var s = DB.students.find(function(x) { return x.id === stuId; });
-      var add = Number(document.getElementById('rcg-cnt').value || 16);
-      if (s && add > 0) {
-        s.remainLessons += add;
-        s.totalLessons += add;
-        DB.lessonLogs.unshift({
-          id: 'lg_' + Date.now(), userId: s.id, typeLabel: '课时续课登记', changeCount: add, afterBalance: s.remainLessons,
-          remark: '线下续课登记 +' + add + ' 节 1对1 钢琴课', operator: '刘妤老师录入', time: '刚刚'
-        });
-      }
-      closeModal();
-      render();
-      showToast('✅ 已为 ' + s.childName + ' 增加 ' + add + ' 节课时！');
-    },
-
-    openShareInviteCard: function(stuId) {
-      var s = DB.students.find(function(x) { return x.id === stuId; });
-      if (!s) return;
-      var mc = document.getElementById('modal-container');
-      mc.innerHTML = '<div class="modal-mask center" onclick="App.closeModal()">' +
-        '<div class="modal-dialog" onclick="event.stopPropagation()">' +
-          '<div style="font-size:36px;margin-bottom:6px;">🎹</div>' +
-          '<div style="font-size:16.5px;font-weight:700;color:#231F20;margin-bottom:4px;">微信专属绑定邀请卡</div>' +
-          '<div style="font-size:12px;color:#7A6F66;margin-bottom:12px;">转发给「' + s.parentName + '」，家长点开即可一键认领绑定</div>' +
-          '<div style="background:#FAF7F2;border:2px dashed #DFC39D;border-radius:12px;padding:12px;margin-bottom:14px;">' +
-            '<div style="font-size:11px;color:#9E825E;">' + s.childName + ' · 6位专属绑定码</div>' +
-            '<div style="font-size:26px;font-weight:700;letter-spacing:4px;color:#231F20;margin-top:3px;">' + s.bindCode + '</div>' +
-          '</div>' +
-          '<button class="btn btn-gold btn-block" onclick="App.closeModal();App.toast(\'在正式小程序中将直接唤起微信好友转发卡片\')">模拟转发给家长微信</button>' +
-        '</div>' +
-      '</div>';
-    },
-
-    /* 演示动画光圈辅助（供录制视频展示触控点） */
-    showTouchAt: function(x, y) {
-      var shell = document.getElementById('phone-shell');
-      var r = document.createElement('div');
-      r.className = 'touch-ripple';
-      r.style.left = x + 'px';
-      r.style.top = y + 'px';
-      shell.appendChild(r);
-      setTimeout(function() { if (r.parentNode) r.parentNode.removeChild(r); }, 550);
-    },
-
-    scrollBodyTo: function(topPx) {
-      var el = document.getElementById('screen-body');
-      el.style.scrollBehavior = 'auto';
-      el.scrollTop = topPx;
+    if (role === 'student') {
+      pillStu.className = 'p-pill active-stu';
+      pillTch.className = 'p-pill';
+      if (dgStu) dgStu.classList.add('active');
+      if (dgTch) dgTch.classList.remove('active');
+      tabStu.style.display = 'flex';
+      tabTch.style.display = 'none';
+      navTitle.textContent = '刘妤钢琴工作室';
+      leftSwitch.textContent = '⇄ 切老师端';
+      switchStuTab(currentStuTab);
+    } else {
+      pillStu.className = 'p-pill';
+      pillTch.className = 'p-pill active-tch';
+      if (dgStu) dgStu.classList.remove('active');
+      if (dgTch) dgTch.classList.add('active');
+      tabStu.style.display = 'none';
+      tabTch.style.display = 'flex';
+      navTitle.textContent = '刘妤老师 · 教务工作台';
+      leftSwitch.textContent = '⇄ 切学生端';
+      switchTchTab(currentTchTab);
     }
-  };
+  }
 
-  window.App = App;
-  render();
-})();
+  function handleQuickSwitch() {
+    switchRole(currentRole === 'student' ? 'teacher' : 'student');
+  }
+
+  function switchStuTab(idx) {
+    currentStuTab = idx;
+    document.querySelectorAll('.sub-view').forEach(el => el.classList.remove('active'));
+    const target = document.getElementById('stu-tab-' + idx);
+    if (target) target.classList.add('active');
+    for (let i = 0; i < 4; i++) {
+      const btn = document.getElementById('stutab-btn-' + i);
+      if (btn) btn.className = 'tab-btn' + (i === idx ? ' active-stu' : '');
+    }
+    document.getElementById('view-body').scrollTop = 0;
+  }
+
+  function switchTchTab(idx, subMode) {
+    currentTchTab = idx;
+    document.querySelectorAll('.sub-view').forEach(el => el.classList.remove('active'));
+    const target = document.getElementById('tch-tab-' + idx);
+    if (target) target.classList.add('active');
+    for (let i = 0; i < 4; i++) {
+      const btn = document.getElementById('tchtab-btn-' + i);
+      if (btn) btn.className = 'tab-btn' + (i === idx ? ' active-tch' : '');
+    }
+    if (idx === 1 && subMode) {
+      toggleScheduleMode(subMode);
+    }
+    document.getElementById('view-body').scrollTop = 0;
+  }
+
+  function selectStuCalDay(day) {
+    document.querySelectorAll('#stu-cal-grid .cal-day').forEach(el => el.classList.remove('selected'));
+    event.currentTarget.classList.add('selected');
+    const hasLessonDays = [1, 4, 8, 11, 15, 18, 22, 29];
+    const titleEl = document.getElementById('cal-sel-title');
+    if (hasLessonDays.includes(day)) {
+      titleEl.textContent = `2026-11-${String(day).padStart(2,'0')} 少儿钢琴一对一`;
+      showToast(`📅 已查看 11月${day}日 排课详情`);
+    } else {
+      titleEl.textContent = `2026-11-${String(day).padStart(2,'0')} 当日暂无排课 (可预约加课)`;
+      showToast(`11月${day}日 暂无固定排课`);
+    }
+  }
+
+  /* 1:1 微信《上课提醒通知》仿真弹窗 */
+  function openWxRemindModal() {
+    const btn = document.getElementById('btn-enable-notify');
+    if (btn) { btn.textContent = '✓ 已开启'; btn.style.background = 'var(--mint)'; }
+    openModal(`
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <div style="font-size:15px;font-weight:900;">🔔 微信《上课提醒通知》仿真预览</div>
+        <span style="cursor:pointer;font-size:18px;color:#999;" onclick="closeModal()">✕</span>
+      </div>
+      <div style="font-size:11.5px;color:var(--text-sub);margin-bottom:10px;">
+        开启后，系统将在每次<strong>上课前1天</strong>和<strong>上课前1小时</strong>自动向家长与刘妤老师双向推送微信服务通知：
+      </div>
+      <div style="background:#F7F9FC;border:1px solid #DCE5F2;border-left:4px solid var(--blue);border-radius:12px;padding:10px;margin-bottom:8px;">
+        <div style="font-size:11.5px;font-weight:900;color:var(--blue);margin-bottom:4px;">💬 微信服务通知 · 课前1天提醒</div>
+        <div style="font-size:11px;line-height:1.5;">
+          <strong>上课时间：</strong>2026年11月08日 星期日 16:10-16:55 (明天)<br>
+          <strong>上课地点：</strong>刘妤钢琴工作室<br>
+          <strong>状态：</strong><span style="color:var(--mint-dark);font-weight:800;">✓ 已同步推送给家长与刘妤老师</span>
+        </div>
+      </div>
+      <div style="background:#FFF9F5;border:1px solid #FFD8BE;border-left:4px solid var(--orange);border-radius:12px;padding:10px;margin-bottom:12px;">
+        <div style="font-size:11.5px;font-weight:900;color:var(--orange);margin-bottom:4px;">⏰ 微信服务通知 · 课前1小时提醒</div>
+        <div style="font-size:11px;line-height:1.5;">
+          <strong>上课时间：</strong>2026年11月08日 星期日 11:45-12:30<br>
+          <strong>上课地点：</strong>刘妤钢琴工作室<br>
+          <strong>状态：</strong><span style="color:var(--mint-dark);font-weight:800;">✓ 已同步推送给家长与刘妤老师</span>
+        </div>
+      </div>
+      <button class="btn-dopamine btn-mint" style="width:100%;padding:9px;" onclick="closeModal();showToast('🔔 课前1天&1小时微信自动提醒已开启！')">太棒了，保持开启</button>
+    `);
+  }
+
+  /* ➕ 刘妤老师新增排课弹窗：选学生 ➡️ 选该学生的具体合同 ➡️ 按周循环/单次排课 */
+  function openAddScheduleModal(defaultStudent) {
+    const stu = defaultStudent || '马翊菱';
+    openModal(`
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <div style="font-size:15px;font-weight:900;">➕ 新增排课 (选学生 ➡️ 选合同)</div>
+        <span style="cursor:pointer;font-size:18px;color:#999;" onclick="closeModal()">✕</span>
+      </div>
+      <div style="margin-bottom:9px;">
+        <label style="font-size:11.5px;font-weight:800;display:block;margin-bottom:4px;">1️⃣ 选择上课学员</label>
+        <select id="sel-sched-stu" onchange="updateContractOptions()" style="width:100%;padding:8px;border-radius:10px;border:1px solid #DCE3F0;font-weight:700;font-size:12.5px;">
+          <option value="马翊菱" ${stu==='马翊菱'?'selected':''}>☺ 马翊菱 (2份有效合同)</option>
+          <option value="徐时曦" ${stu==='徐时曦'?'selected':''}>☺ 徐时曦 (1份有效合同)</option>
+          <option value="丁瑞玹" ${stu==='丁瑞玹'?'selected':''}>☺ 丁瑞玹 (1份有效合同)</option>
+          <option value="王曦右" ${stu==='王曦右'?'selected':''}>☺ 王曦右 (剩2节·即将到期)</option>
+        </select>
+      </div>
+      <div style="margin-bottom:9px;">
+        <label style="font-size:11.5px;font-weight:800;display:block;margin-bottom:4px;">2️⃣ 选择扣减该学生的具体合同</label>
+        <select id="sel-sched-contract" style="width:100%;padding:8px;border-radius:10px;border:1px solid #00C896;background:#F2FBF8;font-weight:800;font-size:12px;color:#007A5A;"></select>
+      </div>
+      <div style="margin-bottom:9px;">
+        <label style="font-size:11.5px;font-weight:800;display:block;margin-bottom:4px;">3️⃣ 选择排课规律与时段</label>
+        <select style="width:100%;padding:8px;border-radius:10px;border:1px solid #DCE3F0;font-weight:700;font-size:12px;">
+          <option>🔄 按周循环固定排课 (每周日 11:00-11:45 · 连排12周)</option>
+          <option>📅 单次排课 (2026-11-08 周日 11:00-11:45)</option>
+        </select>
+      </div>
+      <button class="btn-dopamine btn-purple" style="width:100%;padding:9px;font-size:13px;" onclick="confirmAddSchedule()">✓ 确认生成排课并同步提醒</button>
+    `);
+    updateContractOptions();
+  }
+
+  function updateContractOptions() {
+    const stu = document.getElementById('sel-sched-stu').value;
+    const sel = document.getElementById('sel-sched-contract');
+    const list = studentContracts[stu] || [];
+    sel.innerHTML = list.map(c => `<option value="${c.name}">📄 ${c.name}</option>`).join('');
+  }
+
+  function confirmAddSchedule() {
+    const stu = document.getElementById('sel-sched-stu').value;
+    const con = document.getElementById('sel-sched-contract').value;
+    closeModal();
+    showToast(`✅ 已为 ${stu} 关联【${con}】排课成功！`);
+  }
+
+  /* ☑ 签到点名弹窗（扣指定合同课时 + 折叠一行可选简评） */
+  function openCheckinModal(stuName, contractName) {
+    openModal(`
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <div style="font-size:15px;font-weight:900;">☑ 课堂点名核销 · ${stuName}</div>
+        <span style="cursor:pointer;font-size:18px;color:#999;" onclick="closeModal()">✕</span>
+      </div>
+      <div style="background:#F2FBF8;border:1px solid #B5EEDF;border-radius:11px;padding:9px 11px;margin-bottom:10px;font-size:11.5px;">
+        <div><strong>授课老师：</strong>刘妤 · <strong>扣减课时：</strong>1 课时</div>
+        <div style="margin-top:3px;"><strong>指定扣课合同：</strong><span style="color:var(--mint-dark);font-weight:800;">${contractName}</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px;">
+        <button class="btn-dopamine btn-mint" style="padding:7px;">☑ 准时到课</button>
+        <button class="btn-dopamine btn-outline" style="padding:7px;" onclick="showToast('已标记为请假，不扣课时')">🏖️ 请假免扣</button>
+        <button class="btn-dopamine btn-outline" style="padding:7px;">⚠️ 缺勤扣课</button>
+      </div>
+      <details style="background:#F8FAFE;border:1px solid #E2E8F0;border-radius:10px;padding:7px 10px;margin-bottom:12px;font-size:11.5px;">
+        <summary style="font-weight:800;color:var(--purple);cursor:pointer;">▸ 折叠一行可选简评（选填，不填直接秒签）</summary>
+        <input type="text" placeholder="例如：车尔尼599第19条手型很棒，继续保持！" style="width:100%;margin-top:6px;padding:6px 8px;border:1px solid #CBD5E1;border-radius:8px;font-size:11.5px;">
+      </details>
+      <button class="btn-dopamine btn-mint" style="width:100%;padding:9px;font-size:13px;" onclick="confirmCheckin('${stuName}')">✓ 确认点名并扣减 1 课时</button>
+    `);
+  }
+
+  function confirmCheckin(stuName) {
+    closeModal();
+    ['home-lesson-stamp','cal-lesson-stamp','tch-cal-stamp-1'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) { el.className = 'stamp-seal stamp-checked'; el.textContent = '已签到'; }
+    });
+    const remEl = document.getElementById('stu-c1-rem');
+    if (remEl) remEl.textContent = '17';
+    const consumedEl = document.getElementById('tch-today-consumed');
+    if (consumedEl) consumedEl.textContent = '5';
+    showToast(`✅ ${stuName} 点名成功！已扣减指定合同1课时`);
+  }
+
+  function batchCheckinAll() {
+    confirmCheckin('全天6位学员');
+  }
+
+  function toggleScheduleMode(mode) {
+    const gBtn = document.getElementById('subbtn-grid');
+    const cBtn = document.getElementById('subbtn-cal');
+    if (mode === 'cal') {
+      gBtn.className = 'btn-dopamine btn-outline';
+      cBtn.className = 'btn-dopamine btn-mint';
+    } else {
+      gBtn.className = 'btn-dopamine btn-mint';
+      cBtn.className = 'btn-dopamine btn-outline';
+    }
+  }
+
+  function toggleGridCols() {
+    is2ColMode = !is2ColMode;
+    showToast(is2ColMode ? '🔍 已切换为【周六/周日 双日大字视图】' : '🗓️ 已切换为【周一至周日 7列全景网格】');
+  }
+
+  function openLeaveModal(timeStr) {
+    openModal(`
+      <div style="font-size:15px;font-weight:900;margin-bottom:8px;">🏖️ 向刘妤老师申请请假</div>
+      <div style="font-size:11.5px;color:var(--text-sub);margin-bottom:10px;">请假课次：<strong>${timeStr} 少儿钢琴一对一</strong><br>规则：开课前12小时以上可免费请假顺延，不扣合同课时。</div>
+      <input type="text" value="家里临时有事，申请顺延至下周补课" style="width:100%;padding:8px;border:1px solid #DCE3F0;border-radius:10px;font-size:12px;margin-bottom:10px;">
+      <div style="display:flex;gap:8px;">
+        <button class="btn-dopamine btn-outline" style="flex:1;padding:8px;" onclick="closeModal()">取消</button>
+        <button class="btn-dopamine btn-purple" style="flex:1;padding:8px;" onclick="closeModal();showToast('✅ 请假申请已微信推送给刘妤老师！')">提交申请</button>
+      </div>
+    `);
+  }
+
+  function openSwitchStudentModal() {
+    openModal(`
+      <div style="font-size:15px;font-weight:900;margin-bottom:10px;">👧 切换当前学员档案</div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px;">
+        <div style="padding:9px;border:1.5px solid var(--mint);background:#F2FBF8;border-radius:12px;cursor:pointer;" onclick="selectCurStudent('马翊菱','翊菱','(钢琴半年·剩18节 | 钢琴季度·剩6节)')">
+          <strong>马翊菱 (大宝)</strong> · 钢琴半年剩18节 | 考级季度剩6节
+        </div>
+        <div style="padding:9px;border:1px solid #DCE3F0;border-radius:12px;cursor:pointer;" onclick="selectCurStudent('马翊宸','翊宸','(少儿启蒙半年·剩20节)')">
+          <strong>马翊宸 (二宝)</strong> · 少儿启蒙半年剩20节
+        </div>
+      </div>
+      <button class="btn-dopamine btn-outline" style="width:100%;padding:8px;" onclick="closeModal()">关闭</button>
+    `);
+  }
+
+  function selectCurStudent(name, shortName, desc) {
+    document.getElementById('stu-cur-name').textContent = name;
+    document.getElementById('stu-cur-avatar').textContent = shortName;
+    document.getElementById('stu-cur-contracts').textContent = desc;
+    closeModal();
+    showToast(`👧 已切换至学员：${name}`);
+  }
+
+  function openStuQrModal() {
+    openModal(`
+      <div style="text-align:center;">
+        <div style="font-size:15px;font-weight:900;margin-bottom:6px;">🏁 马翊菱 · 专属上课签到码</div>
+        <div style="font-size:11px;color:var(--text-sub);margin-bottom:10px;">到琴房后出示给刘妤老师扫码秒速消课</div>
+        <div style="width:140px;height:140px;margin:0 auto 10px;background:#F2FBF8;border:2px dashed var(--mint);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:42px;">🎹</div>
+        <button class="btn-dopamine btn-mint" style="width:100%;padding:8px;" onclick="closeModal()">知道啦</button>
+      </div>
+    `);
+  }
+
+  function openRuleModal() {
+    openModal(`
+      <div style="font-size:15px;font-weight:900;margin-bottom:8px;">📋 刘妤钢琴工作室 · 排课与请假说明</div>
+      <div style="font-size:11.5px;color:var(--text-sub);line-height:1.6;margin-bottom:12px;">
+        1. <strong>固定课位优先：</strong>支持按季度/半年/全年套餐锁定每周固定时段；<br>
+        2. <strong>请假规则：</strong>需提前12小时在小程序点击[申请请假]，课时自动顺延；<br>
+        3. <strong>双重微信提醒：</strong>课前1天及课前1小时自动推送微信上课提醒。
+      </div>
+      <button class="btn-dopamine btn-mint" style="width:100%;padding:8px;" onclick="closeModal()">我已了解</button>
+    `);
+  }
+
+  function openFeedbackModal() {
+    openModal(`
+      <div style="font-size:15px;font-weight:900;margin-bottom:8px;">⭐ 刘妤老师 · 5星课后陪练反馈单</div>
+      <div style="font-size:11.5px;line-height:1.55;background:#FFF9EB;padding:10px;border-radius:12px;margin-bottom:10px;">
+        <strong>学员：</strong>马翊菱 · <strong>评分：</strong>⭐⭐⭐⭐⭐ 5.0<br>
+        <strong>本周曲目：</strong>《车尔尼599 第19条》《小步舞曲》<br>
+        <strong>陪练重点：</strong>注意右手跑动颗粒感，每天慢练30分钟打卡攒小红花🌺！
+      </div>
+      <button class="btn-dopamine btn-purple" style="width:100%;padding:8px;" onclick="closeModal()">收到老师点评</button>
+    `);
+  }
+
+  function openAttendanceModal() {
+    openModal(`
+      <div style="font-size:15px;font-weight:900;margin-bottom:8px;">✅ 历史考勤与课时核销明细</div>
+      <div style="font-size:11px;line-height:1.6;margin-bottom:10px;">
+        • 2026-11-04 周三 10:00 · 考级集训季度 · <strong>已签到 (-1课时)</strong><br>
+        • 2026-11-01 周日 11:00 · 钢琴半年合同 · <strong>已签到 (-1课时)</strong><br>
+        • 2026-10-25 周日 11:00 · 钢琴半年合同 · <strong>已签到 (-1课时)</strong>
+      </div>
+      <button class="btn-dopamine btn-mint" style="width:100%;padding:8px;" onclick="closeModal()">关闭</button>
+    `);
+  }
+
+  function openTrialModal(courseName) {
+    openModal(`
+      <div style="font-size:15px;font-weight:900;margin-bottom:8px;">🌱 新生 0 元预约免费体验课</div>
+      <div style="font-size:11.5px;color:var(--text-sub);margin-bottom:10px;">
+        意向课程：<strong>${courseName || '少儿钢琴启蒙 / 考级测评'}</strong><br>
+        🔒 隐私保护已开启：已被约时段仅显示 *翊菱同学、*时曦同学
+      </div>
+      <button class="btn-dopamine btn-mint" style="width:100%;padding:9px;" onclick="closeModal();showToast('🎉 免费体验课预约成功！刘妤老师将联系您')">立即预约 30 分钟体验课</button>
+    `);
+  }
+
+  function openSearchScheduleModal() {
+    openModal(`
+      <div style="font-size:15px;font-weight:900;margin-bottom:8px;">🔍 排课多维搜索</div>
+      <input type="text" placeholder="输入学员姓名(如:马翊菱)或课程名称" style="width:100%;padding:8px;border:1px solid #DCE3F0;border-radius:10px;margin-bottom:10px;">
+      <button class="btn-dopamine btn-mint" style="width:100%;padding:8px;" onclick="closeModal();showToast('🔍 已为您筛选出马翊菱全部排课')">搜索排课</button>
+    `);
+  }
+
+  function openRoomModal() {
+    openModal(`
+      <div style="font-size:15px;font-weight:900;margin-bottom:8px;">🎹 琴房与班级管理</div>
+      <div style="font-size:11.5px;line-height:1.6;margin-bottom:10px;">
+        • <strong>1号施坦威三角琴房</strong>（主授课琴房 · 正常开放）<br>
+        • <strong>2号雅马哈立式琴房</strong>（练琴与测评琴房 · 正常开放）
+      </div>
+      <button class="btn-dopamine btn-mint" style="width:100%;padding:8px;" onclick="closeModal()">确定</button>
+    `);
+  }
+
+  function openTeacherInfoModal() {
+    openModal(`
+      <div style="font-size:15px;font-weight:900;margin-bottom:8px;">👩‍🏫 教师管理 · 刘妤老师</div>
+      <div style="font-size:11.5px;line-height:1.6;margin-bottom:10px;">
+        主理人：<strong>刘妤 (超级管理员)</strong><br>
+        本月排课：70 节 · 本月已消课：15 节 · 学员满意度：100%
+      </div>
+      <button class="btn-dopamine btn-mint" style="width:100%;padding:8px;" onclick="closeModal()">关闭</button>
+    `);
+  }
+
+  function openCoursePkgModal() {
+    openModal(`
+      <div style="font-size:15px;font-weight:900;margin-bottom:8px;">🎵 课程与季度/半年/全年套餐管理</div>
+      <div style="font-size:11.5px;line-height:1.65;margin-bottom:10px;">
+        • <strong>钢琴季度套餐：</strong>12 课时 · ¥3,600 (有效期3个月)<br>
+        • <strong>钢琴半年套餐：</strong>24 课时 · ¥6,800 (有效期6个月)<br>
+        • <strong>钢琴全年套餐：</strong>48 课时 · ¥12,800 (有效期12个月)
+      </div>
+      <button class="btn-dopamine btn-purple" style="width:100%;padding:8px;" onclick="closeModal()">完成设置</button>
+    `);
+  }
+
+  function openNewContractModal() {
+    openModal(`
+      <div style="font-size:15px;font-weight:900;margin-bottom:8px;">📄 为学员新增合同</div>
+      <div style="font-size:11.5px;margin-bottom:10px;">支持一键关联马翊菱、徐时曦、丁瑞玹、王曦右等学员，签约后自动计入今日新增课时与收入。</div>
+      <button class="btn-dopamine btn-mint" style="width:100%;padding:8px;" onclick="closeModal();showToast('✅ 新合同创建成功！课时已实时到账')">确认创建合同</button>
+    `);
+  }
+
+  function punchPracticeFlower() {
+    flowerCount++;
+    document.getElementById('flower-count').textContent = flowerCount;
+    const slot = document.getElementById('today-flower-slot');
+    if (slot) slot.innerHTML = '周日<br>🌺';
+    showToast(`🌺 练琴打卡成功！马翊菱获得 1 朵小红花 (累计${flowerCount}朵)`);
+  }
+
+  function saveProfileForm() {
+    const name = document.getElementById('inp-stu-name').value || '马翊菱';
+    document.getElementById('stu-cur-name').textContent = name;
+    showToast('✅ 个人信息已保存，方便刘妤老师与您联系！');
+  }
+
+  function copyWechat() {
+    showToast('💬 已复制刘妤老师微信号：liuyu_piano');
+  }
 </script>
 </body>
 </html>
