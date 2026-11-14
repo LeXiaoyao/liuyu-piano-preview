@@ -2,16 +2,15 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="delivery-version" content="V3.9-20261113">
+<meta name="delivery-version" content="V3.9-20261111">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>刘妤钢琴工作室 · V3.9 暖橙焕彩教务版</title>
+<title>刘妤钢琴工作室 · V3.9 暖橙教务精装版</title>
 <style>
   :root {
-    /* 1. 统一浅色基底与鲜明品牌主色 */
-    --brand-primary: #F08A24;
-    --brand-orange: #EB9A3C;
+    /* 1. 主品牌色系 */
+    --brand-primary: #EB9A3C;
     --brand-deep: #CC7C23;
-    --mint: #F08A24;
+    --mint: #EB9A3C;
     --mint-dark: #CC7C23;
     --mint-soft: #FCF5EB;
     --mint-border: #E8E0D6;
@@ -19,19 +18,15 @@
     --bg-page: #FCF5EB;
     --border-line: #E8E0D6;
 
-    /* 2. 鲜明多色系点缀色 (使浅色界面色彩丰富鲜明) */
-    --vivid-orange: #F08A24;
-    --vivid-blue: #2E7CF6;
-    --vivid-sky: #3B82F6;
-    --vivid-green: #22A06B;
-    --vivid-coral: #E5534B;
-    --vivid-violet: #7C5CFC;
-    --vivid-amber: #D97706;
-
-    /* 3. 文字色系 */
+    /* 2. 文字色系 */
     --text-main: #332F2B;
     --text-sub: #665E56;
     --text-muted: #948A80;
+
+    /* 3. 深色统计页 */
+    --dark-bg: #161426;
+    --dark-title: #FFFFFF;
+    --dark-muted: #BEB8CE;
 
     /* 4. 签到状态色 & 选中日期色 */
     --checkin-done-bg: #F7E1C2;
@@ -44,22 +39,20 @@
     --fin-income: #C27820;
     --fin-refund: #9C3E3E;
     --fin-refund-bar: #BE5050;
-    --fin-valid: #22A06B;
-    --fin-valid-legacy: #4C9068;
+    --fin-valid: #4C9068;
 
-    /* 6. 四页统一浅色封面渐变基底色 (含兼容引用 token #161426/#BEB8CE/#FFFFFF) */
+    /* 6. 封面渐变基底色 */
     --cover-home-start: #FCF5EB;
     --cover-home-end: #FFFDFA;
     --cover-schedule: #E4EFFC;
     --cover-contract: #E8F5F2;
-    --cover-analytics-light: #FFF3E0;
-    --legacy-dark-token: #161426;
-    --legacy-muted-token: #BEB8CE;
+    --cover-analytics: #161426;
 
-    --amber: #D97706;
-    --amber-soft: #FEF3C7;
-    --coral: #E5534B;
-    --coral-soft: #FDECEC;
+    /* 兼容辅助变量 */
+    --amber: #CC7C23;
+    --amber-soft: #FCF5EB;
+    --coral: #BE5050;
+    --coral-soft: #FDF3F2;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -80,13 +73,12 @@
     width: 356px; color: var(--text-main); flex-shrink: 0;
     background: var(--bg-card); border: 1px solid var(--border-line);
     border-radius: 24px; padding: 24px;
-    box-shadow: 0 12px 32px rgba(240, 138, 36, 0.09);
+    box-shadow: 0 12px 32px rgba(204, 124, 35, 0.08);
   }
   .dg-badge {
     display: inline-flex; align-items: center; gap: 6px;
-    background: linear-gradient(90deg, #FFF3E0 0%, #EBF3FE 100%);
-    color: var(--brand-deep);
-    border: 1px solid #F5D5AE;
+    background: #FCF5EB; color: var(--brand-deep);
+    border: 1px solid var(--border-line);
     font-size: 11.5px; font-weight: 700;
     padding: 5px 12px; border-radius: 999px; margin-bottom: 12px;
   }
@@ -99,8 +91,7 @@
     margin-bottom: 10px; transition: all 0.18s; display: flex; justify-content: space-between; align-items: center;
   }
   .dg-role-btn.active {
-    background: linear-gradient(90deg, #FFF3E0 0%, #FFFDFA 100%);
-    border-color: var(--brand-primary);
+    background: #F7E1C2; border-color: var(--brand-primary);
     color: var(--brand-deep);
   }
   .dg-features {
@@ -120,15 +111,21 @@
     .phone-shell { width: 100vw; height: 100vh; height: 100dvh; max-height: none; border-radius: 0; box-shadow: none; }
   }
 
-  /* 顶部双视角切换栏 + 微信导航栏（全站4页统一温暖浅色） */
+  /* 顶部双视角切换栏 + 微信导航栏 */
   .top-header-stack {
     background: var(--bg-card); color: var(--text-main);
     border-bottom: 1px solid var(--border-line);
-    flex-shrink: 0; z-index: 30;
+    flex-shrink: 0; z-index: 30; transition: background 0.2s, border-color 0.2s;
+  }
+  .top-header-stack.dark-header {
+    background: #161426; color: #FFFFFF; border-bottom-color: rgba(190, 184, 206, 0.18);
   }
   .perspective-bar {
     display: flex; gap: 8px; padding: 7px 12px;
     background: #F5ECE0; border-bottom: 1px solid var(--border-line);
+  }
+  .top-header-stack.dark-header .perspective-bar {
+    background: #1E1B33; border-bottom-color: rgba(190, 184, 206, 0.16);
   }
   .p-pill {
     flex: 1; text-align: center; font-size: 12px; font-weight: 700;
@@ -137,63 +134,77 @@
     cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     transition: all 0.16s;
   }
+  .top-header-stack.dark-header .p-pill { color: #BEB8CE; }
   .p-pill.active {
-    background: var(--bg-card); color: var(--brand-primary);
-    box-shadow: 0 2px 6px rgba(240, 138, 36, 0.14);
+    background: var(--bg-card); color: var(--brand-deep);
+    box-shadow: 0 1px 4px rgba(51, 47, 43, 0.1);
+  }
+  .top-header-stack.dark-header .p-pill.active {
+    background: var(--brand-primary); color: #FFFFFF;
   }
   .wx-navbar {
     height: 45px; display: flex; align-items: center; justify-content: center;
     padding: 0 12px; background: var(--bg-card); position: relative;
   }
+  .top-header-stack.dark-header .wx-navbar { background: #161426; }
   .wx-nav-left { display: none; }
   .wx-nav-title { font-size: 14.5px; font-weight: 700; color: var(--text-main); }
+  .top-header-stack.dark-header .wx-nav-title { color: #FFFFFF; }
   .wx-capsule {
     position: absolute; right: 12px;
     display: flex; align-items: center; background: var(--bg-page);
     border: 1px solid var(--border-line); border-radius: 999px;
     padding: 3px 9px; gap: 7px; font-size: 12px; color: var(--text-main);
   }
+  .top-header-stack.dark-header .wx-capsule {
+    background: rgba(255,255,255,0.08); border-color: rgba(190,184,206,0.22); color: #FFFFFF;
+  }
 
-  /* 主滚动视口（4页统一温暖浅米底 #FCF5EB） */
+  /* 主滚动视口 */
   .view-body {
     flex: 1; overflow-y: auto; overflow-x: hidden; padding: 10px 10px 16px;
     background: var(--bg-page);
     scroll-behavior: smooth;
+    transition: background 0.2s;
+  }
+  .view-body.dark-analytics-mode {
+    background: #161426;
+    background-image:
+      radial-gradient(circle at 18% 12%, rgba(235, 154, 60, 0.14) 0%, transparent 42%),
+      radial-gradient(circle at 85% 24%, rgba(190, 184, 206, 0.10) 0%, transparent 38%);
   }
   .view-body::-webkit-scrollbar { width: 0; height: 0; }
   .sub-view { display: none; }
   .sub-view.active { display: block; animation: fadeIn 0.16s ease; }
   @keyframes fadeIn { from { opacity: 0.78; transform: translateY(2px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* 四大页面顶部浅色系焕彩封面渐变 */
+  /* 四大页面顶部封面渐变基底色 */
   .cover-banner {
-    border-radius: 13px; padding: 11px 13px; margin-bottom: 10px;
+    border-radius: 12px; padding: 10px 12px; margin-bottom: 10px;
     border: 1px solid var(--border-line);
     display: flex; align-items: center; justify-content: space-between; gap: 8px;
   }
   .cover-home {
-    background: linear-gradient(135deg, #FFF3E0 0%, #FCF5EB 55%, #FFFDFA 100%);
-    border-color: #F4DEC2;
+    background: linear-gradient(180deg, #FCF5EB 0%, #FFFDFA 100%);
   }
   .cover-schedule {
-    background: linear-gradient(135deg, #E4EFFC 0%, #EEF6FF 55%, #FCF5EB 100%);
-    border-color: #CDE0F8;
+    background: linear-gradient(180deg, #E4EFFC 0%, #FCF5EB 100%);
   }
   .cover-contract {
-    background: linear-gradient(135deg, #E8F5F2 0%, #F0FAF7 55%, #FCF5EB 100%);
-    border-color: #C9E7DF;
+    background: linear-gradient(180deg, #E8F5F2 0%, #FCF5EB 100%);
   }
   .cover-analytics {
-    background: linear-gradient(135deg, #FFF3E0 0%, #E8F5F2 52%, #EBF3FE 100%);
-    border-color: #E2E8F0;
+    background: linear-gradient(180deg, #FCF5EB 0%, #FFFDFA 100%);
+    border-color: var(--border-line);
     color: var(--text-main);
+    --legacy-dark-bg: #161426;
+    --legacy-dark-muted: #BEB8CE;
   }
 
-  /* 卡片与多色竖条标题 */
+  /* 卡片与通用标题 */
   .card {
-    background: var(--bg-card); border-radius: 13px; padding: 12px;
+    background: var(--bg-card); border-radius: 12px; padding: 12px;
     margin-bottom: 10px; border: 1px solid var(--border-line); position: relative;
-    box-shadow: 0 2px 8px rgba(51, 47, 43, 0.025);
   }
   .sec-head {
     display: flex; align-items: center; justify-content: space-between;
@@ -207,42 +218,32 @@
     display: inline-block; width: 4px; height: 14px;
     background: var(--brand-primary); border-radius: 2px; flex-shrink: 0;
   }
-  .sec-bar.blue { background: var(--vivid-blue); }
-  .sec-bar.green { background: var(--vivid-green); }
-  .sec-bar.violet { background: var(--vivid-violet); }
-  .sec-bar.coral { background: var(--vivid-coral); }
-  .sec-more { font-size: 11.5px; font-weight: 700; color: var(--brand-primary); cursor: pointer; }
-
-  /* 鲜明多彩胶囊徽章 */
+  .sec-more { font-size: 11.5px; font-weight: 600; color: var(--brand-deep); cursor: pointer; }
   .badge {
     display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 999px;
-    font-size: 10.5px; font-weight: 700; line-height: 1.35;
+    font-size: 10.5px; font-weight: 600; line-height: 1.35;
   }
-  .b-mint { background: #FFF3E6; color: #D97214; border: 1px solid #FBD8B4; }
-  .b-amber { background: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; }
-  .b-coral { background: #FDECEC; color: #E5534B; border: 1px solid #F9CACA; }
-  .b-blue { background: #EBF3FE; color: #2E7CF6; border: 1px solid #C8DFFE; }
-  .b-violet { background: #F2EEFF; color: #7C5CFC; border: 1px solid #D9CEFF; }
-  .b-gray { background: #EAE8E6; color: #665E56; }
-  .b-valid { background: #E7F7F0; color: #22A06B; border: 1px solid #BDE8D4; }
+  .b-mint { background: #FCF5EB; color: var(--brand-deep); border: 1px solid var(--border-line); }
+  .b-amber { background: #F7E1C2; color: #B67A2C; border: 1px solid #EBD0A8; }
+  .b-coral { background: #FDF3F2; color: #9C3E3E; border: 1px solid #F1D5D3; }
+  .b-gray { background: #EAE8E6; color: #86827E; }
+  .b-valid { background: #E8F5F2; color: #4C9068; border: 1px solid #CBE6DF; }
 
   /* 通知横幅 */
   .notify-banner {
-    background: linear-gradient(135deg, #FFF3E0 0%, #FFFDFA 100%);
-    border: 1px solid #F5D5AE;
+    background: linear-gradient(180deg, #FCF5EB 0%, #FFFDFA 100%);
+    border: 1px solid var(--border-line);
     border-radius: 12px; padding: 9px 11px;
     display: flex; align-items: center; justify-content: space-between; gap: 8px;
     margin-bottom: 10px;
   }
-  .nb-text { font-size: 11px; font-weight: 600; color: var(--text-main); line-height: 1.45; flex: 1; }
+  .nb-text { font-size: 11px; font-weight: 600; color: var(--text-sub); line-height: 1.45; flex: 1; }
   .nb-btn {
-    background: linear-gradient(135deg, #FF9F38 0%, #EA7A18 100%);
-    color: #FFFFFF; border: none; border-radius: 999px;
+    background: var(--brand-primary); color: #FFFFFF; border: none; border-radius: 999px;
     padding: 5px 11px; font-size: 11px; font-weight: 700; cursor: pointer; flex-shrink: 0;
-    box-shadow: 0 2px 6px rgba(240, 138, 36, 0.28);
   }
 
-  /* 学员切换卡与多彩圆形姓名头像 (对标图6蓝/珊瑚粉/橙/翡翠绿/紫) */
+  /* 学员切换卡与圆形姓名头像 */
   .stu-hero-card {
     background: var(--bg-card); border: 1px solid var(--border-line);
     border-radius: 14px; padding: 11px 12px;
@@ -252,12 +253,12 @@
   .avatar-circle {
     width: 42px; height: 42px; border-radius: 50%; display: flex;
     align-items: center; justify-content: center; font-size: 13px;
-    font-weight: 800; color: #FFFFFF; background: #3B8EEA;
-    border: 2px solid #E4EFFC; flex-shrink: 0;
+    font-weight: 800; color: #FFFFFF; background: var(--brand-primary);
+    border: 2px solid #F7E1C2; flex-shrink: 0;
   }
-  .avatar-circle.deep { background: #F08A24; border-color: #FFF3E0; }
+  .avatar-circle.deep { background: var(--brand-deep); }
 
-  /* 多彩宫格图标导航 (橙/蓝/绿/珊瑚红/紫 浅底焕彩方块) */
+  /* 宫格导航 */
   .mint-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px 6px; text-align: center; padding: 2px 0; }
   .mint-grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px 4px; text-align: center; padding: 2px 0; }
   .m-item {
@@ -266,28 +267,23 @@
   }
   .m-item:active { transform: scale(0.95); }
   .m-icon {
-    width: 42px; height: 42px; border-radius: 12px;
-    background: #FFF3E6; border: 1px solid #FBD8B4;
+    width: 40px; height: 40px; border-radius: 11px;
+    background: #FCF5EB; border: 1px solid var(--border-line);
     display: flex; align-items: center; justify-content: center;
-    font-size: 18px; color: var(--vivid-orange); margin-bottom: 5px;
+    font-size: 18px; color: var(--brand-primary); margin-bottom: 5px;
     position: relative;
   }
-  .m-icon.tint-orange { background: #FFF3E6; border-color: #FBD8B4; }
-  .m-icon.tint-blue { background: #EBF3FE; border-color: #C8DFFE; }
-  .m-icon.tint-green { background: #E7F7F0; border-color: #BDE8D4; }
-  .m-icon.tint-coral { background: #FDECEC; border-color: #F9CACA; }
-  .m-icon.tint-violet { background: #F2EEFF; border-color: #D9CEFF; }
   .m-icon.plus-primary {
-    background: linear-gradient(135deg, #FF9F38 0%, #EA7A18 100%) !important;
-    border-color: #F08A24 !important;
+    background: var(--brand-primary) !important;
+    border-color: var(--brand-primary) !important;
     color: #FFFFFF !important;
-    box-shadow: 0 4px 10px rgba(240, 138, 36, 0.30);
+    box-shadow: 0 4px 10px rgba(235, 154, 60, 0.28);
   }
   .mono-icon { width: 22px; height: 22px; display: inline-block; object-fit: contain; vertical-align: middle; }
   .m-label { font-size: 11px; font-weight: 600; color: var(--text-main); line-height: 1.2; white-space: nowrap; }
   .red-dot-badge {
     position: absolute; top: -5px; right: -5px;
-    background: var(--vivid-coral); color: #FFFFFF; font-size: 9.5px; font-weight: 800;
+    background: var(--brand-deep); color: #FFFFFF; font-size: 9.5px; font-weight: 800;
     min-width: 16px; height: 16px; border-radius: 999px; padding: 0 4px;
     display: flex; align-items: center; justify-content: center;
     border: 1.5px solid #FFFDFA;
@@ -296,11 +292,11 @@
   /* 排课卡片与签到强对比标签 (已签到 #F7E1C2/#B67A2C vs 未签到 #EAE8E6/#86827E) */
   .lesson-card {
     background: var(--bg-card); border-radius: 12px; padding: 11px 12px;
-    border: 1px solid var(--border-line); border-left: 4px solid var(--vivid-orange);
+    border: 1px solid var(--border-line); border-left: 4px solid var(--brand-primary);
     position: relative; overflow: hidden;
   }
   .lesson-card.uncheck-card {
-    border-left-color: var(--vivid-blue);
+    border-left-color: #948A80;
   }
   .stamp-seal {
     position: absolute; top: 10px; right: 10px;
@@ -332,7 +328,7 @@
   }
   .cal-watermark {
     position: absolute; top: 52%; left: 50%; transform: translate(-50%, -46%);
-    font-size: 126px; font-weight: 900; color: rgba(240, 138, 36, 0.07);
+    font-size: 126px; font-weight: 900; color: rgba(235, 154, 60, 0.07);
     pointer-events: none; user-select: none; line-height: 1; z-index: 0;
   }
   .cal-week-header, .cal-days-grid {
@@ -347,16 +343,16 @@
     transition: background 0.14s, color 0.14s;
   }
   .cal-day.in-active-week {
-    background: rgba(240, 138, 36, 0.10);
+    background: rgba(235, 154, 60, 0.09);
   }
   .cal-day.muted { color: #C5BDB4; font-weight: 400; background: transparent; }
   .cal-day .ke-dot {
     position: absolute; top: 4px; right: 6px; width: 5px; height: 5px;
-    border-radius: 50%; background: var(--vivid-coral);
+    border-radius: 50%; background: var(--brand-primary);
   }
-  .cal-day.uncheck-day .ke-dot { background: var(--vivid-blue); }
-  .cal-day .ke-tag { font-size: 9px; font-weight: 700; color: var(--vivid-coral); line-height: 1; margin-top: 1px; }
-  .cal-day.uncheck-day .ke-tag { color: var(--vivid-blue); }
+  .cal-day.uncheck-day .ke-dot { background: #86827E; }
+  .cal-day .ke-tag { font-size: 9px; font-weight: 700; color: var(--brand-deep); line-height: 1; margin-top: 1px; }
+  .cal-day.uncheck-day .ke-tag { color: #86827E; }
   .cal-day.selected {
     background: #282624 !important;
     color: #FFFFFF !important;
@@ -387,41 +383,52 @@
   #stu-tab-1 .schedule-lesson { flex-shrink: 0; min-height: 106px; padding: 13px 12px; margin-top: 12px !important; }
   #cal-sel-title { font-size: 15px !important; line-height: 1.4; font-weight: 700 !important; padding-right: 52px; }
 
-  /* 统计宫格（鲜明多彩数字） */
+  /* 统计宫格 */
   .stat-grid-6, .stat-grid-9 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
   .stat-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
   .stat-cell {
     background: var(--bg-card); border: 1px solid var(--border-line); border-radius: 10px;
     padding: 9px 6px; text-align: center; cursor: pointer;
-    transition: border-color 0.15s, transform 0.12s;
   }
-  .stat-cell:active { transform: scale(0.97); }
-  .stat-cell.tint-orange { background: #FFFDF9; border-color: #F6DFC2; }
-  .stat-cell.tint-blue { background: #FAFCFF; border-color: #D4E5FC; }
-  .stat-cell.tint-green { background: #F7FCFA; border-color: #C7EBDD; }
-  .stat-cell.tint-violet { background: #FBF9FF; border-color: #E0D7FE; }
-  .stat-cell.tint-coral { background: #FFF9F9; border-color: #F6D5D4; }
   .stat-val {
-    font-size: 16.5px; font-weight: 800; color: var(--text-main); line-height: 1.2;
+    font-size: 16px; font-weight: 800; color: var(--text-main); line-height: 1.2;
     font-variant-numeric: tabular-nums;
   }
-  .stat-val.primary, .stat-val.orange { color: #F08A24; }
-  .stat-val.amber { color: #D97706; }
-  .stat-val.blue { color: #2E7CF6; }
-  .stat-val.green, .stat-val.valid { color: #22A06B; }
-  .stat-val.violet { color: #7C5CFC; }
-  .stat-val.coral { color: #E5534B; }
-  .stat-lbl { font-size: 10.5px; font-weight: 600; color: var(--text-sub); margin-top: 3px; }
+  .stat-val.primary { color: var(--brand-primary); }
+  .stat-val.amber { color: var(--brand-deep); }
+  .stat-val.coral { color: #9C3E3E; }
+  .stat-val.valid { color: #4C9068; }
+  .stat-lbl { font-size: 10.5px; font-weight: 500; color: var(--text-sub); margin-top: 3px; }
 
-  /* 经营数据页（全浅色温暖底 + 鲜明橙/蓝双色对比柱状图） */
+  /* 经营数据页浅色暖橙统一样式 (#FCF5EB + #FFFDFA + #332F2B + #EB9A3C / #CC7C23) */
   #tch-tab-3 {
     background-color: var(--bg-page);
     color: var(--text-main);
+    border-radius: 14px;
+    padding: 2px 0 6px;
   }
-  .light-bar-chart {
+  #tch-tab-3 .dark-card, #tch-tab-3 .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-line);
+    border-radius: 12px; padding: 12px; margin-bottom: 10px;
+  }
+  #tch-tab-3 .sec-title { color: var(--text-main); }
+  #tch-tab-3 .stat-cell {
+    background: var(--bg-card);
+    border-color: var(--border-line);
+  }
+  #tch-tab-3 .stat-val { color: var(--text-main); }
+  #tch-tab-3 .stat-val.primary { color: #EB9A3C; }
+  #tch-tab-3 .stat-val.amber { color: #CC7C23; }
+  #tch-tab-3 .stat-lbl { color: var(--text-sub); }
+  #tch-tab-3 .list-row {
+    border-bottom-color: var(--border-line);
+    color: var(--text-main);
+  }
+  .dark-bar-chart, .light-bar-chart {
     display: flex; align-items: flex-end; justify-content: space-between;
-    height: 116px; gap: 8px; padding: 14px 8px 6px;
-    background: linear-gradient(180deg, rgba(235, 243, 254, 0.35) 0%, rgba(255, 243, 224, 0.25) 100%);
+    height: 108px; gap: 8px; padding: 14px 6px 4px;
+    background: #FCF5EB;
     border-radius: 10px;
     border-bottom: 1px solid var(--border-line);
   }
@@ -429,23 +436,11 @@
     flex: 1; display: flex; flex-direction: column; align-items: center; gap: 5px;
   }
   .dbc-bars {
-    display: flex; align-items: flex-end; gap: 4px; height: 80px;
+    display: flex; align-items: flex-end; gap: 3px; height: 76px;
   }
-  .dbc-bar-main {
-    width: 10px;
-    background-color: #EB9A3C;
-    background-image: linear-gradient(180deg, #FF9F38 0%, #EB9A3C 55%, #EA7115 100%);
-    border-radius: 4px 4px 0 0;
-    box-shadow: 0 2px 5px rgba(240, 138, 36, 0.25);
-  }
-  .dbc-bar-deep {
-    width: 10px;
-    background-color: #2E7CF6;
-    background-image: linear-gradient(180deg, #60A5FA 0%, #2E7CF6 100%);
-    border-radius: 4px 4px 0 0;
-    box-shadow: 0 2px 5px rgba(46, 124, 246, 0.22);
-  }
-  .dbc-lbl { font-size: 10.5px; font-weight: 600; color: var(--text-sub); }
+  .dbc-bar-main { width: 9px; background-color: #EB9A3C; border-radius: 4px 4px 0 0; }
+  .dbc-bar-deep { width: 9px; background-color: #CC7C23; border-radius: 4px 4px 0 0; }
+  .dbc-lbl { font-size: 10px; color: var(--text-sub); }
 
   /* 列表行 */
   .list-row {
@@ -464,8 +459,8 @@
     border-bottom: 1px solid var(--border-line); font-size: 11px; color: var(--text-sub);
   }
   .tt-legend-dots { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .tt-dot-item { display: inline-flex; align-items: center; gap: 3px; font-size: 10.5px; color: var(--text-sub); font-weight: 600; }
-  .tt-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .tt-dot-item { display: inline-flex; align-items: center; gap: 3px; font-size: 10.5px; color: var(--text-sub); }
+  .tt-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
   .tt-nav-toolbar {
     display: flex; align-items: center; justify-content: space-between;
     gap: 4px; margin-bottom: 8px; flex-wrap: nowrap;
@@ -475,7 +470,7 @@
     background: var(--bg-card); color: var(--text-sub); font-size: 14px; font-weight: 700;
     cursor: pointer; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
   }
-  .tt-arrow-btn:active { background: #FFF3E0; color: var(--brand-deep); }
+  .tt-arrow-btn:active { background: #FCF5EB; color: var(--brand-deep); }
   .tt-date-range {
     font-size: 11.5px; font-weight: 700; color: var(--text-main);
     font-variant-numeric: tabular-nums; white-space: nowrap; letter-spacing: -0.2px;
@@ -490,7 +485,7 @@
     transition: all 0.15s;
   }
   .tt-ico-btn:hover, .tt-ico-btn:active {
-    background: #FFF3E0; border-color: var(--brand-primary); color: var(--brand-deep);
+    background: #F7E1C2; border-color: var(--brand-primary); color: var(--brand-deep);
   }
   .tt-ico-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
   @media (max-width: 359px) {
@@ -533,10 +528,10 @@
     background: #EAE8E6; color: #86827E; border: 1px solid #D5D2CE;
   }
   .wt-slot.bookable {
-    background: #EBF3FE; color: #2E7CF6; border: 1px dashed #60A5FA;
+    background: #FCF5EB; color: #CC7C23; border: 1px dashed #EB9A3C;
   }
   .wt-slot.stopped {
-    background: #FDECEC; color: #E5534B; border: 1px solid #F9CACA; text-decoration: line-through;
+    background: #FDF3F2; color: #9C3E3E; border: 1px solid #E8C5C5; text-decoration: line-through;
   }
 
   /* 财务收支色展示区 (#C27820 +收入, #9C3E3E -退费, #BE5050 退费侧边条, #4C9068 有效/退费统计绿) */
@@ -546,8 +541,7 @@
     border: 1px solid var(--border-line); margin-bottom: 7px;
   }
   .fin-row.income-item {
-    border-left: 4px solid #22A06B;
-    background: #FAFFFD;
+    border-left: 4px solid #EB9A3C;
   }
   .fin-row.refund-item {
     border-left: 4px solid #BE5050;
@@ -557,7 +551,7 @@
   .fin-amt-refund { color: #9C3E3E; font-weight: 800; font-size: 13.5px; font-variant-numeric: tabular-nums; }
   .fin-stat-green, .valid-green-text { color: #4C9068; font-weight: 700; }
 
-  /* 学员列表卡片 (图6：搜索框 + 多彩圆形头像 + 当前合同 + 剩余课时 + #4C9068 (有效)) */
+  /* 学员列表卡片 (图6：搜索框 + 圆形头像 + 当前合同 + 剩余课时 + #4C9068 (有效)) */
   .stu-search-box {
     display: flex; align-items: center; gap: 6px;
     background: #F4EFE8; border: 1px solid var(--border-line);
@@ -577,14 +571,9 @@
   .stu-card-avatar {
     width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
-    font-size: 13.5px; font-weight: 800; color: #FFFFFF; background: #3B8EEA;
-    box-shadow: 0 2px 6px rgba(59, 142, 234, 0.22);
+    font-size: 13.5px; font-weight: 800; color: #FFFFFF; background: #EB9A3C;
   }
-  .stu-card-avatar.av-blue { background: #3B8EEA; box-shadow: 0 2px 6px rgba(59, 142, 234, 0.24); }
-  .stu-card-avatar.av-coral { background: #E86B6B; box-shadow: 0 2px 6px rgba(232, 107, 107, 0.24); }
-  .stu-card-avatar.av-orange { background: #F08A24; box-shadow: 0 2px 6px rgba(240, 138, 36, 0.24); }
-  .stu-card-avatar.av-green { background: #22A06B; box-shadow: 0 2px 6px rgba(34, 160, 107, 0.24); }
-  .stu-card-avatar.av-violet { background: #7C5CFC; box-shadow: 0 2px 6px rgba(124, 92, 252, 0.24); }
+  .stu-card-avatar.alt { background: #CC7C23; }
   .stu-card-main { flex: 1; min-width: 0; }
   .stu-card-name { font-size: 15px; font-weight: 800; color: #332F2B; margin-bottom: 2px; }
   .stu-card-line { font-size: 12px; color: #665E56; line-height: 1.5; }
@@ -615,7 +604,7 @@
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
   }
   .ui-switch input:checked + .ui-switch-slider {
-    background-color: #22A06B; border-color: #22A06B;
+    background-color: #EB9A3C; border-color: #EB9A3C;
   }
   .ui-switch input:checked + .ui-switch-slider::before {
     transform: translateX(20px);
@@ -659,41 +648,33 @@
   }
   .share-black-overlay.show { display: flex; }
 
-  /* 底部 Tab 导航栏（全站4页统一温暖浅色） */
+  /* 底部 Tab 导航栏 */
   .bottom-tabbar {
     height: 60px; padding-bottom: env(safe-area-inset-bottom);
     background: var(--bg-card); border-top: 1px solid var(--border-line);
     display: flex; align-items: center; justify-content: space-around;
     flex-shrink: 0; z-index: 25;
   }
+  .bottom-tabbar.dark-tabbar {
+    background: #161426; border-top-color: rgba(190, 184, 206, 0.18);
+  }
   .tab-btn {
     flex: 1; display: flex; flex-direction: column; align-items: center;
     justify-content: center; cursor: pointer; color: #948A80; padding: 4px 0;
   }
+  .bottom-tabbar.dark-tabbar .tab-btn { color: #BEB8CE; }
   .tab-btn .t-ico { font-size: 17px; line-height: 1.1; margin-bottom: 4px; }
   .tab-btn .t-txt { font-size: 10.5px; font-weight: 600; }
   .tab-btn.active { color: var(--brand-primary) !important; font-weight: 800; }
 
   /* 按钮与弹窗 */
   .btn-mint {
-    background: #EB9A3C; color: #FFFFFF; border: none; border-radius: 8px;
+    background: var(--brand-primary); color: #FFFFFF; border: none; border-radius: 8px;
     padding: 7px 12px; font-size: 12px; font-weight: 700; cursor: pointer;
   }
   .btn-deep {
-    background: #2E7CF6; color: #FFFFFF; border: none; border-radius: 8px;
+    background: var(--brand-deep); color: #FFFFFF; border: none; border-radius: 8px;
     padding: 7px 12px; font-size: 12px; font-weight: 700; cursor: pointer;
-  }
-  .btn-green {
-    background: #E7F7F0; color: #22A06B; border: 1px solid #BDE8D4; border-radius: 8px;
-    padding: 6px 10px; font-size: 11.5px; font-weight: 700; cursor: pointer;
-  }
-  .btn-blue {
-    background: #EBF3FE; color: #2E7CF6; border: 1px solid #C8DFFE; border-radius: 8px;
-    padding: 6px 10px; font-size: 11.5px; font-weight: 700; cursor: pointer;
-  }
-  .btn-coral {
-    background: #FDECEC; color: #E5534B; border: 1px solid #F9CACA; border-radius: 8px;
-    padding: 6px 10px; font-size: 11.5px; font-weight: 700; cursor: pointer;
   }
   .btn-outline {
     background: var(--bg-card); color: var(--brand-deep); border: 1px solid var(--border-line);
@@ -742,12 +723,12 @@
 <div class="app-stage">
   <!-- 电脑端左侧引导栏 -->
   <aside class="desktop-guide">
-    <div class="dg-badge">界面预览 · V3.9 浅色焕彩精装版</div>
+    <div class="dg-badge">界面预览 · V3.9 暖橙精装版</div>
     <h1 class="dg-title">刘妤钢琴工作室<br>微信小程序交互预览</h1>
-    <p class="dg-sub">全站 4 大页面统一温暖浅米色调，搭配活力暖橙、晴空蓝、翡翠绿、珊瑚粉与星云紫多维鲜明色彩，实装自动+45分钟排课、3大排课开关、周课表滑动切周与4项工具栏。</p>
+    <p class="dg-sub">升级全套精准暖橙品牌色值与深色经营统计页，实装自动+45分钟排课、防冲突/可约课/无合同3大开关、周课表与签到月历左右滑动切周、学员有效课时状态及课表导出/横屏/复制/分享长图。</p>
     <button class="dg-role-btn active" id="dg-btn-stu" onclick="switchRole('student')">
       <div>
-        <div style="font-size:14px;font-weight:800;">家长/学生视角 (焕彩8宫格)</div>
+        <div style="font-size:14px;font-weight:800;">家长/学生视角 (清爽8宫格)</div>
         <div style="font-size:11.5px;color:var(--text-sub);">查课表 · 开放约课 · 我的合同 · 续费提醒</div>
       </div>
       <span>›</span>
@@ -761,7 +742,7 @@
     </button>
     <div class="dg-features">
       <strong>V3.9 核心升级亮点：</strong><br>
-      • 4页统一温暖浅色底 + <strong>橙/蓝/绿/粉/紫</strong> 鲜明多色点缀<br>
+      • 主橙 <code>#EB9A3C</code> + 深橙 <code>#CC7C23</code> + 4页专属封面渐变<br>
       • 排课自动算 <strong>+45分钟</strong>，支持防冲突/可约课/无合同排课<br>
       • 周课表 &amp; 签到月历支持 <strong>左右滑动 + &lt; &gt; 切周</strong>、强对比签到色<br>
       • 课程表工具栏支持 <strong>导出预览、翻转横屏、复制上周、定制分享图</strong>
@@ -788,7 +769,7 @@
 
       <!-- ==================== 家长/学生视角 Sub-Tab 0: 学生首页 ==================== -->
       <section class="sub-view active" id="stu-tab-0">
-        <!-- 首页暖黄封面渐变 -->
+        <!-- 首页暖黄封面渐变 #FCF5EB -> #FFFDFA -->
         <div class="notify-banner cover-home">
           <div class="nb-text">开启微信通知：上课前1天自动提醒 + 剩余3节课自动提醒续费</div>
           <button class="nb-btn" id="btn-enable-notify" onclick="openWxRemindModal()">开启提醒</button>
@@ -804,67 +785,67 @@
                 <span class="badge b-valid">在读有效</span>
               </div>
               <div style="font-size:11px;color:var(--text-sub);margin-top:2px;" id="stu-cur-contracts">
-                钢琴半年·剩<strong style="color:var(--vivid-blue)">18</strong>节 | 考级集训季度·剩<strong style="color:var(--vivid-orange)">6</strong>节
+                钢琴半年·剩<strong style="color:var(--brand-deep)">18</strong>节 | 考级集训季度·剩<strong style="color:var(--brand-primary)">6</strong>节
               </div>
             </div>
           </div>
           <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
-            <button class="btn-blue" style="padding:5px 8px;" onclick="openStuQrModal()" title="学员签到码">码</button>
+            <button class="btn-outline" style="padding:5px 8px;" onclick="openStuQrModal()" title="学员签到码">码</button>
             <button class="btn-mint" style="padding:5px 10px;font-size:11px;" onclick="openSwitchStudentModal()">切换学员 ▾</button>
           </div>
         </div>
 
-        <!-- 8 宫格（多彩浅底图标） -->
+        <!-- 8 宫格 -->
         <div class="card" style="padding:12px 8px;">
           <div class="mint-grid-4">
             <div class="m-item" onclick="switchStuTab(1)">
-              <div class="m-icon tint-blue"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABXklEQVR42u3dQQ6CMBBAUWhceRhP6NITehi3unJDhAACw7TvL00anf5Op0ND7DoAAAAAAAC0Qh/1xbf76/3r8+fj2rfw/V+KNRgLAQQQAAIIAAH6gEPO2ZnZo0foTXysiGLyY+MsJj823mLyY+N2Csp+CppaBVPFKtvT0LVxhmXA0Y91Mx5BbUEn4FLbisqWoTKAAAJAAAEggAAQoBHbjFafkMoAAkAAASCg9VNQbRcye53sZIAtiAAQQAAIIAAEaMTCGps1jVv0+NQZMOwql3aZ0eNTCxgLdu4kRI9XAxRhpBYwVvDmFsLo8VVkwDDYpcFHj6/iGPpv0NHj1QA1AAQQAAIIAAEEIF0j5j7AfcDq8akFuA9QAxRhBApwH3CCDHAfcIJjqPsANaDeGlDbe8J7xdOb7Nht1BZUwxZU4wt5R8VdzvRjWpv8zbegViRsGaf/D7DAAAAAAABAO3wACHfSQvB8neAAAAAASUVORK5CYII="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABX0lEQVR42u3d0Q2CMBCAYWhcwW2cx6Gcx20cQp98IUIAgePa7380afT693o9GmLXAQAAAAAAoBX6qC9+PW7vX59f78++he//UqzBWAgggAAQQAAI0Acccs7OzB49Qm/iY0UUkx8bZzH5sfEWkx8bt1NQ9lPQ1CqYKlbZnoaujTMsA45+rJvxCGoLOgGX2lZUtgyVAQQQAAIIAAEEgACN2Ga0+oRUBhAAAggAAa2fgmq7kNnrZCcDbEEEgAACQAABIEAjFtbYrGncosenzoBhV7m0y4wen1rAWLBzJyF6vBqgCCO1gLGCN7cQRo+vIgOGwS4NPnp8FcfQf4OOHq8GqAEggAAQQAAIIADpGjH3Ae4DVo9PLcB9gBqgCCNQgPuAE2SA+4ATHEPdB6gB9daA2t4T3iue3mTHbqO2oBq2oBpfyDsq7nKmH9Pa5G++BbUiYcs4/X+ABQYAAAAAANrhA1Y70VursV/bAAAAAElFTkSuQmCC"/></div>
               <span class="m-label">我的课表</span>
             </div>
             <div class="m-item" onclick="openRuleModal()">
-              <div class="m-icon tint-orange"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABDklEQVR42u3dgQ3CIBBAUSCu4DbO41DO4zYOoRuYGMvR495bwMK3hJZEWwMAAACgih71Qa/H7Z1tcq73Z08fIOPER4YYJn/tOIbJXzueYfLXjms09toFffuWROwqso0j7A7INPmR12sJWkwAAQRAAAEQQAAEEIBgl9UXcIY3pytfk7gDLEECIIAAVN0FZTuocQcIgAACIIAACCAAAngS/o/zACxBAiCAANTcBTkPQAABEEAABBAAAQSg1pNwxHnAmZ+23QECCIAAAlB1F+Q8AAEEQAABEEAABBCAPQNk+0X1qOvtJvs3R786sQTtuATt+oJtxrhGpovdbfKnL0G7RJg5Dv8jVnApBQAAAMr6AO8jSFpVvXeGAAAAAElFTkSuQmCC"/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABDklEQVR42u3dgQ3CIBBAUSCu4DbO41DO4zYOoRuYGMvR495bwMK3hJZEWwMAAACgih71Qa/H7Z1tcq73Z08fIOPER4YYJn/tOIbJXzueYfLXjms09toFffuWROwqso0j7A7INPmR12sJWkwAAQRAAAEQQAAEEIBgl9UXcIY3pytfk7gDLEECIIAAVN0FZTuocQcIgAACIIAACCAAAngS/o/zACxBAiCAANTcBTkPQAABEEAABBAAAQSg1pNwxHnAmZ+23QECCIAAAlB1F+Q8AAEEQAABEEAABBCAPQNk+0X1qOvtJvs3R786sQTtuATt+oJtxrhGpovdbfKnL0G7RJg5Dv8jVnApBQAAAMr6AO8jSFpVvXeGAAAAAElFTkSuQmCC"/></div>
               <span class="m-label">排课说明</span>
             </div>
             <div class="m-item" onclick="openFeedbackModal()">
-              <div class="m-icon tint-coral"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACUUlEQVR42u1cS3LCUAwjnncLjtRlz8mSI/Uc7YqZLmggqeVn6UnLdobY+thJSLhcDMMwDMMwDMMwDMMwjD18fX58H/l7Zwx2Ea63+8ZI/AObivt/43q70/QVHmgWINX9bLvACbAAue5nSwF9ApgWLq0AZ93MkIJQcD9zCkLV/SwpCHb3s++CUHY/QwpCwf3MKQh193dPQai4nzUFsYL7O6cglNzPmIJYxf1dUxBq7mdLQazk/o4pCEX3M6UgVnN/txSEqvtZUjBWcfw7NcwQa+tMdCYhXeqAJYD54aizvWUIs3UlGeG6jvXHKuRXz/h3+Zr6bOiMpffXMWeN0KFKNIswqTuA/RmdGVyEmpPZLh6j0hWruB96K+KVuuoiZI/hQEfMowc0gvYOppqCvb7OmjJQiquJgCA/fQmrioDs498CqC9l9LVPSgJWXcoZfUdFMawpQM192A5QEqGCfPgSZhWhss50AdiXcvUNR0gCVJcyoq+YUWzXFFTN/bIdwCTCDPLLl7AxQQD2fYCu3wlQT4DRVIBuo2lWPXAB1O+GegR5BBkWwAIYVAJknXE8FmTWopR7Qwb1YgPyvg3yZYxnoPrp4nec/vsnjRl6GirEswox1IhnE2KoEs8iRPlZ0KsvaY6Sf5TQV8eoFmirdvGzBs84fsbnIMQZbKNmj4TH/4587uzRNBSIZxZi60QyKvadr5TbnoZmNnsmEcuehiJHQEchIM2iZ7xSnUPZ8QyJGCsS30mIFhdiLLdCELWXfR/A+IQce/2GYRiGYRiGYRjGE/wA2BecQIkhYHMAAAAASUVORK5CYII="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACUklEQVR42u1c223DQAyLhVsh23SeDtV5sk2HaL8C5CN1YlfUiTzyswViiQ/JduxcLoZhGIZhGIZhGIZhGMYevr8+fo78vTMGuwjXz9vGSPwdm4r7H3H9vNH0FR5oFiDV/Wy7wAmwALnuZ0sBfQKYFi6tAGfdzJCCUHA/cwpC1f0sKQh297PvglB2P0MKQsH9zCkIdfd3T0GouJ81BbGC+zunIJTcz5iCWMX9XVMQau5nS0Gs5P6OKQhF9zOlIFZzf7cUhKr7WVIwVnH8OzXMEGvrTHQmIV3qgCWA+eGos71lCLN1JRnhuo71xyrkV8/4d/ma+mzojKX31zFnjdChSjSLMKk7gP0ZnRlchJqT2S4eo9IVq7gfeivilbrqImSP4UBHzKMHNIL2Dqaagr2+zpoyUIqriYAgP30Jq4qA7OPfAqgvZfS1T0oCVl3KGX1HRTGsKUDNfdgOUBKhgnz4EmYVobLOdAHYl3L1DUdIAlSXMqKvmFFs1xRUzf2yHcAkwgzyy5ewMUEA9n2Art8JUE+A0VSAbqNpVj1wAdTvhnoEeQQZFsACGFQCZJ1x3Bdk1qKUe0MG9WID8r4N8mWMZ6D66eJ3nP74k8YMPQ0V4lmFGGrEswkxVIlnEaL8LOjVlzRHyT9K6KtjVAu0Vbv4WYNnHD/jcxDiDLZRs0fC/X9HPnf2aBoKxDMLsXUiGRX7zlfKbU9DM5s9k4hlT0ORI6CjEJBm0TNeqc6h7HiGRIwVie8kRIsLMZZbIYjay74PYHxCjr1+wzAMwzAMwzAM4wl+AVsLnPo5m9kIAAAAAElFTkSuQmCC"/></div>
               <span class="m-label">课堂反馈</span>
             </div>
             <div class="m-item" onclick="switchStuTab(2)">
-              <div class="m-icon tint-violet"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABjklEQVR42u3cUW7DIBBFURtlmVlKPruULjNS+l/JbRIHZgbOXUAC7w4Yg8W2AQAAAAAAYBX2UX90u94f1cL5+r7s5QVUDH6kiCb82H404cf2pwk/tl9tw1yroL+qZMSqolo/ho2ASuGPbK8pKBgCCCAABBAAAggAAQRgMJfoBmTYOY3cJjECTEEEgAACsOoqqNpBjRFAAAggAAQQAAIS8e6mIgEfDP8dCQR8uPJfleA84MTb+FHbb9f749nfNAI6FM4rQgkIDJ+ABFMZAcHPEQICw0+xCqp+HnC2/UZAcPEQEDxyCRiw1CQg8ds5AYHhExAcPgHB4RMQHD4BW/x2+BLnAUfLxv+WmiPa1lR+33U+AYnDX1JAtut0mvDjwl9KQNaLpJY4D8h8i1dT+bE04ROwbPjTCqh0c2MTPgHLhj+VgKoXxk4j4Cjk7N8dTTUF/Q67wkdfLcMU0UPC2fBHtXevHHamqc4UVJRWoUpmrf6uI2A2Cb360yo2epbwuz2EZ3kwr36XEQAAAAAAmI4fwDzC9OMNtWsAAAAASUVORK5CYII="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABkUlEQVR42u3c0XHDIBBFUWknLaQb15OiXE+6cRHOf2YUx5ZhWTi3ABveXRACDdsGAAAAAACAVdh7/dHterlXC+fz63svL6Bi8D1FhPBz+xHCz+1PCD+3X7FhrlXQX1XSY1VRrR/dRkCl8Hu21xSUDAEEEAACCAABBIAAAtCZj+wGjLBzmrlNYgSYgggAAQRg1VVQtYMaI4AAEEAACCAABAzEq5uKBLwx/FckEPDmyn9WgvOAE2/jR22/XS/3//6mEdCgcJ4RSkBi+AQMMJURkPwcISAx/CFWQdXPA8623whILh4CkkcuAR2WmgQM/HZOQGL4BCSHT0By+AQkh0/Alr8dvsR5wNGy8dFSs0fbQuW3XecTMHD4SwoY7TqdEH5e+EsJGPUiqSXOA0a+xStUfi4hfAKWDX9aAZVubgzhE7Bs+FMJqHph7DQCjkIe/bujqaag32FX+OgrRpgiWkg4G36v9u6Vwx5pqjMFFSUqVMms1d90BMwmoVV/omKjZwm/2UN4lgfz6ncZAQAAAACA6fgBerPDGoauf3cAAAAASUVORK5CYII="/></div>
               <span class="m-label">我的作业</span>
             </div>
             <div class="m-item" onclick="openAttendanceModal()">
-              <div class="m-icon tint-green"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABvUlEQVR42u3dPVbDMBBFYVsnK2Fl6VlPelaWrUBFE4LBduyZkb5b0iR6V78j5TBNAAAAAAAAGIU56oPfPt4/n/39fr3NI3z+N00fjIUAAggAAQSAAOeAU/bZlTnijDALPlZEE35sO5vwY9vbhB/bbrug6rugpV6wtFhVq4ZubWfYCDi7rFtxC2oKSsCltx5VbYQaAQQQAAIIAAEEgAAHsZcxaoXUCCAABBAAAkbfBfV2IXPUzs4IMAURAAIIAAH97XAIWBl+hIQm/NiqbRs5+Gfhny2k6fWxo6IJ/ydnllGa8OPCn6bAt6HZwo8qHl70+tjKbasUVG/hpxFwxEGoQvgpBDwG9QoJVcIPF/BbUHsk/GexzXRbFypgy4/41p5sM/b6VFPQKyRUmnJSLsJ7JFQOP9U2dIuE6uGnK0WskVBtsS1zEr5fb/Pe3VGlN0kpi3F7Aqz2ICxtNXRLkBVf46UuR68JtOpTyPT3AX8FW2WxLStgSUIPD4DL3Ig9ht3L6+tSFzI9Pnn3MIsAAg6ht98JH9WeWdix65IpqIcpqMfdyVntbpm+zIhb4pbxS410HvH/A3QwAAAAAAAwDl84EeSbJedxgAAAAABJRU5ErkJggg=="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABvklEQVR42u3dzVXDMBBFYVsnLaQb6klR1JNuKAJWbEIw2I49M9J3l2wSvavfkXKYJgAAAAAAAIzCHPXBH+9vn8/+fr3d5xE+/5umD8ZCAAEEgAACQIBzwCn77MoccUaYBR8rogk/tp1N+LHtbcKPbbddUPVd0FIvWFqsqlVDt7YzbAScXdatuAU1BSXg0luPqjZCjQACCAABBIAAAkCAg9jLGLVCagQQAAIIAAGj74J6u5A5amdnBJiCCAABBICA/nY4BKwMP0JCE35s1baNHPyz8M8W0vT62FHRhP+TM8soTfhx4U9T4NvQbOFHFQ8ven1s5bZVCqq38NMIOOIgVCH8FAIeg3qFhCrhhwv4Lag9Ev6z2Ga6rQsVsOVHfGtPthl7faop6BUSKk05KRfhPRIqh59qG7pFQvXw05Ui1kiottiWOQlfb/d57+6o0puklMW4PQFWexCWthq6JciKr/FSl6PXBFr1KWT6+4C/gq2y2JYVsCShhwfAZW7EHsPu5fV1qQuZHp+8e5hFAAGH0NvvhI9qzyzs2HXJFNTDFNTj7uSsdrdMX2bELXHL+KVGOo/4/wE6GAAAAAAAGIcvEIbkm71UziIAAAAASUVORK5CYII="/></div>
               <span class="m-label">考勤记录</span>
             </div>
             <div class="m-item" onclick="switchStuTab(2)">
-              <div class="m-icon tint-orange"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABDklEQVR42u3dgQ3CIBBAUSCu4DbO41DO4zYOoRuYGMvR495bwMK3hJZEWwMAAACgih71Qa/H7Z1tcq73Z08fIOPER4YYJn/tOIbJXzueYfLXjms09toFffuWROwqso0j7A7INPmR12sJWkwAAQRAAAEQQAAEEIBgl9UXcIY3pytfk7gDLEECIIAAVN0FZTuocQcIgAACIIAACCAAAngS/o/zACxBAiCAANTcBTkPQAABEEAABBAAAQSg1pNwxHnAmZ+23QECCIAAAlB1F+Q8AAEEQAABEEAABBCAPQNk+0X1qOvtJvs3R786sQTtuATt+oJtxrhGpovdbfKnL0G7RJg5Dv8jVnApBQAAAMr6AO8jSFpVvXeGAAAAAElFTkSuQmCC"/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABDklEQVR42u3dgQ3CIBBAUSCu4DbO41DO4zYOoRuYGMvR495bwMK3hJZEWwMAAACgih71Qa/H7Z1tcq73Z08fIOPER4YYJn/tOIbJXzueYfLXjms09toFffuWROwqso0j7A7INPmR12sJWkwAAQRAAAEQQAAEEIBgl9UXcIY3pytfk7gDLEECIIAAVN0FZTuocQcIgAACIIAACCAAAngS/o/zACxBAiCAANTcBTkPQAABEEAABBAAAQSg1pNwxHnAmZ+23QECCIAAAlB1F+Q8AAEEQAABEEAABBCAPQNk+0X1qOvtJvs3R786sQTtuATt+oJtxrhGpovdbfKnL0G7RJg5Dv8jVnApBQAAAMr6AO8jSFpVvXeGAAAAAElFTkSuQmCC"/></div>
               <span class="m-label">我的合同</span>
             </div>
             <div class="m-item" onclick="openSwitchStudentModal()">
-              <div class="m-icon tint-blue"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACG0lEQVR42u2cS27DMAxEIyKrHiYnzLIn7GGyTVcFiiJubIsSh+J727q2PMOPbCm+XAAAAAAAAAAAoAot46Bv98dz629fnx8NAyaLntmMtqLwmYyw1cX3PE+ZDBgpmFo2WCXxFbPhmnEW9F8UK5cb+RL0Trwj5cPzXCVKkLdg745XyRTLkKZnozXDc4CpR3+viOr9wlaM/BmZ4GVeihKkOlX2MMFUbmZ01G6d76iIf4/vNYEMcAiWHhMwILihY0CwCRgQbAIGBJuAAcEmmOpNeD+ljpru9v4/GRAwbU1jQIUlSQkDRr4wi9zCsuf8tkoqR0X+Mq8ivBdQsqyItYzR3luyPMXvnV2lXJRXaapLvI5WbIylS9CoSJ+5KnbkWixJBgeHfA/4EY/d0UlKU4Tov8eT7fcJS5FtWyQAPWBYimepxTwHYMD8RqZkRqskvKIRraLwSkZYdfGjx9Ey3bDnT5RUsqGpi+8hSMQ1JQ3YK8RIAWaO4XZ/PN+dpymJPzPyvMdzdm3AKoq/93ozmnOLFl9hLu41xjNZYNXF3zOOkZlg1cWPNsEUb7bSE7HNjn7118Q9m77ObLU3xPc1IUUJgkEGrPQ1w1lZYNE3k9UErz5gM6J/RdJ8rCP7RqXR46cJr9CEq+4IO/ru59Xxljl9VyhDV4pArHH0gOCs6TZg1hevVAXli1nMggADMAAwAAAAAAAAAAAAAAAAtvgGATJwRBXpI/sAAAAASUVORK5CYII="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACHElEQVR42u2c23HDMAwETYxbSDeuJ0W5nnTjIpyvzGQyViyJIHEgdn+jSNQdHpRI63IBAAAAAAAAAIAqtIyDftxvz62/fXx+NQyYLHpmM9qKwmcywlYX3/M8ZTJgpGBq2WCVxFfMhmvGWdB/UaxcbuRL0DvxjpQPz3OVKEHegr07XiVTLEOano3WDM8Bph79vSKq9wtbMfJnZIKXeSlKkOpU2cMEU7mZ0VG7db6jIv49vtcEMsAhWHpMwIDgho4BwSZgQLAJGBBsAgYEm2CqN+H9lDpqutv7/2RAwLQ1jQEVliQlDBj5wixyC8ue89sqqRwV+cu8ivBeQMmyItYyRntvyfIUv3d2lXJRXqWpLvE6WrExli5BoyJ95qrYkWuxJBkcHPI94Ec8dkcnKU0Rov8eT7bfJyxFtm2RAPSAYSmepRbzHIAB8xuZkhmtkvCKRrSKwisZYdXFjx5Hy3TDnj9RUsmGpi6+hyAR15Q0YK8QIwWYOYbH/fZ8d56mJP7MyPMez9m1Aaso/t7rzWjOLVp8hbm41xjPZIFVF3/POEZmglUXP9oEU7zZSk/ENjv61V8T92z6OrPV3hDf14QUJQgGGbDS1wxnZYFF30xWE7z6gM2I/hVJ87GO7BuVRo+fJrxCE666I+zou59Xx1vm9F2hDF0pArHG0QOCs6bbgFlfvFIVlC9mMQsCDMAAwAAAAAAAAAAAAAAAANjiG8ulcQop+6XZAAAAAElFTkSuQmCC"/></div>
               <span class="m-label">学员切换</span>
             </div>
             <div class="m-item" onclick="switchStuTab(3)">
-              <div class="m-icon tint-green"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABzElEQVR42u2cy3XDMAwEDTxXkspyTz25pzK3klSgWLZAYgHMXO0nk7v4iKTk2w0AAAAAAAAAAKZgFQf98fP1e/TZ4/PbMGCz6JXNsI7CVzLCu4sfeZ0xGbBSMLVs8EniK2bDveJd0H9RrFxu5EvQM/FeKR+R1xpRgqIFe/Z9lUzxCmn6brRWWAe4evRfFVG9X3jHyGchBnUMOCoD0VF7dL3sMkQGUIIwADAAAwADMEBqsRV9e7jrdpcMIAPWR23WddoasHLDTP0RlhIl6F0TKpyOyRgQfYBS5UTMKkb71ZKltD1d8lC+2sF7qR6wOjrVDmdsSqSrnopxJEkGrMsGno5OMKPa+wEAAPSA+EZcpRewDsCA/dsMSmbYJOEVjbCJwisZ4dPFzx6HVZpw5CtKKtlg6uJHCJLxm5IGnBVipQAKY0gxQO2oUGU8PlH8s7+3ozlbtvgK9+KZY/Tp4p8Zx8pM8OniZ5vgipOdtCL23dGvvk28+8VuR/xcE3g/IBkn+nOzwLMnU9UEOQM6PTC7c75O9OeOnybcoQlPKz+R8/bK6duhDFGCOq0DIMEA1b8A2FWGrvYBMoAShAGAARgAAAAAAAAAAAAAAAB9+QNCJxJZRnUYPwAAAABJRU5ErkJggg=="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABzElEQVR42u2c7XXCMAxFkQ4rdJvO06E6T7dhiHaClEBk60m69y+cYL+nj9hOuN0AAAAAAAAAAGAKVnHQj+/P36PPPr5+DAM2i17ZDOsofCUjvLv4kdcZkwErBVPLBp8kvmI23CveBf0XxcrlRr4EPRPvlfIRea0RJShasGffV8kUr5Cm70ZrhXWAq0f/VRHV+4V3jHwWYlDHgKMyEB21R9fLLkNkACUIAwADMAAwAAOkFlvRt4e7bnfJADJgfdRmXaetASs3zNQfYSlRgt41ocLpmIwB0QcoVU7ErGK0Xy1ZStvTJQ/lqx28l+oBq6NT7XDGpkS66qkYR5JkwLps4OnoBDOqvR8AAEAPiG/EVXoB6wAM2L/NoGSGTRJe0QibKLySET5d/OxxWKUJR76ipJINpi5+hCAZvylpwFkhVgqgMIYUA9SOClXG4xPFP/t7O5qzZYuvcC+eOUafLv6ZcazMBJ8ufrYJrjjZSSti3x396tvEu1/sdsTPNYH3A5Jxoj83Czx7MlVNkDOg0wOzO+frRH/u+GnCHZrwtPITOW+vnL4dyhAlqNM6ABIMUP0LgF1l6GofIAMoQRgAGIABAAAAAAAAAAAAAADQlz/g7BHFx3JDuwAAAABJRU5ErkJggg=="/></div>
               <span class="m-label">个人信息</span>
             </div>
           </div>
         </div>
 
-        <!-- 开放可约课时段容器 -->
+        <!-- 开放可约课时段容器（老师开启“是否可约课”排课后实时展示，家长可一键约课） -->
         <div id="stu-open-bookable-box"></div>
 
         <!-- 最近一周排课 -->
         <div class="card">
           <div class="sec-head">
-            <div class="sec-title"><span class="sec-bar blue"></span>最近一周排课 <span class="badge b-blue" id="stu-home-next-date">2026-11-15 周日</span></div>
+            <div class="sec-title"><span class="sec-bar"></span>最近一周排课 <span class="badge b-mint" id="stu-home-next-date">2026-11-15 周日</span></div>
             <div class="sec-more" onclick="switchStuTab(1)">查看月历 ›</div>
           </div>
           <div class="lesson-card" id="stu-home-lesson-card">
             <div class="stamp-seal stamp-uncheck" id="home-lesson-stamp">未点名</div>
             <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">
-              <span class="badge b-blue">常规课</span>
+              <span class="badge b-mint">常规课</span>
               <span style="font-size:13.5px;font-weight:800;">少儿钢琴一对一</span>
             </div>
             <div style="font-size:11.5px;color:var(--text-sub);display:flex;flex-wrap:wrap;gap:10px;margin-bottom:7px;font-weight:600;">
@@ -874,7 +855,7 @@
               <span>刘妤</span>
             </div>
             <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px dashed var(--border-line);padding-top:6px;">
-              <span style="font-size:11px;color:var(--vivid-orange);font-weight:700;" id="txt-room-line">1号施坦威三角琴房 · 扣[钢琴半年]</span>
+              <span style="font-size:11px;color:var(--brand-deep);font-weight:600;" id="txt-room-line">1号施坦威三角琴房 · 扣[钢琴半年]</span>
               <button class="edit-pill" onclick="openEditCustomTextModal()">编辑文字</button>
             </div>
           </div>
@@ -900,33 +881,33 @@
           </div>
           <div style="display:flex;flex-wrap:wrap;gap:5px;">
             <span class="badge b-mint" id="txt-t-tag1">10年亲授经验</span>
-            <span class="badge b-blue" id="txt-t-tag2">施坦威独立琴房</span>
-            <span class="badge b-valid" id="txt-t-tag3">英皇/音协考级指导</span>
-            <span class="badge b-violet" id="txt-t-addr">星海音乐创意园A座302</span>
+            <span class="badge b-mint" id="txt-t-tag2">施坦威独立琴房</span>
+            <span class="badge b-mint" id="txt-t-tag3">英皇/音协考级指导</span>
+            <span class="badge b-gray" id="txt-t-addr">星海音乐创意园A座302</span>
           </div>
         </div>
 
         <!-- 开设钢琴课程体系 -->
         <div class="card" style="margin-bottom:4px;">
           <div class="sec-head" style="margin-bottom:8px;">
-            <div class="sec-title"><span class="sec-bar green"></span>开设钢琴课程体系</div>
+            <div class="sec-title"><span class="sec-bar"></span>开设钢琴课程体系</div>
             <button class="edit-pill" onclick="openEditCustomTextModal()">编辑文字</button>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;">
-            <div style="background:#FFF8F0;border:1px solid #F6DFC2;border-radius:10px;padding:8px 9px;">
-              <div style="font-size:12px;font-weight:800;color:#D97214;" id="txt-c1-title">少儿启蒙趣味课</div>
+            <div style="background:var(--bg-page);border:1px solid var(--border-line);border-radius:10px;padding:8px 9px;">
+              <div style="font-size:12px;font-weight:800;color:var(--brand-deep);" id="txt-c1-title">少儿启蒙趣味课</div>
               <div style="font-size:10.5px;color:var(--text-sub);margin-top:2px;" id="txt-c1-desc">4-7岁 · 趣味识谱与手型</div>
             </div>
-            <div style="background:#F3F8FF;border:1px solid #D4E5FC;border-radius:10px;padding:8px 9px;">
-              <div style="font-size:12px;font-weight:800;color:#2E7CF6;" id="txt-c2-title">英皇/音协考级课</div>
+            <div style="background:var(--bg-page);border:1px solid var(--border-line);border-radius:10px;padding:8px 9px;">
+              <div style="font-size:12px;font-weight:800;color:var(--brand-deep);" id="txt-c2-title">英皇/音协考级课</div>
               <div style="font-size:10.5px;color:var(--text-sub);margin-top:2px;" id="txt-c2-desc">1-10级曲目精修+乐理</div>
             </div>
-            <div style="background:#F3FBF7;border:1px solid #C7EBDD;border-radius:10px;padding:8px 9px;">
-              <div style="font-size:12px;font-weight:800;color:#22A06B;" id="txt-c3-title">青少年进阶课</div>
+            <div style="background:var(--bg-page);border:1px solid var(--border-line);border-radius:10px;padding:8px 9px;">
+              <div style="font-size:12px;font-weight:800;color:var(--brand-deep);" id="txt-c3-title">青少年进阶课</div>
               <div style="font-size:10.5px;color:var(--text-sub);margin-top:2px;" id="txt-c3-desc">巴赫/肖邦触键表现力</div>
             </div>
-            <div style="background:#F8F5FF;border:1px solid #E0D7FE;border-radius:10px;padding:8px 9px;">
-              <div style="font-size:12px;font-weight:800;color:#7C5CFC;" id="txt-c4-title">成人流行钢琴课</div>
+            <div style="background:var(--bg-page);border:1px solid var(--border-line);border-radius:10px;padding:8px 9px;">
+              <div style="font-size:12px;font-weight:800;color:var(--brand-deep);" id="txt-c4-title">成人流行钢琴课</div>
               <div style="font-size:10.5px;color:var(--text-sub);margin-top:2px;" id="txt-c4-desc">零基础动漫影视金曲弹唱</div>
             </div>
           </div>
@@ -942,7 +923,7 @@
               <span class="stu-month-label" id="stu-cal-month-title">2026年11月</span>
               <button class="btn-outline" id="btn-stu-cal-next" style="padding:3px 9px;" onclick="shiftStuMonth(1)">&gt;</button>
             </div>
-            <span class="badge b-coral">● 有课日期</span>
+            <span class="badge b-amber">● 有课日期</span>
           </div>
 
           <div class="cal-box" id="stu-cal-box">
@@ -957,7 +938,7 @@
           <div class="lesson-card schedule-lesson" id="stu-cal-detail-card">
             <div class="stamp-seal stamp-uncheck" id="cal-lesson-stamp">未点名</div>
             <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">
-              <span class="badge b-blue" id="stu-cal-course-type">常规课</span>
+              <span class="badge b-mint" id="stu-cal-course-type">常规课</span>
               <span id="cal-sel-title">2026-11-15 (周日) 少儿钢琴一对一</span>
             </div>
             <div id="stu-cal-detail-meta" style="font-size:13px;color:var(--text-sub);display:flex;gap:8px 12px;flex-wrap:wrap;font-weight:600;line-height:1.5;">
@@ -982,45 +963,45 @@
 
         <div class="card">
           <div class="sec-head">
-            <div class="sec-title"><span class="sec-bar green"></span>我的合同档案 <span class="badge b-valid" id="stu-contract-cnt-badge">2份有效合同</span></div>
+            <div class="sec-title"><span class="sec-bar"></span>我的合同档案 <span class="badge b-mint" id="stu-contract-cnt-badge">2份有效合同</span></div>
             <div class="sec-more" onclick="openAttendanceModal()">扣课明细 ›</div>
           </div>
           <!-- 合同 1 -->
-          <div style="background:var(--bg-card);border:1px solid #C7EBDD;border-radius:12px;padding:10px 12px;margin-bottom:8px;">
+          <div style="background:var(--bg-card);border:1px solid var(--border-line);border-radius:12px;padding:10px 12px;margin-bottom:8px;">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
               <span style="font-size:13px;font-weight:800;">马翊菱 | 合同：钢琴半年</span>
               <span class="badge b-valid">有效</span>
             </div>
             <div style="font-size:12px;color:var(--text-sub);display:flex;gap:14px;margin-bottom:6px;font-weight:600;flex-wrap:wrap;">
               <span>总课时：<strong>24</strong> 节</span>
-              <span>剩余课时：<strong style="color:var(--vivid-blue);font-size:15px;" id="stu-c1-rem">18</strong> 节 <span class="valid-green-text">(有效)</span></span>
+              <span>剩余课时：<strong style="color:var(--brand-deep);font-size:15px;" id="stu-c1-rem">18</strong> 节 <span class="valid-green-text">(有效)</span></span>
               <span>已上：<span id="stu-c1-used">6</span> 节</span>
             </div>
-            <div style="height:6px;background:#EBF3FE;border-radius:999px;overflow:hidden;margin-bottom:6px;">
-              <div style="width:75%;height:100%;background:linear-gradient(90deg, #3B82F6 0%, #22A06B 100%);"></div>
+            <div style="height:6px;background:#FCF5EB;border-radius:999px;overflow:hidden;margin-bottom:6px;">
+              <div style="width:75%;height:100%;background:var(--brand-primary);"></div>
             </div>
             <div style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--text-muted);">
               <span>有效期：2026.10.12 - 2027.04.12</span>
-              <span style="color:var(--vivid-blue);font-weight:700;cursor:pointer;" onclick="openAttendanceModal()">查看消课记录 ›</span>
+              <span style="color:var(--brand-deep);font-weight:700;cursor:pointer;" onclick="openAttendanceModal()">查看消课记录 ›</span>
             </div>
           </div>
           <!-- 合同 2 -->
-          <div style="background:var(--bg-card);border:1px solid #F6DFC2;border-radius:12px;padding:10px 12px;">
+          <div style="background:var(--bg-card);border:1px solid var(--border-line);border-radius:12px;padding:10px 12px;">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
               <span style="font-size:13px;font-weight:800;">马翊菱 | 合同：考级集训季度</span>
               <span class="badge b-valid">有效</span>
             </div>
             <div style="font-size:12px;color:var(--text-sub);display:flex;gap:14px;margin-bottom:6px;font-weight:600;flex-wrap:wrap;">
               <span>总课时：<strong>12</strong> 节</span>
-              <span>剩余课时：<strong style="color:var(--vivid-orange);font-size:15px;">6</strong> 节 <span class="valid-green-text">(有效)</span></span>
+              <span>剩余课时：<strong style="color:var(--brand-primary);font-size:15px;">6</strong> 节 <span class="valid-green-text">(有效)</span></span>
               <span>已上：6 节</span>
             </div>
-            <div style="height:6px;background:#FFF3E0;border-radius:999px;overflow:hidden;margin-bottom:6px;">
-              <div style="width:50%;height:100%;background:linear-gradient(90deg, #FF9F38 0%, #EA7A18 100%);"></div>
+            <div style="height:6px;background:#FCF5EB;border-radius:999px;overflow:hidden;margin-bottom:6px;">
+              <div style="width:50%;height:100%;background:var(--brand-deep);"></div>
             </div>
             <div style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--text-muted);">
               <span>有效期：2026.10.12 - 2027.04.12</span>
-              <span style="color:var(--vivid-orange);font-weight:700;cursor:pointer;" onclick="openAttendanceModal()">查看消课记录 ›</span>
+              <span style="color:var(--brand-deep);font-weight:700;cursor:pointer;" onclick="openAttendanceModal()">查看消课记录 ›</span>
             </div>
           </div>
         </div>
@@ -1028,17 +1009,17 @@
         <!-- 每日练琴打卡本 -->
         <div class="card">
           <div class="sec-head">
-            <div class="sec-title"><span class="sec-bar coral"></span>每日练琴打卡本 <span class="badge b-coral">本周已打卡 5 天</span></div>
-            <span style="font-size:12.5px;font-weight:800;color:var(--vivid-coral);">累计 <span id="flower-count">18</span> 朵</span>
+            <div class="sec-title"><span class="sec-bar"></span>每日练琴打卡本 <span class="badge b-mint">本周已打卡 5 天</span></div>
+            <span style="font-size:12.5px;font-weight:800;color:var(--brand-deep);">累计 <span id="flower-count">18</span> 朵</span>
           </div>
           <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;margin-bottom:8px;">
-            <div style="background:#FFF3E0;border:1px solid #FBD8B4;border-radius:8px;padding:4px 0;font-size:10px;font-weight:700;color:#D97214;">周一<br>★</div>
-            <div style="background:#FFF3E0;border:1px solid #FBD8B4;border-radius:8px;padding:4px 0;font-size:10px;font-weight:700;color:#D97214;">周二<br>★</div>
-            <div style="background:#FFF3E0;border:1px solid #FBD8B4;border-radius:8px;padding:4px 0;font-size:10px;font-weight:700;color:#D97214;">周三<br>★</div>
-            <div style="background:#FFF3E0;border:1px solid #FBD8B4;border-radius:8px;padding:4px 0;font-size:10px;font-weight:700;color:#D97214;">周四<br>★</div>
-            <div style="background:#FFF3E0;border:1px solid #FBD8B4;border-radius:8px;padding:4px 0;font-size:10px;font-weight:700;color:#D97214;">周五<br>★</div>
+            <div style="background:#F7E1C2;border:1px solid #E5C596;border-radius:8px;padding:4px 0;font-size:10px;font-weight:700;color:#B67A2C;">周一<br>★</div>
+            <div style="background:#F7E1C2;border:1px solid #E5C596;border-radius:8px;padding:4px 0;font-size:10px;font-weight:700;color:#B67A2C;">周二<br>★</div>
+            <div style="background:#F7E1C2;border:1px solid #E5C596;border-radius:8px;padding:4px 0;font-size:10px;font-weight:700;color:#B67A2C;">周三<br>★</div>
+            <div style="background:#F7E1C2;border:1px solid #E5C596;border-radius:8px;padding:4px 0;font-size:10px;font-weight:700;color:#B67A2C;">周四<br>★</div>
+            <div style="background:#F7E1C2;border:1px solid #E5C596;border-radius:8px;padding:4px 0;font-size:10px;font-weight:700;color:#B67A2C;">周五<br>★</div>
             <div style="background:#EAE8E6;border:1px dashed #D5D2CE;border-radius:8px;padding:4px 0;font-size:10px;color:#86827E;">周六<br>待练</div>
-            <div style="background:#EBF3FE;border:1.5px solid var(--vivid-blue);border-radius:8px;padding:4px 0;font-size:10px;font-weight:800;color:var(--vivid-blue);" id="today-flower-slot">周日<br>今日</div>
+            <div style="background:var(--bg-card);border:1.5px solid var(--brand-primary);border-radius:8px;padding:4px 0;font-size:10px;font-weight:800;color:var(--brand-deep);" id="today-flower-slot">周日<br>今日</div>
           </div>
           <button class="btn-mint" style="width:100%;padding:8px;" onclick="punchPracticeFlower()">
             ✓ 今日练琴 30 分钟打卡 (领 1 朵小红花)
@@ -1048,13 +1029,13 @@
         <!-- 课后陪练作业单 -->
         <div class="card" style="margin-bottom:4px;">
           <div class="sec-head">
-            <div class="sec-title"><span class="sec-bar violet"></span>课后陪练作业单</div>
+            <div class="sec-title"><span class="sec-bar"></span>课后陪练作业单</div>
             <span class="badge b-amber">★★★★★ 5.0 优秀</span>
           </div>
           <div style="font-size:11.5px;font-weight:700;color:var(--text-main);margin-bottom:5px;">
             本周作业：《车尔尼599 第19条》《巴赫小步舞曲 G大调》
           </div>
-          <div style="font-size:11px;color:var(--text-sub);line-height:1.55;background:#F8F5FF;padding:8px 10px;border-radius:10px;border-left:3px solid var(--vivid-violet);">
+          <div style="font-size:11px;color:var(--text-sub);line-height:1.55;background:var(--bg-page);padding:8px 10px;border-radius:10px;border-left:3px solid var(--brand-primary);">
             <strong>刘妤老师叮嘱：</strong>翊菱这节课识谱非常快！在家练琴重点注意右手十六分音符跑动时手腕放松、指尖站稳，第9-16小节先分手慢练3遍再合手。
           </div>
         </div>
@@ -1064,29 +1045,29 @@
       <section class="sub-view" id="stu-tab-3">
         <div class="card">
           <div class="sec-head">
-            <div class="sec-title"><span class="sec-bar blue"></span>微信自动通知服务</div>
-            <span class="badge b-blue">通知内容示例</span>
+            <div class="sec-title"><span class="sec-bar"></span>微信自动通知服务</div>
+            <span class="badge b-gray">通知内容示例</span>
           </div>
-          <div style="background:#F3F8FF;border:1px solid #D4E5FC;border-left:4px solid var(--vivid-blue);border-radius:10px;padding:9px 11px;margin-bottom:8px;">
+          <div style="background:var(--bg-page);border:1px solid var(--border-line);border-left:4px solid var(--brand-primary);border-radius:10px;padding:9px 11px;margin-bottom:8px;">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
-              <span style="font-size:11.5px;font-weight:800;color:var(--vivid-blue);">微信服务通知 · 课前1天上课提醒</span>
-              <span class="badge b-blue">提前24小时自动发</span>
+              <span style="font-size:11.5px;font-weight:800;color:var(--brand-deep);">微信服务通知 · 课前1天上课提醒</span>
+              <span class="badge b-mint">提前24小时自动发</span>
             </div>
             <div style="font-size:11px;color:var(--text-main);line-height:1.55;">
               <div><strong>课程名称：</strong>少儿钢琴一对一（常规课）</div>
-              <div><strong>上课时间：</strong><span style="color:var(--vivid-blue);font-weight:700;">2026年11月15日 星期日 11:00-11:45</span></div>
+              <div><strong>上课时间：</strong><span style="color:var(--brand-deep);font-weight:700;">2026年11月15日 星期日 11:00-11:45</span></div>
               <div><strong>上课地点：</strong>刘妤钢琴工作室（1号施坦威琴房）</div>
               <div><strong>授课老师：</strong>刘妤老师</div>
             </div>
           </div>
-          <div style="background:#FFF8F0;border:1px solid #FBD8B4;border-left:4px solid var(--vivid-orange);border-radius:10px;padding:9px 11px;">
+          <div style="background:#F7E1C2;border:1px solid #E5C596;border-left:4px solid var(--brand-deep);border-radius:10px;padding:9px 11px;">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
-              <span style="font-size:11.5px;font-weight:800;color:#D97214;">微信服务通知 · 课时续费提醒</span>
+              <span style="font-size:11.5px;font-weight:800;color:#B67A2C;">微信服务通知 · 课时续费提醒</span>
               <span class="badge b-amber">剩3节课自动触发</span>
             </div>
             <div style="font-size:11px;color:var(--text-main);line-height:1.55;">
               <div><strong>课程名称：</strong>少儿钢琴一对一（钢琴半年课）</div>
-              <div><strong>剩余课时：</strong><span style="color:var(--vivid-coral);font-weight:800;">仅剩 3 节课（即将到期）</span></div>
+              <div><strong>剩余课时：</strong><span style="color:#9C3E3E;font-weight:800;">仅剩 3 节课（即将到期）</span></div>
               <div><strong>上课学员：</strong>姜璟棠</div>
               <div><strong>温馨提示：</strong>课时到期之前提前三节课系统自动提醒家长续费，保障固定课位</div>
             </div>
@@ -1095,8 +1076,8 @@
 
         <div class="card" style="margin-bottom:4px;">
           <div class="sec-head">
-            <div class="sec-title"><span class="sec-bar green"></span>个人信息设置</div>
-            <span class="badge b-valid">档案绑定</span>
+            <div class="sec-title"><span class="sec-bar"></span>个人信息设置</div>
+            <span class="badge b-mint">档案绑定</span>
           </div>
           <div style="background:var(--bg-page);border:1px solid var(--border-line);border-radius:8px;padding:6px 9px;font-size:11px;color:var(--text-sub);margin-bottom:9px;">
             非必填，主要方便老师与家长取得联系
@@ -1106,93 +1087,93 @@
             <input type="text" id="inp-stu-name" value="马翊菱" style="width:100%;padding:8px 10px;border:1px solid var(--border-line);border-radius:8px;font-size:12.5px;background:var(--bg-card);">
           </div>
           <div style="margin-bottom:10px;">
-            <label style="display:block;font-size:11.5px;font-weight:700;margin-bottom:4px;"><span style="color:var(--vivid-coral)">*</span> 手机号</label>
+            <label style="display:block;font-size:11.5px;font-weight:700;margin-bottom:4px;"><span style="color:#9C3E3E">*</span> 手机号</label>
             <input type="tel" id="inp-stu-phone" value="13800138866" style="width:100%;padding:8px 10px;border:1px solid var(--border-line);border-radius:8px;font-size:12.5px;background:var(--bg-card);">
           </div>
           <button class="btn-mint" style="width:100%;padding:9px;font-size:13px;" onclick="saveProfileForm()">提 交</button>
         </div>
       </section>
 
-      <!-- ==================== 刘妤老师工作台 Sub-Tab 0: 工作台主页 (暖黄浅色封面 + 鲜明多彩宫格) ==================== -->
+      <!-- ==================== 刘妤老师工作台 Sub-Tab 0: 工作台主页 (暖黄封面 #FCF5EB -> #FFFDFA) ==================== -->
       <section class="sub-view" id="tch-tab-0">
-        <!-- 首页暖黄封面渐变 -->
+        <!-- 首页暖黄封面渐变 #FCF5EB -> #FFFDFA -->
         <div class="cover-banner cover-home">
           <div>
             <div style="font-size:14px;font-weight:800;color:var(--text-main);">刘妤老师 · 今日教务总览</div>
-            <div style="font-size:11px;color:var(--text-sub);margin-top:2px;">焕彩高效教务台 · 排课消课与合同续费一屏掌控</div>
+            <div style="font-size:11px;color:var(--text-sub);margin-top:2px;">暖橙高效教务台 · 排课消课与合同续费一屏掌控</div>
           </div>
           <button class="btn-mint" style="padding:6px 11px;font-size:11.5px;" onclick="openAddScheduleModal()">+ 快速排课</button>
         </div>
 
-        <!-- 本日统计 6 宫格（多彩鲜明数字） -->
+        <!-- 本日统计 6 宫格 -->
         <div class="card">
           <div class="sec-head">
             <div class="sec-title"><span class="sec-bar"></span>本日统计 (2026-11-11)</div>
             <span class="badge b-mint">刘妤老师教务台</span>
           </div>
           <div class="stat-grid-6">
-            <div class="stat-cell tint-blue" onclick="switchTchTab(1,'grid')"><div class="stat-val blue" id="tch-today-scheduled">6</div><div class="stat-lbl">本日排课</div></div>
-            <div class="stat-cell tint-green" onclick="switchTchTab(1,'cal')"><div class="stat-val green" id="tch-today-consumed">4</div><div class="stat-lbl">本日耗课</div></div>
-            <div class="stat-cell tint-orange" onclick="switchTchTab(3)"><div class="stat-val orange">¥1166.67</div><div class="stat-lbl">本日耗课金额</div></div>
-            <div class="stat-cell tint-violet" onclick="switchTchTab(3)"><div class="stat-val violet">¥1750.00</div><div class="stat-lbl">预计耗课金额</div></div>
-            <div class="stat-cell tint-blue" onclick="switchTchTab(2)"><div class="stat-val blue">24</div><div class="stat-lbl">本日新增课时</div></div>
-            <div class="stat-cell tint-green" onclick="switchTchTab(2)"><div class="stat-val green">¥7200</div><div class="stat-lbl">本日新增收入</div></div>
+            <div class="stat-cell" onclick="switchTchTab(1,'grid')"><div class="stat-val primary" id="tch-today-scheduled">6</div><div class="stat-lbl">本日排课</div></div>
+            <div class="stat-cell" onclick="switchTchTab(1,'cal')"><div class="stat-val" id="tch-today-consumed">4</div><div class="stat-lbl">本日耗课</div></div>
+            <div class="stat-cell" onclick="switchTchTab(3)"><div class="stat-val amber">¥1166.67</div><div class="stat-lbl">本日耗课金额</div></div>
+            <div class="stat-cell" onclick="switchTchTab(3)"><div class="stat-val">¥1750.00</div><div class="stat-lbl">预计耗课金额</div></div>
+            <div class="stat-cell" onclick="switchTchTab(2)"><div class="stat-val primary">24</div><div class="stat-lbl">本日新增课时</div></div>
+            <div class="stat-cell" onclick="switchTchTab(2)"><div class="stat-val amber">¥7200</div><div class="stat-lbl">本日新增收入</div></div>
           </div>
         </div>
 
-        <!-- 教务管理 12 宫格（橙/蓝/绿/珊瑚红/紫 多彩浅底图标） -->
+        <!-- 教务管理 12 宫格 -->
         <div class="card">
           <div class="sec-head">
-            <div class="sec-title"><span class="sec-bar blue"></span>教务管理</div>
+            <div class="sec-title"><span class="sec-bar"></span>教务管理</div>
             <span style="font-size:11px;color:var(--text-muted);">点击任意图标直达 ›</span>
           </div>
           <div class="mint-grid-4">
             <div class="m-item" onclick="openAddScheduleModal()">
               <div class="m-icon plus-primary"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAApElEQVR42u3b0RHAEBBAQaf/nk8DfDFjjt0KyEtMPk5rAAAAAADA66LqwjMzpxuKKLWn7h0UQAAEEAABBEAAARBAAAQQAAEEQAABEEAABBAAAQRAAAEQQAAEEIAztieJV1PKXz3EjYlsX4AjSAAEEICqf0G3uCOGAAIggAAIIAACCIAAAiCAAAggAAIIgAACIIAACCAAAgiAAAIgAAAAAAAAfGgAR04MgF91ESIAAAAASUVORK5CYII="/></div>
-              <span class="m-label" style="color:var(--brand-primary);font-weight:800;">新增排课</span>
+              <span class="m-label" style="color:var(--brand-deep);font-weight:800;">新增排课</span>
             </div>
             <div class="m-item" onclick="switchTchTab(1,'cal')">
-              <div class="m-icon tint-green"><span class="red-dot-badge" id="badge-checkin-cnt">4</span><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABvUlEQVR42u3dPVbDMBBFYVsnK2Fl6VlPelaWrUBFE4LBduyZkb5b0iR6V78j5TBNAAAAAAAAGIU56oPfPt4/n/39fr3NI3z+N00fjIUAAggAAQSAAOeAU/bZlTnijDALPlZEE35sO5vwY9vbhB/bbrug6rugpV6wtFhVq4ZubWfYCDi7rFtxC2oKSsCltx5VbYQaAQQQAAIIAAEEgAAHsZcxaoXUCCAABBAAAkbfBfV2IXPUzs4IMAURAAIIAAH97XAIWBl+hIQm/NiqbRs5+Gfhny2k6fWxo6IJ/ydnllGa8OPCn6bAt6HZwo8qHl70+tjKbasUVG/hpxFwxEGoQvgpBDwG9QoJVcIPF/BbUHsk/GexzXRbFypgy4/41p5sM/b6VFPQKyRUmnJSLsJ7JFQOP9U2dIuE6uGnK0WskVBtsS1zEr5fb/Pe3VGlN0kpi3F7Aqz2ICxtNXRLkBVf46UuR68JtOpTyPT3AX8FW2WxLStgSUIPD4DL3Ig9ht3L6+tSFzI9Pnn3MIsAAg6ht98JH9WeWdix65IpqIcpqMfdyVntbpm+zIhb4pbxS410HvH/A3QwAAAAAAAwDl84EeSbJedxgAAAAABJRU5ErkJggg=="/></div>
+              <div class="m-icon"><span class="red-dot-badge" id="badge-checkin-cnt">4</span><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABvklEQVR42u3dzVXDMBBFYVsnLaQb6klR1JNuKAJWbEIw2I49M9J3l2wSvavfkXKYJgAAAAAAAIzCHPXBH+9vn8/+fr3d5xE+/5umD8ZCAAEEgAACQIBzwCn77MoccUaYBR8rogk/tp1N+LHtbcKPbbddUPVd0FIvWFqsqlVDt7YzbAScXdatuAU1BSXg0luPqjZCjQACCAABBIAAAkCAg9jLGLVCagQQAAIIAAGj74J6u5A5amdnBJiCCAABBICA/nY4BKwMP0JCE35s1baNHPyz8M8W0vT62FHRhP+TM8soTfhx4U9T4NvQbOFHFQ8ven1s5bZVCqq38NMIOOIgVCH8FAIeg3qFhCrhhwv4Lag9Ev6z2Ga6rQsVsOVHfGtPthl7faop6BUSKk05KRfhPRIqh59qG7pFQvXw05Ui1kiottiWOQlfb/d57+6o0puklMW4PQFWexCWthq6JciKr/FSl6PXBFr1KWT6+4C/gq2y2JYVsCShhwfAZW7EHsPu5fV1qQuZHp+8e5hFAAGH0NvvhI9qzyzs2HXJFNTDFNTj7uSsdrdMX2bELXHL+KVGOo/4/wE6GAAAAAAAGIcvEIbkm71UziIAAAAASUVORK5CYII="/></div>
               <span class="m-label">签到</span>
             </div>
             <div class="m-item" onclick="switchTchTab(1,'grid')">
-              <div class="m-icon tint-blue"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABXklEQVR42u3dQQ6CMBBAUWhceRhP6NITehi3unJDhAACw7TvL00anf5Op0ND7DoAAAAAAAC0Qh/1xbf76/3r8+fj2rfw/V+KNRgLAQQQAAIIAAH6gEPO2ZnZo0foTXysiGLyY+MsJj823mLyY+N2Csp+CppaBVPFKtvT0LVxhmXA0Y91Mx5BbUEn4FLbisqWoTKAAAJAAAEggAAQoBHbjFafkMoAAkAAASCg9VNQbRcye53sZIAtiAAQQAAIIAAEaMTCGps1jVv0+NQZMOwql3aZ0eNTCxgLdu4kRI9XAxRhpBYwVvDmFsLo8VVkwDDYpcFHj6/iGPpv0NHj1QA1AAQQAAIIAAEEIF0j5j7AfcDq8akFuA9QAxRhBApwH3CCDHAfcIJjqPsANaDeGlDbe8J7xdOb7Nht1BZUwxZU4wt5R8VdzvRjWpv8zbegViRsGaf/D7DAAAAAAABAO3wACHfSQvB8neAAAAAASUVORK5CYII="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABX0lEQVR42u3d0Q2CMBCAYWhcwW2cx6Gcx20cQp98IUIAgePa7380afT693o9GmLXAQAAAAAAoBX6qC9+PW7vX59f78++he//UqzBWAgggAAQQAAI0Acccs7OzB49Qm/iY0UUkx8bZzH5sfEWkx8bt1NQ9lPQ1CqYKlbZnoaujTMsA45+rJvxCGoLOgGX2lZUtgyVAQQQAAIIAAEEgACN2Ga0+oRUBhAAAggAAa2fgmq7kNnrZCcDbEEEgAACQAABIEAjFtbYrGncosenzoBhV7m0y4wen1rAWLBzJyF6vBqgCCO1gLGCN7cQRo+vIgOGwS4NPnp8FcfQf4OOHq8GqAEggAAQQAAIIADpGjH3Ae4DVo9PLcB9gBqgCCNQgPuAE2SA+4ATHEPdB6gB9daA2t4T3iue3mTHbqO2oBq2oBpfyDsq7nKmH9Pa5G++BbUiYcs4/X+ABQYAAAAAANrhA1Y70VursV/bAAAAAElFTkSuQmCC"/></div>
               <span class="m-label">课程表</span>
             </div>
             <div class="m-item" onclick="openSearchScheduleModal()">
-              <div class="m-icon tint-violet"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAB3UlEQVR42u2cQa7CMAwFG4tjchSW/ygcEwlWbP4CBdHkPdsza0QdT+KkTdPjAAAAAAAAAACALgzHoG7Xx3P2t3/3y0DA5qRXkjGyJz27jFEt8dlEROXkK65nLUCVDGcJwzUBM6Vj1f+WErBrSZl16Tockn9mQhTXtBQwk4iVSVBf33YVtKvxre8DPvU+RWLc4lk6Ahwb++m66iVq7Eq+M8q4w6EXdn4kETt6kUvjHUtRHFB7Geo29N3iOUVA1snXoR3Rqbc5xsUckF1AlfKjak90GObO8VGCEIAAQAACAAEIAAQgIO0dZdb4fhaQ/f18dXsoQZXnANcy5BRXZBy2VcrPlhLkNgrc4mEOqCLA+e2zmThUZTS6DH3XBcGpArJOxsq4Y2djHM+IqTuN7IDEjoY7xGC7Clo9GrK8rcEZscoCvu2JnJI0KgecEy5Wl/8n/nZ9PNtNwi5nxN4dwWGiDnUyVMl3WS21+l6Q4w1Zuy9muUlo+c04JwmlNtQzSmi7IePy0LD1jpiDhPZbkmoJ7AmLJSBALAEBYgkIEEtAgFgCAsQSECCWgACxBASIJSBALAEBYgkIEEtAgFgCAsQSECCWgIBFEma3NRGwQEK1w+tpqPYBQwAAAAAAgJK8AI0eR2XcLb9LAAAAAElFTkSuQmCC"/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAB3klEQVR42u2cwbHCMAwFY/VAN9RDUdRDNxQBJy4cGP/5sd+TtHtmiKy1ZSeOcxwAAAAAAAAAANCF4RjU8359zf72cnsMBGxOeiUZI3vSs8sY1RKfTURUTr7ietYCVMlwljBcEzBTOlb9bykBu5aUWZeuwyH5ZyZEcU1LATOJWJkE9fVtV0G7Gt/6PuBX71Mkxi2epSPAsbG/rqteosau5DujjDscemHnRxKxoxe5NN6xFMUBtZehbkPfLZ5TBGSdfB3aEZ16m2NczAHZBVQpP6r2RIdh7hwfJQgBCAAEIAAQgABAAALS3lFmje/fArK/n69uDyWo8hzgWoac4oqMw7ZK+dlSgtxGgVs8zAFVBDi/fTYTh6qMRpeh77ogOFVA1slYGXfsbIzjGTF1p5EdkNjRcIcYbFdBq0dDlrc1OCNWWcBfeyKnJI3KAeeEi9Xl78Q/79dXu0nY5YzYpyM4TNShToYq+S6rpVbfC3K8IWv3xSw3CS2/GeckodSGekYJbTdkXB4att4Rc5DQfktSLYE9YbEEBIglIEAsAQFiCQgQS0CAWAICxBIQIJaAALEEBIglIEAsAQFiCQgQS0CAWAICxBIQsEjC7LYmAhZIqHZ4PQ3VPmAIAAAAAABQkjcOfkdSY2ezZwAAAABJRU5ErkJggg=="/></div>
               <span class="m-label">排课搜索</span>
             </div>
             <div class="m-item" onclick="openStudentListModal()">
-              <div class="m-icon tint-blue"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACG0lEQVR42u2cS27DMAxEIyKrHiYnzLIn7GGyTVcFiiJubIsSh+J727q2PMOPbCm+XAAAAAAAAAAAoAot46Bv98dz629fnx8NAyaLntmMtqLwmYyw1cX3PE+ZDBgpmFo2WCXxFbPhmnEW9F8UK5cb+RL0Trwj5cPzXCVKkLdg745XyRTLkKZnozXDc4CpR3+viOr9wlaM/BmZ4GVeihKkOlX2MMFUbmZ01G6d76iIf4/vNYEMcAiWHhMwILihY0CwCRgQbAIGBJuAAcEmmOpNeD+ljpru9v4/GRAwbU1jQIUlSQkDRr4wi9zCsuf8tkoqR0X+Mq8ivBdQsqyItYzR3luyPMXvnV2lXJRXaapLvI5WbIylS9CoSJ+5KnbkWixJBgeHfA/4EY/d0UlKU4Tov8eT7fcJS5FtWyQAPWBYimepxTwHYMD8RqZkRqskvKIRraLwSkZYdfGjx9Ey3bDnT5RUsqGpi+8hSMQ1JQ3YK8RIAWaO4XZ/PN+dpymJPzPyvMdzdm3AKoq/93ozmnOLFl9hLu41xjNZYNXF3zOOkZlg1cWPNsEUb7bSE7HNjn7118Q9m77ObLU3xPc1IUUJgkEGrPQ1w1lZYNE3k9UErz5gM6J/RdJ8rCP7RqXR46cJr9CEq+4IO/ru59Xxljl9VyhDV4pArHH0gOCs6TZg1hevVAXli1nMggADMAAwAAAAAAAAAAAAAAAAtvgGATJwRBXpI/sAAAAASUVORK5CYII="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACHElEQVR42u2c23HDMAwETYxbSDeuJ0W5nnTjIpyvzGQyViyJIHEgdn+jSNQdHpRI63IBAAAAAAAAAIAqtIyDftxvz62/fXx+NQyYLHpmM9qKwmcywlYX3/M8ZTJgpGBq2WCVxFfMhmvGWdB/UaxcbuRL0DvxjpQPz3OVKEHegr07XiVTLEOano3WDM8Bph79vSKq9wtbMfJnZIKXeSlKkOpU2cMEU7mZ0VG7db6jIv49vtcEMsAhWHpMwIDgho4BwSZgQLAJGBBsAgYEm2CqN+H9lDpqutv7/2RAwLQ1jQEVliQlDBj5wixyC8ue89sqqRwV+cu8ivBeQMmyItYyRntvyfIUv3d2lXJRXqWpLvE6WrExli5BoyJ95qrYkWuxJBkcHPI94Ec8dkcnKU0Rov8eT7bfJyxFtm2RAPSAYSmepRbzHIAB8xuZkhmtkvCKRrSKwisZYdXFjx5Hy3TDnj9RUsmGpi6+hyAR15Q0YK8QIwWYOYbH/fZ8d56mJP7MyPMez9m1Aaso/t7rzWjOLVp8hbm41xjPZIFVF3/POEZmglUXP9oEU7zZSk/ENjv61V8T92z6OrPV3hDf14QUJQgGGbDS1wxnZYFF30xWE7z6gM2I/hVJ87GO7BuVRo+fJrxCE666I+zou59Xx1vm9F2hDF0pArHG0QOCs6bbgFlfvFIVlC9mMQsCDMAAwAAAAAAAAAAAAAAAANjiG8ulcQop+6XZAAAAAElFTkSuQmCC"/></div>
               <span class="m-label">学员管理</span>
             </div>
             <div class="m-item" onclick="openRoomModal()">
-              <div class="m-icon tint-orange"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABBklEQVR42u3c0Q2CMBRAUdqwgts4j0M5j9s4BP6b1KT20QI95x8I72rho2FZAAAAAAAAALiqFHWi9/O+zTa82+OVhgeYcfCRIbLhj/33Z8MfGyEb/tgI2dhO9hb0q3LNw6h0nn8faK3nqz0+ag5h/4CIV7LZXkEtQQcggAACIIAACCAAAgiAAAIggAAIIAACCIAAArCjtdeFWvcS9d71UDouevPBOvoXEHVDref5Pr7X5jNLkGeAAAggAAIIgAACIIAACCAAAgiAAAIggAAIIAACCIAAAhTN9hWtqPtNhh2rdoeeJeiMS9BsX8facy6558UMP3gJEqF9Dr4d7QcIAAAAAMD1fQDYOFm64/nohwAAAABJRU5ErkJggg=="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABBklEQVR42u3c0Q2CMBRAUdqwgts4j0M5j9s4BP6b1KT20QI95x8I72rho2FZAAAAAAAAALiqFHWi9/O+zTa82+OVhgeYcfCRIbLhj/33Z8MfGyEb/tgI2dhO9hb0q3LNw6h0nn8faK3nqz0+ag5h/4CIV7LZXkEtQQcggAACIIAACCAAAgiAAAIggAAIIAACCIAAArCjtdeFWvcS9d71UDouevPBOvoXEHVDref5Pr7X5jNLkGeAAAggAAIIgAACIIAACCAAAgiAAAIggAAIIAACCIAAAhTN9hWtqPtNhh2rdoeeJeiMS9BsX8facy6558UMP3gJEqF9Dr4d7QcIAAAAAMD1fQDYOFm64/nohwAAAABJRU5ErkJggg=="/></div>
               <span class="m-label">班级/琴房</span>
             </div>
             <div class="m-item" onclick="openFeedbackModal()">
-              <div class="m-icon tint-coral"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACUUlEQVR42u1cS3LCUAwjnncLjtRlz8mSI/Uc7YqZLmggqeVn6UnLdobY+thJSLhcDMMwDMMwDMMwDMMwjD18fX58H/l7Zwx2Ea63+8ZI/AObivt/43q70/QVHmgWINX9bLvACbAAue5nSwF9ApgWLq0AZ93MkIJQcD9zCkLV/SwpCHb3s++CUHY/QwpCwf3MKQh193dPQai4nzUFsYL7O6cglNzPmIJYxf1dUxBq7mdLQazk/o4pCEX3M6UgVnN/txSEqvtZUjBWcfw7NcwQa+tMdCYhXeqAJYD54aizvWUIs3UlGeG6jvXHKuRXz/h3+Zr6bOiMpffXMWeN0KFKNIswqTuA/RmdGVyEmpPZLh6j0hWruB96K+KVuuoiZI/hQEfMowc0gvYOppqCvb7OmjJQiquJgCA/fQmrioDs498CqC9l9LVPSgJWXcoZfUdFMawpQM192A5QEqGCfPgSZhWhss50AdiXcvUNR0gCVJcyoq+YUWzXFFTN/bIdwCTCDPLLl7AxQQD2fYCu3wlQT4DRVIBuo2lWPXAB1O+GegR5BBkWwAIYVAJknXE8FmTWopR7Qwb1YgPyvg3yZYxnoPrp4nec/vsnjRl6GirEswox1IhnE2KoEs8iRPlZ0KsvaY6Sf5TQV8eoFmirdvGzBs84fsbnIMQZbKNmj4TH/4587uzRNBSIZxZi60QyKvadr5TbnoZmNnsmEcuehiJHQEchIM2iZ7xSnUPZ8QyJGCsS30mIFhdiLLdCELWXfR/A+IQce/2GYRiGYRiGYRjGE/wA2BecQIkhYHMAAAAASUVORK5CYII="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACUklEQVR42u1c223DQAyLhVsh23SeDtV5sk2HaL8C5CN1YlfUiTzyswViiQ/JduxcLoZhGIZhGIZhGIZhGMYevr8+fo78vTMGuwjXz9vGSPwdm4r7H3H9vNH0FR5oFiDV/Wy7wAmwALnuZ0sBfQKYFi6tAGfdzJCCUHA/cwpC1f0sKQh297PvglB2P0MKQsH9zCkIdfd3T0GouJ81BbGC+zunIJTcz5iCWMX9XVMQau5nS0Gs5P6OKQhF9zOlIFZzf7cUhKr7WVIwVnH8OzXMEGvrTHQmIV3qgCWA+eGos71lCLN1JRnhuo71xyrkV8/4d/ma+mzojKX31zFnjdChSjSLMKk7gP0ZnRlchJqT2S4eo9IVq7gfeivilbrqImSP4UBHzKMHNIL2Dqaagr2+zpoyUIqriYAgP30Jq4qA7OPfAqgvZfS1T0oCVl3KGX1HRTGsKUDNfdgOUBKhgnz4EmYVobLOdAHYl3L1DUdIAlSXMqKvmFFs1xRUzf2yHcAkwgzyy5ewMUEA9n2Art8JUE+A0VSAbqNpVj1wAdTvhnoEeQQZFsACGFQCZJ1x3Bdk1qKUe0MG9WID8r4N8mWMZ6D66eJ3nP74k8YMPQ0V4lmFGGrEswkxVIlnEaL8LOjVlzRHyT9K6KtjVAu0Vbv4WYNnHD/jcxDiDLZRs0fC/X9HPnf2aBoKxDMLsXUiGRX7zlfKbU9DM5s9k4hlT0ORI6CjEJBm0TNeqc6h7HiGRIwVie8kRIsLMZZbIYjay74PYHxCjr1+wzAMwzAMwzAM4wl+AVsLnPo5m9kIAAAAAElFTkSuQmCC"/></div>
               <span class="m-label">反馈&amp;小评</span>
             </div>
             <div class="m-item" onclick="switchTchTab(2)">
-              <div class="m-icon tint-green"><span class="red-dot-badge">2</span><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABDklEQVR42u3d0Q3CIBRAUSBO4mT+O4//TuYquoGJsTz6eOcsYOFaQkuirQEAAABQRY/6oOvz/s42Oa/bo6cPkHHiI0MMk792HMPkrx3PMPlrxzUae+2Cvn1LInYV2cYRdgdkmvzI67UELSaAAAIggAAIIAACCECwy+oLOMOb05WvSdwBliABEEAAqu6Csh3UuAMEQAABEEAABBAAATwJ/8d5AJYgARBAAGrugpwHIIAACCAAAgiAAAJQ60k44jzgzE/b7gABBEAAAai6C3IegAACIIAACCAAAgjAngGy/aJ61PV2k/2bo1+dWIJ2XIJ2fcE2Y1wj08XuNvnTl6BdIswch/8RK7iUAgAAAGV9AC1aShbCR3emAAAAAElFTkSuQmCC"/></div>
+              <div class="m-icon"><span class="red-dot-badge">2</span><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABDklEQVR42u3dgQ3CIBBAUSCu4DbO41DO4zYOoRuYGMvR495bwMK3hJZEWwMAAACgih71Qa/H7Z1tcq73Z08fIOPER4YYJn/tOIbJXzueYfLXjms09toFffuWROwqso0j7A7INPmR12sJWkwAAQRAAAEQQAAEEIBgl9UXcIY3pytfk7gDLEECIIAAVN0FZTuocQcIgAACIIAACCAAAngS/o/zACxBAiCAANTcBTkPQAABEEAABBAAAQSg1pNwxHnAmZ+23QECCIAAAlB1F+Q8AAEEQAABEEAABBCAPQNk+0X1qOvtJvs3R786sQTtuATt+oJtxrhGpovdbfKnL0G7RJg5Dv8jVnApBQAAAMr6AO8jSFpVvXeGAAAAAElFTkSuQmCC"/></div>
               <span class="m-label">合同管理</span>
             </div>
             <div class="m-item" onclick="openTeacherInfoModal()">
-              <div class="m-icon tint-violet"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAByklEQVR42u2cW3LCMAxFkYZldin97FK6zM7AClICka0r6ZxfmGDfq0dsJ9xuAAAAAAAAAAAwBas46O+vv8fRZz+/d8OAzaJXNsM6Cl/JCO8ufuR1xmTASsHUssEnia+YDfeKd0H/RbFyuZEvQa/Ee6d8RF5rRAmKFuzV91UyxSuk6afRWmEd4OrRf1VE9X7hHSOfhRjUMeCoDERH7dH1sssQGUAJwgDAAAwADMAAqcVW9O3hrttdMoAMWB+1Wddpa8DKDTP1R1hKlKBPTahwOiZjQPQBSpUTMasY7VdLltL2dMlD+WoH76V6wOroVDucsSmRrnoqxpEkGbAuG3g6OsGMau8HAADQA+IbcZVewDoAA/ZvMyiZYZOEVzTCJgqvZIRPFz97HFZpwpGvKKlkg6mLHyFIxm9KGnBWiJUCKIwhxQC1o0KV8fhE8c/+3o7mbNniK9yLZ47Rp4t/ZhwrM8Gni59tgitOdtKK2HdHv/o28e4Xux3xc03g/YBknOjPzQLPnkxVE+QM6PTA7M75OtGfO36acIcmPK38RM7bK6dvhzJECeq0DoAEA1T/AmBXGbraB8gAShAGAAZgAAAAAAAAAAAAAAAA9OUJDScRslC91C8AAAAASUVORK5CYII="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABzElEQVR42u2c7XXCMAxFkQ4rdJvO06E6T7dhiHaClEBk60m69y+cYL+nj9hOuN0AAAAAAAAAAGAKVnHQj+/P36PPPr5+DAM2i17ZDOsofCUjvLv4kdcZkwErBVPLBp8kvmI23CveBf0XxcrlRr4EPRPvlfIRea0RJShasGffV8kUr5Cm70ZrhXWAq0f/VRHV+4V3jHwWYlDHgKMyEB21R9fLLkNkACUIAwADMAAwAAOkFlvRt4e7bnfJADJgfdRmXaetASs3zNQfYSlRgt41ocLpmIwB0QcoVU7ErGK0Xy1ZStvTJQ/lqx28l+oBq6NT7XDGpkS66qkYR5JkwLps4OnoBDOqvR8AAEAPiG/EVXoB6wAM2L/NoGSGTRJe0QibKLySET5d/OxxWKUJR76ipJINpi5+hCAZvylpwFkhVgqgMIYUA9SOClXG4xPFP/t7O5qzZYuvcC+eOUafLv6ZcazMBJ8ufrYJrjjZSSti3x396tvEu1/sdsTPNYH3A5Jxoj83Czx7MlVNkDOg0wOzO+frRH/u+GnCHZrwtPITOW+vnL4dyhAlqNM6ABIMUP0LgF1l6GofIAMoQRgAGIABAAAAAAAAAAAAAADQlz/g7BHFx3JDuwAAAABJRU5ErkJggg=="/></div>
               <span class="m-label">教师管理</span>
             </div>
             <div class="m-item" onclick="openCoursePkgModal()">
-              <div class="m-icon tint-orange"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABrklEQVR42u3d3W3CMBiFYWJ5BbbpPAzVedimQ7RXSFy0UZJ+/n/eKyQoJOd17BNLUW83AAAAAABWYhPBdb4+P75fr++P50ZApbD/4ooEAi4EHSkhC7stWdAELBP2VAJaBP0+v0f9fhZ2XKMZXsDMQXcvoEb4rcPuVkB0+D0GPW0LGinsoQWMHvSQAmYN/Z10AwEEgAACQAABIIAAEEAACCAABBAAAggAAQSAAAJAAAEggAAQQAAIIAAEEAACRieLYP8ZtdIPiWShH/9cCRlJ+OX/zhUQGGC0hCR8LUgLMvp/X2BrXDXL19C9ZvN6r6SIXHvE1X74OuJY7o/nVkpCrnmZ1+jVESP/rIT/nEeqGf4ozWSYRbjHXj0aadXgzh5/qfOd/j5gb36+sm5Fl4pcavS06tVXz6XV8W7RAo6MiKMnFtmSSoQZcXypdvit6+c0i3BEr957L1pSr9+31FZExNZCtMgld0Ovhlhi6jz9hVGVbLb9omla0GoLdC41mka5D2jNVuKy7WWBW6qGorKA3nv69FNQ1HS0+l1xajl6bUkU+j9iaiYAAAAAAECX/ADmT+I6kNEwkQAAAABJRU5ErkJggg=="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABrklEQVR42u3d3W3CMBiFYWJ5BbbpPAzVedimQ7RXSFy0UZJ+/n/eKyQoJOd17BNLUW83AAAAAABWYhPBdb4+P75fr++P50ZApbD/4ooEAi4EHSkhC7stWdAELBP2VAJaBP0+v0f9fhZ2XKMZXsDMQXcvoEb4rcPuVkB0+D0GPW0LGinsoQWMHvSQAmYN/Z10AwEEgAACQAABIIAAEEAACCAABBAAAggAAQSAAAJAAAEggAAQQAAIIAAEEAACRieLYP8ZtdIPiWShH/9cCRlJ+OX/zhUQGGC0hCR8LUgLMvp/X2BrXDXL19C9ZvN6r6SIXHvE1X74OuJY7o/nVkpCrnmZ1+jVESP/rIT/nEeqGf4ozWSYRbjHXj0aadXgzh5/qfOd/j5gb36+sm5Fl4pcavS06tVXz6XV8W7RAo6MiKMnFtmSSoQZcXypdvit6+c0i3BEr957L1pSr9+31FZExNZCtMgld0Ovhlhi6jz9hVGVbLb9omla0GoLdC41mka5D2jNVuKy7WWBW6qGorKA3nv69FNQ1HS0+l1xajl6bUkU+j9iaiYAAAAAAECX/ADmT+I6kNEwkQAAAABJRU5ErkJggg=="/></div>
               <span class="m-label">课程管理</span>
             </div>
             <div class="m-item" onclick="openWxRemindModal()">
-              <div class="m-icon tint-coral"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABOklEQVR42u3cwXXCQAxFUdChi5SUJXWypKTUkTQQWNnoz+i+JQs8oyfJ8hzD5QIAAAAAAIApXFdd+M/9+/e/z78ez6X2VHKQAAJAAAEwBb2cbM4gZVqqicHvuF60gK5gJEhwD5guoDsLu69fkzefsI5bammeMaWkCI+ogHfBOGtEfPe9XXJqSvBTJZiCprWgzuxPrIKaFvw0CVrQlBaUlP1JVVBTg58iQQua+iCWkP0J61ABkysABBBAAAggAAQQAAIIAAEEgAACQAABIIAAEEAACCAA6wpI/FVK0vqra/FpfyvT9YqiFrRrC1op+zuroAS/V4IWtFsLWjn7O6rg+qng78ZRyaQF7dKCJmX/kfuttJJUASTs8SDmJgwAAAAAABBH/HnGEce+yec2DuMIIAAEEAAAAAAA+BB/ElWKD2zRO+kAAAAASUVORK5CYII="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABO0lEQVR42u3cwXXCQAxFUdChhXSTeiiKeugmRSQNBFY2+jO6b8kCz+hJsjzHcLkAAAAAAABgCtdVF/7z+P797/Ov+3OpPZUcJIAAEEAATEEvJ5szSJmWamLwO64XLaArGAkS3AOmC+jOwu7r1+TNJ6zjllqaZ0wpKcIjKuBdMM4aEd99b5ecmhL8VAmmoGktqDP7E6ugpgU/TYIWNKUFJWV/UhXU1OCnSNCCpj6IJWR/wjpUwOQKAAEEEAACCAABBIAAAkAAASCAABBAAAggAAQQAAIIwLoCEn+VkrT+6lp82t/KdL2iqAXt2oJWyv7OKijB75WgBe3WglbO/o4quH4q+LtxVDJpQbu0oEnZf+R+K60kVQAJezyIuQkDAAAAAADEEX+eccSxb/K5jcM4AggAAQQAAAAAAD7EH7t7i8ErebSnAAAAAElFTkSuQmCC"/></div>
               <span class="m-label">消息提醒</span>
             </div>
             <div class="m-item" onclick="switchTchTab(3)">
-              <div class="m-icon tint-blue"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAzklEQVR42u3cQQ5AMBBA0VasHMYJLZ3QYWw5AEFIhup7S7HRn5GokBIAAAAAtchXT+yHedk7Po1dtoz3NZZAAAEQQAAEEIB47R8uouRnFBMggAAIIAACCIAAAiCAAAggAAIIQIDWEmxFvl8wAW5BAiCAAAggAAIIgAACEOiVvSDfm5kAARBAAAQQQAAEEAABBEAAARBAAAQQAAEEQIAa+HGrCRAAAQRAAAEQQAAEEAABBCDI4804zh1tWJoAtyABKCGAFy8fmAARAAAAnlsBEhobXlLJcmAAAAAASUVORK5CYII="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAz0lEQVR42u3c0Q1AMBRA0VasYBvzGMo8tjEEAxCE5FE951P86M2TqJASAAAAALXIV0+cx37ZO94NU7aM9zWWQAABEEAABBCAeO0fLqLkZxQTIIAACCAAAgiAAAIggAAIIAACCECA1hJsRb5fMAFuQQIggAAIIAACCIAAAhDolb0g35uZAAEQQAAEEEAABBAAAQRAAAEQQAAEEAABBECAGvhxqwkQAAEEQAABEEAABBAAAQQgyOPNOM4dbViaALcgASghgBcvH5gAEQAAAJ5bAaOJGxxwc9PPAAAAAElFTkSuQmCC"/></div>
               <span class="m-label">经营数据</span>
             </div>
           </div>
@@ -1201,26 +1182,26 @@
         <!-- 老师选学生 · 智能排课快捷卡 -->
         <div class="card">
           <div class="sec-head" style="margin-bottom:8px;">
-            <div class="sec-title"><span class="sec-bar green"></span>给学员排课 (自动+45分钟 · 3大开关)</div>
+            <div class="sec-title"><span class="sec-bar"></span>给学员排课 (自动+45分钟 · 3大开关)</div>
             <button class="btn-mint" style="padding:4px 10px;font-size:11px;" onclick="openAddScheduleModal()">弹窗排课 ›</button>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1.35fr 1.15fr;gap:6px;margin-bottom:8px;">
-            <div style="background:#EBF3FE;border:1px solid #C8DFFE;border-radius:8px;padding:6px 7px;cursor:pointer;" onclick="openAddScheduleModal()">
-              <div style="font-size:10px;color:#2E7CF6;">① 选学生/可约课</div>
+            <div style="background:var(--bg-page);border:1px solid var(--border-line);border-radius:8px;padding:6px 7px;cursor:pointer;" onclick="openAddScheduleModal()">
+              <div style="font-size:10px;color:var(--text-muted);">① 选学生/可约课</div>
               <div style="font-size:11.5px;font-weight:700;color:var(--text-main);margin-top:2px;">马翊菱 ▾</div>
             </div>
-            <div style="background:#E7F7F0;border:1px solid #BDE8D4;border-radius:8px;padding:6px 7px;cursor:pointer;" onclick="openAddScheduleModal()">
-              <div style="font-size:10px;color:#22A06B;">② 合同/无合同排课</div>
-              <div style="font-size:11px;font-weight:700;color:#22A06B;margin-top:2px;">钢琴半年(剩18节) ▾</div>
+            <div style="background:#F7E1C2;border:1px solid #E5C596;border-radius:8px;padding:6px 7px;cursor:pointer;" onclick="openAddScheduleModal()">
+              <div style="font-size:10px;color:#B67A2C;">② 合同/无合同排课</div>
+              <div style="font-size:11px;font-weight:700;color:#B67A2C;margin-top:2px;">钢琴半年(剩18节) ▾</div>
             </div>
-            <div style="background:#FFF3E6;border:1px solid #FBD8B4;border-radius:8px;padding:6px 7px;cursor:pointer;" onclick="openAddScheduleModal()">
-              <div style="font-size:10px;color:#D97214;">③ 时长自动+45m</div>
-              <div style="font-size:11px;font-weight:700;color:#D97214;margin-top:2px;">10:00-10:45 ▾</div>
+            <div style="background:var(--bg-page);border:1px solid var(--border-line);border-radius:8px;padding:6px 7px;cursor:pointer;" onclick="openAddScheduleModal()">
+              <div style="font-size:10px;color:var(--text-muted);">③ 时长自动+45m</div>
+              <div style="font-size:11px;font-weight:700;color:var(--text-main);margin-top:2px;">10:00-10:45 ▾</div>
             </div>
           </div>
           <div style="font-size:11px;color:var(--text-sub);display:flex;justify-content:space-between;align-items:center;">
             <span>支持防冲突排课 · 开放约课 · 无合同不扣课时</span>
-            <span style="color:var(--vivid-blue);font-weight:700;cursor:pointer;" onclick="openAddScheduleModal()">+ 立即排课</span>
+            <span style="color:var(--brand-deep);font-weight:700;cursor:pointer;" onclick="openAddScheduleModal()">+ 立即排课</span>
           </div>
         </div>
 
@@ -1230,13 +1211,13 @@
             <div style="font-size:13px;font-weight:800;color:var(--text-main);">自定义机构名片与课程展示文字</div>
             <div style="font-size:11px;color:var(--text-sub);margin-top:2px;">随时修改首页琴房名称、老师介绍、标签、地址与4门课程文案</div>
           </div>
-          <button class="btn-blue" style="flex-shrink:0;" onclick="openEditCustomTextModal()">去编辑 ›</button>
+          <button class="btn-outline" style="flex-shrink:0;" onclick="openEditCustomTextModal()">去编辑 ›</button>
         </div>
       </section>
 
       <!-- ==================== 刘妤老师工作台 Sub-Tab 1: 周课表&签到 (浅蓝封面 #E4EFFC -> #FCF5EB) ==================== -->
       <section class="sub-view" id="tch-tab-1">
-        <!-- 课表页浅蓝封面渐变 -->
+        <!-- 课表页浅蓝封面渐变 #E4EFFC -> #FCF5EB -->
         <div class="cover-banner cover-schedule" style="padding:9px 11px;">
           <div>
             <div style="font-size:13.5px;font-weight:800;color:var(--text-main);">课程表与签到点名中心</div>
@@ -1245,24 +1226,25 @@
           <button class="btn-mint" style="padding:5px 10px;font-size:11px;flex-shrink:0;" onclick="openAddScheduleModal()">+ 排课</button>
         </div>
 
-        <!-- 顶部双视图切换按钮 -->
+        <!-- 顶部双视图切换按钮 (图3蓝圈) -->
         <div style="display:flex;gap:8px;margin-bottom:10px;">
           <button class="btn-mint" style="flex:1;padding:8px 6px;" id="subbtn-grid" onclick="toggleScheduleMode('grid')">每周二维网格课程表</button>
           <button class="btn-outline" style="flex:1;padding:8px 6px;" id="subbtn-cal" onclick="toggleScheduleMode('cal')">签到点名月历</button>
         </div>
 
-        <!-- 子面板 A：每周二维网格课程表 -->
+        <!-- 子面板 A：每周二维网格课程表 (图3 + 图7 + 图8 + 图9) -->
         <div class="sched-subpanel active" id="tch-sched-grid-panel">
           <div class="card week-swipe-wrap" id="week-swipe-zone" style="padding:10px 9px;">
+            <!-- 状态圆点图例 + 教师筛选 (图7/图8顶部栏) -->
             <div class="tt-legend-bar">
               <div class="tt-legend-dots">
-                <span class="tt-dot-item"><i class="tt-dot" style="background:#2E7CF6;"></i>未开始</span>
-                <span class="tt-dot-item"><i class="tt-dot" style="background:#22A06B;"></i>已开始</span>
-                <span class="tt-dot-item"><i class="tt-dot" style="background:#F08A24;"></i>已结束</span>
-                <span class="tt-dot-item"><i class="tt-dot" style="background:#E5534B;"></i>已停课</span>
+                <span class="tt-dot-item"><i class="tt-dot" style="background:#3B82F6;"></i>未开始</span>
+                <span class="tt-dot-item"><i class="tt-dot" style="background:#EB9A3C;"></i>已开始</span>
+                <span class="tt-dot-item"><i class="tt-dot" style="background:#86827E;"></i>已结束</span>
+                <span class="tt-dot-item"><i class="tt-dot" style="background:#BE5050;"></i>已停课</span>
               </div>
               <div style="display:flex;align-items:center;gap:6px;">
-                <span id="btn-week-reset" style="font-size:10.5px;color:var(--vivid-blue);font-weight:700;cursor:pointer;" onclick="resetScheduleWeekToday()">本周</span>
+                <span id="btn-week-reset" style="font-size:10.5px;color:var(--brand-deep);font-weight:700;cursor:pointer;" onclick="resetScheduleWeekToday()">本周</span>
                 <span id="btn-tt-teacher-filter" style="font-size:11px;color:var(--text-main);font-weight:600;cursor:pointer;" onclick="openTeacherFilterModal()">
                   <span id="tt-cur-teacher-label">请选择教师</span> ›
                 </span>
@@ -1274,16 +1256,16 @@
               <button class="tt-arrow-btn" id="btn-week-prev" aria-label="上一周" onclick="shiftScheduleWeek(-1)">&lt;</button>
               <span class="tt-date-range" id="week-range-label">2026-11-09 - 2026-11-15</span>
               <div class="tt-action-icons">
-                <button class="tt-ico-btn" id="btn-tt-export" title="导出课程表" aria-label="导出课程表" onclick="openExportTimetableModal()" style="background:#EBF3FE;border-color:#C8DFFE;color:#2E7CF6;">
+                <button class="tt-ico-btn" id="btn-tt-export" title="导出课程表" aria-label="导出课程表" onclick="openExportTimetableModal()">
                   <svg viewBox="0 0 24 24"><path d="M12 15V4m0 0l-4 4m4-4l4 4"/><path d="M4 15v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>
                 </button>
-                <button class="tt-ico-btn" id="btn-tt-landscape" title="翻转横屏课表" aria-label="翻转横屏课表" onclick="openLandscapeTimetable()" style="background:#E7F7F0;border-color:#BDE8D4;color:#22A06B;">
+                <button class="tt-ico-btn" id="btn-tt-landscape" title="翻转横屏课表" aria-label="翻转横屏课表" onclick="openLandscapeTimetable()">
                   <svg viewBox="0 0 24 24"><rect x="3" y="7" width="14" height="10" rx="2"/><path d="M19 5a4 4 0 012 3.5M21 5v3.5h-3.5"/></svg>
                 </button>
-                <button class="tt-ico-btn" id="btn-tt-copy" title="复制上周排课" aria-label="复制上周排课" onclick="copyPrevWeekSchedule()" style="background:#FFF3E6;border-color:#FBD8B4;color:#F08A24;">
+                <button class="tt-ico-btn" id="btn-tt-copy" title="复制上周排课" aria-label="复制上周排课" onclick="copyPrevWeekSchedule()">
                   <svg viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
                 </button>
-                <button class="tt-ico-btn" id="btn-tt-share" title="定制分享课程图片" aria-label="定制分享课程图片" onclick="openShareTimetableImage()" style="background:#F2EEFF;border-color:#D9CEFF;color:#7C5CFC;">
+                <button class="tt-ico-btn" id="btn-tt-share" title="定制分享课程图片" aria-label="定制分享课程图片" onclick="openShareTimetableImage()">
                   <svg viewBox="0 0 24 24"><path d="M15 5l6 6-6 6"/><path d="M21 11H11a7 7 0 00-7 7v1"/></svg>
                 </button>
               </div>
@@ -1296,7 +1278,7 @@
                 <span class="checkin-pill checked">已签到</span>
                 <span class="checkin-pill uncheck">未点名</span>
               </div>
-              <span style="color:var(--vivid-blue);font-weight:600;font-size:10px;">⇄ 左右滑动课表切周</span>
+              <span style="color:var(--text-muted);font-size:10px;">⇄ 左右滑动课表切周</span>
             </div>
 
             <!-- 动态二维周课表 -->
@@ -1304,7 +1286,7 @@
           </div>
         </div>
 
-        <!-- 子面板 B：签到点名月历 -->
+        <!-- 子面板 B：签到点名月历 (图3 + 图4：左右 < > 切周/切月 + 触屏左右滑动 + 选中日深色圆橙点 + 强对比点名列表) -->
         <div class="sched-subpanel" id="tch-sched-cal-panel">
           <div class="card" id="tch-cal-swipe-zone" style="margin-bottom:4px;">
             <div class="sec-head" style="margin-bottom:8px;">
@@ -1315,12 +1297,12 @@
               </div>
               <div style="display:flex;align-items:center;gap:5px;">
                 <button class="btn-outline" style="padding:3px 7px;font-size:10.5px;" onclick="shiftAttendanceMonth(-1)" title="上一月">«月</button>
-                <button class="btn-blue" style="padding:3px 7px;font-size:10.5px;" id="btn-cal-today" onclick="resetAttendanceToday()">今天</button>
+                <button class="btn-outline" style="padding:3px 7px;font-size:10.5px;" id="btn-cal-today" onclick="resetAttendanceToday()">今天</button>
                 <button class="btn-outline" style="padding:3px 7px;font-size:10.5px;" onclick="shiftAttendanceMonth(1)" title="下一月">月»</button>
               </div>
             </div>
 
-            <!-- 签到点名交互月历网格 -->
+            <!-- 签到点名交互月历网格 (对标图4) -->
             <div class="cal-box" style="margin-bottom:10px;">
               <div class="cal-watermark" id="tch-cal-watermark">11</div>
               <div class="cal-week-header">
@@ -1329,12 +1311,12 @@
               <div class="cal-days-grid" id="tch-cal-grid"></div>
             </div>
 
-            <!-- 4个鲜明多彩快捷操作按钮 (对标图4：排课橙、全天点名绿、筛选蓝、全天停课珊瑚红) -->
+            <!-- 4个快捷操作按钮 (对标图3 & 图4) -->
             <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px;">
               <button class="btn-mint" style="padding:6px 4px;font-size:11px;" onclick="openAddScheduleModal('', selectedCalDate)">+ 排课</button>
-              <button class="btn-green" style="padding:6px 4px;font-size:11px;" onclick="batchCheckinDay()">☑ 全天点名</button>
-              <button class="btn-blue" style="padding:6px 4px;font-size:11px;" onclick="openSearchScheduleModal()">▽ 筛选</button>
-              <button class="btn-coral" style="padding:6px 4px;font-size:11px;" onclick="stopDayLessons()">⊘ 全天停课</button>
+              <button class="btn-outline" style="padding:6px 4px;font-size:11px;" onclick="batchCheckinDay()">☑ 全天点名</button>
+              <button class="btn-outline" style="padding:6px 4px;font-size:11px;" onclick="openSearchScheduleModal()">▽ 筛选</button>
+              <button class="btn-outline" style="padding:6px 4px;font-size:11px;color:#9C3E3E;border-color:#E8C5C5;" onclick="stopDayLessons()">⊘ 全天停课</button>
             </div>
 
             <!-- 选中日与当周签到点名列表 -->
@@ -1343,9 +1325,9 @@
         </div>
       </section>
 
-      <!-- ==================== 刘妤老师工作台 Sub-Tab 2: 合同&学员 (浅青封面 + 多彩图标 + 多彩圆形头像 + 财务四色) ==================== -->
+      <!-- ==================== 刘妤老师工作台 Sub-Tab 2: 合同&学员 (浅青封面 #E8F5F2 -> #FCF5EB + 财务四色 + 学员有效课时) ==================== -->
       <section class="sub-view" id="tch-tab-2">
-        <!-- 合同/财务页浅青封面渐变 -->
+        <!-- 合同/财务页浅青封面渐变 #E8F5F2 -> #FCF5EB -->
         <div class="cover-banner cover-contract">
           <div>
             <div style="font-size:13.5px;font-weight:800;color:var(--text-main);">学员档案 · 合同与财务收支</div>
@@ -1357,40 +1339,40 @@
         <!-- 模块 1：学员列表与统计 -->
         <div class="card">
           <div class="sec-head">
-            <div class="sec-title"><span class="sec-bar blue"></span>学员列表与统计</div>
-            <span class="badge b-blue" id="tch-stu-total-badge">共 7 位在读学员</span>
+            <div class="sec-title"><span class="sec-bar"></span>学员列表与统计</div>
+            <span class="badge b-mint" id="tch-stu-total-badge">共 7 位演示学员</span>
           </div>
           <div class="stat-grid-6" style="margin-bottom:12px;">
-            <div class="stat-cell tint-blue" onclick="openStudentListModal()"><div class="stat-val blue">7</div><div class="stat-lbl">学员总数</div></div>
-            <div class="stat-cell tint-green" onclick="openStudentListModal()"><div class="stat-val valid">7</div><div class="stat-lbl">有合同</div></div>
+            <div class="stat-cell" onclick="openStudentListModal()"><div class="stat-val">7</div><div class="stat-lbl">学员总数</div></div>
+            <div class="stat-cell" onclick="openStudentListModal()"><div class="stat-val valid">7</div><div class="stat-lbl">有合同</div></div>
             <div class="stat-cell" onclick="openStudentListModal()"><div class="stat-val">0</div><div class="stat-lbl">无合同</div></div>
-            <div class="stat-cell tint-blue" onclick="openStudentListModal()"><div class="stat-val blue">5</div><div class="stat-lbl">已绑定</div></div>
-            <div class="stat-cell tint-orange" onclick="openStudentListModal()"><div class="stat-val amber">2</div><div class="stat-lbl">未绑定</div></div>
-            <div class="stat-cell tint-violet" onclick="openStudentListModal()"><div class="stat-val violet">1</div><div class="stat-lbl">本月生日</div></div>
+            <div class="stat-cell" onclick="openStudentListModal()"><div class="stat-val">5</div><div class="stat-lbl">已绑定</div></div>
+            <div class="stat-cell" onclick="openStudentListModal()"><div class="stat-val amber">2</div><div class="stat-lbl">未绑定</div></div>
+            <div class="stat-cell" onclick="openStudentListModal()"><div class="stat-val">1</div><div class="stat-lbl">本月生日</div></div>
           </div>
           <div class="mint-grid-4" style="margin-bottom:12px;">
             <div class="m-item" onclick="openStudentListModal()">
-              <div class="m-icon tint-blue"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABy0lEQVR42u2cy3XDMAwEDTyfUkwqzDEVphhfkwoUyxZILICZq/1kchcfkZR8uwEAAAAAAAAAwBSs4qA/vx6/R5/9fH8YBmwWvbIZ1lH4SkZ4d/EjrzMmA1YKppYNPkl8xWy4V7wL+i+KlcuNfAl6Jt4r5SPyWiNKULRgz76vkileIU3fjdYK6wBXj/6rIqr3C+8Y+SzEoI4BR2UgOmqPrpddhsgAShAGAAZgAGAABkgttqJvD3fd7pIBZMD6qM26TlsDVm6YqT/CUqIEvWtChdMxGQOiD1CqnIhZxWi/WrKUtqdLHspXO3gv1QNWR6fa4YxNiXTVUzGOJMmAddnA09EJZlR7PwAAgB4Q34ir9ALWARiwf5tByQybJLyiETZReCUjfLr42eOwShOOfEVJJRtMXfwIQTJ+U9KAs0KsFEBhDCkGqB0VqozHJ4p/9vd2NGfLFl/hXjxzjD5d/DPjWJkJPl38bBNccbKTVsS+O/rVt4l3v9jtiJ9rAu8HJONEf24WePZkqpogZ0CnB2Z3zteJ/tzx04Q7NOFp5Sdy3l45fTuUIUpQp3UAJBig+hcAu8rQ1T5ABlCCMAAwAAMAAAAAAAAAAAAAAKAvf7KqEeav2dSfAAAAAElFTkSuQmCC"/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABzElEQVR42u2c7XXCMAxFkQ4rdJvO06E6T7dhiHaClEBk60m69y+cYL+nj9hOuN0AAAAAAAAAAGAKVnHQj+/P36PPPr5+DAM2i17ZDOsofCUjvLv4kdcZkwErBVPLBp8kvmI23CveBf0XxcrlRr4EPRPvlfIRea0RJShasGffV8kUr5Cm70ZrhXWAq0f/VRHV+4V3jHwWYlDHgKMyEB21R9fLLkNkACUIAwADMAAwAAOkFlvRt4e7bnfJADJgfdRmXaetASs3zNQfYSlRgt41ocLpmIwB0QcoVU7ErGK0Xy1ZStvTJQ/lqx28l+oBq6NT7XDGpkS66qkYR5JkwLps4OnoBDOqvR8AAEAPiG/EVXoB6wAM2L/NoGSGTRJe0QibKLySET5d/OxxWKUJR76ipJINpi5+hCAZvylpwFkhVgqgMIYUA9SOClXG4xPFP/t7O5qzZYuvcC+eOUafLv6ZcazMBJ8ufrYJrjjZSSti3x396tvEu1/sdsTPNYH3A5Jxoj83Czx7MlVNkDOg0wOzO+frRH/u+GnCHZrwtPITOW+vnL4dyhAlqNM6ABIMUP0LgF1l6GofIAMoQRgAGIABAAAAAAAAAAAAAADQlz/g7BHFx3JDuwAAAABJRU5ErkJggg=="/></div>
               <span class="m-label">学员列表</span>
             </div>
             <div class="m-item" onclick="openAddStudentModal()">
               <div class="m-icon plus-primary"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAApElEQVR42u3b0RHAEBBAQaf/nk8DfDFjjt0KyEtMPk5rAAAAAADA66LqwjMzpxuKKLWn7h0UQAAEEAABBEAAARBAAAQQAAEEQAABEEAABBAAAQRAAAEQQAAEEIAztieJV1PKXz3EjYlsX4AjSAAEEICqf0G3uCOGAAIggAAIIAACCIAAAiCAAAggAAIIgAACIIAACCAAAgiAAAIgAAAAAAAAfGgAR04MgF91ESIAAAAASUVORK5CYII="/></div>
-              <span class="m-label" style="color:var(--brand-primary);font-weight:800;">添加学员</span>
+              <span class="m-label" style="color:var(--brand-deep);font-weight:800;">添加学员</span>
             </div>
             <div class="m-item" onclick="showToast('已生成家长微信绑定邀请卡')">
-              <div class="m-icon tint-green"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAA/klEQVR42u3bwRHCIBAF0MBYiZV5tx7vVmYr2oBjjGFdCO8V4LJ8AhnRZQEAAAAAAAAAAAAAAEZXIj70fL8+owb8uNxK7/XTAohs/JuJyK6fFsA/G383Edn1UwPIbL4Xe0KoJj93B6gmPzeE0yhvC1ubzK4fegZ8GkhE40euX3tf9Uc7dHcHkL33r9XvfXxhT8Asq791v3UhlQAEIAAEIAAEIAAEIAAEIABGDGC2G7JW/W4OIPtbz7X6vY8vdAua5Slo2WeJGsSMd8K/1CxWe972s2sLmu0GLGo+akZRk9/wEB7traO3+n4dnRy8/wfYdgEAAAAAAAAAAAAAGN8LZByFuIDC4E0AAAAASUVORK5CYII="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAA/klEQVR42u3bgRHCIAwF0MK5gts4j0M5j9s4hC7gWWuJgfLeAIbwKfRElwUAAAAAAAAAAAAAABhdifjQx+3yjBrw+XovvddPCyCy8W8mIrt+WgD/bPzdRGTXTw0gs/le7AmhmvzcHaCa/NwQTqO8LWxtMrt+6BnwaSARjR+5fu191R/t0N0dQPbev1a/9/GFPQGzrP7W/daFVAIQgAAQgAAQgAAQgAAQgAAYMYDZbsha9bs5gOxvPdfq9z6+0C1olqegZZ8lahAz3gn/UrNY7Xnbz64taLYbsKj5qBlFTX7DQ3i0t47e6vt1dHLw/h9g2wUAAAAAAAAAAAAAYHwvG9SD/MIucKIAAAAASUVORK5CYII="/></div>
               <span class="m-label">批量绑定</span>
             </div>
             <div class="m-item" onclick="exportStudentRosterCsv()">
-              <div class="m-icon tint-violet"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABSklEQVR42u3dS0oDURRF0XjIMB2KTYfiMAVt2fOHSL37WbulDUnVWVQgSQVvN0mSJEmSNvXQ+eCfHl/fPn5+frm3PJdMGP+z3wFcOH5nhEwZvytCJo3fESHTxu+GkInjd0LI1PG7IGTy+B0QMmn8716MVUVIt/F/esXbDSGTxu+IkGnjd0PIxPE7IWTq+F0QMnn8DgiZPn51hGwYvzJCtoxfFSGbxq+IkG3jV0PIxvErIeT0yZ6+m+H0ceXkyVa5leTkceXUyVa7j+fUcaXSZV/tSljxVsT2AAAAIAAABACAAAAQAAACAEAAAOiC7n/9w68+tO76jfVT5+4K8BQEQAAACAAAAQAgAAAEYE/3jgc96Q0/VwAAAAIAQAAACAAAAQAgAAAEAIAAzO/fP5Dp+u+kXAEABADA79vwTZgr9siJBzW+JEmSpM29A6bpuc/I+AwHAAAAAElFTkSuQmCC"/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABTUlEQVR42u3dzU0CYRiFUbyhBbuxHouyHruxCF25UzTG8L0/51npwjBzT4YEGOLlIkmSJEnSph46H/zby9P758+Pz68tzyUTxv/qdwB3HL8zQqaM3xUhk8bviJBp43dDyMTxOyFk6vhdEDJ5/A4ImTT+rRdjVRHSbfyfXvF2Q8ik8TsiZNr43RAycfxOCJk6fheETB6/A0Kmj18dIRvGr4yQLeNXRcim8SsiZNv41RCycfxKCDl9sqfvZjh9XDl5slVuJTl5XDl1stXu4zl1XKl02Ve7Ela8FbE9AAAACAAAAQAgAAAEAIAAABAAALpD17/+4XcfWnf9xvqpc3cFeAoCIAAABACAAAAQAAACsKdrx4Oe9IafKwAAAAEAIAAABACAAAAQAAACAEAA5vfvH8h0/XdSrgAAAgDg9234Jsw99siJBzW+JEmSpM19AIZiueLBAj68AAAAAElFTkSuQmCC"/></div>
               <span class="m-label">批量导出</span>
             </div>
           </div>
 
-          <!-- 学员列表直览区 (对标图6：多彩蓝/珊瑚粉/橙/绿圆形头像 + 当前合同 + 剩余课时 (有效)) -->
+          <!-- 学员列表直览区 (对标图5 + 图6：搜索框 + 圆形头像 + 当前合同 + 剩余课时 (有效)) -->
           <div style="border-top:1px solid var(--border-line);padding-top:10px;">
             <div class="sec-head" style="margin-bottom:8px;">
-              <div class="sec-title" style="font-size:12.5px;"><span class="sec-bar green"></span>在读学员档案速览</div>
+              <div class="sec-title" style="font-size:12.5px;"><span class="sec-bar" style="background:#4C9068;"></span>在读学员档案速览</div>
               <span class="sec-more" onclick="openStudentListModal()">展开全部 / 搜索 ›</span>
             </div>
             <div id="inline-student-list-preview"></div>
@@ -1399,30 +1381,30 @@
 
         <!-- 模块 2：合同管理 -->
         <div class="card">
-          <div style="background:linear-gradient(90deg, #FFF3E0 0%, #EBF3FE 100%);border:1px solid #F5D5AE;border-radius:8px;padding:7px 10px;font-size:11px;color:var(--brand-deep);line-height:1.45;margin-bottom:12px;font-weight:600;">
+          <div style="background:#FCF5EB;border:1px solid var(--border-line);border-radius:8px;padding:7px 10px;font-size:11px;color:var(--brand-deep);line-height:1.45;margin-bottom:12px;">
             可先添加套餐再添加合同，合同剩余3节或者到期前7天时状态将改为即将到期
           </div>
 
           <div class="sec-head" style="margin-bottom:8px;">
-            <div class="sec-title"><span class="sec-bar green"></span>合同统计</div>
+            <div class="sec-title"><span class="sec-bar"></span>合同统计</div>
           </div>
           <div class="stat-grid-4" style="margin-bottom:14px;">
-            <div class="stat-cell tint-green" onclick="openContractListModal('有效')"><div class="stat-val valid">5</div><div class="stat-lbl">有效</div></div>
-            <div class="stat-cell tint-orange" onclick="openContractListModal('即将到期')"><div class="stat-val amber">2</div><div class="stat-lbl">即将到期</div></div>
-            <div class="stat-cell tint-blue" onclick="openContractListModal('完结')"><div class="stat-val blue">0</div><div class="stat-lbl">完结</div></div>
-            <div class="stat-cell tint-coral" onclick="openContractListModal('未交费')"><div class="stat-val coral">0</div><div class="stat-lbl">未交费</div></div>
+            <div class="stat-cell" onclick="openContractListModal('有效')"><div class="stat-val valid">5</div><div class="stat-lbl">有效</div></div>
+            <div class="stat-cell" onclick="openContractListModal('即将到期')"><div class="stat-val amber">2</div><div class="stat-lbl">即将到期</div></div>
+            <div class="stat-cell" onclick="openContractListModal('完结')"><div class="stat-val">0</div><div class="stat-lbl">完结</div></div>
+            <div class="stat-cell" onclick="openContractListModal('未交费')"><div class="stat-val coral">0</div><div class="stat-lbl">未交费</div></div>
           </div>
 
           <div class="sec-head" style="margin-bottom:8px;">
-            <div class="sec-title"><span class="sec-bar violet"></span>套餐管理</div>
+            <div class="sec-title"><span class="sec-bar"></span>套餐管理</div>
           </div>
           <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px 6px;text-align:center;margin-bottom:14px;">
             <div class="m-item" onclick="openCoursePkgModal()">
-              <div class="m-icon tint-violet"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABDElEQVR42u3d4Q3CIBCAUSAd01H86Sgd00Q3MDHK0ePeW8DCZwktibYGAAAAQBU96oPut+cr2+Q8zqOnD5Bx4iNDDJO/dhzD5K8dzzD5a8c1Gnvtgj59SyJ2FdnGEXYHZJr8yOu1BC0mgAACIIAACCAAAghAsGP1BVzhzenK1yTuAEuQAAggAFV3QdkOatwBAiCAAAggAAIIgACehH/jPABLkAAIIAA1d0HOAxBAAAQQAAEEQAABqPUkHHEecOWnbXeAAAIggABU3QU5D0AAARBAAAQQAAEEYM8A2X5RPep6u8n+zr9fnViCdlyCdn3BNmNcI9PF7jb505egXSLMHIf/ESu4lAIAAABlvQFgvEghFmxvdgAAAABJRU5ErkJggg=="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABDklEQVR42u3dgQ3CIBBAUSCu4DbO41DO4zYOoRuYGMvR495bwMK3hJZEWwMAAACgih71Qa/H7Z1tcq73Z08fIOPER4YYJn/tOIbJXzueYfLXjms09toFffuWROwqso0j7A7INPmR12sJWkwAAQRAAAEQQAAEEIBgl9UXcIY3pytfk7gDLEECIIAAVN0FZTuocQcIgAACIIAACCAAAngS/o/zACxBAiCAANTcBTkPQAABEEAABBAAAQSg1pNwxHnAmZ+23QECCIAAAlB1F+Q8AAEEQAABEEAABBCAPQNk+0X1qOvtJvs3R786sQTtuATt+oJtxrhGpovdbfKnL0G7RJg5Dv8jVnApBQAAAMr6AO8jSFpVvXeGAAAAAElFTkSuQmCC"/></div>
               <span class="m-label">套餐列表</span>
             </div>
             <div class="m-item" onclick="openAddPkgModal()">
-              <div class="m-icon tint-orange"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAArUlEQVR42u3bsQ2AIBBAUXQHtmEeh3IetmEIWEArTMjJe6UV5guhOFMCAAAAAAD+7oi68HaX/vQ8XzXUO52+QQEEQAABEEAABBAAAQRAAAEQQAAEEAABBEAAARBAAAQQAAEEQAAB+Mb0JPHblPJOZiay7QBHkAAIIABRb0Gr+EcMAQRAAAEQQAAEEAABBEAAARBAAAQQAAEEQAABEEAABBAAAQRAAAAAAAAA2NAAywAMgCS1I1wAAAAASUVORK5CYII="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAArUlEQVR42u3bsQ2AIBBAUXQHtmEeh3IetmEIWEArTMjJe6UV5guhOFMCAAAAAAD+7oi68HaX/vQ8XzXUO52+QQEEQAABEEAABBAAAQRAAAEQQAAEEAABBEAAARBAAAQQAAEEQAAB+Mb0JPHblPJOZiay7QBHkAAIIABRb0Gr+EcMAQRAAAEQQAAEEAABBEAAARBAAAQQAAEEQAABEEAABBAAAQRAAAAAAAAA2NAAywAMgCS1I1wAAAAASUVORK5CYII="/></div>
               <span class="m-label">新增套餐</span>
             </div>
           </div>
@@ -1432,116 +1414,116 @@
           </div>
           <div class="mint-grid-5">
             <div class="m-item" onclick="openContractListModal('全部')">
-              <div class="m-icon tint-blue"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABDUlEQVR42u3dwQ0CIRBAUSCeLMYKPVqhxXjVDkyMy7DDvNeAC98l7JJoawAAAABU0aM+6HZ/vbNNzvNx7ekDZJz4yBDD5K8dxzD5a8czTP7acY3GXrugb9+SiF1FtnGE3QGZJj/yei1BiwkggAAIIAACCIAAAhDssvoCzvDmdOVrEneAJUgABBCAqrugbAc17gABEEAABBAAAQRAAE/C/3EegCVIAAQQgJq7IOcBCCAAAgiAAAIggADUehKOOA8489O2O0AAARBAAKrugpwHIIAACCAAAgiAAAKwZ4Bsv6gedb3dZP/m6FcnlqAdl6BdX7DNGNfIdLG7Tf70JWiXCDPH4X/ECi6lAAAAQFkfrbxIvW5I9wUAAAAASUVORK5CYII="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABDklEQVR42u3dgQ3CIBBAUSCu4DbO41DO4zYOoRuYGMvR495bwMK3hJZEWwMAAACgih71Qa/H7Z1tcq73Z08fIOPER4YYJn/tOIbJXzueYfLXjms09toFffuWROwqso0j7A7INPmR12sJWkwAAQRAAAEQQAAEEIBgl9UXcIY3pytfk7gDLEECIIAAVN0FZTuocQcIgAACIIAACCAAAngS/o/zACxBAiCAANTcBTkPQAABEEAABBAAAQSg1pNwxHnAmZ+23QECCIAAAlB1F+Q8AAEEQAABEEAABBCAPQNk+0X1qOvtJvs3R786sQTtuATt+oJtxrhGpovdbfKnL0G7RJg5Dv8jVnApBQAAAMr6AO8jSFpVvXeGAAAAAElFTkSuQmCC"/></div>
               <span class="m-label">合同列表</span>
             </div>
             <div class="m-item" onclick="openNewContractModal()">
-              <div class="m-icon tint-green"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAArElEQVR42u3bsQ2AIBBAUXQUJqN3HnsmYxVYQCtMyMl7pRXmC6E4UwIAAAAAAP7uiLrwXK/+9LyVO9Q7nb5BAQRAAAEQQAAEEAABBEAAARBAAAQQAAEEQAABEEAABBAAAQRAAAH4xvQk8duU8k5mJrLtAEeQAAggAFFvQav4RwwBBEAAARBAAAQQAAEEQAABEEAABBAAAQRAAAEQQAAEEAABBEAAAAAAAADY0AAY8AyADSsxCQAAAABJRU5ErkJggg=="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAArUlEQVR42u3bsQ2AIBBAUXQHtmEeh3IetmEIWEArTMjJe6UV5guhOFMCAAAAAAD+7oi68HaX/vQ8XzXUO52+QQEEQAABEEAABBAAAQRAAAEQQAAEEAABBEAAARBAAAQQAAEEQAAB+Mb0JPHblPJOZiay7QBHkAAIIABRb0Gr+EcMAQRAAAEQQAAEEAABBEAAARBAAAQQAAEEQAABEEAABBAAAQRAAAAAAAAA2NAAywAMgCS1I1wAAAAASUVORK5CYII="/></div>
               <span class="m-label">新增合同</span>
             </div>
             <div class="m-item" onclick="showToast('已打开合同批量顺延/延期窗口')">
-              <div class="m-icon tint-violet"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACDklEQVR42u2dSW4DMQwETcLPzFNy9FP8TAPJNZcAs0hsLlVnwyOyuUiDkfR4AAAAAAAAAADAFKzSYL+/Pj9Hf/t6Pw0BgpxdWRTr7vTsYtg0x2cTwqY6PosQNt3xaiGskvPPOCfqOaUEOOuUlY5QPlsuQLb5e6bxpDFW0QQzjM3UBmaYjyvH6dOdf3Qcu2ZuPt35ahEs2vkVXpJF2uDZomzaYsyjIqeK84+Md2UpsqrO/+95q5+12y7fPcjOrLDblalMP1ggQKe6r+gHTuRr7fFd0U8vEGZAt+jfaZcT/doscKJfa58Tu1o8Mt0oQ5szoHv52WEnJahiCQIEmCtA1Gvgqn3gbCMmAyhBCAAIgACtVqOVVuptM6CKEGUFODrtzS7EmB6QVYjSArzeTzu7AMwmRIsMqCyEXU3nzK8jrjj2ioAr/qdlD7iSEZQgoRBKsUbMgjJnRNjn6VmFuCLMSjv9qiFkxBq/jH4ZlyGQlgvQ/ZOV1fZ55ejpkE1eIUq6Rv9tAciC+37wStHSLfqXCBC1nTOr8+9WAa8aOdUjf6kAU3tBmn3CXUtRxA7QsM/Tq4kQtf3Wsxg1qe7/xVQGZOwbinHLtqlmywZV0Eh3ymcRQZmxnJooHhvnhorHw8m54ozk7GhxOeT0dHEv4v4A8bqEGzQm36ChFII7ZARicItSs/UEAAAAAAAAAEAxfgFSC3eXosUvLQAAAABJRU5ErkJggg=="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAACD0lEQVR42u2dyXEDMQwEBeSgbByPgnI8ykZB2F9/XLUHicHR/VZpCQwOcmtJPh4AAAAAAAAAADAFqzTYz/fXz9HfPl9vQ4AgZ1cWxbo7PbsYNs3x2YSwqY7PIoRNd7xaCKvk/DPOiXpOKQHOOmWlI5TPlguQbf6eaTxpjFU0wQxjM7WBGebjynH6dOcfHceumZtPd75aBIt2foWXZJE2eLYom7YY86jIqeL8I+NdWYqsqvP/e97qZ+22y3cPsjMr7HZlKtMPFgjQqe4r+oET+Vp7fFf00wuEGdAt+nfa5US/Nguc6Nfa58SuFo9MN8rQ5gzoXn522EkJqliCAAHmChD1GrhqHzjbiMkAShACAAIgQKvVaKWVetsMqCJEWQGOTnuzCzGmB2QVorQAz9fbzi4AswnRIgMqC2FX0znz64grjr0i4Ir/adkDrmQEJUgohFKsEbOgzBkR9nl6ViGuCLPSTr9qCBmxxi+jX8ZlCKTlAnT/ZGW1fV45ejpkk1eIkq7Rf1sAsuC+H7xStHSL/iUCRG3nzOr8u1XAq0ZO9chfKsDUXpBmn3DXUhSxAzTs8/RqIkRtv/UsRk2q+38xlQEZ+4Zi3LJtqtmyQRU00p3yWURQZiynJorHxrmh4vFwcq44Izk7WlwOOT1d3Iu4P0C8LuEGjck3aCiF4A4ZgRjcotRsPQEAAAAAAAAAUIxftV14CfYLNmwAAAAASUVORK5CYII="/></div>
               <span class="m-label">批量延期</span>
             </div>
             <div class="m-item" onclick="showToast('已导出全部合同明细报表')">
-              <div class="m-icon tint-orange"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABTUlEQVR42u3dzU0CYRiFUbyhBbuxHouyHruxCF25UzTG8L0/51npwjBzT4YEGOLlIkmSJEnSph46H/zby9P758+Pz68tzyUTxv/qdwB3HL8zQqaM3xUhk8bviJBp43dDyMTxOyFk6vhdEDJ5/A4ImTT+rRdjVRHSbfyfXvF2Q8ik8TsiZNr43RAycfxOCJk6fheETB6/A0Kmj18dIRvGr4yQLeNXRcim8SsiZNv41RCycfxKCDl9sqfvZjh9XDl5slVuJTl5XDl1stXu4zl1XKl02Ve7Ela8FbE9AAAACAAAAQAgAAAEAIAAABAAALpD17/+4XcfWnf9xvqpc3cFeAoCIAAABACAAAAQAAACsKdrx4Oe9IafKwAAAAEAIAAABACAAAAQAAACAEAA5vfvH8h0/XdSrgAAAgDg9234Jsw99siJBzW+JEmSpM19AIZiueLBAj68AAAAAElFTkSuQmCC"/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABTUlEQVR42u3dzU0CYRiFUbyhBbuxHouyHruxCF25UzTG8L0/51npwjBzT4YEGOLlIkmSJEnSph46H/zby9P758+Pz68tzyUTxv/qdwB3HL8zQqaM3xUhk8bviJBp43dDyMTxOyFk6vhdEDJ5/A4ImTT+rRdjVRHSbfyfXvF2Q8ik8TsiZNr43RAycfxOCJk6fheETB6/A0Kmj18dIRvGr4yQLeNXRcim8SsiZNv41RCycfxKCDl9sqfvZjh9XDl5slVuJTl5XDl1stXu4zl1XKl02Ve7Ela8FbE9AAAACAAAAQAgAAAEAIAAABAAALpD17/+4XcfWnf9xvqpc3cFeAoCIAAABACAAAAQAAACsKdrx4Oe9IafKwAAAAEAIAAABACAAAAQAAACAEAA5vfvH8h0/XdSrgAAAgDg9234Jsw99siJBzW+JEmSpM19AIZiueLBAj68AAAAAElFTkSuQmCC"/></div>
               <span class="m-label">批量导出</span>
             </div>
             <div class="m-item" onclick="openContractListModal('完结')">
-              <div class="m-icon tint-coral"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABDUlEQVR42u3cwQ2CMBiG4dK4hSN5dE6PjuQcugEpkFC+3+c5m1j62lIO0hoAAAAAAABUtmz58Of5+M4a6P31XioG6AmTf4XvnxrgKhdfMUJPG3C1CD1x0JUi9NSBV4mwHLnYs04ma5OdfjqKWAFrk5y+EmK2oKoRou4BFSPE3YSrRYg8BVWKEHEKSpzs0bmJfQ64+hF09McRHaBChPgA6Q9jJQIkRygTIDXCrRUzK8LeE1lv2IIEQAABEEAABBAAAQRAAAEQQAAEEAABBEAAARBAAAQQAAEEQAABEEAABBAAAQRAAAEQQAAESHPoj9pV32ZrBQiAAH9i84st7PvjRl4cYgVMnHwAAAAA4EQ/p+1SixgJ9vUAAAAASUVORK5CYII="/></div>
+              <div class="m-icon"><img alt="" class="mono-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAABDklEQVR42u3c0Q2CMBiF0dK4gts4j0M5j9s4hG5ACiSU+3vOs4mlny3lQVoDAAAAAACAypYtH/68Ht9ZA70/30vFAD1h8q/w/VMDXOXiK0boaQOuFqEnDrpShJ468CoRliMXe9bJZG2y009HEStgbZLTV0LMFlQ1QtQ9oGKEuJtwtQiRp6BKESJOQYmTPTo3sc8BVz+Cjv44ogNUiBAfIP1hrESA5AhlAqRGuLViZkXYeyLrDVuQAAggAAIIgAACIIAACCAAAgiAAAIggAAIIAACCIAAAiCAAAggAAIIgAACIIAACCAAAgiAAGkO/VG76ttsrQABEOBPbH6xhX1/3MiLQ6yAiZMPAAAAAJzoBxO0U4OJERDQAAAAAElFTkSuQmCC"/></div>
               <span class="m-label">归档列表</span>
             </div>
           </div>
         </div>
 
-        <!-- 模块 3：财务收支与退费台账 -->
+        <!-- 模块 3：财务收支与退费台账 (精准财务4色：收入#C27820、退费#9C3E3E、退费侧边条#BE5050、退费统计/有效绿#4C9068) -->
         <div class="card" style="margin-bottom:4px;">
           <div class="sec-head">
-            <div class="sec-title"><span class="sec-bar coral"></span>合同财务收支与退费明细</div>
-            <button class="btn-blue" style="padding:3px 9px;font-size:11px;" onclick="openAddFinanceModal()">+ 记收支/退费</button>
+            <div class="sec-title"><span class="sec-bar"></span>合同财务收支与退费明细</div>
+            <button class="btn-outline" style="padding:3px 9px;font-size:11px;" onclick="openAddFinanceModal()">+ 记收支/退费</button>
           </div>
           <div id="finance-summary-bar" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;background:var(--bg-page);border:1px solid var(--border-line);border-radius:9px;padding:8px 10px;margin-bottom:9px;font-size:11.5px;"></div>
           <div id="finance-records-list"></div>
         </div>
       </section>
 
-      <!-- ==================== 刘妤老师工作台 Sub-Tab 3: 经营数据 (统一温暖浅色底 + 鲜明橙蓝双柱图 + 多彩指标宫格) ==================== -->
+      <!-- ==================== 刘妤老师工作台 Sub-Tab 3: 经营数据 (统一浅色暖橙统计页 #FCF5EB + #FFFDFA + #332F2B + #EB9A3C/#CC7C23) ==================== -->
       <section class="sub-view" id="tch-tab-3">
-        <!-- 浅色焕彩统计封面 -->
+        <!-- 暖橙浅色统计封面 -->
         <div class="cover-banner cover-analytics">
           <div>
             <div style="font-size:14.5px;font-weight:800;color:var(--text-main);">经营数据统计</div>
             <div style="font-size:11px;color:var(--text-sub);margin-top:2px;">统计周期：2026-11 · 刘妤钢琴工作室</div>
           </div>
-          <span class="badge b-valid">实时核算</span>
+          <span class="badge b-amber">实时核算</span>
         </div>
 
-        <!-- 营收与课消趋势双色柱状图 (活力暖橙 #F08A24 实收 + 晴空蓝 #2E7CF6 耗课额) -->
-        <div class="card">
-          <div class="sec-head" style="margin-bottom:6px;">
+        <!-- 营收与课消趋势双色柱状图 (#EB9A3C 主橙 + #CC7C23 深橙) -->
+        <div class="card dark-card">
+          <div class="sec-head" style="margin-bottom:4px;">
             <div class="sec-title"><span class="sec-bar"></span>近6个月营收与课消趋势</div>
-            <div style="display:flex;gap:10px;font-size:10.5px;font-weight:700;color:var(--text-sub);">
-              <span><i style="display:inline-block;width:8px;height:8px;border-radius:2px;background:#F08A24;margin-right:3px;"></i>实收</span>
-              <span><i style="display:inline-block;width:8px;height:8px;border-radius:2px;background:#2E7CF6;margin-right:3px;"></i>耗课额</span>
+            <div style="display:flex;gap:8px;font-size:10px;color:var(--text-sub);">
+              <span><i style="display:inline-block;width:7px;height:7px;border-radius:2px;background:#EB9A3C;margin-right:3px;"></i>实收</span>
+              <span><i style="display:inline-block;width:7px;height:7px;border-radius:2px;background:#CC7C23;margin-right:3px;"></i>耗课额</span>
             </div>
           </div>
-          <div class="light-bar-chart">
-            <div class="dbc-col"><div class="dbc-bars"><div class="dbc-bar-main" style="height:44px;"></div><div class="dbc-bar-deep" style="height:35px;"></div></div><span class="dbc-lbl">6月</span></div>
-            <div class="dbc-col"><div class="dbc-bars"><div class="dbc-bar-main" style="height:56px;"></div><div class="dbc-bar-deep" style="height:45px;"></div></div><span class="dbc-lbl">7月</span></div>
-            <div class="dbc-col"><div class="dbc-bars"><div class="dbc-bar-main" style="height:64px;"></div><div class="dbc-bar-deep" style="height:52px;"></div></div><span class="dbc-lbl">8月</span></div>
-            <div class="dbc-col"><div class="dbc-bars"><div class="dbc-bar-main" style="height:50px;"></div><div class="dbc-bar-deep" style="height:42px;"></div></div><span class="dbc-lbl">9月</span></div>
-            <div class="dbc-col"><div class="dbc-bars"><div class="dbc-bar-main" style="height:70px;"></div><div class="dbc-bar-deep" style="height:56px;"></div></div><span class="dbc-lbl">10月</span></div>
-            <div class="dbc-col"><div class="dbc-bars"><div class="dbc-bar-main" style="height:76px;"></div><div class="dbc-bar-deep" style="height:60px;"></div></div><span class="dbc-lbl">11月</span></div>
+          <div class="dark-bar-chart light-bar-chart">
+            <div class="dbc-col"><div class="dbc-bars"><div class="dbc-bar-main" style="height:42px;"></div><div class="dbc-bar-deep" style="height:34px;"></div></div><span class="dbc-lbl">6月</span></div>
+            <div class="dbc-col"><div class="dbc-bars"><div class="dbc-bar-main" style="height:54px;"></div><div class="dbc-bar-deep" style="height:44px;"></div></div><span class="dbc-lbl">7月</span></div>
+            <div class="dbc-col"><div class="dbc-bars"><div class="dbc-bar-main" style="height:62px;"></div><div class="dbc-bar-deep" style="height:50px;"></div></div><span class="dbc-lbl">8月</span></div>
+            <div class="dbc-col"><div class="dbc-bars"><div class="dbc-bar-main" style="height:49px;"></div><div class="dbc-bar-deep" style="height:41px;"></div></div><span class="dbc-lbl">9月</span></div>
+            <div class="dbc-col"><div class="dbc-bars"><div class="dbc-bar-main" style="height:68px;"></div><div class="dbc-bar-deep" style="height:55px;"></div></div><span class="dbc-lbl">10月</span></div>
+            <div class="dbc-col"><div class="dbc-bars"><div class="dbc-bar-main" style="height:74px;"></div><div class="dbc-bar-deep" style="height:58px;"></div></div><span class="dbc-lbl">11月</span></div>
           </div>
         </div>
 
-        <!-- 机构统计 9 宫格（浅色卡片 + 鲜明多色数字） -->
-        <div class="card">
+        <!-- 机构统计 9 宫格 -->
+        <div class="card dark-card">
           <div class="sec-head" style="margin-bottom:8px;">
-            <div class="sec-title"><span class="sec-bar blue"></span>机构统计</div>
-            <span class="badge b-blue">单位：节 / 元</span>
+            <div class="sec-title"><span class="sec-bar"></span>机构统计</div>
+            <span style="font-size:10.5px;color:var(--text-muted);">单位：节 / 元</span>
           </div>
           <div class="stat-grid-9">
-            <div class="stat-cell tint-blue"><div class="stat-val blue">70</div><div class="stat-lbl">排课数量</div></div>
-            <div class="stat-cell tint-green"><div class="stat-val green">15</div><div class="stat-lbl">耗课数量</div></div>
-            <div class="stat-cell tint-coral"><div class="stat-val coral">0</div><div class="stat-lbl">停课数量</div></div>
-            <div class="stat-cell tint-orange"><div class="stat-val orange" style="font-size:14.5px;">21129.24</div><div class="stat-lbl">预计耗课金额</div></div>
-            <div class="stat-cell tint-orange"><div class="stat-val amber" style="font-size:14.5px;">4419.81</div><div class="stat-lbl">实际耗课金额</div></div>
-            <div class="stat-cell tint-violet"><div class="stat-val violet">24</div><div class="stat-lbl">新增课时</div></div>
-            <div class="stat-cell tint-green"><div class="stat-val green">7200</div><div class="stat-lbl">新增收入</div></div>
-            <div class="stat-cell tint-blue"><div class="stat-val blue">212</div><div class="stat-lbl">总剩余课时</div></div>
-            <div class="stat-cell tint-orange"><div class="stat-val orange" style="font-size:14.5px;">65779.62</div><div class="stat-lbl">总剩余金额</div></div>
+            <div class="stat-cell"><div class="stat-val primary">70</div><div class="stat-lbl">排课数量</div></div>
+            <div class="stat-cell"><div class="stat-val">15</div><div class="stat-lbl">耗课数量</div></div>
+            <div class="stat-cell"><div class="stat-val">0</div><div class="stat-lbl">停课数量</div></div>
+            <div class="stat-cell"><div class="stat-val primary" style="font-size:14.5px;">21129.24</div><div class="stat-lbl">预计耗课金额</div></div>
+            <div class="stat-cell"><div class="stat-val amber" style="font-size:14.5px;">4419.81</div><div class="stat-lbl">实际耗课金额</div></div>
+            <div class="stat-cell"><div class="stat-val">24</div><div class="stat-lbl">新增课时</div></div>
+            <div class="stat-cell"><div class="stat-val primary">7200</div><div class="stat-lbl">新增收入</div></div>
+            <div class="stat-cell"><div class="stat-val">212</div><div class="stat-lbl">总剩余课时</div></div>
+            <div class="stat-cell"><div class="stat-val amber" style="font-size:14.5px;">65779.62</div><div class="stat-lbl">总剩余金额</div></div>
           </div>
         </div>
 
         <!-- 学生统计 6 宫格 -->
-        <div class="card">
+        <div class="card dark-card">
           <div class="sec-head" style="margin-bottom:8px;">
-            <div class="sec-title"><span class="sec-bar green"></span>学生统计</div>
+            <div class="sec-title"><span class="sec-bar"></span>学生统计</div>
           </div>
           <div class="stat-grid-6">
-            <div class="stat-cell tint-orange"><div class="stat-val orange">1</div><div class="stat-lbl">新增学生</div></div>
-            <div class="stat-cell tint-blue"><div class="stat-val blue">20</div><div class="stat-lbl">有课学生</div></div>
-            <div class="stat-cell tint-orange"><div class="stat-val amber">4</div><div class="stat-lbl">无课学生</div></div>
-            <div class="stat-cell tint-green"><div class="stat-val green">15</div><div class="stat-lbl">出勤学生</div></div>
-            <div class="stat-cell tint-violet"><div class="stat-val violet">0</div><div class="stat-lbl">请假学生</div></div>
-            <div class="stat-cell tint-coral"><div class="stat-val coral">0</div><div class="stat-lbl">缺课学生</div></div>
+            <div class="stat-cell"><div class="stat-val primary">1</div><div class="stat-lbl">新增学生</div></div>
+            <div class="stat-cell"><div class="stat-val">20</div><div class="stat-lbl">有课学生</div></div>
+            <div class="stat-cell"><div class="stat-val amber">4</div><div class="stat-lbl">无课学生</div></div>
+            <div class="stat-cell"><div class="stat-val primary">15</div><div class="stat-lbl">出勤学生</div></div>
+            <div class="stat-cell"><div class="stat-val">0</div><div class="stat-lbl">请假学生</div></div>
+            <div class="stat-cell"><div class="stat-cell-inner"><div class="stat-val">0</div><div class="stat-lbl">缺课学生</div></div></div>
           </div>
         </div>
 
         <!-- 其他统计 8 项列表 -->
-        <div class="card" style="margin-bottom:4px;padding-bottom:6px;">
+        <div class="card dark-card" style="margin-bottom:4px;padding-bottom:6px;">
           <div class="sec-head" style="margin-bottom:4px;">
-            <div class="sec-title"><span class="sec-bar violet"></span>其他统计</div>
+            <div class="sec-title"><span class="sec-bar"></span>其他统计</div>
           </div>
-          <div class="list-row" onclick="openStatDetailModal('机构营收统计 (按课时)')"><span>机构营收统计 (按课时)</span><span style="color:var(--vivid-orange);font-weight:700;">&gt;</span></div>
-          <div class="list-row" onclick="openStatDetailModal('机构营收统计 (按有效期)')"><span>机构营收统计 (按有效期)</span><span style="color:var(--vivid-blue);font-weight:700;">&gt;</span></div>
-          <div class="list-row" onclick="openStatDetailModal('学员耗课排行')"><span>学员耗课排行</span><span style="color:var(--vivid-green);font-weight:700;">&gt;</span></div>
-          <div class="list-row" onclick="openStatDetailModal('学员出勤率排行')"><span>学员出勤率排行</span><span style="color:var(--vivid-violet);font-weight:700;">&gt;</span></div>
-          <div class="list-row" onclick="openStatDetailModal('老师耗课排行')"><span>老师耗课排行</span><span style="color:var(--vivid-orange);font-weight:700;">&gt;</span></div>
-          <div class="list-row" onclick="openStatDetailModal('老师出勤率排行')"><span>老师出勤率排行</span><span style="color:var(--vivid-blue);font-weight:700;">&gt;</span></div>
-          <div class="list-row" onclick="openStatDetailModal('助教老师耗课排行')"><span>助教老师耗课排行</span><span style="color:var(--vivid-green);font-weight:700;">&gt;</span></div>
-          <div class="list-row" onclick="openStatDetailModal('剩余课时排行')"><span>剩余课时排行</span><span style="color:var(--vivid-coral);font-weight:700;">&gt;</span></div>
+          <div class="list-row" onclick="openStatDetailModal('机构营收统计 (按课时)')"><span>机构营收统计 (按课时)</span><span style="color:var(--brand-deep);font-weight:700;">&gt;</span></div>
+          <div class="list-row" onclick="openStatDetailModal('机构营收统计 (按有效期)')"><span>机构营收统计 (按有效期)</span><span style="color:var(--brand-deep);font-weight:700;">&gt;</span></div>
+          <div class="list-row" onclick="openStatDetailModal('学员耗课排行')"><span>学员耗课排行</span><span style="color:var(--brand-deep);font-weight:700;">&gt;</span></div>
+          <div class="list-row" onclick="openStatDetailModal('学员出勤率排行')"><span>学员出勤率排行</span><span style="color:var(--brand-deep);font-weight:700;">&gt;</span></div>
+          <div class="list-row" onclick="openStatDetailModal('老师耗课排行')"><span>老师耗课排行</span><span style="color:var(--brand-deep);font-weight:700;">&gt;</span></div>
+          <div class="list-row" onclick="openStatDetailModal('老师出勤率排行')"><span>老师出勤率排行</span><span style="color:var(--brand-deep);font-weight:700;">&gt;</span></div>
+          <div class="list-row" onclick="openStatDetailModal('助教老师耗课排行')"><span>助教老师耗课排行</span><span style="color:var(--brand-deep);font-weight:700;">&gt;</span></div>
+          <div class="list-row" onclick="openStatDetailModal('剩余课时排行')"><span>剩余课时排行</span><span style="color:var(--brand-deep);font-weight:700;">&gt;</span></div>
         </div>
       </section>
 
@@ -1579,7 +1561,7 @@
       </div>
     </nav>
 
-    <!-- 全屏翻转横屏课表层 -->
+    <!-- 全屏翻转横屏课表层 (图7 绿圈功能：07:00~21:00 × 周一~周日) -->
     <div class="fullscreen-overlay" id="landscape-overlay">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;padding:10px 12px;background:#FCF5EB;border-bottom:1px solid var(--border-line);flex-shrink:0;">
         <div style="display:flex;align-items:center;gap:6px;">
@@ -1588,7 +1570,7 @@
           <button class="tt-arrow-btn" onclick="shiftScheduleWeek(1);renderLandscapeGrid();">&gt;</button>
         </div>
         <div style="display:flex;align-items:center;gap:6px;">
-          <button class="btn-blue" style="padding:4px 8px;font-size:11px;" id="btn-toggle-rotate90" onclick="toggleLandscapeRotateMode()">旋转90°横屏</button>
+          <button class="btn-outline" style="padding:4px 8px;font-size:11px;" id="btn-toggle-rotate90" onclick="toggleLandscapeRotateMode()">旋转90°横屏</button>
           <button class="btn-mint" style="padding:4px 10px;font-size:11px;" id="btn-exit-landscape" onclick="closeLandscapeTimetable()">退出横屏 ✕</button>
         </div>
       </div>
@@ -1597,7 +1579,7 @@
       </div>
     </div>
 
-    <!-- 黑底 1 / 1 定制分享课程图片全屏预览层 -->
+    <!-- 黑底 1 / 1 定制分享课程图片全屏预览层 (图8 + 图9) -->
     <div class="share-black-overlay" id="share-image-overlay" onclick="if(event.target===this)closeShareTimetableImage()">
       <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px;">
         <span style="width:52px;"></span>
@@ -1693,7 +1675,7 @@
   }
 
   function updateDarkThemeChrome(isDark) {
-    /* V3.9 全套页面统一使用暖米白浅色主题，不再切换深色顶栏与深色底栏 */
+    /* V3.9 全套页面统一使用暖米白与暖橙浅色主题 */
     const body = document.getElementById('view-body');
     const header = document.getElementById('top-header-stack');
     const tabTch = document.getElementById('tabbar-tch');
@@ -2048,20 +2030,19 @@
   function renderStudentCardHtml(s, idx = 0) {
     const primary = getStudentPrimaryContract(s.id);
     const shortAvatar = String(s.childName || '学').slice(-2);
-    const avCls = ['av-blue', 'av-coral', 'av-orange', 'av-green', 'av-violet'][idx % 5];
     const isValid = primary && primary.remainLessons > 0 && primary.paidStatus !== 'unpaid';
     const contractLine = primary ? htmlValue(primary.packageName) : '暂无有效合同';
     const remainLine = primary
       ? `剩余课时：<strong style="color:var(--text-main);">${primary.remainLessons}</strong> <span class="${isValid ? 'valid-green-text' : ''}" style="color:${isValid ? '#4C9068' : '#948A80'};font-weight:700;">(${isValid ? '有效' : recordStatus(primary)})</span>`
       : `剩余课时：0 <span style="color:#948A80;">(无有效合同)</span>`;
     return `<button type="button" class="stu-card-item" onclick="openStudentDetail('${s.id}')">
-      <div class="stu-card-avatar ${avCls}">${htmlValue(shortAvatar)}</div>
+      <div class="stu-card-avatar ${idx % 2 === 1 ? 'alt' : ''}">${htmlValue(shortAvatar)}</div>
       <div class="stu-card-main">
         <div class="stu-card-name">${htmlValue(s.childName)}</div>
         <div class="stu-card-line">当前合同：${contractLine}</div>
         <div class="stu-card-line">${remainLine}</div>
       </div>
-      <span style="font-size:12px;color:var(--accent-blue);font-weight:700;flex-shrink:0;">查看详情 ›</span>
+      <span style="font-size:12px;color:var(--brand-deep);font-weight:700;flex-shrink:0;">查看详情 ›</span>
     </button>`;
   }
 
