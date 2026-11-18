@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="delivery-version" content="V4.0-20261115">
+<meta name="delivery-version" content="V4.1-20261118">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>刘妤钢琴工作室 · V4.0 全功能双账本交互体验版</title>
 <style>
@@ -172,6 +172,9 @@
     font-size: 14.5px; font-weight: 800; color: var(--text-main);
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%;
   }
+  .wx-nav-title.nav-title-my-schedule {
+    font-size: 18px; font-weight: 400; letter-spacing: 0.5px;
+  }
   .wx-capsule {
     position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
     display: flex; align-items: center; background: var(--bg-page);
@@ -301,6 +304,12 @@
     font-size: 11px; font-weight: 600; color: var(--text-main); line-height: 1.25;
     max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   }
+  .m-label.stu-grid-label {
+    font-size: 12.5px; font-weight: 400; color: var(--text-main);
+  }
+  .m-label.stu-my-schedule-label {
+    font-size: 15px; font-weight: 400; color: var(--text-main); letter-spacing: 0.2px;
+  }
   .red-dot-badge {
     position: absolute; top: -5px; right: -6px;
     background: #9C3E3E; color: #FFFFFF; font-size: 9.5px; font-weight: 800;
@@ -427,55 +436,138 @@
   }
   .cal-day.selected .ke-tag { color: #EB9A3C !important; }
 
-  /* 二维周课表 & 工具栏 */
+  /* 二维周课表 & 工具栏（V4.1 醒目增强版） */
+  .tt-hero-banner {
+    background: linear-gradient(135deg, #FFF7EB 0%, #FDE8C9 100%);
+    border: 1.5px solid #EDC996;
+    border-radius: 12px;
+    padding: 10px 11px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 12px rgba(204, 124, 35, 0.08);
+  }
+  .tt-kpi-strip {
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px; margin-top: 9px;
+  }
+  .tt-kpi-pill {
+    background: #FFFDFA; border: 1px solid #EAD8C0; border-radius: 8px;
+    padding: 5px 4px; text-align: center;
+  }
+  .tt-kpi-pill .kv { font-size: 14px; font-weight: 900; line-height: 1.2; font-variant-numeric: tabular-nums; }
+  .tt-kpi-pill .kl { font-size: 10px; font-weight: 600; color: var(--text-sub); margin-top: 2px; }
   .tt-legend-bar {
     display: flex; align-items: center; justify-content: space-between;
     flex-wrap: wrap; gap: 6px; padding-bottom: 8px; margin-bottom: 8px;
     border-bottom: 1px solid var(--border-line); font-size: 11px; color: var(--text-sub);
   }
-  .tt-legend-dots { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
-  .tt-dot-item { display: inline-flex; align-items: center; gap: 3px; font-size: 10px; color: var(--text-sub); }
-  .tt-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+  .tt-legend-dots { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .tt-dot-item { display: inline-flex; align-items: center; gap: 4px; font-size: 10.5px; font-weight: 700; color: var(--text-main); }
+  .tt-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
   .tt-nav-toolbar {
     display: flex; align-items: center; justify-content: space-between;
-    gap: 4px; margin-bottom: 8px; flex-wrap: wrap;
+    gap: 6px; margin-bottom: 8px; flex-wrap: wrap;
   }
   .tt-arrow-btn {
-    width: 26px; height: 26px; border-radius: 7px; border: 1px solid var(--border-line);
-    background: var(--bg-card); color: var(--text-sub); font-size: 13px; font-weight: 800;
+    width: 28px; height: 28px; border-radius: 8px; border: 1px solid #DFC8AC;
+    background: var(--bg-card); color: var(--brand-deep); font-size: 14px; font-weight: 800;
     cursor: pointer; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
   }
   .tt-date-range {
-    font-size: 11px; font-weight: 700; color: var(--text-main);
+    font-size: 12.5px; font-weight: 800; color: var(--text-main);
     font-variant-numeric: tabular-nums; white-space: nowrap;
   }
-  .tt-action-icons { display: inline-flex; align-items: center; gap: 3px; flex-shrink: 0; }
+  .tt-tools-4grid {
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px; margin-bottom: 10px;
+  }
+  .tt-tool-card-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+    padding: 6px 4px; border-radius: 8px; border: 1px solid #E2D2BE;
+    background: #FCF5EB; color: #5C4326; font-size: 11px; font-weight: 700;
+    cursor: pointer; white-space: nowrap;
+  }
+  .tt-tool-card-btn svg { width: 13px; height: 13px; stroke: var(--brand-deep); fill: none; stroke-width: 2; flex-shrink: 0; }
+  .tt-tool-card-btn:active { background: #F7E1C2; }
+  .tt-action-icons { display: inline-flex; align-items: center; gap: 4px; flex-shrink: 0; }
   .tt-ico-btn {
-    width: 26px; height: 26px; border-radius: 6px; border: 1px solid var(--border-line);
+    width: 28px; height: 28px; border-radius: 7px; border: 1px solid var(--border-line);
     background: var(--bg-page); color: var(--text-main); cursor: pointer;
     display: inline-flex; align-items: center; justify-content: center; padding: 0;
   }
   .tt-ico-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.9; }
-  .week-table-scroll { width: 100%; overflow-x: auto; border-radius: 10px; border: 1px solid var(--border-line); }
+  .week-table-scroll {
+    width: 100%; overflow-x: auto; border-radius: 11px;
+    border: 1.5px solid #DFC8AC; box-shadow: 0 3px 10px rgba(51, 47, 43, 0.05);
+  }
   .week-table {
     width: 100%; border-collapse: collapse; table-layout: fixed;
-    font-size: 9.5px; background: var(--bg-card);
+    font-size: 10px; background: var(--bg-card);
   }
   .week-table th, .week-table td {
-    border: 1px solid var(--border-line); padding: 3px 1.5px;
-    text-align: center; vertical-align: top;
+    border: 1px solid #E4D6C5; padding: 4px 2px;
+    text-align: center; vertical-align: top; min-height: 36px;
   }
-  .week-table th { background: #FCF5EB; font-weight: 700; color: var(--text-sub); font-size: 9.5px; padding: 5px 1px; }
-  .week-table th.today-col { background: #282624; color: #FFFFFF; }
-  .week-table td.time-col { vertical-align: middle; font-weight: 700; color: var(--text-muted); width: 36px; background: #FFFDFA; }
+  .week-table th {
+    background: #F8EBD8; font-weight: 800; color: #3D352E;
+    font-size: 10.5px; padding: 6px 1px; line-height: 1.3;
+  }
+  .week-table th.today-col {
+    background: linear-gradient(180deg, #EB9A3C 0%, #CC7C23 100%);
+    color: #FFFFFF;
+  }
+  .week-table td.today-col-cell { background: rgba(235, 154, 60, 0.08); }
+  .week-table td.empty-slot-cell { cursor: pointer; height: 34px; transition: background 0.12s; }
+  .week-table td.empty-slot-cell:hover { background: #FFF5E6; }
+  .week-table tr:nth-child(even) td:not(.today-col-cell):not(.time-col) { background: #FFFCF8; }
+  .week-table td.time-col {
+    vertical-align: middle; font-weight: 800; font-size: 10.5px;
+    color: #5C4326; width: 40px; background: #FAF1E4;
+    font-variant-numeric: tabular-nums;
+  }
   .wt-slot {
-    border-radius: 5px; padding: 3px 2px; font-size: 8.5px; line-height: 1.22;
-    cursor: pointer; font-weight: 700; margin-bottom: 2px; word-break: break-all;
+    border-radius: 6px; padding: 4px 2.5px; font-size: 9.5px; line-height: 1.28;
+    cursor: pointer; font-weight: 800; margin-bottom: 3px; word-break: break-all;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06); text-align: left;
   }
-  .wt-slot.checked { background: #F7E1C2; color: #B67A2C; border: 1px solid #E5C596; }
-  .wt-slot.uncheck { background: #EAE8E6; color: #86827E; border: 1px solid #D5D2CE; }
-  .wt-slot.bookable { background: #FCF5EB; color: #CC7C23; border: 1px dashed #EB9A3C; }
-  .wt-slot.stopped { background: #FDF3F2; color: #9C3E3E; border: 1px solid #E8C5C5; text-decoration: line-through; }
+  .wt-slot .wt-stu { display: block; font-size: 10px; font-weight: 800; line-height: 1.25; }
+  .wt-slot .wt-tag { display: inline-block; font-size: 8.5px; font-weight: 800; margin-top: 1px; opacity: 0.92; }
+  .wt-slot.checked {
+    background: #E6F6EE; color: #1B5E3A;
+    border: 1px solid #8AD4B0; border-left: 3.5px solid #2F855A;
+  }
+  .wt-slot.uncheck {
+    background: #EBF3FF; color: #1545A1;
+    border: 1px solid #90B8F8; border-left: 3.5px solid #1D63DC;
+  }
+  .wt-slot.bookable {
+    background: #FFF3DC; color: #A85507;
+    border: 1.5px dashed #EB9A3C;
+  }
+  .wt-slot.stopped {
+    background: #FEECEC; color: #9B2C2C;
+    border: 1px solid #F3B6B6; border-left: 3.5px solid #C53030; text-decoration: line-through;
+  }
+
+  /* 经营数据醒目长条蓝字日期选择器 */
+  .blue-month-picker-wrap {
+    position: relative; flex: 1; min-width: 176px; height: 40px;
+    background: linear-gradient(180deg, #F2F7FF 0%, #E6F0FF 100%);
+    border: 1.5px solid #75A8FA; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    padding: 0 14px; cursor: pointer;
+    box-shadow: 0 2px 8px rgba(21, 94, 239, 0.10);
+  }
+  .blue-month-picker-wrap .bmp-text {
+    color: #155EEF; font-size: 15.5px; font-weight: 800;
+    letter-spacing: 0.6px; white-space: nowrap; font-variant-numeric: tabular-nums;
+  }
+  .blue-month-picker-wrap .bmp-caret {
+    color: #155EEF; font-size: 12px; font-weight: 800;
+  }
+  .blue-month-picker-wrap input[type="month"] {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    opacity: 0; cursor: pointer; margin: 0; padding: 0; border: 0;
+  }
 
   /* 柱状图与排行榜进度条 */
   .light-bar-chart {
@@ -649,8 +741,8 @@
     </button>
     <button class="dg-role-btn active" id="dg-btn-stu" onclick="switchPerspective('student')">
       <div>
-        <div style="font-size:13.5px;font-weight:800;">学员/家长端 (10宫格全子页)</div>
-        <div style="font-size:11px;color:var(--text-sub);">课表 · 约课 · 反馈 · 作业提交 · 请假 · 考勤 · 合同</div>
+        <div style="font-size:13.5px;font-weight:800;">学员/家长端 (双行8宫格精简版)</div>
+        <div style="font-size:11px;color:var(--text-sub);">我的课表 · 约课 · 我的作业 · 请假 · 考勤 · 合同</div>
       </div>
       <span>›</span>
     </button>
@@ -1885,9 +1977,13 @@
     if (navStack.length > 0) {
       const top = navStack[navStack.length - 1];
       if (backBtn) { backBtn.style.display = 'inline-flex'; backBtn.textContent = '< 返回'; }
-      if (navTitle) navTitle.textContent = L(top.title || state.studio.studioName);
+      if (navTitle) {
+        navTitle.textContent = L(top.title || state.studio.studioName);
+        navTitle.classList.toggle('nav-title-my-schedule', top.id === 'stu-schedule');
+      }
       if (tabTch) tabTch.style.display = 'none';
     } else {
+      if (navTitle) navTitle.classList.remove('nav-title-my-schedule');
       if (currentPerspective === 'role') {
         if (backBtn) backBtn.style.display = 'none';
         if (navTitle) navTitle.textContent = L('选择你的身份');
@@ -2231,18 +2327,16 @@
       `;
     }
 
-    /* 3. 西柚完整 10 宫格 */
+    /* 3. 学员端精简双行 8 宫格（已移除「课堂反馈」与「学员」，4×2 整齐两行） */
     const gridItems = [
-      { label: '我的课表', icon: ICONS.calendar, tint: '', action: "pushSubPage('stu-schedule','我的课表')" },
-      { label: '约课', icon: ICONS.calCheck, tint: 'tint-green', badge: openSlotsCnt, action: "pushSubPage('stu-book','自主约课')" },
-      { label: '课堂反馈', icon: ICONS.chat, tint: '', action: "pushSubPage('stu-feedback','课堂反馈')" },
-      { label: '我的作业', icon: ICONS.editBook, tint: 'tint-amber', badge: ungradedHwCnt, action: "pushSubPage('stu-homework','我的作业')" },
-      { label: '请假', icon: ICONS.leave, tint: '', action: "pushSubPage('stu-leave','请假申请')" },
-      { label: '考勤', icon: ICONS.badge, tint: 'tint-green', action: "pushSubPage('stu-attendance','我的考勤')" },
-      { label: L('我的合同'), icon: ICONS.doc, tint: '', action: "pushSubPage('stu-contracts','我的合同')" },
-      { label: '学员', icon: ICONS.user, tint: '', action: "pushSubPage('stu-children','我的学员')" },
-      { label: '个人信息', icon: ICONS.gear, tint: '', action: "pushSubPage('stu-profile','个人信息')" },
-      { label: '退出登录', icon: ICONS.logout, tint: 'tint-red', action: "logoutToRoleSelect()" }
+      { key: 'schedule', label: '我的课表', icon: ICONS.calendar, tint: '', action: "pushSubPage('stu-schedule','我的课表')" },
+      { key: 'book', label: '约课', icon: ICONS.calCheck, tint: 'tint-green', badge: openSlotsCnt, action: "pushSubPage('stu-book','自主约课')" },
+      { key: 'homework', label: '我的作业', icon: ICONS.editBook, tint: 'tint-amber', badge: ungradedHwCnt, action: "pushSubPage('stu-homework','我的作业')" },
+      { key: 'leave', label: '请假', icon: ICONS.leave, tint: '', action: "pushSubPage('stu-leave','请假申请')" },
+      { key: 'attendance', label: '考勤', icon: ICONS.badge, tint: 'tint-green', action: "pushSubPage('stu-attendance','我的考勤')" },
+      { key: 'contracts', label: L('我的合同'), icon: ICONS.doc, tint: '', action: "pushSubPage('stu-contracts','我的合同')" },
+      { key: 'profile', label: '个人信息', icon: ICONS.gear, tint: '', action: "pushSubPage('stu-profile','个人信息')" },
+      { key: 'logout', label: '退出登录', icon: ICONS.logout, tint: 'tint-red', action: "logoutToRoleSelect()" }
     ];
 
     /* 4. 最近一周排课时间轴 */
@@ -2278,13 +2372,12 @@
       `;
     }).join('') : emptyStateHtml(
       '暂无数据',
-      curStu ? `${curStu.childName} 最近7天暂无排课安排` : '请先在「个人信息」或「学员」中绑定学员档案',
+      curStu ? `${curStu.childName} 最近7天暂无排课安排` : '请先在「个人信息」中填写手机号匹配或输入绑定码关联档案',
       openSlotsCnt > 0 ? `<button type="button" class="btn-mint" onclick="pushSubPage('stu-book','自主约课')">查看 ${openSlotsCnt} 个开放可约时段 ›</button>` : ''
     );
 
-    /* 5. 工作室名片与课程展示 */
+    /* 5. 工作室名片（已按反馈移除下方「开设钢琴课程体系」大项） */
     const tags = Array.isArray(state.studio.teacherTags) ? state.studio.teacherTags : [];
-    const fCourses = Array.isArray(state.studio.featuredCourses) ? state.studio.featuredCourses : [];
 
     return `
       ${bannerHtml}
@@ -2297,7 +2390,7 @@
                 ${item.badge ? `<span class="red-dot-badge">${item.badge}</span>` : ''}
                 ${item.icon}
               </div>
-              <span class="m-label">${htmlValue(item.label)}</span>
+              <span class="m-label ${item.key === 'schedule' ? 'stu-my-schedule-label' : 'stu-grid-label'}">${htmlValue(item.label)}</span>
             </button>
           `).join('')}
         </div>
@@ -2311,7 +2404,7 @@
         ${weekTimelineHtml}
       </div>
 
-      <div class="card">
+      <div class="card" style="margin-bottom:4px;">
         <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;">
           <div style="display:flex;align-items:center;gap:10px;min-width:0;">
             <div class="avatar-circle deep">${htmlValue(String(state.studio.teacherName || '刘妤').slice(0, 2))}</div>
@@ -2328,20 +2421,6 @@
         <div style="display:flex;flex-wrap:wrap;gap:5px;">
           ${tags.map(t => `<span class="badge b-mint">${htmlValue(t)}</span>`).join('')}
           <span class="badge b-gray">📍 ${htmlValue(state.studio.address)}</span>
-        </div>
-      </div>
-
-      <div class="card" style="margin-bottom:4px;">
-        <div class="sec-head" style="margin-bottom:8px;">
-          <div class="sec-title"><span class="sec-bar"></span>开设钢琴课程体系</div>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;">
-          ${fCourses.map(fc => `
-            <div style="background:var(--bg-page);border:1px solid var(--border-line);border-radius:10px;padding:8px 9px;">
-              <div style="font-size:12px;font-weight:800;color:var(--brand-deep);">${htmlValue(fc.title)}</div>
-              <div style="font-size:10.5px;color:var(--text-sub);margin-top:2px;">${htmlValue(fc.desc)}</div>
-            </div>
-          `).join('')}
         </div>
       </div>
     `;
@@ -3290,6 +3369,47 @@
     renderApp();
   }
 
+  function syncSchedDraftCombinedTime(hhmm) {
+    const val = String(hhmm || '13:15');
+    const [hh, mm] = val.split(':');
+    syncSchedDraftTime(hh || '13', mm || '00');
+  }
+
+  function onPickSchedStudentDropdown(stuId, appendMode = false) {
+    if (!schedDraft) return;
+    if (!stuId) {
+      if (!appendMode) schedDraft.studentIds = [];
+      schedDraft.conflictMsg = '';
+      renderApp();
+      return;
+    }
+    if (appendMode || Number(schedDraft.maxStudents || 1) > 1 || (schedDraft.studentIds && schedDraft.studentIds.length > 1)) {
+      const set = new Set(schedDraft.studentIds || []);
+      set.add(stuId);
+      schedDraft.studentIds = Array.from(set);
+      if (schedDraft.studentIds.length > Number(schedDraft.maxStudents || 1)) {
+        schedDraft.maxStudents = schedDraft.studentIds.length;
+      }
+    } else {
+      schedDraft.studentIds = [stuId];
+    }
+    schedDraft.conflictMsg = '';
+    renderApp();
+  }
+
+  function removeSchedStudent(stuId) {
+    if (!schedDraft) return;
+    schedDraft.studentIds = (schedDraft.studentIds || []).filter(id => id !== stuId);
+    schedDraft.conflictMsg = '';
+    renderApp();
+  }
+
+  function enableSchedMultiStudentPick() {
+    if (!schedDraft) return;
+    schedDraft.maxStudents = Math.max(2, Number(schedDraft.maxStudents || 1) + 1);
+    renderApp();
+  }
+
   function toggleSchedStudent(stuId) {
     const set = new Set(schedDraft.studentIds || []);
     if (set.has(stuId)) set.delete(stuId);
@@ -3299,19 +3419,30 @@
     renderApp();
   }
 
-  function toggleSchedSelectAllStudents(checked) {
-    const visible = getActiveStudents().filter(s => !schedDraft.studentSearch || s.childName.toLowerCase().includes(schedDraft.studentSearch.toLowerCase()));
-    schedDraft.studentIds = checked ? visible.map(s => s.id) : [];
-    renderApp();
-  }
-
   function renderTchAddScheduleSubPage() {
     if (!schedDraft) openScheduleFormSubPage();
     const d = schedDraft;
-    const hours = Array.from({ length: 18 }, (_, i) => String(6 + i).padStart(2, '0'));
-    const mins5 = Array.from({ length: 12 }, (_, i) => String(i * 5).padStart(2, '0'));
+    const combinedTimes = [];
+    for (let h = 6; h <= 23; h++) {
+      for (let m = 0; m < 60; m += 5) {
+        combinedTimes.push(`${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`);
+      }
+    }
+    const curStartTime = `${String(d.startHour || '13').padStart(2, '0')}:${String(d.startMin || '15').padStart(2, '0')}`;
+    if (!combinedTimes.includes(curStartTime)) {
+      combinedTimes.push(curStartTime);
+      combinedTimes.sort();
+    }
+    const endTimes = [...combinedTimes];
+    if (d.endTime && !endTimes.includes(d.endTime)) {
+      endTimes.push(d.endTime);
+      endTimes.sort();
+    }
+
     const activeStus = getActiveStudents();
-    const filteredStus = activeStus.filter(s => !d.studentSearch || s.childName.toLowerCase().includes(d.studentSearch.toLowerCase()));
+    const isMultiStuMode = Number(d.maxStudents || 1) > 1 || (d.studentIds && d.studentIds.length > 1);
+    const selectedStuObjs = (d.studentIds || []).map(id => findStudent(id)).filter(Boolean);
+    const remainingStus = activeStus.filter(s => !(d.studentIds || []).includes(s.id));
     const weekNames = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
 
     return `
@@ -3348,7 +3479,7 @@
           </select>
         </label>
 
-        <!-- 5. 动态学生选择（行内直接展示剩余课时 + [切换合同] 按钮！）或 班级选择 -->
+        <!-- 5. 下拉选择学生（支持行内展示当前合同剩余课时 + [切换合同]）或 班级选择 -->
         ${d.targetType === 'class' ? `
           <label class="form-field"><span class="req">*</span>选择班级
             ${state.classes.length ? `
@@ -3360,29 +3491,61 @@
         ` : `
           <div class="form-field">
             <div style="display:flex;align-items:center;justify-content:space-between;">
-              <span><span class="req">${d.isBookable ? '' : '*'}</span>学生 <small style="color:var(--text-muted);font-weight:500;">(已选 ${d.studentIds.length} 人)</small></span>
-              ${filteredStus.length ? `<label style="font-size:11px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:3px;"><input type="checkbox" style="width:14px;min-height:14px;margin:0;" ${filteredStus.length && filteredStus.every(s => d.studentIds.includes(s.id)) ? 'checked' : ''} onchange="toggleSchedSelectAllStudents(this.checked)">全选</label>` : ''}
+              <span><span class="req">${d.isBookable ? '' : '*'}</span>选择学生${selectedStuObjs.length > 1 ? ` <small style="color:var(--brand-deep);">(已选 ${selectedStuObjs.length} 人)</small>` : ''}</span>
+              ${activeStus.length > 1 && !isMultiStuMode && selectedStuObjs.length === 1 ? `
+                <button type="button" class="sec-more" style="font-size:11px;padding:0;" onclick="enableSchedMultiStudentPick()">+ 添加同堂学员</button>
+              ` : ''}
             </div>
-            <div class="stu-search-box" style="margin:5px 0 6px;padding:5px 10px;">
-              <span style="font-size:12px;">🔍</span>
-              <input type="search" placeholder="请输入学员名称筛选" value="${htmlValue(d.studentSearch)}" oninput="schedDraft.studentSearch=this.value;renderApp()">
-            </div>
-            <div style="max-height:165px;overflow-y:auto;border:1px solid var(--border-line);border-radius:8px;padding:4px 6px;background:var(--bg-page);">
-              ${filteredStus.length ? filteredStus.map(s => {
-                const checked = d.studentIds.includes(s.id);
-                const pCon = getStudentPrimaryContract(s.id);
-                const conDesc = pCon
-                  ? `(当前${pCon.packageName}剩余${pCon.packageType === 'validity' ? '-' : pCon.remainLessons}课时)`
-                  : `(当前${L('无合同')})`;
-                return `<div style="display:flex;align-items:center;justify-content:space-between;gap:6px;padding:6px 2px;border-bottom:1px solid var(--border-line);font-size:12px;">
-                  <label style="display:flex;align-items:center;gap:6px;cursor:pointer;min-width:0;flex:1;">
-                    <input type="checkbox" style="width:15px;min-height:15px;margin:0;flex-shrink:0;" ${checked ? 'checked' : ''} onchange="toggleSchedStudent('${s.id}')">
-                    <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><strong>${htmlValue(s.childName)}</strong> <span style="color:var(--text-sub);font-size:11px;">${htmlValue(conDesc)}</span></span>
-                  </label>
-                  <button type="button" class="act-pill act-green" style="padding:2px 7px;font-size:10.5px;" onclick="openSwitchContractSubModal('${s.id}')">${htmlValue(L('切换合同'))}</button>
-                </div>`;
-              }).join('') : `<div style="padding:12px;text-align:center;font-size:11.5px;color:var(--text-muted);">暂无在读学员，<span style="color:var(--brand-deep);font-weight:700;cursor:pointer;" onclick="pushSubPage('tch-student-form','学员')">+ 先新增学员</span></div>`}
-            </div>
+            ${activeStus.length ? (
+              !isMultiStuMode ? `
+                <select id="sched-student-select" onchange="onPickSchedStudentDropdown(this.value, false)">
+                  <option value="">${d.isBookable ? '不选学员（开放约课时段）' : '请选择上课学生'}</option>
+                  ${activeStus.map(s => {
+                    const pCon = getStudentPrimaryContract(s.id);
+                    const conDesc = pCon
+                      ? `（${pCon.packageName}·剩${pCon.packageType === 'validity' ? '-' : pCon.remainLessons}课时）`
+                      : `（${L('无合同')}）`;
+                    return `<option value="${s.id}" ${d.studentIds[0] === s.id ? 'selected' : ''}>${htmlValue(s.childName)}${htmlValue(conDesc)}</option>`;
+                  }).join('')}
+                </select>
+              ` : `
+                <select id="sched-student-select" onchange="onPickSchedStudentDropdown(this.value, true);this.value='';">
+                  <option value="">+ 点击下拉继续添加上课学生（已选 ${selectedStuObjs.length} 人）</option>
+                  ${remainingStus.map(s => {
+                    const pCon = getStudentPrimaryContract(s.id);
+                    const conDesc = pCon
+                      ? `（${pCon.packageName}·剩${pCon.packageType === 'validity' ? '-' : pCon.remainLessons}课时）`
+                      : `（${L('无合同')}）`;
+                    return `<option value="${s.id}">${htmlValue(s.childName)}${htmlValue(conDesc)}</option>`;
+                  }).join('')}
+                </select>
+              `
+            ) : `
+              <select id="sched-student-select" disabled>
+                <option value="">暂无在读学员，请先建档</option>
+              </select>
+              <div style="margin-top:5px;font-size:11.5px;color:var(--text-muted);">当前账本尚无在读学员，<span style="color:var(--brand-deep);font-weight:700;cursor:pointer;" onclick="pushSubPage('tch-student-form','学员')">+ 点此先新增学员 ›</span></div>
+            `}
+
+            ${selectedStuObjs.length ? `
+              <div style="margin-top:6px;display:flex;flex-direction:column;gap:5px;">
+                ${selectedStuObjs.map(s => {
+                  const pCon = getStudentPrimaryContract(s.id);
+                  const conDesc = pCon
+                    ? `当前${pCon.packageName} · 剩余${pCon.packageType === 'validity' ? '-' : pCon.remainLessons}课时`
+                    : `当前${L('无合同')}`;
+                  return `
+                    <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;padding:6px 9px;background:var(--bg-page);border:1px solid var(--border-line);border-radius:8px;font-size:11.5px;">
+                      <span style="min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><strong>${htmlValue(s.childName)}</strong> <span style="color:var(--text-sub);">${htmlValue(conDesc)}</span></span>
+                      <div style="display:inline-flex;align-items:center;gap:5px;flex-shrink:0;">
+                        <button type="button" class="act-pill act-green" style="padding:2px 7px;font-size:10.5px;" onclick="openSwitchContractSubModal('${s.id}')">${htmlValue(L('切换合同'))}</button>
+                        ${isMultiStuMode ? `<button type="button" class="act-pill act-red" style="padding:2px 6px;font-size:10.5px;" onclick="removeSchedStudent('${s.id}')">✕</button>` : ''}
+                      </div>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            ` : ''}
           </div>
         `}
 
@@ -3423,20 +3586,17 @@
           </div>
         ` : ''}
 
-        <!-- 8. 开始时间（5分钟步进滚轮/下拉）+ 自动计算结束时间 -->
-        <div style="display:grid;grid-template-columns:1.25fr 1fr;gap:8px;">
-          <div class="form-field"><span class="req">*</span>开始时间 (5分钟步进)
-            <div style="display:flex;gap:4px;margin-top:4px;">
-              <select style="margin:0;" onchange="syncSchedDraftTime(this.value, undefined)">
-                ${hours.map(h => `<option value="${h}" ${d.startHour === h ? 'selected' : ''}>${h}时</option>`).join('')}
-              </select>
-              <select style="margin:0;" onchange="syncSchedDraftTime(undefined, this.value)">
-                ${mins5.map(m => `<option value="${m}" ${d.startMin === m ? 'selected' : ''}>${m}分</option>`).join('')}
-              </select>
-            </div>
-          </div>
+        <!-- 8. 排课时间（时和分合并在一起，一体选择，自动计算下课时间） -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <label class="form-field"><span class="req">*</span>开始时间
+            <select id="sched-start-time" onchange="syncSchedDraftCombinedTime(this.value)">
+              ${combinedTimes.map(tm => `<option value="${tm}" ${curStartTime === tm ? 'selected' : ''}>${tm}</option>`).join('')}
+            </select>
+          </label>
           <label class="form-field">结束时间 (自动+时长)
-            <input type="time" value="${d.endTime}" onchange="schedDraft.endTime=this.value;schedDraft.conflictMsg='';">
+            <select id="sched-end-time" onchange="schedDraft.endTime=this.value;schedDraft.conflictMsg='';">
+              ${endTimes.map(tm => `<option value="${tm}" ${d.endTime === tm ? 'selected' : ''}>${tm}</option>`).join('')}
+            </select>
           </label>
         </div>
 
@@ -4325,55 +4485,90 @@
     const days = Array.from({ length: 7 }, (_, i) => addDaysYMD(currentWeekMonday, i));
     const weekNames = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
     const weekBookings = getFilteredWeekBookings(currentWeekMonday);
-    const baseHours = ['09:00', '10:00', '11:00', '13:30', '15:00', '16:30', '18:30', '20:00'];
+    const baseHours = ['09:00', '10:00', '11:00', '14:00', '15:00', '16:30', '18:30', '20:00'];
     const allSlots = Array.from(new Set([...baseHours, ...weekBookings.map(b => b.startTime)])).sort();
 
-    return `
-      <div class="card" style="padding:10px 8px;">
-        <!-- 第 1 栏：4 色状态图例 + 教师筛选 -->
-        <div class="tt-legend-bar">
-          <div class="tt-legend-dots">
-            <span class="tt-dot-item"><i class="tt-dot" style="background:#3B82F6;"></i>未开始</span>
-            <span class="tt-dot-item"><i class="tt-dot" style="background:#4C9068;"></i>已开始</span>
-            <span class="tt-dot-item"><i class="tt-dot" style="background:#86827E;"></i>已结束</span>
-            <span class="tt-dot-item"><i class="tt-dot" style="background:#BE5050;"></i>已停课</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:6px;">
-            <span style="font-size:10.5px;color:var(--brand-deep);font-weight:800;cursor:pointer;" onclick="currentWeekMonday=getMondayYMD(getTodayYMD());renderApp()">本周</span>
-            <span style="font-size:11px;font-weight:700;cursor:pointer;" onclick="openTimetableTeacherPicker()">
-              ${htmlValue(timetableTeacherFilter ? timetableTeacherFilter + '老师' : '请选择教师')} ›
-            </span>
-          </div>
-        </div>
+    const activeCnt = weekBookings.filter(b => b.status !== 'stopped' && b.status !== 'open').length;
+    const uncheckCnt = weekBookings.filter(b => b.status !== 'stopped' && b.status !== 'open' && isBookingUnchecked(b)).length;
+    const checkedCnt = weekBookings.filter(b => b.status !== 'stopped' && b.status !== 'open' && !isBookingUnchecked(b)).length;
+    const openOrStopCnt = weekBookings.filter(b => b.status === 'open' || b.status === 'stopped').length;
 
-        <!-- 第 2 栏：< 周日期范围 > + 右侧 4 枚西柚工具图标（导出↑ | 横屏🔄 | 筛选复制❐ | 定制分享图↪） -->
-        <div class="tt-nav-toolbar">
-          <div style="display:flex;align-items:center;gap:4px;">
+    return `
+      <!-- 醒目周课表概览顶栏 -->
+      <div class="tt-hero-banner">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap;">
+          <div style="display:flex;align-items:center;gap:5px;">
             <button type="button" class="tt-arrow-btn" onclick="shiftTimetableWeek(-1)">&lt;</button>
             <span class="tt-date-range">${currentWeekMonday} ~ ${sunday.slice(5)}</span>
             <button type="button" class="tt-arrow-btn" onclick="shiftTimetableWeek(1)">&gt;</button>
+            <button type="button" class="badge b-amber" style="cursor:pointer;border:1px solid #DFB982;padding:3px 7px;" onclick="currentWeekMonday=getMondayYMD(getTodayYMD());renderApp()">本周</button>
           </div>
-          <div class="tt-action-icons">
-            <button type="button" class="tt-ico-btn" id="btn-tt-export" title="导出课程表" onclick="openExportTimetableConfigModal()">${ICONS.upload}</button>
-            <button type="button" class="tt-ico-btn" id="btn-tt-landscape" title="横屏90°全周视图" onclick="openLandscapeTimetable()">
-              <svg viewBox="0 0 24 24"><rect x="3" y="7" width="14" height="10" rx="2"/><path d="M19 5a4 4 0 012 3.5M21 5v3.5h-3.5"/></svg>
+          <div style="display:flex;align-items:center;gap:5px;">
+            <button type="button" class="btn-outline" style="padding:5px 9px;font-size:11px;border-radius:999px;" onclick="openTimetableTeacherPicker()">
+              ${htmlValue(timetableTeacherFilter ? timetableTeacherFilter + ' ▾' : '全部老师 ▾')}
             </button>
-            <button type="button" class="tt-ico-btn" id="btn-tt-copy" title="筛选日期复制排课" onclick="openCopyScheduleFilterModal()">
-              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-            </button>
-            <button type="button" class="tt-ico-btn" id="btn-tt-share" title="定制分享课程表图片" onclick="openShareTimetableConfigModal()">
-              <svg viewBox="0 0 24 24"><path d="M15 5l6 6-6 6"/><path d="M21 11H11a7 7 0 00-7 7v1"/></svg>
-            </button>
+            <button type="button" class="btn-mint" style="padding:5px 10px;font-size:11.5px;border-radius:999px;box-shadow:0 3px 8px rgba(235,154,60,0.28);" onclick="openScheduleFormSubPage('', '${today >= currentWeekMonday && today <= sunday ? today : currentWeekMonday}')">+ 排课</button>
           </div>
         </div>
 
-        <!-- 二维时间网格 -->
+        <div class="tt-kpi-strip">
+          <div class="tt-kpi-pill">
+            <div class="kv" style="color:#CC7C23;">${activeCnt}</div>
+            <div class="kl">本周排课</div>
+          </div>
+          <div class="tt-kpi-pill">
+            <div class="kv" style="color:#1D63DC;">${uncheckCnt}</div>
+            <div class="kl">待点名</div>
+          </div>
+          <div class="tt-kpi-pill">
+            <div class="kv" style="color:#2F855A;">${checkedCnt}</div>
+            <div class="kl">已点名</div>
+          </div>
+          <div class="tt-kpi-pill">
+            <div class="kv" style="color:#9C3E3E;">${openOrStopCnt}</div>
+            <div class="kl">可约/停课</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:10px 8px;">
+        <!-- 4 大醒目带文字工具按钮 -->
+        <div class="tt-tools-4grid">
+          <button type="button" class="tt-tool-card-btn" id="btn-tt-export" onclick="openExportTimetableConfigModal()">
+            ${ICONS.upload}<span>导出课表</span>
+          </button>
+          <button type="button" class="tt-tool-card-btn" id="btn-tt-landscape" onclick="openLandscapeTimetable()">
+            <svg viewBox="0 0 24 24"><rect x="3" y="7" width="14" height="10" rx="2"/><path d="M19 5a4 4 0 012 3.5M21 5v3.5h-3.5"/></svg>
+            <span>横屏全览</span>
+          </button>
+          <button type="button" class="tt-tool-card-btn" id="btn-tt-copy" onclick="openCopyScheduleFilterModal()">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            <span>复制排课</span>
+          </button>
+          <button type="button" class="tt-tool-card-btn" id="btn-tt-share" onclick="openShareTimetableConfigModal()">
+            <svg viewBox="0 0 24 24"><path d="M15 5l6 6-6 6"/><path d="M21 11H11a7 7 0 00-7 7v1"/></svg>
+            <span>分享长图</span>
+          </button>
+        </div>
+
+        <!-- 4 色高对比状态图例 -->
+        <div class="tt-legend-bar">
+          <div class="tt-legend-dots">
+            <span class="tt-dot-item"><i class="tt-dot" style="background:#1D63DC;"></i>待签课节</span>
+            <span class="tt-dot-item"><i class="tt-dot" style="background:#2F855A;"></i>已签完课</span>
+            <span class="tt-dot-item"><i class="tt-dot" style="background:#EB9A3C;"></i>开放可约</span>
+            <span class="tt-dot-item"><i class="tt-dot" style="background:#C53030;"></i>已停课</span>
+          </div>
+          <span style="font-size:10px;color:var(--text-muted);">点空白格快速排课</span>
+        </div>
+
+        <!-- 高对比度二维时间网格 -->
         <div class="week-table-scroll">
           <table class="week-table">
             <thead>
               <tr>
-                <th style="width:36px;">🕒</th>
-                ${days.map((d, i) => `<th class="${d === today ? 'today-col' : ''}">${weekNames[i]}<br>${d.slice(8, 10)}${d === today ? '今' : '号'}</th>`).join('')}
+                <th style="width:40px;">时间</th>
+                ${days.map((d, i) => `<th class="${d === today ? 'today-col' : ''}">${weekNames[i]}<br>${d.slice(8, 10)}${d === today ? '今' : '日'}</th>`).join('')}
               </tr>
             </thead>
             <tbody>
@@ -4381,16 +4576,19 @@
                 <tr>
                   <td class="time-col">${htmlValue(slot)}</td>
                   ${days.map(d => {
+                    const isTodayCol = d === today;
                     const items = weekBookings.filter(b => b.date === d && b.startTime === slot);
                     if (!items.length) {
-                      return `<td onclick="openScheduleFormSubPage('', '${d}', '', '${slot}')" title="点击在此时段排课" style="cursor:pointer;"></td>`;
+                      return `<td class="empty-slot-cell ${isTodayCol ? 'today-col-cell' : ''}" onclick="openScheduleFormSubPage('', '${d}', '', '${slot}')" title="点击在此时段排课"></td>`;
                     }
-                    return `<td>${items.map(b => {
+                    return `<td class="${isTodayCol ? 'today-col-cell' : ''}">${items.map(b => {
                       const unchecked = isBookingUnchecked(b);
                       const cls = b.status === 'stopped' ? 'stopped' : b.status === 'open' ? 'bookable' : unchecked ? 'uncheck' : 'checked';
                       const label = b.status === 'open' ? '可约课' : (b.childName || '学员');
+                      const tagTxt = b.status === 'stopped' ? '停课' : b.status === 'open' ? b.startTime : unchecked ? '●待签' : '✓已签';
                       return `<div class="wt-slot ${cls}" onclick="pushSubPage('tch-lesson-detail','课节详情',{bookingId:'${b.id}'})">
-                        ${htmlValue(label)}<br>${unchecked && b.status !== 'open' && b.status !== 'stopped' ? '未签' : b.status === 'stopped' ? '停课' : b.status === 'open' ? b.startTime : '已签'}
+                        <span class="wt-stu">${htmlValue(label)}</span>
+                        <span class="wt-tag">${htmlValue(tagTxt)}</span>
                       </div>`;
                     }).join('')}</td>`;
                   }).join('')}
@@ -4399,6 +4597,38 @@
             </tbody>
           </table>
         </div>
+      </div>
+
+      <!-- 本周排课明细速览（方便小屏一键点名与查看时间琴房） -->
+      <div class="card">
+        <div class="sec-head">
+          <div class="sec-title"><span class="sec-bar"></span>本周排课速览 (${weekBookings.length}节)</div>
+          <span style="font-size:10.5px;color:var(--text-muted);">点击卡片查看7键详情</span>
+        </div>
+        ${weekBookings.length ? weekBookings.map(b => {
+          const unchecked = isBookingUnchecked(b);
+          const isStopped = b.status === 'stopped';
+          const isOpen = b.status === 'open';
+          const borderCol = isStopped ? '#C53030' : isOpen ? '#EB9A3C' : unchecked ? '#1D63DC' : '#2F855A';
+          const pillCls = isStopped ? 'act-red' : isOpen ? 'act-orange' : unchecked ? 'act-blue' : 'act-green';
+          const pillTxt = isStopped ? '已停课' : isOpen ? '开放可约' : unchecked ? '待点名' : '已点名';
+          return `
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 10px;border-radius:10px;border:1px solid var(--border-line);border-left:4px solid ${borderCol};background:var(--bg-page);margin-bottom:7px;cursor:pointer;" onclick="pushSubPage('tch-lesson-detail','课节详情',{bookingId:'${b.id}'})">
+              <div style="min-width:0;flex:1;">
+                <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                  <strong style="font-size:13px;color:var(--text-main);">${htmlValue(b.childName || '开放可约课')}</strong>
+                  <span class="act-pill ${pillCls}" style="padding:1px 6px;font-size:10px;">${pillTxt}</span>
+                </div>
+                <div style="font-size:11.5px;color:var(--text-sub);margin-top:3px;">
+                  <strong>${htmlValue(b.date.slice(5))} (${getCnWeekday(b.date)}) ${htmlValue(b.startTime)}-${htmlValue(b.endTime)}</strong> · ${htmlValue(b.courseName)}
+                </div>
+              </div>
+              ${!isStopped && !isOpen && unchecked ? `
+                <button type="button" class="btn-mint" style="padding:5px 10px;font-size:11px;flex-shrink:0;" onclick="event.stopPropagation();openFourStateCheckinModal('${b.id}')">点名</button>
+              ` : `<span style="font-size:12px;color:var(--brand-deep);font-weight:800;flex-shrink:0;">详情 ›</span>`}
+            </div>
+          `;
+        }).join('') : emptyStateHtml('本周暂无排课记录', '点击右上角「+ 排课」或点击表格空白时段快速安排课程')}
       </div>
     `;
   }
@@ -7776,9 +8006,26 @@
   let statReportYM = getTodayYMD().slice(0, 7);
   let stuConsumeRankTab = 'student'; // 'student' | 'course'
 
+  function formatYMChineseDisplay(ym) {
+    if (!ym) return '全部月份';
+    const parts = String(ym).split('-');
+    if (parts.length < 2) return ym;
+    return `${parts[0]}年${String(parts[1]).padStart(2, '0')}月`;
+  }
+
+  function renderBlueMonthPickerHtml(ymValue, onChangeExpr) {
+    return `
+      <label class="blue-month-picker-wrap" title="点击选择统计年月">
+        <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#155EEF;fill:none;stroke-width:2.1;flex-shrink:0;"><rect x="3" y="4" width="18" height="17" rx="2.5"/><path d="M8 2v4M16 2v4M3 9h18"/></svg>
+        <span class="bmp-text">${htmlValue(formatYMChineseDisplay(ymValue))}</span>
+        <span class="bmp-caret">▾</span>
+        <input type="month" value="${htmlValue(ymValue || '')}" onchange="${onChangeExpr}" onclick="if(this.showPicker){try{this.showPicker();}catch(e){}}">
+      </label>
+    `;
+  }
+
   function renderTchAnalyticsSubPage() {
     const data = computeMonthAnalytics(analyticsYM, analyticsCampus);
-    const maxBarVal = Math.max(100, ...data.trend6Months.flatMap(m => [m.income, m.consumedAmt]));
 
     const reports8 = [
       { type: 1, title: `${L('机构营收统计')}(按课时)`, desc: '全年 01-12月 耗课课时、耗课额与新签实收月度矩阵' },
@@ -7792,42 +8039,19 @@
     ];
 
     return `
-      <!-- 顶部月份切换与校区筛选 -->
-      <div class="card" style="padding:10px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;">
-        <div style="display:flex;align-items:center;gap:6px;">
-          <button type="button" class="tt-arrow-btn" onclick="analyticsYM=shiftYearMonth(analyticsYM,-1);renderApp()">&lt;</button>
-          <input type="month" value="${analyticsYM}" onchange="if(this.value){analyticsYM=this.value;renderApp();}" style="border:1px solid var(--border-line);border-radius:7px;padding:4px 7px;font-size:12.5px;font-weight:800;background:var(--bg-page);">
-          <button type="button" class="tt-arrow-btn" onclick="analyticsYM=shiftYearMonth(analyticsYM,1);renderApp()">&gt;</button>
+      <!-- 顶部醒目加长蓝字月份切换栏与校区筛选 -->
+      <div class="card" style="padding:11px 12px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;">
+          <span style="font-size:12px;font-weight:800;color:var(--text-sub);">统计月份与${htmlValue(L('校区'))}筛选</span>
+          <select onchange="analyticsCampus=this.value;renderApp()" style="padding:5px 10px;border:1px solid var(--border-line);border-radius:8px;font-size:12px;font-weight:700;background:var(--bg-page);color:var(--text-main);">
+            <option value="">全部${htmlValue(L('校区'))}</option>
+            ${(state.studio.campuses || []).map(cp => `<option value="${htmlValue(cp.name)}" ${analyticsCampus === cp.name ? 'selected' : ''}>${htmlValue(cp.name)}</option>`).join('')}
+          </select>
         </div>
-        <select onchange="analyticsCampus=this.value;renderApp()" style="padding:5px 8px;border:1px solid var(--border-line);border-radius:7px;font-size:11.5px;background:var(--bg-card);">
-          <option value="">全部${htmlValue(L('校区'))}</option>
-          ${(state.studio.campuses || []).map(cp => `<option value="${htmlValue(cp.name)}" ${analyticsCampus === cp.name ? 'selected' : ''}>${htmlValue(cp.name)}</option>`).join('')}
-        </select>
-      </div>
-
-      <!-- 近6个月双柱趋势图（100% 真实由账本数据驱动） -->
-      <div class="card">
-        <div class="sec-head">
-          <div class="sec-title"><span class="sec-bar"></span>近6个月实收与耗课趋势</div>
-          <div style="display:flex;gap:8px;font-size:10px;color:var(--text-sub);">
-            <span><i style="display:inline-block;width:8px;height:8px;border-radius:2px;background:#EB9A3C;margin-right:3px;"></i>新签实收</span>
-            <span><i style="display:inline-block;width:8px;height:8px;border-radius:2px;background:#4C9068;margin-right:3px;"></i>实际耗课</span>
-          </div>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:6px;align-items:end;height:112px;padding:12px 4px 4px;border-bottom:1px solid var(--border-line);">
-          ${data.trend6Months.map(m => {
-            const hInc = m.income > 0 ? Math.max(8, Math.round((m.income / maxBarVal) * 76)) : 3;
-            const hCon = m.consumedAmt > 0 ? Math.max(8, Math.round((m.consumedAmt / maxBarVal) * 76)) : 3;
-            return `
-              <div style="display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;" onclick="analyticsYM='${m.ym}';renderApp()">
-                <div style="display:flex;align-items:flex-end;gap:3px;height:80px;">
-                  <div title="新签 ¥${m.income}" style="width:10px;height:${hInc}px;background:#EB9A3C;border-radius:3px 3px 0 0;"></div>
-                  <div title="耗课 ¥${m.consumedAmt}" style="width:10px;height:${hCon}px;background:#4C9068;border-radius:3px 3px 0 0;"></div>
-                </div>
-                <span style="font-size:10px;font-weight:${m.ym === analyticsYM ? '800' : '500'};color:${m.ym === analyticsYM ? 'var(--brand-deep)' : 'var(--text-muted)'};">${m.label}</span>
-              </div>
-            `;
-          }).join('')}
+        <div style="display:flex;align-items:center;gap:8px;">
+          <button type="button" class="tt-arrow-btn" style="width:36px;height:40px;" onclick="analyticsYM=shiftYearMonth(analyticsYM,-1);renderApp()">&lt;</button>
+          ${renderBlueMonthPickerHtml(analyticsYM, "if(this.value){analyticsYM=this.value;renderApp();}")}
+          <button type="button" class="tt-arrow-btn" style="width:36px;height:40px;" onclick="analyticsYM=shiftYearMonth(analyticsYM,1);renderApp()">&gt;</button>
         </div>
       </div>
 
@@ -8086,9 +8310,9 @@
       const maxL = Math.max(1, ...(rankList.map(x => x.lessons)));
 
       return `
-        <div class="card" style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;">
-          <input type="month" value="${statReportYM}" onchange="if(this.value){statReportYM=this.value;renderApp();}" style="border:1px solid var(--border-line);border-radius:7px;padding:4px 8px;font-size:12.5px;font-weight:800;">
-          <button type="button" class="btn-outline" style="padding:5px 10px;font-size:11.5px;" onclick="exportConsumeRankCsv()">↑ 导出CSV</button>
+        <div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 12px;">
+          ${renderBlueMonthPickerHtml(statReportYM, "if(this.value){statReportYM=this.value;renderApp();}")}
+          <button type="button" class="btn-outline" style="padding:7px 11px;font-size:11.5px;flex-shrink:0;" onclick="exportConsumeRankCsv()">↑ 导出CSV</button>
         </div>
         <div class="sub-tabs" style="margin-bottom:10px;">
           <button type="button" class="sub-tab ${stuConsumeRankTab === 'student' ? 'active' : ''}" onclick="stuConsumeRankTab='student';renderApp()">按学员统计</button>
@@ -8124,9 +8348,9 @@
       }).filter(x => x.totalChecked > 0).sort((a, b) => b.rate - a.rate || b.attend - a.attend);
 
       return `
-        <div class="card" style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;">
-          <input type="month" value="${statReportYM}" onchange="statReportYM=this.value;renderApp()" style="border:1px solid var(--border-line);border-radius:7px;padding:4px 8px;font-size:12.5px;font-weight:800;">
-          <button type="button" class="sec-more" onclick="statReportYM='';renderApp()">查看全周期累计</button>
+        <div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 12px;">
+          ${renderBlueMonthPickerHtml(statReportYM, "statReportYM=this.value;renderApp()")}
+          <button type="button" class="sec-more" style="flex-shrink:0;" onclick="statReportYM='';renderApp()">查看全周期累计</button>
         </div>
         <div class="card">
           ${rank.length ? rank.map((r, idx) => `
@@ -8189,9 +8413,9 @@
       }).sort((a, b) => b.consumedLessons - a.consumedLessons || b.salesAmt - a.salesAmt);
 
       return `
-        <div class="card" style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;">
-          <input type="month" value="${statReportYM}" onchange="statReportYM=this.value;renderApp()" style="border:1px solid var(--border-line);border-radius:7px;padding:4px 8px;font-size:12.5px;font-weight:800;">
-          <button type="button" class="btn-outline" style="padding:5px 10px;font-size:11.5px;" onclick="exportTeacherRankCsv()">↑ 导出CSV</button>
+        <div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 12px;">
+          ${renderBlueMonthPickerHtml(statReportYM, "statReportYM=this.value;renderApp()")}
+          <button type="button" class="btn-outline" style="padding:7px 11px;font-size:11.5px;flex-shrink:0;" onclick="exportTeacherRankCsv()">↑ 导出CSV</button>
         </div>
         ${rows.length ? rows.map((r, idx) => `
           <div class="card">
@@ -8227,8 +8451,8 @@
       }).filter(r => r.total > 0).sort((a, b) => b.rate - a.rate);
 
       return `
-        <div class="card" style="padding:10px 12px;">
-          <input type="month" value="${statReportYM}" onchange="statReportYM=this.value;renderApp()" style="border:1px solid var(--border-line);border-radius:7px;padding:4px 8px;font-size:12.5px;font-weight:800;">
+        <div class="card" style="display:flex;align-items:center;padding:10px 12px;">
+          ${renderBlueMonthPickerHtml(statReportYM, "statReportYM=this.value;renderApp()")}
         </div>
         <div class="card">
           ${rows.length ? rows.map((r, idx) => `
@@ -8266,8 +8490,8 @@
       const list = Array.from(map.values()).sort((a, b) => b.consumedLessons - a.consumedLessons);
 
       return `
-        <div class="card" style="padding:10px 12px;">
-          <input type="month" value="${statReportYM}" onchange="statReportYM=this.value;renderApp()" style="border:1px solid var(--border-line);border-radius:7px;padding:4px 8px;font-size:12.5px;font-weight:800;">
+        <div class="card" style="display:flex;align-items:center;padding:10px 12px;">
+          ${renderBlueMonthPickerHtml(statReportYM, "statReportYM=this.value;renderApp()")}
         </div>
         <div class="card">
           ${list.length ? list.map((r, idx) => `
